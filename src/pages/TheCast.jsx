@@ -60,8 +60,8 @@ const Yearbook = () => {
       <div className="min-h-screen py-24">
         <div className="max-w-7xl mx-auto px-4">
           <SectionHeading 
-            title="Yearbook" 
-            subtitle="The people and moments that defined our legacy."
+            title="The Cast" 
+            subtitle="The faces and the events that made it all real. ❣️"
           />
 
           {/* Toggle Tab */}
@@ -75,7 +75,7 @@ const Yearbook = () => {
                     : 'text-gray-400 hover:text-white'
                 }`}
               >
-                Batchmates
+                Roll Call
               </button>
               <button
                 onClick={() => setView('events')}
@@ -91,7 +91,7 @@ const Yearbook = () => {
           </div>
           
           <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] mb-16 italic">
-              "We didn't realize we were making memories, we just knew we were having fun."
+              " We didn't realize we were making memories, we just knew we were having fun. "
           </p>
 
           <AnimatePresence mode="wait">

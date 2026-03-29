@@ -16,10 +16,10 @@ const Gallery = () => {
 
   // Map 1st Year etc. to actual years for filtering logic seamlessly
   const yearMapping = {
-    "1st Year": "2022",
-    "2nd Year": "2023",
-    "3rd Year": "2024",
-    "4th Year": "2025" // Assuming 2025/2026
+    "1st Year": "2023",
+    "2nd Year": "2024",
+    "3rd Year": "2025",
+    "4th Year": "2026"
   };
 
   let filteredImages = activeYear === "All"
@@ -46,8 +46,8 @@ const Gallery = () => {
             {/* Top-Left: Headings & Filters */}
             <div className="flex-1">
               <div className="mb-8">
-                <h1 className="text-4xl md:text-5xl font-serif text-white mb-3">Media Vault</h1>
-                <p className="text-[var(--color-text-muted)] text-lg">A collection of captured memories.</p>
+                <h1 className="text-4xl md:text-5xl font-serif text-white mb-3">Scrapbook</h1>
+                <p className="text-[var(--color-text-muted)] text-lg">Fragments of time we chose to keep. ✨</p>
               </div>
 
               <div className="flex flex-wrap gap-2">

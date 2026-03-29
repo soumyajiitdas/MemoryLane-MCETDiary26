@@ -6,12 +6,12 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 
 // Pages
-import Home from './pages/Home';
-import TheJourney from './pages/TheJourney';
-import Yearbook from './pages/Yearbook';
-import Gallery from './pages/Gallery';
-import MemoryWall from './pages/MemoryWall';
-import About from './pages/About';
+import Prologue from './pages/Prologue';
+import Chapters from './pages/Chapters';
+import TheCast from './pages/TheCast';
+import Scrapbook from './pages/Scrapbook';
+import OurNotes from './pages/OurNotes';
+import LastPages from './pages/LastPages';
 
 function App() {
   return (
@@ -22,12 +22,12 @@ function App() {
           {/* AnimatePresence for page transitions */}
           <AnimatePresence mode="wait">
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/journey" element={<TheJourney />} />
-              <Route path="/yearbook" element={<Yearbook />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route path="/memory-wall" element={<MemoryWall />} />
-              <Route path="/about" element={<About />} />
+              <Route path="/" element={<Prologue />} />
+              <Route path="/chapters" element={<Chapters />} />
+              <Route path="/the-cast" element={<TheCast />} />
+              <Route path="/scrapbook" element={<Scrapbook />} />
+              <Route path="/our-notes" element={<OurNotes />} />
+              <Route path="/last-pages" element={<LastPages />} />
             </Routes>
           </AnimatePresence>
         </main>

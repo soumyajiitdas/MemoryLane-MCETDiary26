@@ -83,11 +83,11 @@ const TheJourney = () => {
       <div className="min-h-[100vh] py-24 overflow-hidden relative">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <SectionHeading 
-            title="The Journey" 
-            subtitle="Four years of framing memories. Step into the past and relive how it all unfolded."
+            title="Chapters" 
+            subtitle="The story we lived, not just remembered. 🍻"
           />
           <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-12 mb-32 italic">
-             "Here's to the nights that turned into mornings, with the friends that turned into family."
+             " Here's to the nights that turned into mornings, with the friends that turned into family. "
           </p>
 
           <div className="mt-12 w-full max-w-6xl mx-auto relative pt-12">

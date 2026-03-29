@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PlusCircle } from 'lucide-react';
 import PageTransition from '../components/layout/PageTransition';
+import SectionHeading from '../components/ui/SectionHeading';
 import { memoriesData } from '../data/memories';
 
 // Custom Sticky Note Component
@@ -49,15 +50,19 @@ const MemoryWall = () => {
         <div className="max-w-7xl mx-auto px-4">
           
           <div className="text-center mb-16 relative">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-amber-500 text-xs font-bold tracking-widest uppercase mb-4">
-              <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-white/70 text-xs font-bold tracking-widest uppercase mb-4">
+              <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
               FINAL GOODBYES
             </span>
-            <h1 className="text-5xl md:text-6xl font-serif text-white mb-6">Message Wall of Reflection</h1>
-            <p className="text-lg text-[var(--color-text-muted)] max-w-2xl mx-auto font-light leading-relaxed">
-              A space to leave your final words, memories, and wishes. These notes will remain here as a testament to our journey.
-            </p>
+            <SectionHeading 
+            title="Our Notes" 
+            subtitle="Few lines for the days we didn’t want to end. 📜"
+          />
           </div>
+
+          <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-12 mb-32 italic">
+             " It’s strange how endings don’t feel like endings at first. "
+          </p>
 
           {/* Masonry Board */}
           <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 p-4 md:p-8 bg-black/20 rounded-3xl border border-[var(--color-glass-border)] shadow-2xl relative min-h-[60vh]">
@@ -68,16 +73,6 @@ const MemoryWall = () => {
                 ))}
             </AnimatePresence>
 
-            {/* Fake generic post button */}
-             <div className="break-inside-avoid">
-                <button 
-                  className="w-full border-2 border-dashed border-gray-600 rounded-lg h-32 flex flex-col items-center justify-center text-gray-400 hover:text-white hover:border-amber-500 hover:bg-amber-500/10 transition-all group"
-                  onClick={() => alert("Pinning new notes logic would go here!")}
-                >
-                   <PlusCircle className="mb-2 w-8 h-8 group-hover:scale-110 transition-transform" />
-                   <span className="font-medium text-sm">Pin a Memory</span>
-                </button>
-             </div>
           </div>
 
         </div>

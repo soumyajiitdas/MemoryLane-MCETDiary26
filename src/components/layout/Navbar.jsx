@@ -27,12 +27,12 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'The Journey', path: '/journey' },
-    { name: 'Yearbook', path: '/yearbook' },
-    { name: 'Media Vault', path: '/gallery' },
-    { name: 'The Wall', path: '/memory-wall' },
-    { name: 'About', path: '/about' },
+    { name: 'Prologue', path: '/' },
+    { name: 'Chapters', path: '/chapters' },
+    { name: 'The Cast', path: '/the-cast' },
+    { name: 'Scrapbook', path: '/scrapbook' },
+    { name: 'Our Notes', path: '/our-notes' },
+    { name: 'Last Pages', path: '/last-pages' },
   ];
 
   return (

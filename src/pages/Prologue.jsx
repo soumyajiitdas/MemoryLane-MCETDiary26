@@ -91,7 +91,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-amber-500/5 mix-blend-overlay"></div>
         <div className="max-w-4xl mx-auto px-4 relative z-10">
            <SectionHeading title="The Final Countdown" subtitle="Time left until we throw our caps and say our goodbyes." />
-           <CountdownTimer targetDate="2026-06-01T00:00:00" />
+           <CountdownTimer targetDate="2026-07-17T00:00:00" />
            <p className="text-center font-['Caveat'] text-3xl text-amber-500 mt-12">
               "Don't cry because it's over, smile because it happened."
            </p>
@@ -101,7 +101,7 @@ const Home = () => {
       {/* Recent Memories Corkboard */}
       <section className="py-24 relative z-10">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <SectionHeading title="Fresh Off The Wall" subtitle="The latest thoughts and reflections from the batch." />
+          <SectionHeading title="Fresh Off The Notes" subtitle="The latest thoughts and reflections from the batch." />
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto mt-16 pb-12">
             {recentMemories.map(post => (
@@ -109,8 +109,8 @@ const Home = () => {
             ))}
           </div>
 
-          <a href="/memory-wall" className="inline-block mt-8 font-serif italic text-amber-500 hover:text-white transition-colors text-xl border-b border-amber-500/30 pb-1">
-             View all notes on the Memory Wall &rarr;
+          <a href="/our-notes" className="inline-block mt-8 font-serif italic text-amber-500 hover:text-white transition-colors text-xl border-b border-amber-500/30 pb-1">
+             View all entries in Our Notes &rarr;
           </a>
         </div>
       </section>

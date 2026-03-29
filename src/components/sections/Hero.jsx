@@ -78,11 +78,11 @@ const Hero = () => {
           transition={{ duration: 1, delay: 0.6 }}
           className="flex flex-col sm:flex-row gap-4 items-center justify-center mt-12 pt-8"
         >
-          <Button size="lg" variant="primary" onClick={() => window.location.href='/journey'}>
-            Explore The Journey
+          <Button size="lg" variant="primary" onClick={() => window.location.href='/chapters'}>
+            Read The Chapters
           </Button>
-          <Button size="lg" variant="secondary" onClick={() => window.location.href='/yearbook'}>
-             Open Yearbook
+          <Button size="lg" variant="secondary" onClick={() => window.location.href='/the-cast'}>
+             Meet The Cast
           </Button>
         </motion.div>
       </div>
