@@ -24,32 +24,34 @@ const FlipbookPage = ({ page, index, totalPages }) => {
   }
 
   return (
-    <div className="w-full h-full bg-[#fcf9f2] text-[#3e3222] relative flex flex-col items-center overflow-y-auto px-6 py-10 md:px-12 md:py-16 styling-scrollbar">
+    <div className="w-full h-full bg-[#fcf9f2] text-[#3e3222] relative flex flex-col overflow-hidden px-6 py-6 md:px-10 md:py-8">
       
       {/* Subtle Noise Texture representing paper */}
       <div className="absolute inset-0 pointer-events-none opacity-40 mix-blend-multiply z-0" 
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E")` }}>
       </div>
 
-      <div className="relative z-10 w-full flex-grow flex flex-col">
-        {/* Header Ribbon */}
-        <div className="flex justify-between items-center pb-2 border-b border-[#3e3222]/20 mb-4">
-           <span className="uppercase tracking-[0.2em] font-bold text-[6px] md:text-[8px] text-[#7d6b52]">Phoenix Magazine</span>
-           <span className="uppercase tracking-[0.2em] font-bold text-[6px] md:text-[8px] text-[#b94a4a]">Vol: I</span>
-        </div>
+      {/* Header Ribbon (Fixed) */}
+      <div className="relative z-20 w-full flex-shrink-0 pb-2 border-b border-[#3e3222]/20 mb-4">
+         <div className="flex justify-between items-center">
+            <span className="uppercase tracking-[0.2em] font-bold text-[6px] md:text-[8px] text-[#7d6b52]">Phoenix Magazine</span>
+            <span className="uppercase tracking-[0.2em] font-bold text-[6px] md:text-[8px] text-[#b94a4a]">Vol: I</span>
+         </div>
+      </div>
 
-        {/* Content Renderers */}
+      {/* Scrollable Content Area */}
+      <div className="relative z-10 w-full flex-grow overflow-y-auto styling-scrollbar pr-1">
         {page.type === 'story' && (
-          <div className="flex flex-col flex-grow">
+          <div className="flex flex-col">
             <h3 className="text-xl md:text-3xl font-serif text-[#2a2217] mb-2 leading-tight drop-shadow-sm">{page.title}</h3>
-            <span className="text-xs uppercase tracking-widest text-[#b94a4a] font-semibold block mb-6">By {page.author}</span>
+            <span className="text-xs uppercase tracking-widest text-[#b94a4a] font-semibold block mb-4">By {page.author}</span>
             {page.excerpt.map((line, i) => {
               const isFirst = i === 0;
 
               return (
                 <p
                   key={i}
-                  className={`font-serif text-md leading-relaxed text-[#4a3f32] ${
+                  className={`font-serif text-md leading-relaxed text-[#4a3f32] mb-4 last:mb-0 ${
                     isFirst
                       ? "first-letter:text-5xl first-letter:font-bold first-letter:float-left first-letter:mr-3 first-letter:-mt-2 first-letter:text-[#b94a4a]"
                       : ""
@@ -63,16 +65,16 @@ const FlipbookPage = ({ page, index, totalPages }) => {
         )}
 
         {page.type === 'image' && (
-          <div className="flex flex-col justify-center items-center flex-grow">
-            <div className="w-full aspect-square bg-cover bg-center shadow-inner border border-[#d4c3a3]" style={{ backgroundImage: `url(${page.src})` }}></div>
-            <p className="font-['Caveat'] text-2xl text-center text-[#5c4a35] mt-6 px-4 tracking-tight">
+          <div className="flex flex-col items-center justify-center min-h-full">
+            <div className="w-full aspect-square max-w-[350px] bg-cover bg-center shadow-inner border border-[#d4c3a3]" style={{ backgroundImage: `url(${page.src})` }}></div>
+            <p className="font-['Caveat'] text-2xl text-center text-[#5c4a35] mt-4 px-4 tracking-tight">
               "{page.caption}"
             </p>
           </div>
         )}
 
         {page.type === 'poem' && (
-          <div className="flex flex-col justify-center items-center flex-grow text-center">
+          <div className="flex flex-col justify-center items-center min-h-full text-center py-4">
             <h3 className="font-['Caveat'] text-5xl md:text-4xl text-[#b94a4a] mb-4">{page.title}</h3>
             <div className="space-y-2">
               {page.content.map((line, i) => (
@@ -84,12 +86,12 @@ const FlipbookPage = ({ page, index, totalPages }) => {
             <span className="text-xs uppercase tracking-widest text-[#b94a4a] mt-6 block">~ {page.author}</span>
           </div>
         )}
+      </div>
 
-        {/* Footer Page Number */}
-        <div className="mt-4 border-t border-[#3e3222]/20 pt-2 flex justify-between items-center text-[#7d6b52] font-serif text-xs">
-           <span>Batch '26</span>
-           <span className="font-bold">Page {index}</span>
-        </div>
+      {/* Footer Page Number (Fixed) */}
+      <div className="relative z-20 w-full flex-shrink-0 mt-4 border-t border-[#3e3222]/20 pt-2 flex justify-between items-center text-[#7d6b52] font-serif text-xs">
+         <span>Batch '26</span>
+         <span className="font-bold">Page {index}</span>
       </div>
     </div>
   );
