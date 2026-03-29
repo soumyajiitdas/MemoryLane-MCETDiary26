@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import EventCard from '../components/sections/EventCard';
+import ChapterNav from '../components/ui/ChapterNav';
 import { peopleData } from '../data/people';
 import { eventsData } from '../data/events';
 import Modal from '../components/ui/Modal';
@@ -41,7 +42,7 @@ const Polaroid = ({ person, onClick }) => {
   );
 };
 
-const Yearbook = () => {
+const TheCast = () => {
   const [view, setView] = useState('batchmates'); // 'batchmates' | 'events'
   const [selectedPerson, setSelectedPerson] = useState(null);
 
@@ -65,7 +66,7 @@ const Yearbook = () => {
           />
 
           {/* Toggle Tab */}
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-12">
             <div className="glass p-1 rounded-full inline-flex">
               <button
                 onClick={() => setView('batchmates')}
@@ -123,6 +124,11 @@ const Yearbook = () => {
               </motion.div>
             )}
           </AnimatePresence>
+
+          <div className="flex justify-between items-center w-full mt-20">
+            <ChapterNav direction="prev" chapterName="Chapters" path="/chapters" />
+            <ChapterNav direction="next" chapterName="Scrapbook" path="/scrapbook" />
+          </div>
         </div>
       </div>
 
@@ -157,4 +163,4 @@ const Yearbook = () => {
   );
 };
 
-export default Yearbook;
+export default TheCast;

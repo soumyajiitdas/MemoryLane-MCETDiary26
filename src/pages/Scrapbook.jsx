@@ -5,11 +5,12 @@ import PageTransition from '../components/layout/PageTransition';
 import GalleryGrid from '../components/sections/GalleryGrid';
 import Lightbox from '../components/ui/Lightbox';
 import Button from '../components/ui/Button';
+import ChapterNav from '../components/ui/ChapterNav';
 import { galleryData } from '../data/gallery';
 
 const years = ["All", "1st Year", "2nd Year", "3rd Year", "4th Year"];
 
-const Gallery = () => {
+const Scrapbook = () => {
   const [activeYear, setActiveYear] = useState("All");
   const [sortOrder, setSortOrder] = useState("newest"); // "newest" | "oldest"
   const [lightboxIndex, setLightboxIndex] = useState(-1);
@@ -101,6 +102,11 @@ const Gallery = () => {
               <p className="text-xl">No photos found for "{activeYear}"</p>
             </div>
           )}
+
+          <div className="flex justify-between items-center w-full mt-20">
+            <ChapterNav direction="prev" chapterName="The Cast" path="/the-cast" />
+            <ChapterNav direction="next" chapterName="Our Notes" path="/our-notes" />
+          </div>
         </div>
       </div>
 
@@ -115,4 +121,4 @@ const Gallery = () => {
   );
 };
 
-export default Gallery;
+export default Scrapbook;

@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { PlusCircle } from 'lucide-react';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
+import ChapterNav from '../components/ui/ChapterNav';
 import { memoriesData } from '../data/memories';
 
 // Custom Sticky Note Component
@@ -41,7 +42,7 @@ const StickyNote = ({ post }) => {
 };
 
 
-const MemoryWall = () => {
+const OurNotes = () => {
   const [posts, setPosts] = useState(memoriesData);
 
   return (
@@ -65,20 +66,23 @@ const MemoryWall = () => {
           </p>
 
           {/* Masonry Board */}
-          <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 p-4 md:p-8 bg-black/20 rounded-3xl border border-[var(--color-glass-border)] shadow-2xl relative min-h-[60vh]">
+          <div className="mb-24 columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 p-4 md:p-8 bg-black/20 rounded-3xl border border-[var(--color-glass-border)] shadow-2xl relative min-h-[60vh]">
              {/* Subtle pinboard grid pattern placeholder if wanted, keeping it clean via glassmorphism */}
              <AnimatePresence>
                 {posts.map(post => (
                   <StickyNote key={post.id} post={post} />
                 ))}
             </AnimatePresence>
-
           </div>
 
+          <div className="flex justify-between items-center w-full mt-20">
+            <ChapterNav direction="prev" chapterName="Scrapbook" path="/scrapbook" />
+            <ChapterNav direction="next" chapterName="Last Pages" path="/last-pages" />
+          </div>
         </div>
       </div>
     </PageTransition>
   );
 };
 
-export default MemoryWall;
+export default OurNotes;

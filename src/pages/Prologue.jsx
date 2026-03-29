@@ -3,6 +3,7 @@ import Hero from '../components/sections/Hero';
 import CountdownTimer from '../components/ui/CountdownTimer';
 import SectionHeading from '../components/ui/SectionHeading';
 import PageTransition from '../components/layout/PageTransition';
+import ChapterNav from '../components/ui/ChapterNav';
 
 // Data imports
 import { peopleData } from '../data/people';
@@ -59,7 +60,7 @@ const StickyNoteMini = ({ post }) => {
 };
 
 
-const Home = () => {
+const Prologue = () => {
   const recentMemories = memoriesData.slice(0, 3); // Get top 3 memories
 
   const stats = [
@@ -114,8 +115,12 @@ const Home = () => {
           </a>
         </div>
       </section>
+
+      <div className="w-full flex justify-end px-4 md:px-12">
+        <ChapterNav chapterName="Chapters" path="/chapters" />
+      </div>
     </PageTransition>
   );
 };
 
-export default Home;
+export default Prologue;

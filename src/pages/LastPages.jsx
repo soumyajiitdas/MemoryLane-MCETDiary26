@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Download, FileText, ChevronLeft, ChevronRight, Flower2 } from 'lucide-react';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
+import ChapterNav from '../components/ui/ChapterNav';
 import { phoenixData } from '../data/phoenix';
 
 // 1. Organize data into a flat array of pages
@@ -34,8 +35,8 @@ const FlipbookPage = ({ page, index, totalPages }) => {
       {/* Header Ribbon (Fixed) */}
       <div className="relative z-20 w-full flex-shrink-0 pb-2 border-b border-[#3e3222]/20 mb-4">
          <div className="flex justify-between items-center">
-            <span className="uppercase tracking-[0.2em] font-bold text-[6px] md:text-[8px] text-[#7d6b52]">Phoenix Magazine</span>
-            <span className="uppercase tracking-[0.2em] font-bold text-[6px] md:text-[8px] text-[#b94a4a]">Vol: I</span>
+            <span className="uppercase tracking-[0.2em] font-bold text-[8px] md:text-[10px] text-[#7d6b52]">Phoenix Magazine</span>
+            <span className="uppercase tracking-[0.2em] font-bold text-[8px] md:text-[10px] text-[#b94a4a]">Vol: I</span>
          </div>
       </div>
 
@@ -43,7 +44,7 @@ const FlipbookPage = ({ page, index, totalPages }) => {
       <div className="relative z-10 w-full flex-grow overflow-y-auto styling-scrollbar pr-1">
         {page.type === 'story' && (
           <div className="flex flex-col">
-            <h3 className="text-xl md:text-3xl font-serif text-[#2a2217] mb-2 leading-tight drop-shadow-sm">{page.title}</h3>
+            <h3 className="text-4xl font-serif text-[#2a2217] mb-2 leading-tight drop-shadow-sm">{page.title}</h3>
             <span className="text-xs uppercase tracking-widest text-[#b94a4a] font-semibold block mb-4">By {page.author}</span>
             {page.excerpt.map((line, i) => {
               const isFirst = i === 0;
@@ -214,7 +215,7 @@ const LastPages = () => {
           >
              <Flower2 size={32} className="text-[#b94a4a] absolute top-0 -translate-y-1/2 bg-[var(--color-midnight)] px-4 box-content" />
              
-             <div className="text-[#3e3222] p-8 md:p-14 shadow-2xl relative w-full border border-[#d4c3a3]/30 rounded-2xl max-w-2xl mx-auto flex flex-col items-center">
+             <div className="text-[#3e3222] p-8 md:p-14 shadow-2xl relative w-full border border-[#d4c3a3]/30 rounded-2xl max-w-2xl mx-auto flex flex-col items-center mb-12">
                 
                 {/* Vintage Postmark Decor */}
                 <div className="absolute top-4 right-4 w-16 h-16 border-[1.5px] border-dashed border-white/50 rounded-full pointer-events-none mix-blend-multiply opacity-60"></div>
@@ -239,6 +240,11 @@ const LastPages = () => {
                   <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-150 group-hover:bg-white/10 z-0"></div>
                 </a>
                 <span className="text-xs font-sans uppercase tracking-[0.2em] text-[#7d6b52] mt-6 font-semibold">Draft Archive • PDF Size 27 MB</span>
+             </div>
+
+             <div className="flex justify-between items-center w-full mt-12">
+               <ChapterNav direction="prev" chapterName="Our Notes" path="/our-notes" />
+               <ChapterNav direction="next" chapterName="Prologue" path="/" labelOverride="Return to" />
              </div>
           </motion.div>
 

@@ -1,7 +1,8 @@
 import React from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
+import ChapterNav from '../components/ui/ChapterNav';
 import { timelineData } from '../data/timeline';
 
 // Ensure each data object has a placeholder image array
@@ -77,7 +78,7 @@ const JourneyNode = ({ data, index }) => {
   );
 };
 
-const TheJourney = () => {
+const Chapters = () => {
   return (
     <PageTransition>
       <div className="min-h-[100vh] py-24 overflow-hidden relative">
@@ -99,10 +100,15 @@ const TheJourney = () => {
                 />
              ))}
           </div>
+          
+          <div className="flex justify-between items-center w-full mt-20">
+            <ChapterNav direction="prev" chapterName="Prologue" path="/" />
+            <ChapterNav direction="next" chapterName="The Cast" path="/the-cast" />
+          </div>
         </div>
       </div>
     </PageTransition>
   );
 };
 
-export default TheJourney;
+export default Chapters;
