@@ -136,71 +136,100 @@ const TheCast = () => {
         </div>
       </div>
 
-      {/* Nostalgic Person Modal */}
+      {/* Vintage Scrapbook Page Modal */}
       <Modal 
         isOpen={!!selectedPerson} 
         onClose={() => setSelectedPerson(null)}
-        maxWidth="max-w-md"
+        maxWidth="max-w-2xl"
       >
         {selectedPerson && (
-          <div className="flex flex-col relative pb-4 px-2">
-            
-            {/* Scrapbook photo frame */}
-            <div className="relative mb-10 -mt-6">
-              {/* Tape */}
-              <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 bg-amber-100/30 border border-white/10 shadow-sm z-20 backdrop-blur-md" style={{ transform: "rotate(3deg)" }} />
-              
-              <div className="p-3 pb-8 bg-[#fdfbf7] shadow-2xl relative rounded-sm transform rotate-1" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }}>
-                
-                <div 
-                  className="h-64 w-full relative bg-cover bg-center shadow-inner sepia-[0.2] contrast-[1.05]"
-                  style={{ backgroundImage: selectedPerson.photo?.startsWith('http') ? `url(${selectedPerson.photo})` : selectedPerson.photo }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-t from-amber-900/60 via-amber-900/10 to-transparent mix-blend-multiply" />
-                  
-                  {/* Float social links on the edge of the banner */}
-                  <div className="absolute -bottom-5 right-4 flex justify-end gap-3 z-10">
-                    {selectedPerson.socialLinks && Object.entries(selectedPerson.socialLinks).map(([network, url]) => {
-                      if(url === "#" || !url) return null;
-                      return (
-                        <a 
-                          key={network} 
-                          href={url} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="w-10 h-10 rounded-full bg-amber-50 border border-amber-900/20 flex items-center justify-center text-amber-900 hover:bg-amber-500 hover:text-amber-50 hover:scale-110 transition-all shadow-lg"
-                          aria-label={network}
-                        >
-                          {getSocialIcon(network)}
-                        </a>
-                      );
-                    })}
-                  </div>
-                </div>
-                
-                <h2 className="text-4xl font-['Caveat'] text-amber-950 mt-4 ml-2">{selectedPerson.name}</h2>
-              </div>
+          <div className="w-full relative py-6 md:p-8 flex flex-col items-center overflow-hidden">
+            {/* The main scrapbook paper background spanning the modal */}
+            <div className="absolute inset-0 bg-[#e8e2d2] shadow-inner" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')" }}>
+              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/noise-lines.png')] opacity-20 mix-blend-overlay"></div>
             </div>
 
-            <div className="flex items-center flex-wrap gap-3 mb-6 relative z-10">
-               <span className="px-3 py-1 rounded-sm bg-amber-500/20 text-amber-300 text-sm font-medium border border-amber-500/20 shadow-inner rotate-[-1deg]">
-                 "{selectedPerson.nickname}"
-               </span>
-               <span className="text-amber-500/30 text-sm">|</span>
-               <span className="text-amber-200/70 text-xs uppercase tracking-widest font-semibold">{selectedPerson.department}</span>
+            {/* Scrapbook Content Container */}
+            <div className="relative z-10 w-full flex flex-col md:flex-row gap-8 items-center md:items-start pt-4">
+              
+              {/* Left Column: Taped Photo */}
+              <div className="relative w-64 flex-shrink-0">
+                {/* Vintage Tape top left */}
+                <div className="absolute -top-5 -left-4 z-20 w-20 h-6 bg-yellow-100/40 backdrop-blur-sm shadow-sm rotate-[-12deg] border border-black/5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }} />
+                {/* Vintage Tape top right */}
+                <div className="absolute -bottom-4 -right-4 z-20 w-16 h-6 bg-yellow-100/40 backdrop-blur-sm shadow-sm rotate-[15deg] border border-black/5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }} />
+                
+                <div className="bg-[#f4efe1] p-2 pb-6 shadow-[3px_5px_15px_rgba(0,0,0,0.25)] border border-[#d5d0c0] transform rotate-2">
+                  <div 
+                    className="w-full aspect-square relative bg-zinc-300 sepia-[0.4] contrast-100 saturate-[0.8] mix-blend-multiply border border-black/20"
+                    style={{ backgroundImage: selectedPerson.photo?.startsWith('http') ? `url(${selectedPerson.photo})` : selectedPerson.photo, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                  >
+                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.5)_100%)]"></div>
+                  </div>
+                  <p className="text-center font-['Caveat'] text-2xl text-[#4a4235] mt-3 opacity-90">{selectedPerson.name.split(" ")[0]}'s shot</p>
+                </div>
+              </div>
+
+              {/* Right Column: Details & Decor */}
+              <div className="flex-1 flex flex-col justify-center h-full space-y-6 relative mt-4 md:mt-0 w-full px-4 md:px-0">
+                
+                {/* Title & Nickname area */}
+                <div className="relative isolate">
+                   <h2 className="text-5xl md:text-6xl font-['Caveat'] text-[#2c261e] font-bold leading-none mix-blend-multiply">
+                     {selectedPerson.name}
+                   </h2>
+                   
+                   <div className="flex items-center gap-3 mt-3">
+                     {/* Torn paper scrap for nickname */}
+                     <div className="relative inline-block bg-[#dbd4bf] px-3 py-1 shadow-sm transform -rotate-2 border border-black/5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }}>
+                       <span className="font-['Courier_New'] font-bold text-[#5c2415] text-sm md:text-base tracking-widest lowercase">
+                         "{selectedPerson.nickname}"
+                       </span>
+                     </div>
+                     <span className="font-['Inter'] font-semibold text-[#8b7f6b] text-xs uppercase tracking-[0.2em] ml-2 mt-1">
+                       {selectedPerson.department}
+                     </span>
+                   </div>
+                </div>
+
+                {/* Hand-written Note Area */}
+                <div className="relative mt-8">
+                  {/* Background ruled lines mimicking a torn notebook page */}
+                  <div className="absolute -inset-4 bg-[#fdfaf1] shadow-[1px_2px_8px_rgba(0,0,0,0.1)] " style={{ backgroundImage: "repeating-linear-gradient(transparent, transparent 31px, rgba(160, 200, 240, 0.4) 31px, rgba(160, 200, 240, 0.4) 32px)", backgroundSize: "100% 32px", clipPath: "polygon(0 0, 100% 2%, 98% 100%, 1% 97%)" }}></div>
+                  
+                  {/* Paperclip */}
+                  <div className="absolute -top-6 right-8 w-4 h-12 border-2 border-zinc-400 rounded-full z-10" style={{ transform: "rotate(15deg)", background: "linear-gradient(90deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%)" }}></div>
+
+                  <div className="relative z-10 py-6 px-4">
+                    <p className="text-2xl text-[#1a1c29] font-['Caveat'] leading-[32px] pt-1 opacity-90">
+                      "{selectedPerson.oneliner}"
+                    </p>
+                  </div>
+                </div>
+
+                {/* Social Stickers */}
+                <div className="pt-6 flex gap-4 right-0 justify-end md:justify-start w-full relative z-20">
+                  {selectedPerson.socialLinks && Object.entries(selectedPerson.socialLinks).map(([network, url], idx) => {
+                    if(!url || url === "#") return null;
+                    const rotations = ['rotate-3', '-rotate-6', 'rotate-6'];
+                    return (
+                      <a 
+                        key={network} 
+                        href={url} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className={`w-12 h-12 bg-[#faf8f2] shadow-[1px_3px_5px_rgba(0,0,0,0.2)] border border-[#dcd8cc] flex items-center justify-center text-[#5c2415] hover:bg-[#5c2415] hover:text-[#faf8f2] transition-colors transform ${rotations[idx % rotations.length]}`}
+                        style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')" }}
+                        aria-label={network}
+                      >
+                        {getSocialIcon(network)}
+                      </a>
+                    );
+                  })}
+                </div>
+
+              </div>
             </div>
-            
-            <div className="bg-[#1a1510] rounded-sm p-6 relative overflow-hidden shadow-lg border-l-4 border-amber-500/80">
-              <div className="absolute top-0 left-0 w-full h-full opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }}></div>
-              <p className="text-xl text-amber-100/90 font-['Caveat'] leading-relaxed relative z-10 tracking-wide">
-                 "{selectedPerson.oneliner}"
-              </p>
-              {/* Subtle quote decoration */}
-              <span className="absolute -bottom-6 -right-2 text-7xl text-amber-500/10 font-serif select-none pointer-events-none">
-                "
-              </span>
-            </div>
-            
           </div>
         )}
       </Modal>
