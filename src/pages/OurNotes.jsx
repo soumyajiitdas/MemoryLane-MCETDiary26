@@ -25,7 +25,7 @@ const StickyNote = ({ post }) => {
       {post.image && (
         <div 
           className="w-full h-40 mt-6 shadow-inner border border-gray-200 bg-cover bg-center"
-          style={{ backgroundImage: post.image?.startsWith('http') ? `url(${post.image})` : post.image }}
+          style={{ backgroundImage: (post.image?.startsWith('http') || post.image?.startsWith('/')) ? `url('${post.image}')` : post.image }}
         />
       )}
       

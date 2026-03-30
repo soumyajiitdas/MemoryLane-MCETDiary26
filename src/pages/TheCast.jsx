@@ -29,7 +29,7 @@ const Polaroid = ({ person, onClick }) => {
       
       <div 
         className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center sepia-[0.3] contrast-[1.1]"
-        style={{ backgroundImage: person.photo?.startsWith('http') ? `url(${person.photo})` : person.photo }}
+        style={{ backgroundImage: (person.photo?.startsWith('http') || person.photo?.startsWith('/')) ? `url('${person.photo}')` : person.photo }}
       >
         <div className="w-full h-full bg-amber-900/10 mix-blend-multiply"></div>
       </div>
@@ -162,7 +162,7 @@ const TheCast = () => {
                 <div className="bg-[#f4efe1] p-2 pb-6 shadow-[3px_5px_15px_rgba(0,0,0,0.25)] border border-[#d5d0c0] transform rotate-2">
                   <div 
                     className="w-full aspect-square relative bg-zinc-300 sepia-[0.4] contrast-100 saturate-[0.8] mix-blend-multiply border border-black/20"
-                    style={{ backgroundImage: selectedPerson.photo?.startsWith('http') ? `url(${selectedPerson.photo})` : selectedPerson.photo, backgroundSize: 'cover', backgroundPosition: 'center' }}
+                    style={{ backgroundImage: (selectedPerson.photo?.startsWith('http') || selectedPerson.photo?.startsWith('/')) ? `url('${selectedPerson.photo}')` : selectedPerson.photo, backgroundSize: 'cover', backgroundPosition: 'center' }}
                   >
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.5)_100%)]"></div>
                   </div>
@@ -202,7 +202,7 @@ const TheCast = () => {
 
                   <div className="relative z-10 py-6 px-4">
                     <p className="text-2xl text-[#1a1c29] font-['Caveat'] leading-[32px] pt-1 opacity-90">
-                      "{selectedPerson.oneliner || "A face from those familiar days."}"
+                      " {selectedPerson.oneliner || "A face from those familiar days."} "
                     </p>
                   </div>
                 </div>

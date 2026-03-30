@@ -12,8 +12,11 @@ const years = ["All", "1st Year", "2nd Year", "3rd Year", "4th Year"];
 
 const Scrapbook = () => {
   const [activeYear, setActiveYear] = useState("All");
-  const [sortOrder, setSortOrder] = useState("newest"); // "newest" | "oldest"
+  const [sortOrder, setSortOrder] = useState("random"); // "random" | "newest" | "oldest"
   const [lightboxIndex, setLightboxIndex] = useState(-1);
+  
+  // Shuffle exactly once when the component mounts (page refresh)
+  const [shuffledBase] = useState(() => [...galleryData].sort(() => Math.random() - 0.5));
 
   // Map 1st Year etc. to actual years for filtering logic seamlessly
   const yearMapping = {
@@ -24,17 +27,19 @@ const Scrapbook = () => {
   };
 
   let filteredImages = activeYear === "All"
-    ? [...galleryData]
-    : galleryData.filter(img => img.year === yearMapping[activeYear] || (activeYear === "4th Year" && img.year >= "2025"));
+    ? [...shuffledBase]
+    : shuffledBase.filter(img => img.year === yearMapping[activeYear] || (activeYear === "4th Year" && img.year >= "2025"));
 
   // Sort
-  filteredImages.sort((a, b) => {
-    if (sortOrder === "newest") {
-      return parseInt(b.year) - parseInt(a.year);
-    } else {
-      return parseInt(a.year) - parseInt(b.year);
-    }
-  });
+  if (sortOrder !== "random") {
+    filteredImages.sort((a, b) => {
+      if (sortOrder === "newest") {
+        return parseInt(b.year) - parseInt(a.year);
+      } else {
+        return parseInt(a.year) - parseInt(b.year);
+      }
+    });
+  }
 
   return (
     <PageTransition>
@@ -71,11 +76,11 @@ const Scrapbook = () => {
             {/* Top-Right: Sort & Upload */}
             <div className="flex items-center gap-4 flex-shrink-0 self-start lg:self-end pb-2">
                <button 
-                 onClick={() => setSortOrder(prev => prev === "newest" ? "oldest" : "newest")}
+                 onClick={() => setSortOrder(prev => prev === "random" ? "newest" : prev === "newest" ? "oldest" : "random")}
                  className="flex items-center gap-2 px-4 py-2 glass rounded-lg text-sm text-[var(--color-text-muted)] hover:text-white font-serif transition-colors"
                >
                  <ArrowDownUp size={16} />
-                 {sortOrder === "newest" ? "Newest First" : "Oldest First"}
+                 {sortOrder === "random" ? "Shuffle (Random)" : sortOrder === "newest" ? "Newest First" : "Oldest First"}
                </button>
                
                <Button variant="primary" size="sm" className="gap-2 font-serif">

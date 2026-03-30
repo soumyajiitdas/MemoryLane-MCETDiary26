@@ -1,7 +1,7 @@
 export const formatDate = (dateString) => {
     if (!dateString) return '';
     const date = new Date(dateString);
-    if (isNaN(date.getTime())) return dateString; // Probably already formatted string like "August 2022"
+    if (isNaN(date.getTime())) return dateString; // Probably already formatted string like "August 2023"
     
     return new Intl.DateTimeFormat('en-US', {
       year: 'numeric',

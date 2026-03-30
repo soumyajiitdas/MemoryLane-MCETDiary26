@@ -13,13 +13,22 @@ const GalleryGrid = ({ images, onImageClick }) => {
           className="relative group cursor-pointer overflow-hidden rounded-xl break-inside-avoid"
           onClick={() => onImageClick(i)}
         >
-          <div 
-            className="w-full aspect-[4/3] sm:aspect-auto bg-cover bg-center"
-            style={{ 
-               backgroundImage: image.src?.startsWith('http') ? `url(${image.src})` : image.src, 
-               minHeight: Math.random() > 0.5 ? '250px' : '350px' // Simulated masonry variation for gradients
-            }}
-          ></div>
+          {(image.src?.startsWith('http') || image.src?.startsWith('/')) ? (
+            <img 
+              src={image.src} 
+              alt={image.caption || "Scrapbook memory"}
+              className="w-full h-auto block"
+              loading="lazy"
+            />
+          ) : (
+            <div 
+              className="w-full aspect-[4/3] sm:aspect-auto"
+              style={{ 
+                 backgroundImage: image.src, 
+                 minHeight: Math.random() > 0.5 ? '250px' : '350px'
+              }}
+            ></div>
+          )}
           
           {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">

@@ -1,6 +1,6 @@
 export const timelineData = [
     {
-      year: "2022",
+      year: "2023",
       title: "The Beginning",
       subtitle: "Freshers & First Impressions",
       description: "Stepping onto campus for the first time was a blur of excitement and nerves. We attended orientation, survived our first mid-terms, and started adapting to the chaotic beauty of hostel life. Strangers slowly turned into friends over endless cups of chai.",

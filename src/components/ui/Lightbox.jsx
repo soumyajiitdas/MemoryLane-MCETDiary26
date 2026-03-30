@@ -80,7 +80,7 @@ const Lightbox = ({ images, currentIndex, isOpen, onClose, onNavigate }) => {
           >
             <div 
               className="relative w-full h-[80vh] rounded-lg overflow-hidden shadow-2xl bg-contain bg-center bg-no-repeat"
-              style={{ backgroundImage: currentImage.src?.startsWith('http') ? `url(${currentImage.src})` : currentImage.src }} 
+              style={{ backgroundImage: (currentImage.src?.startsWith('http') || currentImage.src?.startsWith('/')) ? `url('${currentImage.src}')` : currentImage.src }} 
               onClick={(e) => e.stopPropagation()} // Prevent close when clicking image
             >
              {/* If we had real images: <img src={currentImage.src} className="w-full h-full object-contain" /> */}
