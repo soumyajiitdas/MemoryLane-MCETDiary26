@@ -16,25 +16,29 @@ const Polaroid = ({ person, onClick }) => {
       whileHover={{ scale: 1.05, rotate: Math.random() > 0.5 ? 2 : -2 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       layoutId={`person-${person.id}`}
-      className="cursor-pointer bg-white p-3 shadow-xl flex flex-col items-center border border-gray-200"
+      className="cursor-pointer bg-[#fdfbf7] p-3 pb-8 shadow-xl flex flex-col items-center border border-amber-900/10 relative"
       onClick={() => onClick(person)}
       style={{
          // slight organic rotation to each card inherently
-         transform: `rotate(${Math.floor(Math.random() * 4) - 2}deg)`
+         transform: `rotate(${Math.floor(Math.random() * 4) - 2}deg)`,
+         backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')"
       }}
     >
+      {/* Vintage masking tape */}
+      <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-white/50 border border-white/20 shadow-sm z-10 backdrop-blur-sm" style={{ transform: "rotate(-2deg)" }} />
+      
       <div 
-        className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center"
+        className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center sepia-[0.3] contrast-[1.1]"
         style={{ backgroundImage: person.photo?.startsWith('http') ? `url(${person.photo})` : person.photo }}
       >
-        <div className="w-full h-full bg-black/5 mix-blend-multiply"></div>
+        <div className="w-full h-full bg-amber-900/10 mix-blend-multiply"></div>
       </div>
       
-      <div className="py-4 w-full text-center">
-         <h3 className="text-3xl font-['Caveat'] text-gray-800 font-medium tracking-wide">
+      <div className="pt-5 w-full text-center relative">
+         <h3 className="text-3xl font-['Caveat'] text-amber-950 font-medium tracking-wide">
            {person.name}
          </h3>
-         <p className="text-sm text-gray-500 uppercase tracking-widest mt-1 scale-90">
+         <p className="text-xs text-amber-900/60 uppercase tracking-widest mt-1 scale-90 font-semibold">
            {person.department}
          </p>
       </div>
@@ -132,29 +136,71 @@ const TheCast = () => {
         </div>
       </div>
 
-      {/* Legacy Person Modal (Updated slightly for aesthetic consistency) */}
+      {/* Nostalgic Person Modal */}
       <Modal 
         isOpen={!!selectedPerson} 
         onClose={() => setSelectedPerson(null)}
         maxWidth="max-w-md"
       >
         {selectedPerson && (
-          <div className="flex flex-col">
-            <div 
-              className="h-48 -mt-6 -mx-6 mb-6 relative bg-cover bg-center"
-              style={{ backgroundImage: selectedPerson.photo?.startsWith('http') ? `url(${selectedPerson.photo})` : selectedPerson.photo }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-t from-[var(--color-surface)] to-transparent" />
+          <div className="flex flex-col relative pb-4 px-2">
+            
+            {/* Scrapbook photo frame */}
+            <div className="relative mb-10 -mt-6">
+              {/* Tape */}
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-24 h-8 bg-amber-100/30 border border-white/10 shadow-sm z-20 backdrop-blur-md" style={{ transform: "rotate(3deg)" }} />
+              
+              <div className="p-3 pb-8 bg-[#fdfbf7] shadow-2xl relative rounded-sm transform rotate-1" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }}>
+                
+                <div 
+                  className="h-64 w-full relative bg-cover bg-center shadow-inner sepia-[0.2] contrast-[1.05]"
+                  style={{ backgroundImage: selectedPerson.photo?.startsWith('http') ? `url(${selectedPerson.photo})` : selectedPerson.photo }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-t from-amber-900/60 via-amber-900/10 to-transparent mix-blend-multiply" />
+                  
+                  {/* Float social links on the edge of the banner */}
+                  <div className="absolute -bottom-5 right-4 flex justify-end gap-3 z-10">
+                    {selectedPerson.socialLinks && Object.entries(selectedPerson.socialLinks).map(([network, url]) => {
+                      if(url === "#" || !url) return null;
+                      return (
+                        <a 
+                          key={network} 
+                          href={url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 rounded-full bg-amber-50 border border-amber-900/20 flex items-center justify-center text-amber-900 hover:bg-amber-500 hover:text-amber-50 hover:scale-110 transition-all shadow-lg"
+                          aria-label={network}
+                        >
+                          {getSocialIcon(network)}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+                
+                <h2 className="text-4xl font-['Caveat'] text-amber-950 mt-4 ml-2">{selectedPerson.name}</h2>
+              </div>
             </div>
 
-            <h2 className="text-4xl font-['Caveat'] text-white mb-1">{selectedPerson.name}</h2>
-            <p className="text-amber-500 font-medium mb-4">"{selectedPerson.nickname}"</p>
-            
-            <div className="space-y-4 text-sm text-gray-300">
-              <p><strong className="text-white">Department:</strong> {selectedPerson.department}</p>
-              <p><strong className="text-white">Fun Fact:</strong> {selectedPerson.funFact}</p>
-              <p><strong className="text-white">Favorite Memory:</strong> {selectedPerson.memory}</p>
+            <div className="flex items-center flex-wrap gap-3 mb-6 relative z-10">
+               <span className="px-3 py-1 rounded-sm bg-amber-500/20 text-amber-300 text-sm font-medium border border-amber-500/20 shadow-inner rotate-[-1deg]">
+                 "{selectedPerson.nickname}"
+               </span>
+               <span className="text-amber-500/30 text-sm">|</span>
+               <span className="text-amber-200/70 text-xs uppercase tracking-widest font-semibold">{selectedPerson.department}</span>
             </div>
+            
+            <div className="bg-[#1a1510] rounded-sm p-6 relative overflow-hidden shadow-lg border-l-4 border-amber-500/80">
+              <div className="absolute top-0 left-0 w-full h-full opacity-10" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }}></div>
+              <p className="text-xl text-amber-100/90 font-['Caveat'] leading-relaxed relative z-10 tracking-wide">
+                 "{selectedPerson.oneliner}"
+              </p>
+              {/* Subtle quote decoration */}
+              <span className="absolute -bottom-6 -right-2 text-7xl text-amber-500/10 font-serif select-none pointer-events-none">
+                "
+              </span>
+            </div>
+            
           </div>
         )}
       </Modal>

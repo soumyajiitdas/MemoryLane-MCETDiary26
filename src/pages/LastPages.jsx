@@ -8,7 +8,7 @@ import { phoenixData } from '../data/phoenix';
 
 // 1. Organize data into a flat array of pages
 const bookPages = [
-  { type: 'cover', src: '/phoenix-cover.webp' },
+  { type: 'cover', src: '/images/phoenix/phoenix-cover.webp' },
   ...phoenixData.images.map(i => ({ type: 'image', ...i })),
   ...phoenixData.stories.map(s => ({ type: 'story', ...s })),
   ...phoenixData.poems.map(p => ({ type: 'poem', ...p })),

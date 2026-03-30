@@ -37,8 +37,8 @@ const ProfileCard = ({ person, onClick }) => {
           </p>
           <div className="mt-auto">
             <p className="text-sm text-gray-300 italic line-clamp-2">
-              <span className="text-amber-500 font-bold mr-1">💡 Fun fact:</span>
-              {person.funFact}
+              <span className="text-amber-500 font-bold mr-1">💡 Oneliner:</span>
+              {person.oneliner}
             </p>
           </div>
         </div>

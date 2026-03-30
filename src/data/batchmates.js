@@ -5,9 +5,9 @@ export const peopleData = [
       nickname: "Underoos",
       photo: "linear-gradient(45deg, #FF6B6B, #5375ffff)",
       department: "Computer Science",
-      funFact: "Can type 120 WPM but still makes typos.",
-      memory: "The 3 AM debug sessions in the library.",
-      socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+      birthday: "04-30",
+      oneliner: "I turn coffee into 404 errors.",
+      socialLinks: { github: "", linkedin: "", instagram: "" }
     },
     {
       id: 2,
@@ -15,8 +15,8 @@ export const peopleData = [
       nickname: "Lebowski",
       photo: "linear-gradient(45deg, #4FACFE, #00F2FE)",
       department: "Mechanical Engineering",
-      funFact: "Broke the 3D printer twice in one week.",
-      memory: "Winning the college tech fest finals.",
+      birthday: "03-30",
+      oneliner: "Mechanically inclined, romantically declined.",
       socialLinks: { linkedin: "#", instagram: "#" }
     },
     {
@@ -25,8 +25,8 @@ export const peopleData = [
       nickname: "Hulk",
       photo: "linear-gradient(45deg, #43E97B, #38F9D7)",
       department: "Information Technology",
-      funFact: "Started 5 side hustles, finished 0.",
-      memory: "Our impromptu trip to the hills.",
+      birthday: "09-15",
+      oneliner: "Smashing bugs and occasionally keyboards.",
       socialLinks: { github: "#", linkedin: "#", twitter: "#" }
     },
     {
@@ -35,8 +35,8 @@ export const peopleData = [
       nickname: "Legolas",
       photo: "linear-gradient(45deg, #e94343ff, #f97238ff)",
       department: "Information Technology",
-      funFact: "Started 5 side hustles, finished 0.",
-      memory: "Our impromptu trip to the hills.",
+      birthday: "05-12",
+      oneliner: "Always hitting the target, except when compiling.",
       socialLinks: { github: "#", linkedin: "#", twitter: "#" }
     },
   ];

@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 // Layout
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
+import BirthdayBanner from './components/ui/BirthdayBanner';
 
 // Pages
 import Prologue from './pages/Prologue';
@@ -17,8 +18,9 @@ function App() {
   return (
     <Router>
       <div className="flex flex-col min-h-screen">
+        <BirthdayBanner />
         <Navbar />
-        <main className="flex-grow pt-20"> {/* pt-20 for fixed navbar */}
+        <main className="flex-grow mt-20"> {/* Changed pt-20 to mt-20 to account for better layout with banner */}
           {/* AnimatePresence for page transitions */}
           <AnimatePresence mode="wait">
             <Routes>

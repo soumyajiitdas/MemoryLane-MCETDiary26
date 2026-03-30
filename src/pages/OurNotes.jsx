@@ -66,7 +66,7 @@ const OurNotes = () => {
           </p>
 
           {/* Masonry Board */}
-          <div className="mb-24 columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 p-4 md:p-8 bg-black/20 rounded-3xl border border-[var(--color-glass-border)] shadow-2xl relative min-h-[60vh]">
+          <div className="mb-24 columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 p-4 md:p-8 bg-black/20 rounded-md border border-[var(--color-glass-border)] shadow-2xl relative min-h-[60vh]">
              {/* Subtle pinboard grid pattern placeholder if wanted, keeping it clean via glassmorphism */}
              <AnimatePresence>
                 {posts.map(post => (
