@@ -4,7 +4,7 @@ import { PlusCircle } from 'lucide-react';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
-import { memoriesData } from '../data/memories';
+import { memoriesData } from '../data/notes';
 
 // Custom Sticky Note Component
 const StickyNote = ({ post }) => {

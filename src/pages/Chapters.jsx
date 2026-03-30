@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
-import { timelineData } from '../data/timeline';
+import { timelineData } from '../data/chapters';
 
 // Ensure each data object has a placeholder image array
 const journeyData = timelineData.map((d, i) => ({

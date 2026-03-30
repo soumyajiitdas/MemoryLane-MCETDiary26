@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
-import EventCard from '../components/sections/EventCard';
+import EventCard from '../components/sections/MomentCard';
 import ChapterNav from '../components/ui/ChapterNav';
-import { peopleData } from '../data/people';
-import { eventsData } from '../data/events';
+import { peopleData } from '../data/batchmates';
+import { eventsData } from '../data/moments';
 import Modal from '../components/ui/Modal';
 import { Code, Briefcase, Camera, MessageCircle } from 'lucide-react';
 

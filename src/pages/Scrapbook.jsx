@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDownUp, Upload } from 'lucide-react';
 import PageTransition from '../components/layout/PageTransition';
-import GalleryGrid from '../components/sections/GalleryGrid';
+import GalleryGrid from '../components/sections/ScrapbookGrid';
 import Lightbox from '../components/ui/Lightbox';
 import Button from '../components/ui/Button';
 import ChapterNav from '../components/ui/ChapterNav';
-import { galleryData } from '../data/gallery';
+import { galleryData } from '../data/scrapbook';
 
 const years = ["All", "1st Year", "2nd Year", "3rd Year", "4th Year"];
 

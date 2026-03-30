@@ -6,10 +6,10 @@ import PageTransition from '../components/layout/PageTransition';
 import ChapterNav from '../components/ui/ChapterNav';
 
 // Data imports
-import { peopleData } from '../data/people';
-import { eventsData } from '../data/events';
-import { memoriesData } from '../data/memories';
-import { timelineData } from '../data/timeline';
+import { peopleData } from '../data/batchmates';
+import { eventsData } from '../data/moments';
+import { memoriesData } from '../data/notes';
+import { timelineData } from '../data/chapters';
 
 // Updated Vintage Ticket Card
 const VintageStatTicket = ({ label, value, delay }) => {

@@ -45,7 +45,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <NavLink to="/" className="text-2xl font-serif font-bold text-gradient">
-              <span className="font-['Caveat']">Memory</span> Lane
+              MCET <span className="font-['Caveat']">Diary</span>'26 
             </NavLink>
           </div>
           

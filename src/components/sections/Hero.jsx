@@ -46,9 +46,9 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-6xl md:text-8xl lg:text-9xl font-serif text-white tracking-tighter shadow-black/50 drop-shadow-lg"
+          className="text-6xl md:text-8xl lg:text-9xl font-['Caveat'] text-white tracking-tighter shadow-black/50 drop-shadow-lg"
         >
-          Memory <span className="text-gradient">Lane</span>
+          MCET <span className="text-gradient font-serif">Diary'26</span> 
         </motion.h1>
 
         {/* Cursive Quote */}
@@ -76,7 +76,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4 items-center justify-center mt-12 pt-8"
+          className="flex flex-col sm:flex-row gap-4 items-center justify-center mt-12 pt-8 font-serif"
         >
           <Button size="lg" variant="primary" onClick={() => window.location.href='/chapters'}>
             Read The Chapters
