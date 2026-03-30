@@ -45,12 +45,12 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
             <NavLink to="/" className="text-2xl font-serif font-bold text-gradient">
-              MCET <span className="font-['Caveat']">Diary</span>'26 
+              MCET <span className="font-['Caveat']">Batch</span>'26 
             </NavLink>
           </div>
           
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-4 text-sm font-medium">
+            <div className="ml-10 flex items-baseline font-serif space-x-4 text-sm font-medium">
               {navLinks.map((link) => (
                 <NavLink
                   key={link.name}
@@ -94,7 +94,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       {isOpen && (
         <div className="md:hidden glass border-t border-[var(--color-glass-border)]">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 font-serif">
             {navLinks.map((link) => (
               <NavLink
                 key={link.name}

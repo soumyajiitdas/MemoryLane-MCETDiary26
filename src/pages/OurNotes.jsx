@@ -51,9 +51,9 @@ const OurNotes = () => {
         <div className="max-w-7xl mx-auto px-4">
           
           <div className="text-center mb-16 relative">
-            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-white/70 text-xs font-bold tracking-widest uppercase mb-4">
-              <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-              FINAL GOODBYES
+            <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 text-white/70 text-xs font-bold tracking-widest mb-4">
+              <span className="w-2 h-2 rounded-full font-serif bg-amber-500 animate-pulse"></span>
+              Final Goodbyes
             </span>
             <SectionHeading 
             title="Our Notes" 

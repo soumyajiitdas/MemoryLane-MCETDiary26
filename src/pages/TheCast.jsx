@@ -36,7 +36,7 @@ const Polaroid = ({ person, onClick }) => {
       
       <div className="pt-5 w-full text-center relative">
          <h3 className="text-3xl font-['Caveat'] text-amber-950 font-medium tracking-wide">
-           {person.name}
+           {person.name.split(" ")[0]}
          </h3>
          <p className="text-xs text-amber-900/60 uppercase tracking-widest mt-1 scale-90 font-semibold">
            {person.department}
@@ -74,17 +74,17 @@ const TheCast = () => {
             <div className="glass p-1 rounded-full inline-flex">
               <button
                 onClick={() => setView('batchmates')}
-                className={`px-8 py-2.5 rounded-full text-sm font-medium transition-all ${
+                className={`px-8 py-2.5 rounded-full text-sm font-serif font-medium transition-all ${
                   view === 'batchmates' 
                     ? 'bg-[var(--color-amber)] text-black shadow-lg' 
-                    : 'text-gray-400 hover:text-white'
+                    : 'text-gray-400 hover:text-white '
                 }`}
               >
                 Roll Call
               </button>
               <button
                 onClick={() => setView('events')}
-                className={`px-8 py-2.5 rounded-full text-sm font-medium transition-all ${
+                className={`px-8 py-2.5 rounded-full text-sm font-serif font-medium transition-all ${
                   view === 'events' 
                     ? 'bg-[var(--color-amber)] text-black shadow-lg' 
                     : 'text-gray-400 hover:text-white'
@@ -106,10 +106,10 @@ const TheCast = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
-                className="columns-1 sm:columns-2 lg:columns-3 lg:gap-8 xl:columns-4 space-y-8"
+                className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-8"
               >
                 {peopleData.map((person) => (
-                   <div key={person.id} className="break-inside-avoid px-2">
+                   <div key={person.id} className="px-2">
                      <Polaroid person={person} onClick={setSelectedPerson} />
                    </div>
                 ))}
@@ -166,7 +166,7 @@ const TheCast = () => {
                   >
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.5)_100%)]"></div>
                   </div>
-                  <p className="text-center font-['Caveat'] text-2xl text-[#4a4235] mt-3 opacity-90">{selectedPerson.name.split(" ")[0]}'s shot</p>
+                  <p className="text-center font-['Caveat'] text-2xl text-[#4a4235] mt-3 opacity-90">@{selectedPerson.name.split(" ")[0]}'s shot</p>
                 </div>
               </div>
 
@@ -183,7 +183,7 @@ const TheCast = () => {
                      {/* Torn paper scrap for nickname */}
                      <div className="relative inline-block bg-[#dbd4bf] px-3 py-1 shadow-sm transform -rotate-2 border border-black/5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }}>
                        <span className="font-['Courier_New'] font-bold text-[#5c2415] text-sm md:text-base tracking-widest lowercase">
-                         "{selectedPerson.nickname}"
+                         "{selectedPerson.roll}"
                        </span>
                      </div>
                      <span className="font-['Inter'] font-semibold text-[#8b7f6b] text-xs uppercase tracking-[0.2em] ml-2 mt-1">
@@ -202,7 +202,7 @@ const TheCast = () => {
 
                   <div className="relative z-10 py-6 px-4">
                     <p className="text-2xl text-[#1a1c29] font-['Caveat'] leading-[32px] pt-1 opacity-90">
-                      "{selectedPerson.oneliner}"
+                      "{selectedPerson.oneliner || "A face from those familiar days."}"
                     </p>
                   </div>
                 </div>

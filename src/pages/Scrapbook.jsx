@@ -47,11 +47,11 @@ const Scrapbook = () => {
             {/* Top-Left: Headings & Filters */}
             <div className="flex-1">
               <div className="mb-8">
-                <h1 className="text-4xl md:text-5xl font-serif text-white mb-3">Scrapbook</h1>
+                <h1 className="text-4xl md:text-5xl font-serif text-white text-gradient mb-3">Scrapbook</h1>
                 <p className="text-[var(--color-text-muted)] text-lg">Fragments of time we chose to keep. ✨</p>
               </div>
 
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 font-serif">
                 {years.map(year => (
                   <button
                     key={year}
@@ -72,13 +72,13 @@ const Scrapbook = () => {
             <div className="flex items-center gap-4 flex-shrink-0 self-start lg:self-end pb-2">
                <button 
                  onClick={() => setSortOrder(prev => prev === "newest" ? "oldest" : "newest")}
-                 className="flex items-center gap-2 px-4 py-2 glass rounded-lg text-sm text-[var(--color-text-muted)] hover:text-white transition-colors"
+                 className="flex items-center gap-2 px-4 py-2 glass rounded-lg text-sm text-[var(--color-text-muted)] hover:text-white font-serif transition-colors"
                >
                  <ArrowDownUp size={16} />
                  {sortOrder === "newest" ? "Newest First" : "Oldest First"}
                </button>
                
-               <Button variant="primary" size="sm" className="gap-2">
+               <Button variant="primary" size="sm" className="gap-2 font-serif">
                  <Upload size={16} />
                  Upload Photo
                </Button>
@@ -88,7 +88,7 @@ const Scrapbook = () => {
           {/* Nostalgic Quote */}
           <div className="mb-12 border-l-4 border-amber-500/50 pl-6 py-2">
             <p className="font-['Caveat'] text-3xl text-gray-300 italic">
-               "Photographs are a ticket to a moment otherwise gone."
+               " Photographs are a ticket to a moment otherwise gone..."
             </p>
           </div>
 
