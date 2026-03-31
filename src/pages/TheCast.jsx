@@ -166,7 +166,7 @@ const TheCast = () => {
                   >
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.5)_100%)]"></div>
                   </div>
-                  <p className="text-center font-['Caveat'] text-2xl text-[#4a4235] mt-3 opacity-90">@{selectedPerson.name.split(" ")[0]}'s shot</p>
+                  <p className="text-center font-['Caveat'] text-2xl text-[#4a4235] mt-3 opacity-90">{selectedPerson?.nickname?.trim()? `@${selectedPerson.nickname}`: `@${selectedPerson?.name?.split(' ')?.[0] || 'user'}'s shot`}</p>
                 </div>
               </div>
 
@@ -183,7 +183,7 @@ const TheCast = () => {
                      {/* Torn paper scrap for nickname */}
                      <div className="relative inline-block bg-[#dbd4bf] px-3 py-1 shadow-sm transform -rotate-2 border border-black/5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }}>
                        <span className="font-['Courier_New'] font-bold text-[#5c2415] text-sm md:text-base tracking-widest lowercase">
-                         "{selectedPerson.roll}"
+                         "{selectedPerson.roll || "1060012****"}"
                        </span>
                      </div>
                      <span className="font-['Inter'] font-semibold text-[#8b7f6b] text-xs uppercase tracking-[0.2em] ml-2 mt-1">

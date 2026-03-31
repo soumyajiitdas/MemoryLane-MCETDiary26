@@ -14,7 +14,7 @@ export const peopleData =
   {
     id: 2,
     name: "Joy Bhowmik",
-    nickname: "",
+    nickname: "Underoos🕷️",
     roll: "10600122019",
     photo: "/images/cast/batchmates/joy.webp",
     department: "Computer Science",
@@ -25,7 +25,7 @@ export const peopleData =
   {
     id: 3,
     name: "Indrajit Ghosh",
-    nickname: "",
+    nickname: "Lebowski🍺",
     roll: "10600122032",
     photo: "/images/cast/batchmates/indra.jpg",
     department: "Computer Science",
@@ -47,9 +47,9 @@ export const peopleData =
   {
     id: 5,
     name: "Raihan Ahamed",
-    nickname: "",
+    nickname: "Hulk👽",
     roll: "10600122035",
-    photo: "/images/cast/batchmates/raihan.webp",
+    photo: "/images/cast/batchmates/raihan.png",
     department: "Computer Science",
     birthday: "",
     oneliner: "",
@@ -60,7 +60,7 @@ export const peopleData =
     name: "Bapi Sarkar",
     nickname: "",
     roll: "10600122001",
-    photo: "linear-gradient(45deg, #FF9671, #FFC75F)",
+    photo: "/images/cast/batchmates/bapi.jpg",
     department: "Computer Science",
     birthday: "",
     oneliner: "",
@@ -69,9 +69,9 @@ export const peopleData =
   {
     id: 7,
     name: "Subhodeep Chakraborty",
-    nickname: "",
+    nickname: "Legolas🎯",
     roll: "",
-    photo: "/images/cast/batchmates/subho.webp",
+    photo: "/images/cast/batchmates/subho.jpg",
     department: "Computer Science",
     birthday: "06-02",
     oneliner: "",
@@ -80,7 +80,7 @@ export const peopleData =
   {
     id: 8,
     name: "Manashi Mondal",
-    nickname: "",
+    nickname: "Thumbelina🐜",
     roll: "",
     photo: "/images/cast/batchmates/manashi.webp",
     department: "Computer Science",
@@ -104,7 +104,7 @@ export const peopleData =
     name: "Rohit Paul",
     nickname: "",
     roll: "10600122011",
-    photo: "linear-gradient(45deg, #84FAB0, #8FD3F4)",
+    photo: "/images/cast/batchmates/rohit.jpg",
     department: "Computer Science",
     birthday: "06-02",
     oneliner: "",
@@ -115,7 +115,7 @@ export const peopleData =
     name: "Raju Mondal",
     nickname: "",
     roll: "10600122033",
-    photo: "linear-gradient(45deg, #FCCB90, #D57EEB)",
+    photo: "/images/cast/batchmates/raju.png",
     department: "Computer Science",
     birthday: "",
     oneliner: "",
@@ -123,28 +123,6 @@ export const peopleData =
   },
   {
     id: 12,
-    name: "Roni Mondal",
-    nickname: "",
-    roll: "10600122009",
-    photo: "linear-gradient(45deg, #FDCB82, #A1C4FD)",
-    department: "Computer Science",
-    birthday: "",
-    oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
-  },
-  {
-    id: 13,
-    name: "Shirsendu Pramanik",
-    nickname: "",
-    roll: "10600122031",
-    photo: "linear-gradient(45deg, #FFDEE9, #B5FFFC)",
-    department: "Computer Science",
-    birthday: "",
-    oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
-  },
-  {
-    id: 14,
     name: "Animesh Nandy",
     nickname: "",
     roll: "10600122008",
@@ -155,23 +133,44 @@ export const peopleData =
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
-    id: 15,
-    name: "Ishme Azam Hossain",
+    id: 13,
+    name: "Roni Mondal",
     nickname: "",
-    roll: "10601322001",
-    photo: "linear-gradient(45deg, #CFD9DF, #E2EBF0)",
-    department: "Civil Engineering",
+    roll: "10600122009",
+    photo: "linear-gradient(45deg, #FDCB82, #A1C4FD)",
+    department: "Computer Science",
     birthday: "",
     oneliner: "",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
-  
+  {
+    id: 14,
+    name: "Shirsendu Pramanik",
+    nickname: "",
+    roll: "10600122031",
+    photo: "linear-gradient(45deg, #FFDEE9, #B5FFFC)",
+    department: "Computer Science",
+    birthday: "",
+    oneliner: "",
+    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+  },
+  {
+    id: 15,
+    name: "Md. Azam",
+    nickname: "",
+    roll: "",
+    photo: "/images/cast/batchmates/azam.png",
+    department: "Computer Science",
+    birthday: "",
+    oneliner: "",
+    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+  },
   {
     id: 16,
     name: "Nurful Shaikh",
     nickname: "",
     roll: "10600122003",
-    photo: "linear-gradient(45deg, #FF758C, #FF7EB3)",
+    photo: "/images/cast/batchmates/nurful.png",
     department: "Computer Science",
     birthday: "",
     oneliner: "",
@@ -179,61 +178,28 @@ export const peopleData =
   },
   {
     id: 17,
-    name: "Abhijit Karmakar",
+    name: "Ishme Azam Hossain",
     nickname: "",
-    roll: "10600122002",
-    photo: "linear-gradient(45deg, #43E97B, #38F9D7)",
-    department: "Computer Science",
+    roll: "10601322001",
+    photo: "/images/cast/batchmates/ishan.png",
+    department: "Civil Engineering",
     birthday: "",
     oneliner: "",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
     id: 18,
-    name: "Anoushka Chaudhuri",
+    name: "Sahanaj Sultana",
     nickname: "",
-    roll: "10600122027",
-    photo: "linear-gradient(45deg, #FA709A, #FEE140)",
-    department: "Computer Science",
+    roll: "",
+    photo: "linear-gradient(45deg, #FF758C, #7effb8ff)",
+    department: "Civil Engineering",
     birthday: "",
     oneliner: "",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
     id: 19,
-    name: "Srija Sarkar",
-    nickname: "",
-    roll: "10600122004",
-    photo: "linear-gradient(45deg, #30CFD0, #330867)",
-    department: "Computer Science",
-    birthday: "",
-    oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
-  },
-  {
-    id: 20,
-    name: "Anik Mukherjee",
-    nickname: "",
-    roll: "10600122028",
-    photo: "linear-gradient(45deg, #5EE7DF, #B490CA)",
-    department: "Computer Science",
-    birthday: "",
-    oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
-  },
-  {
-    id: 21,
-    name: "Manab Mandal",
-    nickname: "",
-    roll: "10600122005",
-    photo: "linear-gradient(45deg, #FAD961, #F76B1C)",
-    department: "Computer Science",
-    birthday: "",
-    oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
-  },
-  {
-    id: 22,
     name: "Priyobroto Dutta",
     nickname: "",
     roll: "10600122010",
@@ -244,7 +210,62 @@ export const peopleData =
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
+    id: 20,
+    name: "Anoushka Chaudhuri",
+    nickname: "",
+    roll: "10600122027",
+    photo: "linear-gradient(45deg, #FA709A, #FEE140)",
+    department: "Computer Science",
+    birthday: "",
+    oneliner: "",
+    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+  },
+  {
+    id: 21,
+    name: "Srija Sarkar",
+    nickname: "",
+    roll: "10600122004",
+    photo: "linear-gradient(45deg, #30CFD0, #330867)",
+    department: "Computer Science",
+    birthday: "",
+    oneliner: "",
+    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+  },
+  {
+    id: 22,
+    name: "Anik Mukherjee",
+    nickname: "",
+    roll: "10600122028",
+    photo: "linear-gradient(45deg, #5EE7DF, #B490CA)",
+    department: "Computer Science",
+    birthday: "",
+    oneliner: "",
+    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+  },
+  {
     id: 23,
+    name: "Manab Mandal",
+    nickname: "",
+    roll: "10600122005",
+    photo: "linear-gradient(45deg, #FAD961, #F76B1C)",
+    department: "Computer Science",
+    birthday: "",
+    oneliner: "",
+    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+  },
+  {
+    id: 24,
+    name: "Abhijit Karmakar",
+    nickname: "",
+    roll: "10600122002",
+    photo: "linear-gradient(45deg, #43E97B, #38F9D7)",
+    department: "Computer Science",
+    birthday: "",
+    oneliner: "",
+    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+  },
+  {
+    id: 25,
     name: "Pratik Mondal",
     nickname: "",
     roll: "10600122021",
@@ -255,7 +276,7 @@ export const peopleData =
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
-    id: 24,
+    id: 26,
     name: "Saptarshi Mandal",
     nickname: "",
     roll: "10600122023",
@@ -266,7 +287,7 @@ export const peopleData =
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
-    id: 25,
+    id: 27,
     name: "Anik Sarkar",
     nickname: "",
     roll: "10600122022",
@@ -277,7 +298,7 @@ export const peopleData =
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
-    id: 26,
+    id: 28,
     name: "Pritam Bardhan",
     nickname: "",
     roll: "",
@@ -286,5 +307,28 @@ export const peopleData =
     birthday: "",
     oneliner: "",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
-  }
+  },
+  {
+    id: 29,
+    name: "Pushkar Samanta",
+    nickname: "",
+    roll: "10600122013",
+    photo: "linear-gradient(45deg, #3b00deff, #00ff73ff)",
+    department: "Computer Science",
+    birthday: "",
+    oneliner: "",
+    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+  },
+  {
+    id: 30,
+    name: "Suhana Khatun",
+    nickname: "",
+    roll: "",
+    photo: "linear-gradient(45deg, #98de00ff, #00b7ffff)",
+    department: "Computer Science",
+    birthday: "",
+    oneliner: "",
+    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+  },
+
 ]

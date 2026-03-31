@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import BirthdayBanner from './components/ui/BirthdayBanner';
+import ScrollToTop from './components/layout/ScrollToTop';
 
 // Pages
 import Prologue from './pages/Prologue';
@@ -17,6 +18,7 @@ import LastPages from './pages/LastPages';
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <BirthdayBanner />
         <Navbar />

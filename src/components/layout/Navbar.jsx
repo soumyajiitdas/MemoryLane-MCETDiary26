@@ -8,15 +8,36 @@ const Navbar = () => {
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const audioRef = useRef(null);
 
-  useEffect(() => {
-    if (audioRef.current) {
-      if (isMusicPlaying) {
-        audioRef.current.play().catch(e => console.log('Audio play failed:', e));
-      } else {
-        audioRef.current.pause();
+  const toggleMusic = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (!isMusicPlaying) {
+      audio.volume = 0;
+      const playPromise = audio.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          let vol = 0;
+          const fade = setInterval(() => {
+            if (vol < 0.2) {
+              vol = Math.min(vol + 0.02, 0.2);
+              audio.volume = vol;
+            } else {
+              clearInterval(fade);
+            }
+          }, 100);
+          setIsMusicPlaying(true);
+        }).catch(e => {
+          console.error('Audio play failed:', e);
+          setIsMusicPlaying(false);
+        });
       }
+    } else {
+      audio.pause();
+      setIsMusicPlaying(false);
     }
-  }, [isMusicPlaying]);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -65,7 +86,7 @@ const Navbar = () => {
                 </NavLink>
               ))}
               <button
-                onClick={() => setIsMusicPlaying(!isMusicPlaying)}
+                onClick={toggleMusic}
                 className="ml-4 p-2 text-[var(--color-text-muted)] hover:text-amber-400 transition-colors"
                 aria-label="Toggle Music"
               >
@@ -76,7 +97,7 @@ const Navbar = () => {
           
           <div className="md:hidden flex items-center">
             <button
-                onClick={() => setIsMusicPlaying(!isMusicPlaying)}
+                onClick={toggleMusic}
                 className="mr-4 p-2 text-[var(--color-text-muted)] hover:text-amber-400 transition-colors"
             >
                 {isMusicPlaying ? <Volume2 size={20} /> : <VolumeX size={20} />}
@@ -113,7 +134,7 @@ const Navbar = () => {
         </div>
       )}
       {/* Background Audio Element */}
-      <audio ref={audioRef} src="/background-music.mp3" loop />
+      <audio ref={audioRef} src="/music/background-music.m4a" loop />
     </nav>
   );
 };

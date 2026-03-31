@@ -227,7 +227,7 @@ const LastPages = () => {
                 </p>
                 
                 <a 
-                  href="/phoenix-magazine.pdf" 
+                  href="/magazine/phoenix-magazine.pdf" 
                   download
                   className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#2a2217] text-[#f4ecd8] font-serif tracking-widest uppercase text-sm font-bold hover:bg-[#b94a4a] transition-all duration-500 overflow-hidden shadow-lg rounded-sm"
                 >
