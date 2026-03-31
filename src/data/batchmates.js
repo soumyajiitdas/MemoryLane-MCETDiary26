@@ -9,7 +9,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "07-30",
     oneliner: "Somewhere behind these pages...",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "https://github.com/soumyajiitdas", linkedin: "linkedin.com/in/soumyajiitdas/", instagram: "https://www.instagram.com/soumyajiit_" }
   },
   {
     id: 2,
@@ -20,7 +20,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/joy.bhowmik_03/" }
   },
   {
     id: 3,
@@ -31,7 +31,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "08-14",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/indrajit-ghosh-a53291390/", instagram: "https://www.instagram.com/indra5000q/" }
   },
   {
     id: 4,
@@ -42,7 +42,7 @@ export const peopleData =
     department: "Civil Engineering",
     birthday: "01-22",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/kriti-dutta-2922772bb/", instagram: "https://www.instagram.com/d_kritu/" }
   },
   {
     id: 5,
@@ -53,18 +53,18 @@ export const peopleData =
     department: "Computer Science",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "https://github.com/raihanahamed01", linkedin: "https://www.linkedin.com/in/raihan-ahamed-910a3727a/", instagram: "https://www.instagram.com/ra1_haaann/" }
   },
   {
     id: 6,
     name: "Bapi Sarkar",
     nickname: "",
     roll: "10600122001",
-    photo: "/images/cast/batchmates/bapi.jpg",
+    photo: "/images/cast/batchmates/bapi.jpeg",
     department: "Computer Science",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "https://github.com/bapisarkar22", linkedin: "https://www.linkedin.com/in/bapisarkar2005/", instagram: "https://www.instagram.com/bapisarkar1498/" }
   },
   {
     id: 7,
@@ -75,7 +75,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "06-02",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/___mr.glitch___/" }
   },
   {
     id: 8,
@@ -86,7 +86,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "02-03",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/manashi_mondal/" }
   },
   {
     id: 9,
@@ -97,7 +97,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "03-30",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/saeed_mustafa0/" }
   },
   {
     id: 10,
@@ -108,7 +108,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "06-02",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/rohitmaldini03/" }
   },
   {
     id: 11,
@@ -119,7 +119,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "https://github.com/rajupilki-ctrl", linkedin: "https://www.linkedin.com/in/raju-mondal-a4405929a/", instagram: "https://www.instagram.com/rajumondal416/" }
   },
   {
     id: 12,
@@ -130,7 +130,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "https://github.com/ani-11-pro", linkedin: "https://www.linkedin.com/in/contact-ani/", instagram: "https://www.instagram.com/ulto_bangal_eee/" }
   },
   {
     id: 13,
@@ -141,7 +141,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "https://github.com/roni0777", linkedin: "#", instagram: "#" }
   },
   {
     id: 14,
@@ -159,11 +159,11 @@ export const peopleData =
     name: "Md. Azam",
     nickname: "",
     roll: "",
-    photo: "/images/cast/batchmates/azam.png",
+    photo: "/images/cast/batchmates/azam.jpeg",
     department: "Computer Science",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/im_azam9137/" }
   },
   {
     id: 16,
@@ -174,7 +174,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/%F0%9D%90%8D%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%9F%F0%9D%90%AE%F0%9D%90%A5-%F0%9D%90%92%F0%9D%90%A1%F0%9D%90%9A%F0%9D%90%A2%F0%9D%90%A4%F0%9D%90%A1-115863272/", instagram: "https://www.instagram.com/shaikhnurful/" }
   },
   {
     id: 17,
@@ -185,7 +185,7 @@ export const peopleData =
     department: "Civil Engineering",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/skylordishan/" }
   },
   {
     id: 18,
@@ -196,14 +196,14 @@ export const peopleData =
     department: "Civil Engineering",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/sahanajsultana57993/" }
   },
   {
     id: 19,
     name: "Priyobroto Dutta",
     nickname: "",
     roll: "10600122010",
-    photo: "linear-gradient(45deg, #A18CD1, #FBC2EB)",
+    photo: "/images/cast/batchmates/priobroto.jpg",
     department: "Computer Science",
     birthday: "",
     oneliner: "",
@@ -214,33 +214,33 @@ export const peopleData =
     name: "Anoushka Chaudhuri",
     nickname: "",
     roll: "10600122027",
-    photo: "linear-gradient(45deg, #FA709A, #FEE140)",
+    photo: "/images/cast/batchmates/anoushka.jpeg",
     department: "Computer Science",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "https://github.com/awkwardish", linkedin: "https://www.linkedin.com/in/anoushkachaudhuri/", instagram: "https://www.instagram.com/anoushkasluggard/" }
   },
   {
     id: 21,
     name: "Srija Sarkar",
     nickname: "",
     roll: "10600122004",
-    photo: "linear-gradient(45deg, #30CFD0, #330867)",
+    photo: "/images/cast/batchmates/srija.png",
     department: "Computer Science",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "https://github.com/srijasarkar133", linkedin: "https://www.linkedin.com/in/srija-sarkar-210383350/", instagram: "https://www.instagram.com/sriijaaaa_____/" }
   },
   {
     id: 22,
     name: "Anik Mukherjee",
     nickname: "",
     roll: "10600122028",
-    photo: "linear-gradient(45deg, #5EE7DF, #B490CA)",
+    photo: "/images/cast/batchmates/anik.jpg",
     department: "Computer Science",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "http://linkedin.com/in/anikcodes/", instagram: "https://www.instagram.com/anikmukherjee2003/" }
   },
   {
     id: 23,
@@ -273,7 +273,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "",
     oneliner: "",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/pratikmondal.06/" }
   },
   {
     id: 26,

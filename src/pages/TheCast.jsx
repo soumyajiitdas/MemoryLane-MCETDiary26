@@ -9,6 +9,17 @@ import { eventsData } from '../data/moments';
 import Modal from '../components/ui/Modal';
 import { Code, Briefcase, Camera, MessageCircle } from 'lucide-react';
 
+// random bg color of Vintage masking tape
+const bgColors = [
+  "bg-yellow-100/50",
+  "bg-red-100/50",
+  "bg-green-100/50",
+  "bg-blue-100/50"
+];
+
+const getRandomBg = () =>
+  bgColors[Math.floor(Math.random() * bgColors.length)];
+
 // Polaroid Component
 const Polaroid = ({ person, onClick }) => {
   return (
@@ -16,7 +27,7 @@ const Polaroid = ({ person, onClick }) => {
       whileHover={{ scale: 1.05, rotate: Math.random() > 0.5 ? 2 : -2 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       layoutId={`person-${person.id}`}
-      className="cursor-pointer bg-[#fdfbf7] p-3 pb-8 shadow-xl flex flex-col items-center border border-amber-900/10 relative"
+      className="cursor-pointer bg-[#fdfbf7] p-3 pb-6 shadow-xl flex flex-col items-center border border-amber-900/10 relative"
       onClick={() => onClick(person)}
       style={{
          // slight organic rotation to each card inherently
@@ -25,16 +36,16 @@ const Polaroid = ({ person, onClick }) => {
       }}
     >
       {/* Vintage masking tape */}
-      <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 bg-white/50 border border-white/20 shadow-sm z-10 backdrop-blur-sm" style={{ transform: "rotate(-2deg)" }} />
+      <div className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 ${getRandomBg()} border border-white/20 shadow-sm z-10 backdrop-blur-sm`} style={{ transform: "rotate(-2deg)" }} />
       
       <div 
-        className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center sepia-[0.3] contrast-[1.1]"
+        className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center contrast-[1.1]"
         style={{ backgroundImage: (person.photo?.startsWith('http') || person.photo?.startsWith('/')) ? `url('${person.photo}')` : person.photo }}
       >
         <div className="w-full h-full bg-amber-900/10 mix-blend-multiply"></div>
       </div>
       
-      <div className="pt-5 w-full text-center relative">
+      <div className="pt-4 w-full text-center relative">
          <h3 className="text-3xl font-['Caveat'] text-amber-950 font-medium tracking-wide">
            {person.name.split(" ")[0]}
          </h3>
@@ -155,18 +166,18 @@ const TheCast = () => {
               {/* Left Column: Taped Photo */}
               <div className="relative w-64 flex-shrink-0">
                 {/* Vintage Tape top left */}
-                <div className="absolute -top-5 -left-4 z-20 w-20 h-6 bg-yellow-100/40 backdrop-blur-sm shadow-sm rotate-[-12deg] border border-black/5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }} />
-                {/* Vintage Tape top right */}
-                <div className="absolute -bottom-4 -right-4 z-20 w-16 h-6 bg-yellow-100/40 backdrop-blur-sm shadow-sm rotate-[15deg] border border-black/5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }} />
+                <div className="absolute -top-5 -left-4 z-20 w-20 h-6 bg-green-400/40 backdrop-blur-sm shadow-sm rotate-[-12deg] border border-black/5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }} />
+                {/* Vintage Tape bottom right */}
+                <div className="absolute -bottom-4 -right-4 z-20 w-16 h-6 bg-amber-400/40 backdrop-blur-sm shadow-sm rotate-[15deg] border border-black/5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }} />
                 
                 <div className="bg-[#f4efe1] p-2 pb-6 shadow-[3px_5px_15px_rgba(0,0,0,0.25)] border border-[#d5d0c0] transform rotate-2">
                   <div 
-                    className="w-full aspect-square relative bg-zinc-300 sepia-[0.4] contrast-100 saturate-[0.8] mix-blend-multiply border border-black/20"
+                    className="w-full aspect-square sm:aspect-[3/4] relative contrast-100 saturate-[0.8] border border-black/20"
                     style={{ backgroundImage: (selectedPerson.photo?.startsWith('http') || selectedPerson.photo?.startsWith('/')) ? `url('${selectedPerson.photo}')` : selectedPerson.photo, backgroundSize: 'cover', backgroundPosition: 'center' }}
                   >
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.5)_100%)]"></div>
                   </div>
-                  <p className="text-center font-['Caveat'] text-2xl text-[#4a4235] mt-3 opacity-90">{selectedPerson?.nickname?.trim()? `@${selectedPerson.nickname}`: `@${selectedPerson?.name?.split(' ')?.[0] || 'user'}'s shot`}</p>
+                  <p className="text-center font-['Caveat'] text-2xl text-[#4a4235] mt-3 opacity-90">{selectedPerson?.nickname?.trim()? `@${selectedPerson.nickname}`: `@${selectedPerson?.name?.split(' ')?.[0] || 'user'}'s shot📸`}</p>
                 </div>
               </div>
 
@@ -186,7 +197,7 @@ const TheCast = () => {
                          "{selectedPerson.roll || "1060012****"}"
                        </span>
                      </div>
-                     <span className="font-['Inter'] font-semibold text-[#8b7f6b] text-xs uppercase tracking-[0.2em] ml-2 mt-1">
+                     <span className="font-['Inter'] font-semibold text-black/50 text-xs uppercase tracking-[0.2em] ml-2 mt-1">
                        {selectedPerson.department}
                      </span>
                    </div>
@@ -208,7 +219,7 @@ const TheCast = () => {
                 </div>
 
                 {/* Social Stickers */}
-                <div className="pt-6 flex gap-4 right-0 justify-end md:justify-start w-full relative z-20">
+                <div className="flex gap-4 right-0 justify-end md:justify-start w-full relative z-20">
                   {selectedPerson.socialLinks && Object.entries(selectedPerson.socialLinks).map(([network, url], idx) => {
                     if(!url || url === "#") return null;
                     const rotations = ['rotate-3', '-rotate-6', 'rotate-6'];
