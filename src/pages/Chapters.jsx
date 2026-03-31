@@ -49,7 +49,7 @@ const JourneyNode = ({ data, index }) => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, type: "spring", delay: 0.1 }}
-        className={`w-full md:w-1/2 px-4 md:px-16 mt-12 md:mt-0 flex justify-center ${isEven ? 'md:justify-start' : 'md:justify-end'}`}
+        className={`w-full md:w-1/2 px-4 md:px-16 mt-12 md:mt-0 flex flex-col items-center flex justify-center ${isEven ? 'md:justify-start' : 'md:justify-end'}`}
         style={{ perspective: '1200px' }}
       >
         <motion.div 
@@ -57,9 +57,15 @@ const JourneyNode = ({ data, index }) => {
             rotateY: 180, 
             rotate: 0,
             scale: 1.05,
-            zIndex: 50,
-            transition: { duration: 0.6, type: 'spring', damping: 20 }
+            zIndex: 50
           }}
+          whileTap={{ 
+            rotateY: 180, 
+            rotate: 0,
+            scale: 1.05,
+            zIndex: 50
+          }}
+          transition={{ duration: 0.6, type: 'spring', damping: 20 }}
           className="relative w-full max-w-[420px] aspect-[4/5] md:aspect-[3/4] cursor-pointer"
           style={{ 
             transformStyle: 'preserve-3d',
@@ -73,7 +79,7 @@ const JourneyNode = ({ data, index }) => {
                    <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
                 ) : (
                    <div className="w-full h-full" style={{ background: data.image }} />
-                )}
+                ) }
               </div>
               <div className="flex-1 flex items-center justify-center pt-2">
                 <p className="font-['Caveat'] text-xl md:text-2xl text-gray-800 text-center px-2">
@@ -106,6 +112,17 @@ const JourneyNode = ({ data, index }) => {
                 Diary '26
               </div>
            </div>
+        </motion.div>
+        
+        {/* Mobile-only hint */}
+        <motion.div 
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="md:hidden mt-4 text-gray-500 text-xs flex items-center gap-2"
+        >
+          <span className="w-4 h-px bg-gray-600"></span>
+          Hold photo to read note
+          <span className="w-4 h-px bg-gray-600"></span>
         </motion.div>
       </motion.div>
     </div>
