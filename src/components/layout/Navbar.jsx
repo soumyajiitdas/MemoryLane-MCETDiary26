@@ -114,7 +114,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden glass border-t border-[var(--color-glass-border)]">
+        <div className="md:hidden glass bg-[#0a0a0f]/95 shadow-2xl border-t border-[var(--color-glass-border)]">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 font-serif">
             {navLinks.map((link) => (
               <NavLink
