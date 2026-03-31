@@ -4,10 +4,10 @@ import Button from '../ui/Button';
 
 // Dummy list of polaroids to scatter in the background
 const bgPolaroids = [
-  { id: 1, rot: -12, x: '-30vw', y: '-10vh', bg: 'linear-gradient(to right, #f68084, #a6c0fe)', delay: 0 },
-  { id: 2, rot: 8, x: '25vw', y: '-15vh', bg: 'linear-gradient(to right, #4facfe, #00f2fe)', delay: 0.2 },
-  { id: 3, rot: -5, x: '-20vw', y: '25vh', bg: 'linear-gradient(to right, #ff0844, #ffb199)', delay: 0.4 },
-  { id: 4, rot: 15, x: '35vw', y: '20vh', bg: 'linear-gradient(to right, #f83600, #f9d423)', delay: 0.6 },
+  { id: 1, rot: -12, x: '-30vw', y: '-10vh', img: '/images/scrapbook/01.webp', bg: 'linear-gradient(to right, #f68084, #a6c0fe)', delay: 0 },
+  { id: 2, rot: 8, x: '25vw', y: '-15vh', img: '/images/scrapbook/02.jpg', bg: 'linear-gradient(to right, #4facfe, #00f2fe)', delay: 0.2 },
+  { id: 3, rot: -5, x: '-20vw', y: '25vh', img: '/images/scrapbook/03.jpg', bg: 'linear-gradient(to right, #ff0844, #ffb199)', delay: 0.4 },
+  { id: 4, rot: 15, x: '35vw', y: '20vh', img: '/images/scrapbook/04.jpg', bg: 'linear-gradient(to right, #f83600, #f9d423)', delay: 0.6 },
 ];
 
 const Hero = () => {
@@ -22,7 +22,12 @@ const Hero = () => {
            transition={{ duration: 1.5, delay: p.delay, type: 'spring' }}
            className="absolute w-40 h-48 md:w-56 md:h-64 bg-white p-3 shadow-2xl z-0 pointer-events-none border border-black/10"
          >
-            <div className="w-full h-[80%] shadow-inner" style={{ background: p.bg }}>
+            <div 
+              className="w-full h-[80%] shadow-inner" 
+              style={{
+                background: p.img ? `url(${p.img}) center/cover no-repeat` : p.bg
+              }}
+            >
               <div className="w-full h-full bg-black/5 mix-blend-multiply"></div>
             </div>
          </motion.div>
