@@ -38,7 +38,7 @@ export const peopleData =
     name: "Kriti Dutta",
     nickname: "",
     roll: "10601322036",
-    photo: "linear-gradient(45deg, #845EC2, #D65DB1)",
+    photo: "/images/cast/batchmates/kriti.jpg",
     department: "Civil Engineering",
     birthday: "01-22",
     oneliner: "",
