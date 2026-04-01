@@ -67,19 +67,55 @@ const StickyNoteMini = ({ post, index }) => {
   );
 };
 
+// A Letter to 2026
+const LetterToBatch = () => {
+  return (
+    <section className="py-20 relative z-10 px-4">
+      <motion.div 
+        initial={{ opacity: 0, y: 30, rotate: -2 }}
+        whileInView={{ opacity: 1, y: 0, rotate: -2 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.8 }}
+        className="max-w-3xl mx-auto p-10 md:p-16 relative bg-[#fdfbf7] shadow-xl text-[#2c3e50]"
+        style={{
+          boxShadow: "5px 15px 30px rgba(0,0,0,0.3)",
+          backgroundImage: "linear-gradient(transparent 95%, #e1d5c9 95%)",
+          backgroundSize: "100% 2.5rem",
+          lineHeight: "2.5rem"
+        }}
+      >
+        <div className="absolute top-0 left-0 w-full h-8 overflow-hidden transform -translate-y-full">
+            <svg viewBox="0 0 1000 20" preserveAspectRatio="none" className="w-full h-full text-[#fdfbf7]" fill="currentColor">
+              <path d="M0,20 L0,10 Q10,0 20,10 T40,10 T60,10 T80,10 T100,10 T120,10 T140,10 T160,10 T180,10 T200,10 T220,10 T240,10 T260,10 T280,10 T300,10 T320,10 T340,10 T360,10 T380,10 T400,10 T420,10 T440,10 T460,10 T480,10 T500,10 T520,10 T540,10 T560,10 T580,10 T600,10 T620,10 T640,10 T660,10 T680,10 T700,10 T720,10 T740,10 T760,10 T780,10 T800,10 T820,10 T840,10 T860,10 T880,10 T900,10 T920,10 T940,10 T960,10 T980,10 L1000,0 L1000,20 Z" />
+            </svg>
+        </div>
+        <h2 className="font-['Caveat'] text-4xl mb-6 text-amber-900 border-b-2 border-amber-900 inline-block leading-tight pt-2">Dearest Batch of 2026,</h2>
+        <p className="font-['Caveat'] text-2xl md:text-3xl font-medium pt-2 text-gray-800">
+          It feels like just yesterday we were awkwardly introducing ourselves in the freshers' orientation. 
+          We've shared countless cups of tea at the canteen, pulled desperate all-nighters before exams, 
+          and created a million inside jokes. This diary is a tribute to those unfiltered, raw, and beautiful days.
+        </p>
+        <p className="font-['Caveat'] text-2xl md:text-3xl font-medium pt-8 text-gray-800">
+          May we never forget how we lived... :)
+        </p>
+        <div className="mt-12 text-right">
+           <span className="font-['Caveat'] text-3xl font-bold text-amber-800">— From those who lived it</span>
+        </div>
+      </motion.div>
+    </section>
+  );
+};
+
 const Prologue = () => {
   const [featuredCast, setFeaturedCast] = useState([]);
 
   useEffect(() => {
-    // Randomly pick 4 distinct batchmates on load
+    // Randomly pick 5 distinct batchmates on load
     const shuffled = [...peopleData].sort(() => 0.5 - Math.random());
-    setFeaturedCast(shuffled.slice(0, 5));
+    setFeaturedCast(shuffled.slice(0, 4));
   }, []);
 
-  const recentMemories = memoriesData.slice(0, 3); // Get top 3 memories
-  
-  // Use the very latest event from eventsData
-  const latestEvent = eventsData[eventsData.length - 1];
+  const recentMemories = memoriesData.slice(0, 3);  // Get top 3 memories
 
   const stats = [
     { label: 'Batchmates', value: peopleData.length },
@@ -92,6 +128,9 @@ const Prologue = () => {
     <PageTransition>
       {/* Hero Section */}
       <Hero />
+
+      {/* Intro Letter */}
+      <LetterToBatch />
 
       {/* Quick Stats Summary - Vintage Tickets */}
       <section className="py-24 relative z-10">
@@ -111,7 +150,7 @@ const Prologue = () => {
 
           <div className="max-w-7xl mx-auto px-4 text-center">
              <SectionHeading title="Cast Spotlight" subtitle="Faces from the batch, randomly shuffled." />
-             <div className="flex flex-wrap justify-center gap-6 mt-16 pb-8">
+             <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-16 pb-8">
                {featuredCast.map((person, idx) => (
                  <motion.div
                    key={person.id || idx}
@@ -120,16 +159,16 @@ const Prologue = () => {
                    viewport={{ once: true, margin: "-50px" }}
                    transition={{ duration: 0.6, delay: idx * 0.15 }}
                    whileHover={{ scale: 1.05, rotate: 0, zIndex: 10 }}
-                   className="w-48 bg-[#fdfbf7] p-3 pb-6 shadow-xl border border-black/10 cursor-pointer"
+                   className="w-[calc(50%-0.5rem)] sm:w-40 md:w-48 bg-[#fdfbf7] p-2 sm:p-3 pb-4 sm:pb-6 shadow-xl border border-black/10 cursor-pointer flex flex-col justify-center"
                  >
                    <div 
-                     className="w-full aspect-square bg-gray-200 mb-4 mix-blend-multiply border border-black/5"
+                     className="w-full aspect-[4/5] bg-gray-200 mb-2 sm:mb-4 mix-blend-multiply border border-black/5"
                      style={{ 
                        background: person.photo.startsWith('linear') ? person.photo : `url(${person.photo}) center/cover no-repeat` 
                      }}
                    ></div>
-                   <h3 className="font-['Caveat'] text-2xl text-amber-900 font-bold">{`@${person.name.split(' ')[0]}`}</h3>
-                   {person.roll && <p className="text-xs text-amber-700/70 tracking-wider">{person.roll}</p>}
+                   <h3 className="font-['Caveat'] text-xl sm:text-2xl text-amber-900 font-bold truncate">{`@${person.name.split(' ')[0]}`}</h3>
+                   <p className="text-[10px] sm:text-xs text-amber-700/70 tracking-wider">{person.roll || "1060012****"}</p>
                  </motion.div>
                ))}
              </div>

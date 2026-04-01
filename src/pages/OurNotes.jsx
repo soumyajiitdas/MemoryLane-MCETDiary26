@@ -6,38 +6,53 @@ import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
 import { memoriesData } from '../data/notes';
 
-// Custom Sticky Note Component
+// New Component for Text Notes (Colored Sticky Notes)
+// Unified Sticky Note Component
 const StickyNote = ({ post }) => {
+  const hasTape = post.id % 2 === 0;
+  // Reduced rotation for better readability and to avoid extreme column clipping
+  const rotateDeg = (post.id * 3) % 6 - 3; 
+
   return (
-    <motion.div
-      initial={{ opacity: 0, scale: 0.9, y: 20 }}
-      animate={{ opacity: 1, scale: 1, y: 0 }}
-      layout
-      className="sticky-note p-6 break-inside-avoid mb-6 flex flex-col items-center"
-      style={{
-        transform: `rotate(${Math.floor(Math.random() * 6) - 3}deg)`
-      }}
-    >
-      <p className="font-['Caveat'] text-2xl leading-relaxed text-[#2c3e50] w-full text-center mt-4">
-         "{post.content}"
-      </p>
-      
-      {post.image && (
-        <div 
-          className="w-full h-40 mt-6 shadow-inner border border-gray-200 bg-cover bg-center"
-          style={{ backgroundImage: (post.image?.startsWith('http') || post.image?.startsWith('/')) ? `url('${post.image}')` : post.image }}
-        />
-      )}
-      
-      <div className="mt-8 w-full flex justify-between items-end border-t border-black/5 pt-4">
-         <span className="font-['Caveat'] text-xl font-bold text-gray-800">
-           {post.author}
-         </span>
-         <span className="text-xs text-gray-400 font-sans tracking-widest uppercase">
-           {new Date(post.timestamp).toLocaleDateString()}
-         </span>
-      </div>
-    </motion.div>
+    <div className="break-inside-avoid-column mb-8 perspective-1000">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        whileHover={{ scale: 1.02, zIndex: 10, rotate: 0 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20 }}
+        className={`sticky-note p-6 md:p-8 flex flex-col shadow-[4px_8px_15px_rgba(0,0,0,0.3)] hover:shadow-[8px_15px_25px_rgba(0,0,0,0.4)] transition-shadow duration-300 w-full ${hasTape ? 'tape' : ''}`}
+        style={{
+          transform: `rotate(${rotateDeg}deg)`,
+          transformOrigin: 'center top'
+        }}
+      >
+        {!hasTape && <div className="push-pin -top-3"></div>}
+        
+        <p className={`font-['Caveat'] ${post.image ? 'text-2xl mt-4 mb-6' : 'text-3xl mt-6 mb-8'} leading-relaxed text-[#2c3e50] w-full text-center px-2`}>
+           "{post.content}"
+        </p>
+        
+        {post.image && (
+          <div className="w-full mb-6">
+             <img 
+               src={post.image.startsWith('linear') ? '' : post.image} 
+               style={post.image.startsWith('linear') ? { background: post.image } : {}}
+               alt="Memory"
+               className="w-full object-cover border border-[#d1d5db] shadow-sm max-h-64"
+             />
+          </div>
+        )}
+        
+        <div className="mt-auto w-full flex justify-between items-end border-t border-[#e5e7eb] pt-4">
+           <span className="font-['Caveat'] text-2xl font-bold text-[#1e3a8a]">
+             {post.author}
+           </span>
+           <span className="text-[11px] text-[#9ca3af] font-sans tracking-widest uppercase font-medium">
+             {new Date(post.timestamp).toLocaleDateString()}
+           </span>
+        </div>
+      </motion.div>
+    </div>
   );
 };
 
@@ -66,8 +81,7 @@ const OurNotes = () => {
           </p>
 
           {/* Masonry Board */}
-          <div className="mb-24 columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 p-4 md:p-8 bg-black/20 rounded-md border border-[var(--color-glass-border)] shadow-2xl relative min-h-[60vh]">
-             {/* Subtle pinboard grid pattern placeholder if wanted, keeping it clean via glassmorphism */}
+          <div className="mb-24 columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 p-6 md:p-10 bg-corkboard rounded-xl border-4 border-[#3d3126] shadow-[inset_0_20px_50px_rgba(0,0,0,0.8),0_10px_30px_rgba(0,0,0,0.5)] relative min-h-[60vh] styling-scrollbar" style={{ columnFill: 'balance' }}>
              <AnimatePresence>
                 {posts.map(post => (
                   <StickyNote key={post.id} post={post} />

@@ -39,7 +39,7 @@ const Polaroid = ({ person, onClick }) => {
       <div className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 ${getRandomBg()} border border-white/20 shadow-sm z-10 backdrop-blur-sm`} style={{ transform: "rotate(-2deg)" }} />
       
       <div 
-        className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center contrast-[1.1]"
+        className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center sepia-[0.2] contrast-[1.1]"
         style={{ backgroundImage: (person.photo?.startsWith('http') || person.photo?.startsWith('/')) ? `url('${person.photo}')` : person.photo }}
       >
         <div className="w-full h-full bg-amber-900/10 mix-blend-multiply"></div>
