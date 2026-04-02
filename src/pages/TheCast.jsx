@@ -213,7 +213,7 @@ const TheCast = () => {
 
                   <div className="relative z-10 py-6 px-4">
                     <p className="text-2xl text-[#1a1c29] font-['Caveat'] leading-[32px] pt-1 opacity-90">
-                      " {selectedPerson.oneliner || "A face from those familiar days."} "
+                      " {selectedPerson.oneliner || "A familiar face from those moments that still linger."} "
                     </p>
                   </div>
                 </div>
