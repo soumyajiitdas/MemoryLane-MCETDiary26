@@ -39,7 +39,7 @@ const Polaroid = ({ person, onClick }) => {
       <div className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 ${getRandomBg()} border border-white/20 shadow-sm z-10 backdrop-blur-sm`} style={{ transform: "rotate(-2deg)" }} />
       
       <div 
-        className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center contrast-[1.1]"
+        className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center sepia-[0.2] contrast-[1.1]"
         style={{ backgroundImage: (person.photo?.startsWith('http') || person.photo?.startsWith('/')) ? `url('${person.photo}')` : person.photo }}
       >
         <div className="w-full h-full bg-amber-900/10 mix-blend-multiply"></div>
@@ -213,7 +213,7 @@ const TheCast = () => {
 
                   <div className="relative z-10 py-6 px-4">
                     <p className="text-2xl text-[#1a1c29] font-['Caveat'] leading-[32px] pt-1 opacity-90">
-                      " {selectedPerson.oneliner || "A face from those familiar days."} "
+                      " {selectedPerson.oneliner || "A familiar face from those moments that still linger."} "
                     </p>
                   </div>
                 </div>

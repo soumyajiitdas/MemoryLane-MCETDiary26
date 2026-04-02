@@ -49,30 +49,81 @@ const JourneyNode = ({ data, index }) => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, type: "spring", delay: 0.1 }}
-        className={`w-full md:w-1/2 px-4 md:px-16 mt-12 md:mt-0 flex justify-center ${isEven ? 'md:justify-start' : 'md:justify-end'}`}
+        className={`w-full md:w-1/2 px-4 md:px-16 mt-12 md:mt-0 flex flex-col items-center flex justify-center ${isEven ? 'md:justify-start' : 'md:justify-end'}`}
+        style={{ perspective: '1200px' }}
       >
-        <div 
-          className="bg-white p-3 md:p-4 pb-12 md:pb-16 shadow-2xl relative"
+        <motion.div 
+          whileHover={{ 
+            rotateY: 180, 
+            rotate: 0,
+            scale: 1.05,
+            zIndex: 50
+          }}
+          whileTap={{ 
+            rotateY: 180, 
+            rotate: 0,
+            scale: 1.05,
+            zIndex: 50
+          }}
+          transition={{ duration: 0.6, type: 'spring', damping: 20 }}
+          className="relative w-full max-w-[420px] aspect-[4/5] md:aspect-[3/4] cursor-pointer"
           style={{ 
-             transform: `rotate(${isEven ? 2 : -2}deg)`,
-             boxShadow: '0 20px 40px rgba(0,0,0,0.5)'
+            transformStyle: 'preserve-3d',
+            transform: `rotate(${isEven ? 2 : -2}deg)`
           }}
         >
-           {/* Image container */}
-           <div 
-             className="w-full aspect-[4/3] max-w-[400px] shadow-inner border border-gray-200 bg-gray-200 overflow-hidden"
-           >
-              {data.image.startsWith('http') ? (
-                 <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
-              ) : (
-                 <div className="w-full h-full" style={{ background: data.image }} />
-              )}
+           {/* Front Side */}
+           <div className="absolute inset-0 bg-white p-3 md:p-4 pb-12 md:pb-12 shadow-2xl backface-hidden flex flex-col">
+              <div className="w-full h-[90%] shadow-inner border border-gray-100 bg-gray-50 overflow-hidden">
+                {data.image.startsWith('http') ? (
+                   <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
+                ) : (
+                   <div className="w-full h-full" style={{ background: data.image }} />
+                ) }
+              </div>
+              <div className="flex-1 flex items-center justify-center pt-2">
+                <p className="font-['Caveat'] text-xl md:text-2xl text-gray-800 text-center px-2">
+                  {data.caption}
+                </p>
+              </div>
            </div>
-           {/* Handwritten Caption */}
-           <p className="absolute bottom-4 left-0 right-0 text-center font-['Caveat'] text-xl md:text-2xl text-gray-800">
-             {data.caption}
-           </p>
-        </div>
+
+           {/* Back Side (Diary Note) */}
+           <div 
+             className="absolute inset-0 bg-[#fdfaf3] p-6 shadow-2xl backface-hidden flex flex-col items-center justify-center text-center border border-black/5"
+             style={{ transform: 'rotateY(180deg)' }}
+           >
+              {/* Paper texture overlay */}
+              <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/paper.png')]"></div>
+              
+              <div className="relative z-10 space-y-4">
+                <div className="w-12 h-px bg-amber-900/20 mx-auto"></div>
+                <p className="text-amber-900 font-['Caveat'] text-2xl md:text-3xl leading-relaxed">
+                  "{data.note}"
+                </p>
+                <div className="w-12 h-px bg-amber-900/20 mx-auto pt-4"></div>
+                <p className="text-amber-700/50 font-['Caveat'] text-lg">
+                  Chapter entry: {data.year}
+                </p>
+              </div>
+
+              {/* Decorative corner detail */}
+              <div className="absolute bottom-4 right-4 text-amber-900/10 italic font-serif text-xs uppercase tracking-widest">
+                Diary '26
+              </div>
+           </div>
+        </motion.div>
+        
+        {/* Mobile-only hint */}
+        <motion.div 
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="md:hidden mt-4 text-gray-500 text-xs flex items-center gap-2"
+        >
+          <span className="w-4 h-px bg-gray-600"></span>
+          Hold photo to read note
+          <span className="w-4 h-px bg-gray-600"></span>
+        </motion.div>
       </motion.div>
     </div>
   );
