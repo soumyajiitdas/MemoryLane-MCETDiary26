@@ -2,29 +2,29 @@ export const eventsData = [
     {
       id: 1,
       title: "Freshers' Orientation",
-      date: "August 2023",
+      date: "March 2023",
       category: "Freshers",
-      description: "When we all met for the first time, nervous and excited.",
-      gallery: ["linear-gradient(45deg, #FCCB90, #D57EEB)"],
-      taggedPeople: ["Underoos", "Hulk", "Lebowski"]
+      description: "When we all met for the first time, nervous and excited.✨",
+      gallery: ["/images/scrapbook/19.jpg"],
+      taggedPeople: ["Soumyajit","Underoos", "Hulk", "Lebowski", "StarLord", "Kriti", "Anik M.", "Animesh", "Srija"]
     },
     {
       id: 2,
       title: "CORUS 2K25 Event",
       date: "March 2023",
       category: "Fests",
-      description: "A memorable event, lots of works, zero sleep.",
+      description: "A memorable event, lots of works with zero sleep.",
       gallery: ["linear-gradient(135deg, #f6d365, #fda085)"],
-      taggedPeople: ["Hulk", "Underoos"]
+      taggedPeople: ["Hulk", "Underoos", "Lebowski", "Kriti", "Legolas", "Thumblina", "Bapi", "Soumyajit"]
     },
     {
       id: 3,
-      title: "Our Campus Placement Day",
-      date: "October 2024",
-      category: "Trips",
-      description: "More fun than learning, our epic getaway.",
-      gallery: ["linear-gradient(135deg, #a18cd1, #fbc2eb)"],
-      taggedPeople: ["Hulk", "Legolas"]
+      title: "Sports Fiesta 2K26",
+      date: "February 2026",
+      category: "Sports",
+      description: "Behind the scenes and on the scoreboard - we showed up.🏆",
+      gallery: ["/images/scrapbook/22.jpg"],
+      taggedPeople: ["Hulk", "Underoos", "Lebowski", "Bapi", "Raju", "Shirsendu", "Saeed", "Animesh", "Rohit"]
     }
   ];
   

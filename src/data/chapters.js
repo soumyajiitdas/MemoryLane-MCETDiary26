@@ -1,6 +1,6 @@
 export const timelineData = [
     {
-      year: "2023",
+      year: "2022-'23",
       title: "The Beginning",
       subtitle: "Freshers & First Impressions",
       description: "Stepping onto campus for the first time was a blur of excitement and nerves. We attended orientation, survived our first mid-terms, and started adapting to the chaotic beauty of hostel life. Strangers slowly turned into friends over endless cups of chai.",
@@ -10,7 +10,7 @@ export const timelineData = [
       photos: ["https://images.unsplash.com/photo-1761839258289-72f12b0de058?auto=format&fit=crop&w=800&q=80"]
     },
     {
-      year: "2024",
+      year: "2023-'24",
       title: "Exploring & Expanding",
       subtitle: "Hackathons & Fests",
       description: "The year we found our rhythm. We organized our first technical fests, stayed up all night for hackathons, and formed core committees. The campus started feeling like a second home, filled with late-night cravings and sudden adventures.",
@@ -20,7 +20,7 @@ export const timelineData = [
       photos: ["https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80"]
     },
     {
-      year: "2025",
+      year: "2024-'25",
       title: "The Senior Life",
       subtitle: "Internships & Trips",
       description: "With internships on the horizon, the pressure was real, but so was the fun. We managed to squeeze in our first group industrial visit which turned into an epic trip. We wrote research papers, pulled all-nighters, and created memories that will last a lifetime.",
@@ -30,7 +30,7 @@ export const timelineData = [
       photos: ["https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80"]
     },
     {
-      year: "2026",
+      year: "2025-'26",
       title: "A Goodbye Worth Remembering",
       subtitle: "Placements & Farewells",
       description: "Before it was our turn to leave, we made sure the batch ahead of us got the send-off they deserved. The decor, the performances, the emotions \u2014 we poured everything into giving our seniors a farewell they'd never forget. Now, our own remaining time suddenly feels painfully short.",

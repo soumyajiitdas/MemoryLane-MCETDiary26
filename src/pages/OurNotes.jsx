@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PlusCircle } from 'lucide-react';
 import PageTransition from '../components/layout/PageTransition';
@@ -58,7 +58,12 @@ const StickyNote = ({ post }) => {
 
 
 const OurNotes = () => {
-  const [posts, setPosts] = useState(memoriesData);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const shuffledPosts = [...memoriesData].sort(() => 0.5 - Math.random());
+    setPosts(shuffledPosts);
+  }, []);
 
   return (
     <PageTransition>

@@ -11,10 +11,10 @@ import { Code, Briefcase, Camera, MessageCircle } from 'lucide-react';
 
 // random bg color of Vintage masking tape
 const bgColors = [
-  "bg-yellow-100/50",
-  "bg-red-100/50",
-  "bg-green-100/50",
-  "bg-blue-100/50"
+  "bg-yellow-200/50",
+  "bg-red-200/50",
+  "bg-green-200/50",
+  "bg-blue-200/50"
 ];
 
 const getRandomBg = () =>

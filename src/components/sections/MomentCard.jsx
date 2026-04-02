@@ -3,68 +3,95 @@ import { motion } from 'framer-motion';
 import { Calendar, Users } from 'lucide-react';
 
 const EventCard = ({ event, onClick }) => {
+  // Give each instance a slight unique rotation for a more organic, scattered look
+  const photoRotate = React.useMemo(() => (Math.random() * 6 - 3).toFixed(1), []);
+
   return (
     <motion.div
-      whileHover={{ scale: 1.02, rotate: 1 }}
+      whileHover={{ scale: 1.03, y: -5, zIndex: 30 }}
       whileTap={{ scale: 0.98 }}
       layoutId={`event-${event.id}`}
       onClick={() => onClick(event)}
-      className="cursor-pointer h-full"
+      className="cursor-pointer h-full relative perspective-1000"
     >
       <div 
-        className="relative bg-[#f4ecd8] border border-[#d4c3a3] shadow-lg p-3 pb-6 flex flex-col items-center min-h-[320px]"
+        className="relative bg-[#fcf9f2] w-full h-full p-4 pb-6 flex flex-col border border-[#e2d8c3] overflow-hidden rounded-sm"
         style={{
-          boxShadow: '2px 4px 15px rgba(0,0,0,0.15), inset 0 0 40px rgba(100,70,30,0.05)',
+          boxShadow: '0 8px 20px -6px rgba(0, 0, 0, 0.15), 0 4px 8px -4px rgba(0, 0, 0, 0.1)',
         }}
       >
-        {/* Postcard Stamp Area (Top Right) */}
-        <div className="absolute top-4 right-4 w-12 h-14 bg-[#fdfbf7] p-1 border border-dashed border-[#b3a182] shadow-sm rotate-3 z-20">
-           <div 
-             className="w-full h-full bg-cover bg-center border border-[#d4c3a3]/50 opacity-80 mix-blend-multiply"
-             style={{ backgroundImage: event.gallery[0]?.startsWith('http') ? `url(${event.gallery[0]})` : event.gallery[0] || 'linear-gradient(to bottom, #d4a373, #faedcd)' }}
-           >
-             <span className="text-[7px] font-bold text-black/60 block text-center mt-1 uppercase tracking-tighter">'26</span>
+        {/* Background Texture Layers */}
+        <div className="absolute inset-0 bg-[#f9f5eb]" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')" }}></div>
+        
+        {/* Ruled lines overlay */}
+        <div 
+          className="absolute inset-0 opacity-30 pointer-events-none"
+          style={{
+             backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)",
+             backgroundSize: "100% 28px",
+             top: "140px" // Start lines mostly below the photo
+          }}
+        ></div>
+
+        {/* Red vertical margin line for classical notebook effect */}
+        <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
+        <div className="absolute left-[34px] top-0 bottom-0 w-[1px] bg-red-800/10 pointer-events-none"></div>
+
+        {/* Vintage Round Stamp (e.g. for Category) */}
+        <div className="absolute -top-3 -right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-80 shadow-sm pointer-events-none">
+           <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
+             <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
+               {event.category?.substring(0, 8)}<br/>★
+             </span>
            </div>
         </div>
 
-        {/* Vintage Postmark overlays (Ink Rings & Wavy lines canceling the stamp) */}
-        <div className="absolute top-2 right-8 w-16 h-16 border-[1.5px] border-dashed border-[#3e3222]/20 rounded-full pointer-events-none mix-blend-multiply z-20 opacity-70"></div>
-        <div className="absolute top-6 right-1 w-24 h-[1px] border-t border-wavy border-[#3e3222]/30 pointer-events-none mix-blend-multiply z-20 opacity-80"></div>
-        <div className="absolute top-8 right-2 w-24 h-[1px] border-t border-wavy border-[#3e3222]/30 pointer-events-none mix-blend-multiply z-20 opacity-80"></div>
-
-        {/* The Main View / Photo inside the Postcard */}
-        <div className="w-full h-48 bg-white p-1.5 shadow-sm border border-[#e5e5e5] mt-1 z-10 relative group overflow-hidden">
+        {/* Content wrapper */}
+        <div className="relative z-10 w-full pl-10 pr-2 h-full flex flex-col pt-2">
+          
+          {/* Photo polaroid-style attachment */}
           <div 
-            className="w-full h-full bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
-            style={{ backgroundImage: event.gallery[0]?.startsWith('http') ? `url(${event.gallery[0]})` : event.gallery[0] || '#e5e5e5' }}
+            className="w-full mx-auto bg-white p-2.5 pb-7 shadow-[2px_6px_12px_rgba(0,0,0,0.12)] border border-gray-200/80 mb-6 relative group"
+            style={{ transform: `rotate(${photoRotate}deg)` }}
           >
-            {/* Dark overlay for contrast */}
-            <div className="inset-0 absolute bg-black/5 mix-blend-multiply"></div>
+            {/* Washi Tape */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-7 bg-amber-600/30 backdrop-blur-sm border border-amber-800/10 shadow-[1px_2px_3px_rgba(0,0,0,0.05)]"
+                 style={{ transform: "rotate(-3deg)", backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')" }}></div>
+            
+            {/* The Image */}
+            <div className="overflow-hidden">
+               <div 
+                 className="w-full aspect-[16/9] bg-cover bg-center border border-black/10 sepia-[0.15] transition-transform duration-700 group-hover:scale-[1.05] group-hover:sepia-0"
+                 style={{ backgroundImage: (event.gallery[0]?.startsWith('http') || event.gallery[0]?.startsWith('/')) ? `url('${event.gallery[0]}')` : (event.gallery[0] || 'linear-gradient(to bottom, #d4a373, #faedcd)') }}
+               >
+                  <div className="w-full h-full bg-[#3e2723]/10 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0"></div>
+               </div>
+            </div>
+            
+            {/* Little caption/date under photo */}
+            <p className="text-center font-['Caveat'] text-xl text-gray-700/80 absolute bottom-1 left-0 right-0 leading-none">
+              {event.date?.split(' ')[0]} 
+            </p>
           </div>
-          <span className="absolute top-3 left-3 px-2 py-0.5 bg-[#f4ecd8] text-[#7d6b52] font-semibold text-[10px] uppercase tracking-widest shadow-sm rounded-sm">
-            {event.category}
-          </span>
-        </div>
 
-        {/* Postcard Written Details */}
-        <div className="mt-5 w-full px-2 text-center relative z-10">
-          <h3 className="font-['Caveat'] text-3xl font-bold text-[#3e3222] leading-none mb-2">
+          {/* Title */}
+          <h3 className="font-['Caveat'] text-4xl font-bold text-[#201d18] leading-[28px] mt-1 mb-2 drop-shadow-[0_1px_0_rgba(255,255,255,0.8)]">
              {event.title}
           </h3>
           
-          <div className="flex justify-center items-center gap-3 text-xs text-[#7d6b52] font-sans tracking-wide font-medium">
-              <span className="flex items-center gap-1"><Calendar size={12} className="text-[#b94a4a]" /> {event.date}</span>
+          {/* Metadata: Date & People tagged */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[9px] text-[#786b5b] font-sans tracking-[0.15em] font-bold uppercase mb-2 mt-1">
+              <span className="flex items-center gap-1.5 bg-[#f0eadd] px-2 py-0.5 rounded-sm"><Calendar size={11} className="text-red-800/60" /> {event.date}</span>
               {event.taggedPeople?.length > 0 && (
-                <>
-                  <span>•</span>
-                  <span className="flex items-center gap-1"><Users size={12} className="text-[#b94a4a]" /> {event.taggedPeople.length}</span>
-                </>
+                <span className="flex items-center gap-1.5 bg-[#f0eadd] px-2 py-0.5 rounded-sm"><Users size={11} className="text-indigo-800/60" /> {event.taggedPeople.length}</span>
               )}
           </div>
           
-          <p className="font-['Caveat'] text-xl text-[#5c4a35] mt-3 line-clamp-2 leading-tight">
-            "{event.description}"
+          {/* Description */}
+          <p className="font-['Caveat'] text-[1.4rem] text-[#332b21] leading-[28px] opacity-95 flex-grow line-clamp-3 my-2 pt-1">
+            {event.description}
           </p>
+
         </div>
       </div>
     </motion.div>

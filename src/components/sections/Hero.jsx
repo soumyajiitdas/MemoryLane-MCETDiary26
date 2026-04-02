@@ -135,7 +135,7 @@ const Hero = () => {
           }}
           className="uppercase tracking-[0.3em] text-xs md:text-sm text-gray-500 mt-6 pt-6"
         >
-           Batch of 2023 — 2026
+           Batch of 2022 — 2026
         </motion.p>
         
         {/* Buttons */}

@@ -20,12 +20,12 @@ const JourneyNode = ({ data, index }) => {
       {/* Center Track Line & Year Badge for Desktop */}
       <div className="hidden md:flex absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-px bg-white/10" />
       
-      <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border border-amber-500/80 bg-[var(--color-midnight)] items-center justify-center z-10 shadow-lg shadow-black/50">
+      <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-18 h-18 rounded-full border border-amber-500/80 bg-[var(--color-midnight)] items-center justify-center z-10 shadow-lg shadow-black/50">
          <span className="text-amber-500 font-serif font-bold text-sm">{data.year}</span>
       </div>
 
       {/* Date badge for Mobile */}
-      <div className="md:hidden w-16 h-16 mb-6 rounded-full border border-amber-500/80 bg-[var(--color-midnight)] flex items-center justify-center z-10 shadow-lg shadow-black/50 mx-auto">
+      <div className="md:hidden w-18 h-18 mb-6 rounded-full border border-amber-500/80 bg-[var(--color-midnight)] flex items-center justify-center z-10 shadow-lg shadow-black/50 mx-auto">
          <span className="text-amber-500 font-serif font-bold text-sm">{data.year}</span>
       </div>
 

@@ -133,14 +133,17 @@ const LetterToBatch = () => {
 
 const Prologue = () => {
   const [featuredCast, setFeaturedCast] = useState([]);
+  const [recentMemories, setRecentMemories] = useState([]);
 
   useEffect(() => {
     // Randomly pick 5 distinct batchmates on load
     const shuffled = [...peopleData].sort(() => 0.5 - Math.random());
     setFeaturedCast(shuffled.slice(0, 5));
-  }, []);
 
-  const recentMemories = memoriesData.slice(0, 3);  // Get top 3 memories
+    // Randomly pick 3 distinct notes on load
+    const shuffledNotes = [...memoriesData].sort(() => 0.5 - Math.random());
+    setRecentMemories(shuffledNotes.slice(0, 3));
+  }, []);
 
   const stats = [
     { label: 'Batchmates', value: peopleData.length },
@@ -160,7 +163,7 @@ const Prologue = () => {
       {/* Quick Stats Summary - Vintage Tickets */}
       <section className="py-24 relative z-10">
         <div className="max-w-7xl mx-auto px-4">
-          <SectionHeading title="By The Numbers" subtitle="A quantifiable look at our unquantifiable memories." />
+          <SectionHeading title="The Journey So Far" subtitle="A look back at everything we’ve been through." />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto mt-12">
             {stats.map((stat, i) => (
               <VintageStatTicket key={i} label={stat.label} value={stat.value} delay={i * 0.1} />
@@ -174,7 +177,7 @@ const Prologue = () => {
         <section className="py-24 relative z-10">
 
           <div className="max-w-7xl mx-auto px-4 text-center">
-             <SectionHeading title="Cast Spotlight" subtitle="Faces from the batch, randomly shuffled." />
+             <SectionHeading title="Familiar Faces" subtitle="The people who made these years unforgettable." />
              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-16 pb-8">
                {featuredCast.map((person, idx) => (
                  <motion.div
@@ -226,7 +229,7 @@ const Prologue = () => {
       {/* Recent Memories Corkboard */}
       <section className="py-32 relative z-10">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <SectionHeading title="Fresh Off The Notes" subtitle="The latest thoughts and reflections from the batch." />
+          <SectionHeading title="Little Things We Wrote" subtitle="Words that stayed when everything else moved on." />
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto mt-16 pb-12">
             {recentMemories.map((post, idx) => (

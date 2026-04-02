@@ -30,7 +30,7 @@ const Footer = () => {
         {/* Built With - Pill badge style */}
         <div className="px-6 py-2.5 rounded-full border border-amber-900/30 bg-black/40 backdrop-blur-sm">
           <p className="text-xs text-[var(--color-text-muted)] uppercase tracking-[0.2em] font-medium flex items-center gap-2">
-            Curated with <span className="text-amber-600 animate-pulse text-sm">❤️</span> by Batch 2023–2026
+            Curated with <span className="text-amber-600 animate-pulse text-sm">❤️</span> by Batch 2022–2026
           </p>
         </div>
       </div>

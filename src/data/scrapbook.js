@@ -58,7 +58,7 @@ export const galleryData = [
     {
       id: 9,
       src: "/images/scrapbook/09.jpg",
-      caption: "Hangout at Motijhil Park",
+      caption: "Hangout at Pataleswar Mandir",
       album: "Hangouts",
       year: "2023"
     },
@@ -72,7 +72,7 @@ export const galleryData = [
     {
       id: 11,
       src: "/images/scrapbook/11.jpg",
-      caption: "Our first Cultural Fest, CORUS2K23",
+      caption: "Our first Cultural Fest, CORUS 2K23",
       album: "Events",
       year: "2023"
     },
@@ -93,8 +93,8 @@ export const galleryData = [
     {
       id: 14,
       src: "/images/scrapbook/14.jpg",
-      caption: "Fakira Show at Lalbagh",
-      album: "Hangouts",
+      caption: "Fakira's Show at Lalbagh, 2026",
+      album: "Moments",
       year: "2026"
     },
     {
@@ -121,9 +121,52 @@ export const galleryData = [
     {
       id: 18,
       src: "/images/scrapbook/18.jpg",
-      caption: "Champions of Sports Fiesta 2K26",
+      caption: "Champions of Sports Fiesta '26",
       album: "Events",
       year: "2026"
     },
+    {
+      id: 19,
+      src: "/images/scrapbook/19.jpg",
+      caption: "After our Freshers' Party '23",
+      album: "Events",
+      year: "2023"
+    },
+    {
+      id: 20,
+      src: "/images/scrapbook/20.jpg",
+      caption: "During Viswakarma Puja '25",
+      album: "Moments",
+      year: "2025"
+    },
+    {
+      id: 21,
+      src: "/images/scrapbook/21.jpg",
+      caption: "Evening adda with friends at Kettle",
+      album: "Hangouts",
+      year: "2025"
+    },
+    {
+      id: 22,
+      src: "/images/scrapbook/22.jpg",
+      caption: "Champions of Sports Fiesta '26",
+      album: "Events",
+      year: "2026"
+    },
+    {
+      id: 23,
+      src: "/images/scrapbook/23.jpg",
+      caption: "Trip to Mandarmani",
+      album: "Trip",
+      year: "2025"
+    },
+    {
+      id: 24,
+      src: "/images/scrapbook/24.jpg",
+      caption: "Fakira's Show at Lalbagh, 2026",
+      album: "Momentss",
+      year: "2026"
+    },
+
   ];
   
