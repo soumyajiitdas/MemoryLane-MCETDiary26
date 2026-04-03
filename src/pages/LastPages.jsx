@@ -142,9 +142,10 @@ const LastPages = () => {
       <div className="min-h-[100vh] py-24 pb-32">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center relative z-10">
           
-          <SectionHeading 
-            title="Last Pages" 
-            subtitle="What remained when the story found its end. 🦋"
+          <SectionHeading
+            title="Last Pages"
+            subtitle="What remained when the story found its end. 🦸"
+            eyebrow="Phoenix Magazine"
           />
           <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-12 mb-16 italic">
              " For the memories we couldn't fit into the margins... "

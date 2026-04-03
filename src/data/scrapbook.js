@@ -1,29 +1,29 @@
 export const galleryData = [
     {
       id: 1,
-      src: "/images/scrapbook/01.webp",
-      caption: "End 1st semester exams day",
+      src: "/images/scrapbook/01.jpg",
+      caption: "After ending first sem. exams",
       album: "Moments",
       year: "2022"
     },
     {
       id: 2,
       src: "/images/scrapbook/02.jpg",
-      caption: "Viswakarma Puja 2K23",
+      caption: "During Viswakarma Puja 2K23",
       album: "Events",
       year: "2023"
     },
     {
       id: 3,
       src: "/images/scrapbook/03.jpg",
-      caption: "Viswakarma Puja 2K23",
+      caption: "During Viswakarma Puja 2K23",
       album: "Events",
       year: "2023"
     },
     {
       id: 4,
       src: "/images/scrapbook/04.jpg",
-      caption: "End 1st semester exams day",
+      caption: "In our first semester",
       album: "Moments",
       year: "2022"
     },
@@ -31,14 +31,14 @@ export const galleryData = [
       id: 5,
       src: "/images/scrapbook/05.jpg",
       caption: "Motijhil Park tour",
-      album: "Hangouts",
+      album: "Moments",
       year: "2023"
     },
     {
       id: 6,
       src: "/images/scrapbook/06.jpg",
-      caption: "hangout at Motijhil Park",
-      album: "Hangouts",
+      caption: "At Motijhil Park",
+      album: "Moments",
       year: "2023"
     },
     {
@@ -58,21 +58,21 @@ export const galleryData = [
     {
       id: 9,
       src: "/images/scrapbook/09.jpg",
-      caption: "Hangout at Pataleswar Mandir",
-      album: "Hangouts",
+      caption: "Pataleswar Mandir visit in our 1st sem.",
+      album: "Moments",
       year: "2023"
     },
     {
       id: 10,
       src: "/images/scrapbook/10.jpg",
-      caption: "Hangout at Motijhil Park",
-      album: "Hangouts",
+      caption: "At Motijhil Park",
+      album: "Moments",
       year: "2023"
     },
     {
       id: 11,
       src: "/images/scrapbook/11.jpg",
-      caption: "Our first Cultural Fest, CORUS 2K23",
+      caption: "During our first Cultural Fest, CORUS 2K23",
       album: "Events",
       year: "2023"
     },
@@ -86,22 +86,22 @@ export const galleryData = [
     {
       id: 13,
       src: "/images/scrapbook/13.jpg",
-      caption: "Berhampore Mela, 2023",
-      album: "Hangouts",
+      caption: "All together in Berhampore Mela, '23",
+      album: "Moments",
       year: "2023"
     },
     {
       id: 14,
       src: "/images/scrapbook/14.jpg",
-      caption: "Fakira's Show at Lalbagh, 2026",
+      caption: "Fakira's Show at Lalbagh, '26",
       album: "Moments",
       year: "2026"
     },
     {
       id: 15,
       src: "/images/scrapbook/15.jpg",
-      caption: "Berhampore Food Fair, 2026",
-      album: "Hangouts",
+      caption: "In Berhampore Food Fair, '26",
+      album: "Moments",
       year: "2026"
     },
     {
@@ -121,7 +121,7 @@ export const galleryData = [
     {
       id: 18,
       src: "/images/scrapbook/18.jpg",
-      caption: "Champions of Sports Fiesta '26",
+      caption: "Champions of Sports Fiesta 2K26",
       album: "Events",
       year: "2026"
     },
@@ -135,8 +135,8 @@ export const galleryData = [
     {
       id: 20,
       src: "/images/scrapbook/20.jpg",
-      caption: "During Viswakarma Puja '25",
-      album: "Moments",
+      caption: "During Viswakarma Puja 2K25",
+      album: "Events",
       year: "2025"
     },
     {
@@ -149,7 +149,7 @@ export const galleryData = [
     {
       id: 22,
       src: "/images/scrapbook/22.jpg",
-      caption: "Champions of Sports Fiesta '26",
+      caption: "Champions of Sports Fiesta 2K26",
       album: "Events",
       year: "2026"
     },
@@ -163,9 +163,23 @@ export const galleryData = [
     {
       id: 24,
       src: "/images/scrapbook/24.jpg",
-      caption: "Fakira's Show at Lalbagh, 2026",
-      album: "Momentss",
+      caption: "Fakira's Show at Lalbagh, '26",
+      album: "Moments",
       year: "2026"
+    },
+    {
+      id: 25,
+      src: "/images/scrapbook/25.jpg",
+      caption: "Day-1 of Sports 2K23, during Cricket Match",
+      album: "Events",
+      year: "2023"
+    },
+    {
+      id: 26,
+      src: "/images/scrapbook/26.jpg",
+      caption: "During our first Cultural Fest, CORUS 2K23",
+      album: "Events",
+      year: "2023"
     },
 
   ];

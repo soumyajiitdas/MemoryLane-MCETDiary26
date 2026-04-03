@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Hero from '../components/sections/Hero';
+import BatchSoundtrack from '../components/sections/BatchSoundtrack';
 import CountdownTimer from '../components/ui/CountdownTimer';
 import SectionHeading from '../components/ui/SectionHeading';
 import PageTransition from '../components/layout/PageTransition';
@@ -163,7 +164,11 @@ const Prologue = () => {
       {/* Quick Stats Summary - Vintage Tickets */}
       <section className="py-24 relative z-10">
         <div className="max-w-7xl mx-auto px-4">
-          <SectionHeading title="The Journey So Far" subtitle="A look back at everything we’ve been through." />
+          <SectionHeading
+            title="The Journey So Far"
+            subtitle="A look back at everything we’ve been through."
+            eyebrow="By the Numbers"
+          />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto mt-12">
             {stats.map((stat, i) => (
               <VintageStatTicket key={i} label={stat.label} value={stat.value} delay={i * 0.1} />
@@ -172,12 +177,19 @@ const Prologue = () => {
         </div>
       </section>
 
+      {/* ── The Batch Soundtrack – Interactive Vinyl ── */}
+      <BatchSoundtrack />
+
       {/* Featured Cast Spotlight */}
       {featuredCast.length > 0 && (
         <section className="py-24 relative z-10">
 
           <div className="max-w-7xl mx-auto px-4 text-center">
-             <SectionHeading title="Familiar Faces" subtitle="The people who made these years unforgettable." />
+             <SectionHeading
+               title="Familiar Faces"
+               subtitle="The people who made these years unforgettable."
+               eyebrow="Cast Spotlight"
+             />
              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-16 pb-8">
                {featuredCast.map((person, idx) => (
                  <motion.div
@@ -218,7 +230,11 @@ const Prologue = () => {
         {/* Glow effect */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-amber-500/10 blur-[100px] pointer-events-none rounded-full"></div>
         <div className="relative z-10 px-4">
-           <SectionHeading title="The Final Countdown" subtitle="Time left until we throw our caps and say our goodbyes." />
+           <SectionHeading
+             title="The Final Countdown"
+             subtitle="Time left until we throw our caps and say our goodbyes."
+             eyebrow="Graduation Day"
+           />
            <CountdownTimer targetDate="2026-07-17T00:00:00" />
            <p className="text-center font-['Caveat'] text-3xl text-amber-400 mt-12 drop-shadow-md">
               "Don't cry because it's over, smile because it happened."
@@ -229,7 +245,11 @@ const Prologue = () => {
       {/* Recent Memories Corkboard */}
       <section className="py-32 relative z-10">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <SectionHeading title="Little Things We Wrote" subtitle="Words that stayed when everything else moved on." />
+          <SectionHeading
+            title="Little Things We Wrote"
+            subtitle="Words that stayed when everything else moved on."
+            eyebrow="From Our Notes"
+          />
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto mt-16 pb-12">
             {recentMemories.map((post, idx) => (

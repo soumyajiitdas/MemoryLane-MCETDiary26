@@ -75,9 +75,10 @@ const TheCast = () => {
     <PageTransition>
       <div className="min-h-screen py-24">
         <div className="max-w-7xl mx-auto px-4">
-          <SectionHeading 
-            title="The Cast" 
+          <SectionHeading
+            title="The Cast"
             subtitle="The faces and the events that made it all real. ❣️"
+            eyebrow="Us..."
           />
 
           {/* Toggle Tab */}
