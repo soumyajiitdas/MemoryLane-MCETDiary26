@@ -1,25 +1,10 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, useAnimation, AnimatePresence } from 'framer-motion';
+import { usePlayer, TRACKLIST } from '../../context/PlayerContext';
+import { Play } from 'lucide-react';
 
-// Tracklist
-const TRACKLIST = [
-  {
-    track: '01',
-    title: "End of the Beginning",
-    feat: "DJO",
-    duration: "3:00 min",
-    src: '/music/background-music.m4a',
-  },
-  {
-    track: '02',
-    title: "Yaariyaan",
-    feat: "Cocktail",
-    duration: "4:25 min",
-    src: '/music/background-music_02.mp3',
-  },
-];
+// ── Sub-components ─────────────────────────────────────────────────────────────
 
-// SVG groove rings
 const VinylGrooves = () => (
   <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
     {Array.from({ length: 22 }, (_, i) => (
@@ -30,7 +15,6 @@ const VinylGrooves = () => (
   </svg>
 );
 
-// Central amber label
 const VinylLabel = ({ trackTitle, playing }) => (
   <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
     <div
@@ -43,18 +27,13 @@ const VinylLabel = ({ trackTitle, playing }) => (
       <p className="font-['Playfair_Display'] text-amber-100 text-[0.4rem] tracking-[0.15em] uppercase mb-0.5 opacity-80 px-1">
         {playing && trackTitle ? trackTitle : 'MCET · Batch'}
       </p>
-      <p className="font-['Caveat'] text-amber-200 text-sm font-bold leading-none">
-        2022–'26
-      </p>
-      <p className="text-amber-300/70 text-[0.36rem] tracking-wider mt-0.5 uppercase">
-        The Memory Tape
-      </p>
+      <p className="font-['Caveat'] text-amber-200 text-sm font-bold leading-none">2022–'26</p>
+      <p className="text-amber-300/70 text-[0.36rem] tracking-wider mt-0.5 uppercase">The Memory Tape</p>
       <div className="w-2 h-2 rounded-full mt-1" style={{ background: '#0d0b09', boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.9)' }} />
     </div>
   </div>
 );
 
-// Tone arm - swings in when playing
 const ToneArm = ({ playing }) => (
   <motion.div
     className="absolute z-20 origin-top-right"
@@ -74,8 +53,7 @@ const ToneArm = ({ playing }) => (
   </motion.div>
 );
 
-// Single track row - clickable to play / pause
-const TrackRow = ({ track, title, feat, duration, src, index, revealed, isActive, isPlaying, onPlay }) => (
+const TrackRow = ({ track, title, feat, duration, index, revealed, isActive, isPlaying, onPlay }) => (
   <motion.button
     initial={{ opacity: 0, x: -16 }}
     animate={{ opacity: 1, x: 0 }}
@@ -86,10 +64,8 @@ const TrackRow = ({ track, title, feat, duration, src, index, revealed, isActive
     }`}
     disabled={!revealed}
   >
-    {/* Track number / playing indicator */}
     <span className="w-5 shrink-0 flex items-center justify-center">
       {isActive && isPlaying ? (
-        // Micro EQ bars
         <span className="flex gap-[2px] items-end h-3.5">
           {[1, 1.5, 0.8, 1.4].map((h, i) => (
             <motion.span
@@ -102,7 +78,7 @@ const TrackRow = ({ track, title, feat, duration, src, index, revealed, isActive
           ))}
         </span>
       ) : isActive ? (
-        <span className="text-amber-400 text-xs">▐▐</span>
+        <Play className='w-5 h-5 text-amber-700'/>
       ) : (
         <span className="text-amber-600/50 font-mono text-xs">{track}</span>
       )}
@@ -119,102 +95,39 @@ const TrackRow = ({ track, title, feat, duration, src, index, revealed, isActive
 
     <span className="text-amber-600/50 font-mono text-xs shrink-0">{duration}</span>
 
-    {/* Play icon on hover (hidden for active) */}
     {!isActive && (
       <span className="text-amber-400/0 group-hover:text-amber-400/70 transition-colors text-xs">▶</span>
     )}
   </motion.button>
 );
 
-// Main Component
+// ── Main Component (pure UI — audio lives in PlayerContext) ───────────────────
 const BatchSoundtrack = () => {
-  const [revealed,      setRevealed]      = useState(false);      // tracklist un-blurred
-  const [activeTrack,   setActiveTrack]   = useState(null);       // index of selected track
-  const [isPlaying,     setIsPlaying]     = useState(false);      // audio actually playing
-  const [isHovered,     setIsHovered]     = useState(false);
-  const audioRef = useRef(null);
+  const { activeTrack, isPlaying, revealed, currentTrack, playTrack, toggleVinyl } = usePlayer();
+  const [isHovered, setIsHovered] = useState(false);
 
-  // Spin: ONLY while audio is actively playing
-  const spinDuration = isPlaying ? 2.5 : Infinity; // Infinity = stopped
-
-  // Play / pause / switch logic
-  const handlePlay = useCallback((idx) => {
-    if (!revealed) return;
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (activeTrack === idx) {
-      // Same track — toggle play/pause
-      if (isPlaying) {
-        audio.pause();
-        setIsPlaying(false);
-      } else {
-        audio.play().catch(() => {});
-        setIsPlaying(true);
-      }
-    } else {
-      // Different track — switch src, load, then play
-      audio.pause();
-      audio.src = TRACKLIST[idx].src;
-      audio.load();          // ← ensure browser processes new src before play()
-      audio.currentTime = 0;
-      setActiveTrack(idx);
-      audio.play().catch(() => {});
-      setIsPlaying(true);
-    }
-  }, [activeTrack, isPlaying, revealed]);
-
-  // Clicking the vinyl: open → reveal + auto-play track 0 | close → stop + blur
-  const handleVinylClick = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (!revealed) {
-      // Opening: reveal and auto-play first track
-      audio.src = TRACKLIST[0].src;
-      audio.load();          // ← ensure browser processes src before play()
-      audio.currentTime = 0;
-      setActiveTrack(0);
-      setRevealed(true);
-      audio.play().catch(() => {});
-      setIsPlaying(true);
-    } else {
-      // Closing: stop playback and blur
-      audio.pause();
-      audio.currentTime = 0;
-      setIsPlaying(false);
-      setActiveTrack(null);
-      setRevealed(false);
-    }
-  };
-
-  // Sync isPlaying with native audio events
+  // Disc controls — freeze in place on pause, no snap-back to 0°
+  const discControls = useAnimation();
   useEffect(() => {
-    const audio = audioRef.current;
-    if (!audio) return;
-    const onPlay  = () => setIsPlaying(true);
-    const onPause = () => setIsPlaying(false);
-    const onEnded = () => { setIsPlaying(false); setActiveTrack(null); };
-    audio.addEventListener('play',  onPlay);
-    audio.addEventListener('pause', onPause);
-    audio.addEventListener('ended', onEnded);
-    return () => {
-      audio.removeEventListener('play',  onPlay);
-      audio.removeEventListener('pause', onPause);
-      audio.removeEventListener('ended', onEnded);
-    };
-  }, []);
+    if (isPlaying) {
+      discControls.start({ rotate: 360, transition: { repeat: Infinity, duration: 2.5, ease: 'linear' } });
+    } else {
+      discControls.stop();
+    }
+  }, [isPlaying, discControls]);
 
-  // Pause audio when component unmounts
-  useEffect(() => () => { audioRef.current?.pause(); }, []);
-
-  const currentTitle = activeTrack !== null ? TRACKLIST[activeTrack].title : null;
+  // Tracklist header mini-disc
+  const headerDiscControls = useAnimation();
+  useEffect(() => {
+    if (isPlaying) {
+      headerDiscControls.start({ rotate: 360, transition: { repeat: Infinity, duration: 3, ease: 'linear' } });
+    } else {
+      headerDiscControls.stop();
+    }
+  }, [isPlaying, headerDiscControls]);
 
   return (
     <section className="py-14 relative z-10 overflow-hidden" id="batch-soundtrack">
-      {/* Hidden audio element */}
-      <audio ref={audioRef} preload="none" />
-
       {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div
@@ -224,7 +137,7 @@ const BatchSoundtrack = () => {
       </div>
 
       <div className="max-w-[95%] sm:max-w-5xl mx-auto px-4 sm:px-12 py-14 sm:py-16 border bg-amber-600/10 border-amber-500/30 rounded-xl sm:rounded-2xl shadow-md">
-        
+
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -247,7 +160,7 @@ const BatchSoundtrack = () => {
           className="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-16"
         >
 
-          {/* Vinyl + Turntable */}
+          {/* ── Vinyl + Turntable ── */}
           <div
             className="relative flex-shrink-0"
             style={{ width: 'min(320px, 88vw)', height: 'min(320px, 88vw)' }}
@@ -276,7 +189,7 @@ const BatchSoundtrack = () => {
               }}
             />
 
-            {/* Vinyl disc - rotates ONLY when isPlaying */}
+            {/* Vinyl disc — spins ONLY while playing, freezes in place on pause */}
             <motion.div
               className="absolute inset-0 z-10 rounded-full cursor-pointer select-none"
               style={{
@@ -286,21 +199,15 @@ const BatchSoundtrack = () => {
                   : '0 20px 60px rgba(0,0,0,0.7)',
                 transition: 'box-shadow 0.6s ease',
               }}
-              animate={{ rotate: isPlaying ? 360 : 0 }}
-              transition={
-                isPlaying
-                  ? { repeat: Infinity, ease: 'linear', duration: spinDuration }
-                  : { duration: 0.6, ease: 'easeOut' }
-              }
+              animate={discControls}
               onHoverStart={() => setIsHovered(true)}
               onHoverEnd={() => setIsHovered(false)}
-              onClick={handleVinylClick}
+              onClick={toggleVinyl}
               aria-label="Click to reveal the batch tracklist"
               role="button"
             >
               <VinylGrooves />
-              <VinylLabel trackTitle={currentTitle} playing={isPlaying} />
-              {/* Sheen */}
+              <VinylLabel trackTitle={currentTrack?.title} playing={isPlaying} />
               <div
                 className="absolute inset-0 rounded-full pointer-events-none"
                 style={{ background: 'conic-gradient(from 120deg, transparent 0%, rgba(255,255,255,0.045) 15%, transparent 30%)' }}
@@ -314,14 +221,14 @@ const BatchSoundtrack = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute hidden sm:inline -bottom-12 left-1/2 -translate-x-1/2 text-[10px] text-amber-500/40 tracking-widest uppercase font-sans whitespace-nowrap pointer-events-none"
+                className="absolute hidden sm:block -bottom-12 left-1/2 -translate-x-1/2 text-[10px] text-amber-500/40 tracking-widest uppercase font-sans whitespace-nowrap pointer-events-none"
               >
                 {revealed ? '↑ Click to stop' : '↑ Click the record'}
               </motion.p>
             </AnimatePresence>
           </div>
 
-          {/* Tracklist Panel */}
+          {/* ── Tracklist Panel ── */}
           <div
             className="w-full max-w-sm rounded-2xl overflow-hidden flex-shrink-0"
             style={{
@@ -337,8 +244,7 @@ const BatchSoundtrack = () => {
             {/* Header */}
             <div className="px-5 py-4 border-b flex items-center gap-3" style={{ borderColor: 'rgba(200,140,50,0.12)' }}>
               <motion.div
-                animate={{ rotate: isPlaying ? 360 : 0 }}
-                transition={isPlaying ? { repeat: Infinity, ease: 'linear', duration: 3 } : { duration: 0.6 }}
+                animate={headerDiscControls}
                 className="w-7 h-7 rounded-full flex items-center justify-center shrink-0"
                 style={{ background: 'radial-gradient(circle, #2e2620, #100d08)', border: '1px solid rgba(200,140,50,0.25)' }}
               >
@@ -367,7 +273,7 @@ const BatchSoundtrack = () => {
                 ))}
               </div>
               <span className="text-amber-400/70 text-xs font-mono ml-2 truncate max-w-[180px]">
-                {isPlaying && currentTitle ? `▶  ${currentTitle}` : revealed ? 'Select a track to play' : 'Ready…'}
+                {isPlaying && currentTrack ? `▶  ${currentTrack.title}` : revealed ? 'Select a track to play' : 'Ready…'}
               </span>
             </div>
 
@@ -384,7 +290,7 @@ const BatchSoundtrack = () => {
                   revealed={revealed}
                   isActive={activeTrack === i}
                   isPlaying={isPlaying && activeTrack === i}
-                  onPlay={handlePlay}
+                  onPlay={playTrack}
                 />
               ))}
             </div>

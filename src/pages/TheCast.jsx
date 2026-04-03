@@ -7,7 +7,7 @@ import ChapterNav from '../components/ui/ChapterNav';
 import { peopleData } from '../data/batchmates';
 import { eventsData } from '../data/moments';
 import Modal from '../components/ui/Modal';
-import { Code, Briefcase, Camera, MessageCircle } from 'lucide-react';
+import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 // random bg color of Vintage masking tape
 const bgColors = [
@@ -63,10 +63,9 @@ const TheCast = () => {
 
   const getSocialIcon = (network) => {
     switch (network) {
-      case 'github': return <Code size={20} />;
-      case 'linkedin': return <Briefcase size={20} />;
-      case 'instagram': return <Camera size={20} />;
-      case 'twitter': return <MessageCircle size={20} />;
+      case 'github': return <FaGithub size={20} />;
+      case 'linkedin': return <FaLinkedin size={20} />;
+      case 'instagram': return <FaInstagram size={20} />;
       default: return null;
     }
   };
@@ -78,7 +77,7 @@ const TheCast = () => {
           <SectionHeading
             title="The Cast"
             subtitle="The faces and the events that made it all real. ❣️"
-            eyebrow="Us..."
+            eyebrow="MCETians"
           />
 
           {/* Toggle Tab */}

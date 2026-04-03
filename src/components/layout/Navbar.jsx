@@ -1,58 +1,163 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { Menu, X, Volume2, VolumeX } from 'lucide-react';
+import { Menu, Pause, X } from 'lucide-react';
+import { motion, useAnimation } from 'framer-motion';
+import { usePlayer } from '../../context/PlayerContext';
+import { Play } from 'lucide-react';
 
+/* ── One-direction marquee ─────────────────────────────────────────── */
+/* Duplicates the text so the loop is seamless (no jump-back)          */
+const MarqueeText = ({ text, className = '' }) => {
+  const needsScroll = text.length > 14;
+  return (
+    <span
+      className={`block overflow-hidden whitespace-nowrap ${className}`}
+      style={{ maxWidth: '100px' }}
+    >
+      {needsScroll ? (
+        <motion.span
+          className="inline-block"
+          /* scroll left to -50% → identical visual to start → loop seamlessly */
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ duration: 7, ease: 'linear', repeat: Infinity }}
+        >
+          {/* doubled text with separator so loop is invisible */}
+          {text}&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;{text}&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;
+        </motion.span>
+      ) : (
+        <span>{text}</span>
+      )}
+    </span>
+  );
+};
+
+/* ── Tiny vinyl SVG (matches home page aesthetics) ──────────────────── */
+/* useAnimation-based rotation so it freezes in place when stopped,    */
+/* rather than snapping back to 0°.                                    */
+const MiniVinyl = ({ isPlaying, size = 26 }) => {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isPlaying) {
+      controls.start({
+        rotate: 360,
+        transition: { repeat: Infinity, duration: 3, ease: 'linear' },
+      });
+    } else {
+      controls.stop(); // freeze exactly where it is
+    }
+  }, [isPlaying, controls]);
+
+  return (
+    <motion.div
+      animate={controls}
+      className="flex-shrink-0 relative"
+      style={{ width: size, height: size }}
+    >
+      <svg
+        viewBox="0 0 100 100"
+        width={size}
+        height={size}
+        className="absolute inset-0"
+        aria-hidden="true"
+      >
+        <defs>
+          <radialGradient id="mDiscGrad" cx="40%" cy="35%" r="70%">
+            <stop offset="0%"   stopColor="#2e2822" />
+            <stop offset="100%" stopColor="#100d08" />
+          </radialGradient>
+          <radialGradient id="mLabelGrad" cx="35%" cy="35%" r="70%">
+            <stop offset="0%"   stopColor="#c8934a" />
+            <stop offset="100%" stopColor="#7c481f" />
+          </radialGradient>
+        </defs>
+        {/* Base disc */}
+        <circle cx="50" cy="50" r="50" fill="url(#mDiscGrad)" />
+        {/* Groove rings */}
+        {[44, 37, 30, 23].map((r, i) => (
+          <circle key={i} cx="50" cy="50" r={r}
+            fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="0.9" />
+        ))}
+        {/* Amber label */}
+        <circle cx="50" cy="50" r="15" fill="url(#mLabelGrad)" />
+        {/* Spindle */}
+        <circle cx="50" cy="50" r="3.5" fill="#0d0b09" />
+        {/* Sheen highlight */}
+        <path d="M 22 28 Q 50 12 78 28"
+          stroke="rgba(255,255,255,0.07)" strokeWidth="7"
+          fill="none" strokeLinecap="round" />
+      </svg>
+    </motion.div>
+  );
+};
+
+/* ── Inline mini player pill ─────────────────────────────────────────  */
+const NavMiniPlayer = ({ showDisc = true }) => {
+  const { currentTrack, isPlaying, activeTrack, playTrack, stop } = usePlayer();
+  if (!currentTrack) return null;
+
+  return (
+    <motion.div
+      key="nav-player"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
+      className="flex items-center gap-2 px-3 py-1.5 rounded-full flex-shrink-0"
+      style={{
+        background: 'rgba(80, 54, 18, 0.34)',
+        border: '1px solid rgba(187, 120, 20, 0.6)',
+        boxShadow: '0 2px 12px rgba(0,0,0,0.4)',
+        backdropFilter: 'blur(8px)',
+      }}
+    >
+      {/* Vinyl disc — desktop only */}
+      {showDisc && <MiniVinyl isPlaying={isPlaying} size={26} />}
+
+      {/* Scrolling track name */}
+      <MarqueeText
+        text={currentTrack.title}
+        className="text-amber-300/80 text-xs font-['Playfair_Display']"
+      />
+
+      {/* Play / Pause */}
+      <button
+        onClick={() => playTrack(activeTrack)}
+        className="text-amber-400/80 hover:text-amber-200 transition-colors text-[10px] leading-none flex-shrink-0"
+        aria-label={isPlaying ? 'Pause' : 'Play'}
+      >
+        {isPlaying ? <Pause className='w-4 h-4'/> : <Play className='w-4 h-4'/>}
+      </button>
+
+      {/* Stop */}
+      <button
+        onClick={stop}
+        className="text-amber-600/70 hover:text-amber-400 transition-colors text-xs leading-none flex-shrink-0"
+        aria-label="Stop"
+      >
+        <X className='w-4 h-4'/>
+      </button>
+    </motion.div>
+  );
+};
+
+/* ── Navbar ──────────────────────────────────────────────────────────── */
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
-  const audioRef = useRef(null);
-
-  const toggleMusic = () => {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (!isMusicPlaying) {
-      audio.volume = 0;
-      const playPromise = audio.play();
-      
-      if (playPromise !== undefined) {
-        playPromise.then(() => {
-          let vol = 0;
-          const fade = setInterval(() => {
-            if (vol < 0.2) {
-              vol = Math.min(vol + 0.02, 0.2);
-              audio.volume = vol;
-            } else {
-              clearInterval(fade);
-            }
-          }, 100);
-          setIsMusicPlaying(true);
-        }).catch(e => {
-          console.error('Audio play failed:', e);
-          setIsMusicPlaying(false);
-        });
-      }
-    } else {
-      audio.pause();
-      setIsMusicPlaying(false);
-    }
-  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Prologue', path: '/' },
-    { name: 'Chapters', path: '/chapters' },
-    { name: 'The Cast', path: '/the-cast' },
-    { name: 'Scrapbook', path: '/scrapbook' },
-    { name: 'Our Notes', path: '/our-notes' },
+    { name: 'Prologue',   path: '/' },
+    { name: 'Chapters',   path: '/chapters' },
+    { name: 'The Cast',   path: '/the-cast' },
+    { name: 'Scrapbook',  path: '/scrapbook' },
+    { name: 'Our Notes',  path: '/our-notes' },
     { name: 'Last Pages', path: '/last-pages' },
   ];
 
@@ -63,48 +168,45 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 gap-3">
+
+          {/* Logo */}
           <div className="flex-shrink-0">
-            <NavLink to="/" className="text-2xl font-serif font-bold text-gradient">
-              MCET <span className="font-['Caveat']">Batch</span>'26 
+            <NavLink to="/" className="text-2xl font-serif font-bold text-gradient whitespace-nowrap">
+              MCET <span className="font-['Caveat']">Batch</span>'26
             </NavLink>
           </div>
-          
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline font-serif space-x-4 text-sm font-medium">
-              {navLinks.map((link) => (
-                <NavLink
-                  key={link.name}
-                  to={link.path}
-                  className={({ isActive }) =>
-                    `px-3 py-2 rounded-md transition-colors ${
-                      isActive ? 'text-amber-500 bg-[var(--color-glass)]' : 'text-[var(--color-text-muted)] hover:text-white hover:bg-[var(--color-glass)]'
-                    }`
-                  }
-                >
-                  {link.name}
-                </NavLink>
-              ))}
-              <button
-                onClick={toggleMusic}
-                className="ml-4 p-2 text-[var(--color-text-muted)] hover:text-amber-400 transition-colors"
-                aria-label="Toggle Music"
+
+          {/* Desktop nav links */}
+          <div className="hidden md:flex items-baseline font-serif space-x-1 text-sm font-medium flex-1 justify-center">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.name}
+                to={link.path}
+                className={({ isActive }) =>
+                  `px-3 py-2 rounded-md transition-colors whitespace-nowrap ${
+                    isActive
+                      ? 'text-amber-500 bg-[var(--color-glass)]'
+                      : 'text-[var(--color-text-muted)] hover:text-white hover:bg-[var(--color-glass)]'
+                  }`
+                }
               >
-                {isMusicPlaying ? <Volume2 size={20} /> : <VolumeX size={20} />}
-              </button>
-            </div>
+                {link.name}
+              </NavLink>
+            ))}
           </div>
-          
-          <div className="md:hidden flex items-center">
-            <button
-                onClick={toggleMusic}
-                className="mr-4 p-2 text-[var(--color-text-muted)] hover:text-amber-400 transition-colors"
-            >
-                {isMusicPlaying ? <Volume2 size={20} /> : <VolumeX size={20} />}
-            </button>
+
+          {/* Desktop mini player — disc visible */}
+          <div className="hidden md:block flex-shrink-0">
+            <NavMiniPlayer showDisc={true} />
+          </div>
+
+          {/* Mobile: mini player (no disc) + hamburger */}
+          <div className="md:hidden flex items-center gap-2 flex-shrink-0">
+            <NavMiniPlayer showDisc={false} />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white focus:outline-none"
+              className="text-gray-300 hover:text-white focus:outline-none flex-shrink-0"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -112,7 +214,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
+      {/* Mobile dropdown */}
       {isOpen && (
         <div className="md:hidden glass bg-[#0a0a0f]/95 shadow-2xl border-t border-[var(--color-glass-border)]">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 font-serif">
@@ -123,7 +225,9 @@ const Navbar = () => {
                 onClick={() => setIsOpen(false)}
                 className={({ isActive }) =>
                   `block px-3 py-2 rounded-md text-base font-medium ${
-                    isActive ? 'text-amber-500 bg-[var(--color-glass)]' : 'text-[var(--color-text-muted)] hover:text-white hover:bg-[var(--color-glass)]'
+                    isActive
+                      ? 'text-amber-500 bg-[var(--color-glass)]'
+                      : 'text-[var(--color-text-muted)] hover:text-white hover:bg-[var(--color-glass)]'
                   }`
                 }
               >
@@ -133,8 +237,6 @@ const Navbar = () => {
           </div>
         </div>
       )}
-      {/* Background Audio Element */}
-      <audio ref={audioRef} src="/music/background-music.m4a" loop />
     </nav>
   );
 };
