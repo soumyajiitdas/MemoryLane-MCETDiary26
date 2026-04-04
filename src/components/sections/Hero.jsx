@@ -4,10 +4,10 @@ import Button from '../ui/Button';
 
 // Dummy list of polaroids to scatter in the background with "Back of Polaroid" notes
 const bgPolaroids = [
-  { id: 1, rot: -12, x: '-30vw', y: '-10vh', img: '/images/scrapbook/16.jpg', bg: 'linear-gradient(to right, #f68084, #a6c0fe)', delay: 0, note: "The first day we met at the canteen.", date: "Aug 2023" },
-  { id: 2, rot: 8, x: '25vw', y: '-15vh', img: '/images/scrapbook/17.jpg', bg: 'linear-gradient(to right, #4facfe, #00f2fe)', delay: 0.2, note: "Library sessions or just library naps?", date: "Oct 2023" },
-  { id: 3, rot: -5, x: '-20vw', y: '25vh', img: '/images/scrapbook/18.jpg', bg: 'linear-gradient(to right, #ff0844, #ffb199)', delay: 0.4, note: "That record-breaking hackathon night.", date: "Feb 2024" },
-  { id: 4, rot: 15, x: '35vw', y: '20vh', img: '/images/scrapbook/01.jpg', bg: 'linear-gradient(to right, #f83600, #f9d423)', delay: 0.6, note: "Finally, the senior trip we promised.", date: "Mar 2025" },
+  { id: 1, rot: -12, x: '-30vw', y: '-10vh', img: '/images/scrapbook/24.jpg', bg: 'linear-gradient(to right, #f68084, #a6c0fe)', delay: 0, note: "We lived our moments, without worrying about the rest.", date: "Mar 2026" },
+  { id: 2, rot: 8, x: '25vw', y: '-15vh', img: '/images/scrapbook/31.jpg', bg: 'linear-gradient(to right, #4facfe, #00f2fe)', delay: 0.2, note: "In every moment, we found our own perfection.", date: "Oct 2023" },
+  { id: 3, rot: -5, x: '-20vw', y: '25vh', img: '/images/scrapbook/15.jpg', bg: 'linear-gradient(to right, #ff0844, #ffb199)', delay: 0.4, note: "Good times never go to waste.", date: "Feb 2026" },
+  { id: 4, rot: 15, x: '35vw', y: '20vh', img: '/images/scrapbook/04.jpg', bg: 'linear-gradient(to right, #f83600, #f9d423)', delay: 0.6, note: "From first steps to forever memories.", date: "Mar 2023" },
 ];
 
 const containerVariants = {

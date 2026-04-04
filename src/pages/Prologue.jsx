@@ -132,30 +132,37 @@ const LetterToBatch = () => {
       Dearest Batch of 2026,
     </h2>
 
-    {/* Body (broken like real writing) */}
-    <div className="mt-6 space-y-5 font-['Caveat'] text-2xl pt-2 md:text-3xl text-gray-900">
+    {/* Body */}
+    <div className="mt-4 space-y-5 font-['Caveat'] text-2xl pt-2 md:text-3xl text-gray-900">
 
-      <p>
-        It feels like just yesterday we were awkwardly introducing ourselves  
-        in the freshers' orientation.
-        We’ve shared countless cups of tea at the canteen,  
-        pulled desperate all-nighters before exams,  
-        and created a million inside jokes.
-        <span className='block'>
-          This diary is a tribute to those unfiltered, raw, and beautiful days.
-        </span>
-      </p>
+  <p>
+    It feels like yesterday we were strangers, learning names in nervous smiles.  
+    Somewhere between chai breaks, silent struggles, and sleepless nights,  
+    we became stories in each other’s lives.
+  </p>
 
-      <p className="">
-        May we never forget how we lived... :)
-      </p>
+  <p className="italic text-amber-900 text-center">
+    "What changes with every moment becomes truly beautiful."
+  </p>
 
-    </div>
+  <p>
+    Maybe that’s what we were — ever-changing, yet unforgettable.  
+    Life will pull us into different paths, but some bonds aren’t meant to stay,  
+    only to shape us. And once their purpose is fulfilled,  
+    even the closest souls drift apart.
+  </p>
+
+  <p>
+    Still, we lived… truly, deeply, together.  
+    <span className='block'>And that will always remain... :)</span>
+  </p>
+
+</div>
 
     {/* Signature */}
-    <div className="mt-12 sm:mt-14 text-right">
+    <div className="mt-12 sm:mt-12 text-right">
       <span className="font-['Caveat'] text-2xl font-medium md:text-3xl text-amber-900">
-        — From all of us, once here
+        — From the days that made us
       </span>
     </div>
 

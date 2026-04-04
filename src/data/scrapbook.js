@@ -6,17 +6,15 @@ export const galleryData =
     src: "/images/scrapbook/01.jpg",
     caption: "After our first semester exams",
     album: "Moments",
-    year: "2022"
+    year: "2023"
   },
   {
     id: 4,
     src: "/images/scrapbook/04.jpg",
     caption: "Moments from our first semester",
     album: "Moments",
-    year: "2022"
+    year: "2023"
   },
-
-  // ===== 2023 =====
   {
     id: 2,
     src: "/images/scrapbook/02.jpg",
@@ -63,14 +61,14 @@ export const galleryData =
     id: 9,
     src: "/images/scrapbook/09.jpg",
     caption: "Visit to Pataleswar Mandir during our first sem.",
-    album: "Moments",
+    album: "Hangouts",
     year: "2023"
   },
   {
     id: 10,
     src: "/images/scrapbook/10.jpg",
     caption: "Moments at Pataleswar Mandir",
-    album: "Moments",
+    album: "Hangouts",
     year: "2023"
   },
   {

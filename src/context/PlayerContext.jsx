@@ -4,17 +4,17 @@ import React, { createContext, useContext, useRef, useState, useEffect, useCallb
 export const TRACKLIST = [
   {
     track: '01',
-    title: "End of the Beginning",
-    feat: "DJO",
-    duration: "3:00 min",
-    src: '/music/background-music.m4a',
-  },
-  {
-    track: '02',
     title: "Yaariyaan",
     feat: "Cocktail",
     duration: "4:25 min",
-    src: '/music/background-music_02.mp3',
+    src: '/music/background-music.mp3',
+  },
+  {
+    track: '02',
+    title: "End of the Beginning",
+    feat: "DJO",
+    duration: "3:00 min",
+    src: '/music/background-music_02.m4a',
   },
 ];
 

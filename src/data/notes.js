@@ -22,10 +22,10 @@ export const memoriesData = [
     },
     {
       id: 4,
-      author: "Name Here",
-      content: "This is a test message to display in the 'Our Notes' section 🤖",
+      author: "Bapi",
+      content: "Can’t believe these 4 years flew by - hostel life with you all was the best. From late-night talks to crazy memories, I’ll miss everything. You’re not just friends, you’re family, love you all 💙",
       image: "",
-      timestamp: "2026-01-27T22:30:00Z",
+      timestamp: "2026-04-04T20:28:00Z",
     }
   ];
   

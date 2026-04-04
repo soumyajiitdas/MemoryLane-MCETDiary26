@@ -36,12 +36,12 @@ const StickyNote = ({ post }) => {
         ></div>
         {!hasTape && <div className="push-pin -top-3"></div>}
         
-        <p className={`font-['Caveat'] ${post.image ? 'text-2xl mt-4 mb-6' : 'text-3xl mt-6 mb-8'} leading-relaxed text-[#2c3e50] w-full text-center px-2`}>
+        <p className="font-['Caveat'] text-2xl mt-4 mb-4 leading-relaxed text-[#2c3e50] w-full text-center">
            "{post.content}"
         </p>
         
         {post.image && (
-          <div className="w-full mb-6">
+          <div className="w-full mb-6 z-10">
              <img 
                src={post.image.startsWith('linear') ? '' : post.image} 
                style={post.image.startsWith('linear') ? { background: post.image } : {}}
