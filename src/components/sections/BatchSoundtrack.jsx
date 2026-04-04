@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useAnimation, AnimatePresence } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { usePlayer, TRACKLIST } from '../../context/PlayerContext';
 import { Play } from 'lucide-react';
 
@@ -103,28 +103,12 @@ const TrackRow = ({ track, title, feat, duration, index, revealed, isActive, isP
 
 // ── Main Component (pure UI — audio lives in PlayerContext) ───────────────────
 const BatchSoundtrack = () => {
-  const { activeTrack, isPlaying, revealed, currentTrack, playTrack, toggleVinyl } = usePlayer();
+  const { activeTrack, isPlaying, isResetting, revealed, currentTrack, playTrack, toggleVinyl } = usePlayer();
   const [isHovered, setIsHovered] = useState(false);
 
-  // Disc controls — freeze in place on pause, no snap-back to 0°
-  const discControls = useAnimation();
-  useEffect(() => {
-    if (isPlaying) {
-      discControls.start({ rotate: 360, transition: { repeat: Infinity, duration: 2.5, ease: 'linear' } });
-    } else {
-      discControls.stop();
-    }
-  }, [isPlaying, discControls]);
-
-  // Tracklist header mini-disc
-  const headerDiscControls = useAnimation();
-  useEffect(() => {
-    if (isPlaying) {
-      headerDiscControls.start({ rotate: 360, transition: { repeat: Infinity, duration: 3, ease: 'linear' } });
-    } else {
-      headerDiscControls.stop();
-    }
-  }, [isPlaying, headerDiscControls]);
+  // CSS animation-play-state: 'running' only when audio is truly playing AND not resetting
+  const discPlayState   = (isPlaying && !isResetting) ? 'running' : 'paused';
+  const headerPlayState = (isPlaying && !isResetting) ? 'running' : 'paused';
 
   return (
     <section className="py-14 relative z-10 overflow-hidden" id="batch-soundtrack">
@@ -146,7 +130,7 @@ const BatchSoundtrack = () => {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="text-center mb-16"
         >
-          <p className="text-amber-500/60 font-['Caveat'] tracking-[0.10em] text-xl sm:text-2xl mb-3">
+          <p className="text-amber-500/60 font-['Caveat'] tracking-[0.10em] text-2xl mb-3">
             If our time had a playlist, this would be it...
           </p>
         </motion.div>
@@ -163,7 +147,10 @@ const BatchSoundtrack = () => {
           {/* ── Vinyl + Turntable ── */}
           <div
             className="relative flex-shrink-0"
-            style={{ width: 'min(320px, 88vw)', height: 'min(320px, 88vw)' }}
+            style={{
+              width:  'clamp(190px, 55vw, 320px)',
+              height: 'clamp(190px, 55vw, 320px)',
+            }}
           >
             <ToneArm playing={isPlaying} />
 
@@ -189,22 +176,29 @@ const BatchSoundtrack = () => {
               }}
             />
 
-            {/* Vinyl disc — spins ONLY while playing, freezes in place on pause */}
-            <motion.div
-              className="absolute inset-0 z-10 rounded-full cursor-pointer select-none"
+            {/* Vinyl disc — wind-down animation on reset, CSS spin when playing */}
+            <div
+              key={isResetting ? 'resetting' : 'playing'}
+              className={isResetting ? 'vinyl-winddown' : 'vinyl-spinning'}
               style={{
+                position: 'absolute', inset: 0, zIndex: 10,
+                borderRadius: '9999px',
+                cursor: 'pointer', userSelect: 'none',
                 background: 'radial-gradient(circle at 40% 35%, #2e2822, #100d08 65%)',
                 boxShadow: isPlaying
                   ? '0 0 55px 10px rgba(200,140,50,0.22), 0 20px 60px rgba(0,0,0,0.7)'
                   : '0 20px 60px rgba(0,0,0,0.7)',
                 transition: 'box-shadow 0.6s ease',
+                ...(isResetting ? {} : {
+                  animationDuration: '2.5s',
+                  animationPlayState: discPlayState,
+                }),
               }}
-              animate={discControls}
-              onHoverStart={() => setIsHovered(true)}
-              onHoverEnd={() => setIsHovered(false)}
               onClick={toggleVinyl}
-              aria-label="Click to reveal the batch tracklist"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
               role="button"
+              aria-label="Click to reveal the batch tracklist"
             >
               <VinylGrooves />
               <VinylLabel trackTitle={currentTrack?.title} playing={isPlaying} />
@@ -212,7 +206,7 @@ const BatchSoundtrack = () => {
                 className="absolute inset-0 rounded-full pointer-events-none"
                 style={{ background: 'conic-gradient(from 120deg, transparent 0%, rgba(255,255,255,0.045) 15%, transparent 30%)' }}
               />
-            </motion.div>
+            </div>
 
             {/* Hint badge */}
             <AnimatePresence>
@@ -243,13 +237,24 @@ const BatchSoundtrack = () => {
           >
             {/* Header */}
             <div className="px-5 py-4 border-b flex items-center gap-3" style={{ borderColor: 'rgba(200,140,50,0.12)' }}>
-              <motion.div
-                animate={headerDiscControls}
-                className="w-7 h-7 rounded-full flex items-center justify-center shrink-0"
-                style={{ background: 'radial-gradient(circle, #2e2620, #100d08)', border: '1px solid rgba(200,140,50,0.25)' }}
+              <div
+                key={isResetting ? 'h-resetting' : 'h-playing'}
+                className={isResetting ? 'vinyl-winddown' : 'vinyl-spinning'}
+                style={{
+                  width: '1.75rem', height: '1.75rem',
+                  borderRadius: '9999px',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  flexShrink: 0,
+                  background: 'radial-gradient(circle, #2e2620, #100d08)',
+                  border: '1px solid rgba(200,140,50,0.25)',
+                  ...(isResetting ? {} : {
+                    animationDuration: '3s',
+                    animationPlayState: headerPlayState,
+                  }),
+                }}
               >
                 <div className="w-2 h-2 rounded-full bg-amber-800/60" />
-              </motion.div>
+              </div>
               <div>
                 <p className="font-['Playfair_Display'] text-amber-200 font-semibold text-sm">The Memory Tape</p>
                 <p className="text-amber-600/50 text-xs">MCET · 2022–'26 · {TRACKLIST.length} tracks</p>

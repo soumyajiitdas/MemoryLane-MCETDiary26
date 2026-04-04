@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
-import EventCard from '../components/sections/MomentCard';
+import MomentCard from '../components/sections/MomentCard';
 import ChapterNav from '../components/ui/ChapterNav';
 import { peopleData } from '../data/batchmates';
 import { eventsData } from '../data/moments';
@@ -134,7 +134,7 @@ const TheCast = () => {
                 className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
               >
                 {eventsData.map((event) => (
-                  <EventCard key={event.id} event={event} onClick={() => {}} />
+                  <MomentCard key={event.id} event={event} onClick={() => {}} />
                 ))}
               </motion.div>
             )}

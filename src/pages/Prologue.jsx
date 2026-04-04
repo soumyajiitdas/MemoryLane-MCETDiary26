@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import Hero from '../components/sections/Hero';
 import BatchSoundtrack from '../components/sections/BatchSoundtrack';
 import CountdownTimer from '../components/ui/CountdownTimer';
@@ -13,7 +14,7 @@ import { eventsData } from '../data/moments';
 import { memoriesData } from '../data/notes';
 import { timelineData } from '../data/chapters';
 
-// Updated Vintage Ticket Card with Framer Motion
+// Vintage Ticket Card with Framer Motion
 const VintageStatTicket = ({ label, value, delay }) => {
   const paperColor = '#eaddc5'; // Aged parchment/cream color
   return (
@@ -27,7 +28,6 @@ const VintageStatTicket = ({ label, value, delay }) => {
       style={{
         backgroundColor: paperColor,
         boxShadow: "2px 4px 15px rgba(0,0,0,0.2), inset 0 0 40px rgba(100,70,30,0.15)",
-        // Perforated edge illusion
         backgroundImage: `radial-gradient(circle at 0 50%, transparent 6px, ${paperColor} 7px), radial-gradient(circle at 100% 50%, transparent 6px, ${paperColor} 7px)`,
         backgroundSize: '100% 100%',
         backgroundRepeat: 'no-repeat',
@@ -37,8 +37,12 @@ const VintageStatTicket = ({ label, value, delay }) => {
         <span className="text-4xl font-serif text-[#3e3222] mb-2 font-bold">{value}</span>
         <span className="text-xs uppercase tracking-widest font-sans text-[#7d6b52] font-semibold text-center">{label}</span>
         {/* Vintage stamp overlay detail */}
-        <div className="absolute opacity-60 border-2 border-[#b94a4a] rounded-full w-16 h-16 flex items-center justify-center rotate-12 top-2 right-2 pointer-events-none mix-blend-multiply">
-           <span className="text-[10px] font-bold text-[#b94a4a] tracking-tighter uppercase">'26</span>
+        <div className="absolute top-2 right-2 w-[69px] h-[69px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-80 shadow-sm pointer-events-none">
+            <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
+              <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
+              '26
+              </span>
+            </div>
         </div>
     </motion.div>
   );
@@ -53,8 +57,17 @@ const StickyNoteMini = ({ post, index }) => {
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.15, type: 'spring', damping: 15 }}
       whileHover={{ scale: 1.05, zIndex: 10 }}
+      style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')"}}
       className="sticky-note p-6 break-inside-avoid w-full max-w-sm mx-auto flex flex-col cursor-pointer"
     >
+      {/* Ruled lines overlay */}
+    <div 
+      className="absolute inset-0 opacity-40 pointer-events-none"
+      style={{
+          backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)",
+          backgroundSize: "100% 28px",
+      }}
+    ></div>
       <p className="font-['Caveat'] text-2xl leading-relaxed text-[#2c3e50] w-full mt-4">
          "{post.content}"
       </p>
@@ -80,11 +93,23 @@ const LetterToBatch = () => {
     className="max-w-3xl mx-auto p-10 md:p-16 relative bg-[#fdfbf7] text-[#2c3e50]"
     style={{
       boxShadow: "8px 20px 40px rgba(0,0,0,0.25)",
-      backgroundImage: "linear-gradient(transparent 96%, #e8dccf 96%)",
+      backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')",
       backgroundSize: "100% 2.6rem",
       lineHeight: "2.6rem"
     }}
   >
+    {/* Ruled lines overlay */}
+    <div 
+      className="absolute inset-0 opacity-40 pointer-events-none"
+      style={{
+          backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)",
+          backgroundSize: "100% 28px",
+      }}
+    ></div>
+
+    {/* Red vertical margin line for classical notebook effect */}
+    <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-red-800/30 pointer-events-none"></div>
+    <div className="absolute left-[34px] top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
 
     {/* Paper Tear */}
     <div className="absolute top-0 left-0 w-full h-8 overflow-hidden transform -translate-y-full opacity-90">
@@ -93,8 +118,17 @@ const LetterToBatch = () => {
       </svg>
     </div>
 
+    {/* Vintage Round Stamp (e.g. for Category) */}
+    <div className="absolute -top-1 -right-2 sm:top-3 sm:right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-80 shadow-sm pointer-events-none">
+        <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
+          <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
+            MCET Diary'26
+          </span>
+        </div>
+    </div>
+
     {/* Title */}
-    <h2 className="font-['Caveat'] text-4xl text-amber-900 border-b-2 border-amber-900 inline-block leading-tight pt-3">
+    <h2 className="font-['Caveat'] text-4xl text-amber-900 border-b-2 border-amber-900 inline-block leading-tight">
       Dearest Batch of 2026,
     </h2>
 
@@ -107,21 +141,19 @@ const LetterToBatch = () => {
         We’ve shared countless cups of tea at the canteen,  
         pulled desperate all-nighters before exams,  
         and created a million inside jokes.
-      <p>
-        This diary is a tribute  
-        to those unfiltered, raw, and beautiful days.
-      </p>
-        
+        <span className='block'>
+          This diary is a tribute to those unfiltered, raw, and beautiful days.
+        </span>
       </p>
 
-      <p className="pt-4">
+      <p className="">
         May we never forget how we lived... :)
       </p>
 
     </div>
 
     {/* Signature */}
-    <div className="mt-14 text-right">
+    <div className="mt-12 sm:mt-14 text-right">
       <span className="font-['Caveat'] text-2xl font-medium md:text-3xl text-amber-900">
         — From all of us, once here
       </span>
@@ -212,9 +244,9 @@ const Prologue = () => {
                  </motion.div>
                ))}
              </div>
-             <a href="/the-cast" className="inline-block mt-8 font-serif italic text-amber-500 hover:text-white transition-colors text-xl border-b border-amber-500/30 pb-1">
+             <Link to="/the-cast" className="inline-block mt-8 font-serif italic text-amber-500 hover:text-white transition-colors text-xl border-b border-amber-500/30 pb-1">
                 Meet the full cast &rarr;
-             </a>
+             </Link>
           </div>
         </section>
       )}
@@ -242,7 +274,7 @@ const Prologue = () => {
         </div>
       </motion.section>
 
-      {/* Recent Memories Corkboard */}
+      {/* Random Memories Corkboard */}
       <section className="py-32 relative z-10">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <SectionHeading
@@ -257,9 +289,9 @@ const Prologue = () => {
             ))}
           </div>
 
-          <a href="/our-notes" className="inline-block mt-8 font-serif italic text-amber-500 hover:text-white transition-colors text-xl border-b border-amber-500/30 pb-1">
+          <Link to="/our-notes" className="inline-block mt-8 font-serif italic text-amber-500 hover:text-white transition-colors text-xl border-b border-amber-500/30 pb-1">
              View all entries in Our Notes &rarr;
-          </a>
+          </Link>
         </div>
       </section>
 

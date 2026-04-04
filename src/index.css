@@ -49,6 +49,30 @@
       transform: translateY(0);
     }
   }
+
+  @keyframes vinyl-spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+}
+
+/* Vinyl spin utility — driven by animation-play-state in JS */
+.vinyl-spinning {
+  animation: vinyl-spin 3s linear infinite;
+  animation-play-state: paused; /* JS sets to 'running' when playing */
+}
+
+/* Wind-down: plays once during track-change reset window (300ms) */
+/* Simulates the disc decelerating to a natural stop               */
+.vinyl-winddown {
+  animation: vinyl-winddown 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1 forwards;
+}
+
+@keyframes vinyl-winddown {
+  0%   { transform: rotate(0deg);   }
+  60%  { transform: rotate(200deg); }
+  85%  { transform: rotate(280deg); }
+  100% { transform: rotate(310deg); }
 }
 
 /* Global Styles */

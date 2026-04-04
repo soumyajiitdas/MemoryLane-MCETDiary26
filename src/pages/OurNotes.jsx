@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { PlusCircle } from 'lucide-react';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
@@ -23,9 +22,18 @@ const StickyNote = ({ post }) => {
         className={`sticky-note p-6 md:p-8 flex flex-col shadow-[4px_8px_15px_rgba(0,0,0,0.3)] hover:shadow-[8px_15px_25px_rgba(0,0,0,0.4)] transition-shadow duration-300 w-full ${hasTape ? 'tape' : ''}`}
         style={{
           transform: `rotate(${rotateDeg}deg)`,
+          backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')",
           transformOrigin: 'center top'
         }}
       >
+        {/* Ruled lines overlay */}
+        <div 
+          className="absolute inset-0 opacity-40 pointer-events-none"
+          style={{
+              backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)",
+              backgroundSize: "100% 28px",
+          }}
+        ></div>
         {!hasTape && <div className="push-pin -top-3"></div>}
         
         <p className={`font-['Caveat'] ${post.image ? 'text-2xl mt-4 mb-6' : 'text-3xl mt-6 mb-8'} leading-relaxed text-[#2c3e50] w-full text-center px-2`}>

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-import { Menu, Pause, X } from 'lucide-react';
-import { motion, useAnimation } from 'framer-motion';
+import { NavLink, Link } from 'react-router-dom';
+import { Menu, Play, Pause, X } from 'lucide-react';
+import { motion } from 'framer-motion';
 import { usePlayer } from '../../context/PlayerContext';
-import { Play } from 'lucide-react';
+
 
 /* ── One-direction marquee ─────────────────────────────────────────── */
 /* Duplicates the text so the loop is seamless (no jump-back)          */
@@ -32,27 +32,19 @@ const MarqueeText = ({ text, className = '' }) => {
 };
 
 /* ── Tiny vinyl SVG (matches home page aesthetics) ──────────────────── */
-/* useAnimation-based rotation so it freezes in place when stopped,    */
-/* rather than snapping back to 0°.                                    */
-const MiniVinyl = ({ isPlaying, size = 26 }) => {
-  const controls = useAnimation();
-
-  useEffect(() => {
-    if (isPlaying) {
-      controls.start({
-        rotate: 360,
-        transition: { repeat: Infinity, duration: 3, ease: 'linear' },
-      });
-    } else {
-      controls.stop(); // freeze exactly where it is
-    }
-  }, [isPlaying, controls]);
-
+/* Pure CSS animation-play-state — no Framer Motion rotation needed     */
+const MiniVinyl = ({ isPlaying, isResetting, size = 26 }) => {
+  const playState = (isPlaying && !isResetting) ? 'running' : 'paused';
   return (
-    <motion.div
-      animate={controls}
-      className="flex-shrink-0 relative"
-      style={{ width: size, height: size }}
+    <div
+      key={isResetting ? 'mini-reset' : 'mini-play'}
+      className="vinyl-spinning flex-shrink-0 relative"
+      style={{
+        width: size,
+        height: size,
+        animationDuration: '3s',
+        animationPlayState: playState,
+      }}
     >
       <svg
         viewBox="0 0 100 100"
@@ -71,29 +63,24 @@ const MiniVinyl = ({ isPlaying, size = 26 }) => {
             <stop offset="100%" stopColor="#7c481f" />
           </radialGradient>
         </defs>
-        {/* Base disc */}
         <circle cx="50" cy="50" r="50" fill="url(#mDiscGrad)" />
-        {/* Groove rings */}
         {[44, 37, 30, 23].map((r, i) => (
           <circle key={i} cx="50" cy="50" r={r}
             fill="none" stroke="rgba(255,255,255,0.07)" strokeWidth="0.9" />
         ))}
-        {/* Amber label */}
         <circle cx="50" cy="50" r="15" fill="url(#mLabelGrad)" />
-        {/* Spindle */}
         <circle cx="50" cy="50" r="3.5" fill="#0d0b09" />
-        {/* Sheen highlight */}
         <path d="M 22 28 Q 50 12 78 28"
           stroke="rgba(255,255,255,0.07)" strokeWidth="7"
           fill="none" strokeLinecap="round" />
       </svg>
-    </motion.div>
+    </div>
   );
 };
 
 /* ── Inline mini player pill ─────────────────────────────────────────  */
 const NavMiniPlayer = ({ showDisc = true }) => {
-  const { currentTrack, isPlaying, activeTrack, playTrack, stop } = usePlayer();
+  const { currentTrack, isPlaying, isResetting, activeTrack, playTrack, stop } = usePlayer();
   if (!currentTrack) return null;
 
   return (
@@ -112,7 +99,7 @@ const NavMiniPlayer = ({ showDisc = true }) => {
       }}
     >
       {/* Vinyl disc — desktop only */}
-      {showDisc && <MiniVinyl isPlaying={isPlaying} size={26} />}
+      {showDisc && <MiniVinyl isPlaying={isPlaying} isResetting={isResetting} size={26} />}
 
       {/* Scrolling track name */}
       <MarqueeText

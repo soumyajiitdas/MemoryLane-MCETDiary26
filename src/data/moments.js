@@ -4,7 +4,7 @@ export const eventsData = [
       title: "Freshers' Orientation",
       date: "March 2023",
       category: "Freshers",
-      description: "When we all met for the first time, nervous and excited.✨",
+      description: "Where it all began - the start of our memories together. ✨",
       gallery: ["/images/scrapbook/19.jpg"],
       taggedPeople: ["Soumyajit","Underoos", "Hulk", "Lebowski", "StarLord", "Kriti", "Anik M.", "Animesh", "Srija"]
     },
@@ -13,8 +13,8 @@ export const eventsData = [
       title: "CORUS 2K25 Event",
       date: "March 2023",
       category: "Fests",
-      description: "A memorable event, lots of works with zero sleep.",
-      gallery: ["linear-gradient(135deg, #f6d365, #fda085)"],
+      description: "From planning to perfection - CORUS 2K25 was ours, we made it happen! 🎉",
+      gallery: ["/images/scrapbook/27.jpg"],
       taggedPeople: ["Hulk", "Underoos", "Lebowski", "Kriti", "Legolas", "Thumblina", "Bapi", "Soumyajit"]
     },
     {

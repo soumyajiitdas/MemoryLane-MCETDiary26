@@ -30,9 +30,10 @@ export const usePlayer = () => {
 // ── Provider — mounts ONCE, never unmounts ────────────────────────────────────
 export const PlayerProvider = ({ children }) => {
   const audioRef       = useRef(null);
-  const [activeTrack,  setActiveTrack]  = useState(null);   // index | null
+  const [activeTrack,  setActiveTrack]  = useState(null);
   const [isPlaying,    setIsPlaying]    = useState(false);
-  const [revealed,     setRevealed]     = useState(false);  // vinyl playlist visible
+  const [revealed,     setRevealed]     = useState(false);
+  const [isResetting,  setIsResetting]  = useState(false); // disc momentarily reset to 0°
 
   // Lazily create the Audio element once
   if (!audioRef.current) {
@@ -46,11 +47,17 @@ export const PlayerProvider = ({ children }) => {
     const onPlay  = () => setIsPlaying(true);
     const onPause = () => setIsPlaying(false);
     const onEnded = () => {
+      // Brief reset, then play next track
+      setIsResetting(true);
       setActiveTrack(prev => {
-        const next = (prev === null ? 0 : prev + 1) % TRACKLIST.length; // wrap around
-        audio.src = TRACKLIST[next].src;
-        audio.load();
-        audio.play().catch(() => {});
+        const next = (prev === null ? 0 : prev + 1) % TRACKLIST.length;
+        setTimeout(() => {
+          const audio = audioRef.current;
+          audio.src = TRACKLIST[next].src;
+          audio.load();
+          audio.play().catch(() => {});
+          setIsResetting(false);
+        }, 300); // 300ms reset window — disc returns to 0° then spins
         return next;
       });
     };
@@ -70,18 +77,25 @@ export const PlayerProvider = ({ children }) => {
   const playTrack = useCallback((idx) => {
     const audio = audioRef.current;
     if (activeTrack === idx) {
+      // Same track — toggle
       if (isPlaying) {
         audio.pause();
       } else {
         audio.play().catch(() => {});
+        // isPlaying set by native 'play' event — no manual set needed
       }
     } else {
+      // Different track — reset disc then play
+      setIsResetting(true);
       audio.pause();
-      audio.src = TRACKLIST[idx].src;
-      audio.load();
-      audio.currentTime = 0;
       setActiveTrack(idx);
-      audio.play().catch(() => {});
+      setTimeout(() => {
+        audio.src = TRACKLIST[idx].src;
+        audio.load();
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+        setIsResetting(false);
+      }, 300);
     }
   }, [activeTrack, isPlaying]);
 
@@ -89,12 +103,18 @@ export const PlayerProvider = ({ children }) => {
   const toggleVinyl = useCallback(() => {
     const audio = audioRef.current;
     if (!revealed) {
-      audio.src = TRACKLIST[0].src;
-      audio.load();
-      audio.currentTime = 0;
+      // Open — reset disc to 0° then start playing
+      setIsResetting(true);
       setActiveTrack(0);
       setRevealed(true);
-      audio.play().catch(() => {});
+      setTimeout(() => {
+        audio.src = TRACKLIST[0].src;
+        audio.load();
+        audio.currentTime = 0;
+        audio.play().catch(() => {});
+        setIsResetting(false);
+        // isPlaying is set by the native 'play' event — no early spin
+      }, 250);
     } else {
       audio.pause();
       audio.currentTime = 0;
@@ -121,6 +141,7 @@ export const PlayerProvider = ({ children }) => {
       TRACKLIST,
       activeTrack,
       isPlaying,
+      isResetting,
       revealed,
       currentTrack,
       playTrack,
