@@ -139,7 +139,7 @@ export const peopleData =
     roll: "10600122009",
     photo: "/images/cast/roni.jpg",
     department: "Computer Science",
-    birthday: "",
+    birthday: "05-24",
     oneliner: "Living in his own digital universe - modding apps, gaming hard, and caring little for the noise around.",
     socialLinks: { github: "https://github.com/roni0777", linkedin: "#", instagram: "#" }
   },
@@ -150,7 +150,7 @@ export const peopleData =
     roll: "10600122031",
     photo: "/images/cast/shirsendu.jpg",
     department: "Computer Science",
-    birthday: "",
+    birthday: "08-30",
     oneliner: "Cricket on the field, code on the screen - a calm presence with a genuinely kind heart.",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
@@ -172,7 +172,7 @@ export const peopleData =
     roll: "10600122003",
     photo: "/images/cast/nurful.png",
     department: "Computer Science",
-    birthday: "",
+    birthday: "03-15",
     oneliner: "If knowledge had a helpline, it’d be him - our go-to guide for govt schemes, and real-world moves.",
     socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/%F0%9D%90%8D%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%9F%F0%9D%90%AE%F0%9D%90%A5-%F0%9D%90%92%F0%9D%90%A1%F0%9D%90%9A%F0%9D%90%A2%F0%9D%90%A4%F0%9D%90%A1-115863272/", instagram: "https://www.instagram.com/shaikhnurful/" }
   },
@@ -189,9 +189,9 @@ export const peopleData =
   },
   {
     id: 18,
-    name: "Sahanaj Khatun",
+    name: "Sahanaj Sultana",
     nickname: "",
-    roll: "",
+    roll: "10601322035",
     photo: "/images/cast/sahanaj.jpg",
     department: "Civil Engineering",
     birthday: "10-22",
@@ -205,7 +205,7 @@ export const peopleData =
     roll: "10600122010",
     photo: "/images/cast/priyobroto.jpg",
     department: "Computer Science",
-    birthday: "",
+    birthday: "02-01",
     oneliner: "Charming by nature, confident by choice - turning everyday moments into his own highlight posts.",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },

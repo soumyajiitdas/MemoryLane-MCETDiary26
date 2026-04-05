@@ -18,14 +18,14 @@ export const galleryData =
   {
     id: 2,
     src: "/images/scrapbook/02.jpg",
-    caption: "During Viswakarma Puja 2K23",
+    caption: "During Vishwakarma Puja 2K23",
     album: "Events",
     year: "2023"
   },
   {
     id: 3,
     src: "/images/scrapbook/03.jpg",
-    caption: "Moments from Viswakarma Puja 2K23",
+    caption: "Moments from Vishwakarma Puja 2K23",
     album: "Events",
     year: "2023"
   },
@@ -118,7 +118,7 @@ export const galleryData =
   {
     id: 20,
     src: "/images/scrapbook/20.jpg",
-    caption: "During Viswakarma Puja 2K25",
+    caption: "During Vishwakarma Puja 2K25",
     album: "Events",
     year: "2025"
   },

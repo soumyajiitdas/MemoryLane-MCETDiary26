@@ -32,13 +32,20 @@ export const memoriesData = [
       author: "Nurful",
       content: "As our journey at MCET in the Computer Science & Engineering department comes to an end, we carry with us countless memories that will last a lifetime. From late-night coding sessions and project deadlines to friendships, laughter, and unforgettable moments, these years have shaped who we are today. Though we step into new paths and challenges, the bond we’ve built here will always remain strong. MCET will forever hold a special place in our hearts. Thank you for the memories, the lessons, and the journey. Farewell to a chapter.🫡",
       image: "",
-      timestamp: "2026-04-04T20:28:00Z",
+      timestamp: "2026-04-05T18:33:00Z",
     },
     {
       id: 6,
       author: "Priyobroto",
       content: "My life at MCET was full of unforgettable memories. I deeply miss my friends—the laughter, the stress, and those crazy exam days. They stood beside me, helped me through backlogs, and even in those risky cheating moments. We survived everything together. Now, those days are gone, but the bond and memories still stay in my heart forever.",
       image: "",
-      timestamp: "2026-04-04T20:28:00Z",
+      timestamp: "2026-04-05T18:36:00Z",
+    },
+    {
+      id: 7,
+      author: "Shirsendu",
+      content: "College life isn’t just about classes—it’s about the memories we create in between. Friends become family, turning ordinary days into unforgettable stories. In the end, it’s the laughter, chaos, and togetherness that we carry forever.",
+      image: "",
+      timestamp: "2026-04-05T23:26:00Z",
     },
   ];

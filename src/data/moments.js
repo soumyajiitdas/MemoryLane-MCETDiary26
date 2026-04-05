@@ -4,21 +4,39 @@ export const eventsData = [
       title: "Freshers' Orientation",
       date: "March 2023",
       category: "Freshers",
-      description: "Where it all began - the start of our memories together. ✨",
+      description: "Where it all began - the start of our memories together. 💖",
       gallery: ["/images/scrapbook/19.jpg"],
       taggedPeople: ["Soumyajit","Underoos", "Hulk", "Lebowski", "StarLord", "Kriti", "Anik M.", "Animesh", "Srija"]
     },
+    // {
+    //   id: 2,
+    //   title: "Independence Day Celebration",
+    //   date: "August 2022",
+    //   category: "Independence Day",
+    //   description: "In celebrating this day, we didn’t just remember history - we felt it. 😇",
+    //   gallery: [""],
+    //   taggedPeople: ["Underoos", "Hulk", "Lebowski",]
+    // },
     {
       id: 2,
+      title: "Vishwakarma Puja 2K25",
+      date: "March 2025",
+      category: "Vishwakarma Puja",
+      description: "Not just a puja completed - a devotion fulfilled through effort. ✨",
+      gallery: [""],
+      taggedPeople: ["Hulk", "Underoos", "Lebowski", "Kriti", "Legolas", "Thumblina", "Bapi", "Soumyajit"]
+    },
+    {
+      id: 3,
       title: "CORUS 2K25 Event",
-      date: "March 2023",
-      category: "Fests",
+      date: "Jul 2025",
+      category: "Fest",
       description: "From planning to perfection - CORUS 2K25 was ours, we made it happen! 🎉",
       gallery: ["/images/scrapbook/27.jpg"],
       taggedPeople: ["Hulk", "Underoos", "Lebowski", "Kriti", "Legolas", "Thumblina", "Bapi", "Soumyajit"]
     },
     {
-      id: 3,
+      id: 4,
       title: "Sports Fiesta 2K26",
       date: "February 2026",
       category: "Sports",
