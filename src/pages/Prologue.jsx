@@ -9,7 +9,7 @@ import PageTransition from '../components/layout/PageTransition';
 import ChapterNav from '../components/ui/ChapterNav';
 
 // Data imports
-import { peopleData } from '../data/batchmates';
+import { peopleData } from '../data/cast';
 import { eventsData } from '../data/moments';
 import { memoriesData } from '../data/notes';
 import { timelineData } from '../data/chapters';

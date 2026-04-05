@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Gift } from 'lucide-react';
-import { peopleData } from '../../data/batchmates';
+import { peopleData } from '../../data/cast';
 import ReactConfetti from 'react-confetti';
 
 const BirthdayBanner = () => {

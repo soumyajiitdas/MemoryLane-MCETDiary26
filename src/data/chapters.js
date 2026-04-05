@@ -1,42 +1,43 @@
-export const timelineData = [
-    {
-      year: "2022-'23",
-      title: "The Beginning",
-      subtitle: "Freshers & First Impressions",
-      description: "Stepping onto campus for the first time was a blur of excitement and nerves. We attended orientation, survived our first mid-terms, and started adapting to the chaotic beauty of hostel life. Strangers slowly turned into friends over endless cups of chai.",
-      caption: "Our very first days together \u2764\ufe0f",
-      note: "Hostel rooms filled with too many people and never enough chairs. The start of it all.",
-      events: [1],
-      photos: ["https://images.unsplash.com/photo-1761839258289-72f12b0de058?auto=format&fit=crop&w=800&q=80"]
-    },
-    {
-      year: "2023-'24",
-      title: "Exploring & Expanding",
-      subtitle: "Hackathons & Fests",
-      description: "The year we found our rhythm. We organized our first technical fests, stayed up all night for hackathons, and formed core committees. The campus started feeling like a second home, filled with late-night cravings and sudden adventures.",
-      caption: "Building projects and sleep debt \u2728",
-      note: "Coding at 3 AM while everyone else was asleep. Those energy drinks were our best friends.",
-      events: [2],
-      photos: ["https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80"]
-    },
-    {
-      year: "2024-'25",
-      title: "The Senior Life",
-      subtitle: "Internships & Trips",
-      description: "With internships on the horizon, the pressure was real, but so was the fun. We managed to squeeze in our first group industrial visit which turned into an epic trip. We wrote research papers, pulled all-nighters, and created memories that will last a lifetime.",
-      caption: "An epic getaway in the hills \ud83c\udfde",
-      note: "Looking back, the bus ride was more fun than the actual destination. Endless singing sessions.",
-      events: [3],
-      photos: ["https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80"]
-    },
-    {
-      year: "2025-'26",
-      title: "A Goodbye Worth Remembering",
-      subtitle: "Placements & Farewells",
-      description: "Before it was our turn to leave, we made sure the batch ahead of us got the send-off they deserved. The decor, the performances, the emotions \u2014 we poured everything into giving our seniors a farewell they'd never forget. Now, our own remaining time suddenly feels painfully short.",
-      caption: "Farewell night \u2013 we said goodbye, beautifully \u2764\ufe0f",
-      note: "Promising to keep in touch, knowing life will get in the way, but hoping we're the exception.",
-      events: [],
-      photos: ["https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&w=800&q=80"]
-    }
-  ];
+export const timelineData = 
+[
+  {
+    year: "2022-'23",
+    title: "Where It All Began",
+    subtitle: "Strangers, Chance & The Illusion of Time",
+    description: "We arrived with different stories, unsure of what awaited us. Classrooms felt unfamiliar, faces felt temporary, and everything seemed a little too fast. Somewhere between awkward introductions, shared notes, and late-night chai, strangers slowly turned into people we couldn’t imagine these halls without.",
+    caption: "Before we knew it, we had already begun! ❤️",
+    note: "At that time, it felt temporary. Just people, just days. No one told us that these ordinary moments would one day feel irreplaceable.",
+    events: [1],
+    photos: ["/images/scrapbook/04.jpg"]
+  },
+  {
+    year: "2023-'24",
+    title: "When Chaos Became Normal",
+    subtitle: "Chaos, Creation & Late Nights",
+    description: "Somewhere along the way, confusion turned into confidence. We stopped just attending college - we started becoming a part of it. college-events, responsibilities, and reckless late nights became routine. Sleep schedules broke, but something else formed - 'belonging'.",
+    caption: "We were busy becoming, without knowing what! 💛",
+    note: "Sleep was lost, peace was delayed, but we kept going. Maybe not for the outcome, but for the feeling that we were moving forward.",
+    events: [2],
+    photos: [""]
+  },
+  {
+    year: "2024-'25",
+    title: "The Phase That Changed Us",
+    subtitle: "Reality, Distance & Quiet Realizations",
+    description: "Reality began to knock louder - internships, expectations, and the weight of what comes next. Yet, in between it all, we found ways to escape. Trips turned into stories, stress turned into jokes, and the bond only grew stronger in the chaos of becoming something more.",
+    caption: "Somewhere between pressure and peace! 💜",
+    note: "Trips, laughter, escapes - they weren’t distractions. They were reminders that life isn’t just about reaching somewhere, but about surviving the journey.",
+    events: [3],
+    photos: ["/images/scrapbook/23.jpg"]
+  },
+  {
+    year: "2025-'26",
+    title: "The End That Feels Like a Beginning",
+    subtitle: "Impermanence, Silence & Letting Go",
+    description: "We stood on the other side now - the ones who once arrived, now preparing to leave. We gave farewells, shared stages, laughed a little louder, and held on a little longer. Because somewhere deep down, we all knew - this wasn’t just an ending, it was the last chapter we’d write together.",
+    caption: "Nothing was meant to stay, and yet it mattered! 💚",
+    note: "We say we’ll stay in touch. Maybe we will, maybe we won’t. Life moves, people change. But some connections don’t need presence - they remain, as a silent part of who we became.",
+    events: [4],
+    photos: ["/images/scrapbook/24.jpg"]
+  }
+];

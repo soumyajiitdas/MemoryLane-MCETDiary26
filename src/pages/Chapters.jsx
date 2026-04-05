@@ -66,7 +66,7 @@ const JourneyNode = ({ data, index }) => {
             zIndex: 50
           }}
           transition={{ duration: 0.6, type: 'spring', damping: 20 }}
-          className="relative w-full max-w-[420px] aspect-[4/5] md:aspect-[3/4] cursor-pointer"
+          className="relative w-full max-w-[450px] aspect-[12/13] cursor-pointer"
           style={{ 
             transformStyle: 'preserve-3d',
             transform: `rotate(${isEven ? 2 : -2}deg)`
@@ -75,8 +75,8 @@ const JourneyNode = ({ data, index }) => {
            {/* Front Side */}
            <div className="absolute inset-0 bg-white p-3 md:p-4 pb-12 md:pb-12 shadow-2xl backface-hidden flex flex-col">
               <div className="w-full h-[90%] shadow-inner border border-gray-100 bg-gray-50 overflow-hidden">
-                {data.image.startsWith('http') ? (
-                   <img src={data.image} alt={data.title} className="w-full h-full object-cover" />
+                {data.image.startsWith('/') || data.image.startsWith('http') ? (
+                   <img src={data.image} alt={data.title} className="w-full h-full object-contain" loading="lazy" />
                 ) : (
                    <div className="w-full h-full" style={{ background: data.image }} />
                 ) }
@@ -98,7 +98,7 @@ const JourneyNode = ({ data, index }) => {
               
               <div className="relative z-10 space-y-4">
                 <div className="w-12 h-px bg-amber-900/20 mx-auto"></div>
-                <p className="text-amber-900 font-['Caveat'] text-2xl md:text-3xl leading-relaxed">
+                <p className="text-amber-900 font-['Caveat'] text-2xl leading-relaxed">
                   "{data.note}"
                 </p>
                 <div className="w-12 h-px bg-amber-900/20 mx-auto pt-4"></div>

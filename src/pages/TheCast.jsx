@@ -4,7 +4,7 @@ import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import MomentCard from '../components/sections/MomentCard';
 import ChapterNav from '../components/ui/ChapterNav';
-import { peopleData } from '../data/batchmates';
+import { peopleData } from '../data/cast';
 import { eventsData } from '../data/moments';
 import Modal from '../components/ui/Modal';
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
@@ -27,7 +27,7 @@ const Polaroid = ({ person, onClick }) => {
       whileHover={{ scale: 1.05, rotate: Math.random() > 0.5 ? 2 : -2 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       layoutId={`person-${person.id}`}
-      className="cursor-pointer bg-[#fdfbf7] p-3 pb-6 shadow-xl flex flex-col items-center border border-amber-900/10 relative"
+      className="cursor-pointer bg-[#F7F4ED] p-3 pb-6 shadow-xl flex flex-col items-center border border-amber-900/10 relative"
       onClick={() => onClick(person)}
       style={{
          // slight organic rotation to each card inherently
@@ -156,7 +156,26 @@ const TheCast = () => {
         {selectedPerson && (
           <div className="w-full relative py-6 md:p-8 flex flex-col items-center overflow-hidden">
             {/* The main scrapbook paper background spanning the modal */}
-            <div className="absolute inset-0 bg-[#e8e2d2] shadow-inner" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/cream-paper.png')" }}>
+            <div className="absolute inset-0 bg-[#f9f5eb] shadow-inner" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')" }}>
+              {/* Ruled lines overlay */}
+              <div 
+                className="absolute inset-0 opacity-40 pointer-events-none"
+                style={{
+                    backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)",
+                    backgroundSize: "100% 28px",
+                }}
+              ></div>
+              {/* Red vertical margin line for classical notebook effect */}
+              <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
+              <div className="absolute left-[34px] top-0 bottom-0 w-[1px] bg-red-800/10 pointer-events-none"></div>
+              {/* Vintage Round Stamp (e.g. for Category) */}
+        <div className="absolute top-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-80 shadow-sm pointer-events-none">
+           <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
+             <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
+               MCETIAN<br/>★
+             </span>
+           </div>
+        </div>
               <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/noise-lines.png')] opacity-20 mix-blend-overlay"></div>
             </div>
 

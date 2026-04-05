@@ -3,12 +3,12 @@ export const peopleData =
   {
     id: 1,
     name: "Soumyajit Das",
-    nickname: "",
+    nickname: "Silhouette🫥",
     roll: "10600122014",
     photo: "/images/cast/soumyajit.webp",
     department: "Computer Science",
     birthday: "07-30",
-    oneliner: "Somewhere behind these pages...",
+    oneliner: "Never the loudest in the room, yet impossible to ignore - some stories aren’t told, they unfold.",
     socialLinks: { github: "https://github.com/soumyajiitdas", linkedin: "linkedin.com/in/soumyajiitdas/", instagram: "https://www.instagram.com/soumyajiit_" }
   },
   {
@@ -19,7 +19,7 @@ export const peopleData =
     photo: "/images/cast/joy.webp",
     department: "Computer Science",
     birthday: "06-08",
-    oneliner: "",
+    oneliner: "Our forever sports kid - running on energy, smiles, and a heart that’s kind to everyone.",
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/joy.bhowmik_03/" }
   },
   {
@@ -30,18 +30,18 @@ export const peopleData =
     photo: "/images/cast/indra.jpg",
     department: "Computer Science",
     birthday: "08-14",
-    oneliner: "",
+    oneliner: "The gym-built energy of the group - planner of trips, bringer of vibes, and chaos wrapped in calm",
     socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/indrajit-ghosh-a53291390/", instagram: "https://www.instagram.com/indra5000q/" }
   },
   {
     id: 4,
     name: "Kriti Dutta",
-    nickname: "",
+    nickname: "DidiVibes🌸",
     roll: "10601322036",
     photo: "/images/cast/kriti.jpg",
     department: "Civil Engineering",
     birthday: "01-22",
-    oneliner: "",
+    oneliner: "Grace in her ways, talent in her hands - the elder sister every junior quietly looked up to.",
     socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/kriti-dutta-2922772bb/", instagram: "https://www.instagram.com/d_kritu/" }
   },
   {
@@ -52,18 +52,18 @@ export const peopleData =
     photo: "/images/cast/raihan.png",
     department: "Computer Science",
     birthday: "",
-    oneliner: "",
+    oneliner: "A mind full of art, code, and words - leading quietly while living every bit of college life deeply.",
     socialLinks: { github: "https://github.com/raihanahamed01", linkedin: "https://www.linkedin.com/in/raihan-ahamed-910a3727a/", instagram: "https://www.instagram.com/ra1_haaann/" }
   },
   {
     id: 6,
     name: "Bapi Sarkar",
-    nickname: "",
+    nickname: "Connector🔗",
     roll: "10600122001",
     photo: "/images/cast/bapi.jpeg",
     department: "Computer Science",
-    birthday: "",
-    oneliner: "",
+    birthday: "04-22",
+    oneliner: "Busy with life, yet never too busy for people - the one who kept every bond alive.",
     socialLinks: { github: "https://github.com/bapisarkar22", linkedin: "https://www.linkedin.com/in/bapisarkar2005/", instagram: "https://www.instagram.com/bapisarkar1498/" }
   },
   {
@@ -74,29 +74,29 @@ export const peopleData =
     photo: "/images/cast/subho.jpg",
     department: "Computer Science",
     birthday: "06-02",
-    oneliner: "",
+    oneliner: "Responsible, grounded, yet always one of us - the perfect balance of maturity and madness.",
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/___mr.glitch___/" }
   },
   {
     id: 8,
     name: "Manashi Mondal",
-    nickname: "Thumbelina🐜",
+    nickname: "MomoQueen🥟",
     roll: "",
     photo: "/images/cast/manashi.webp",
     department: "Computer Science",
     birthday: "02-03",
-    oneliner: "",
+    oneliner: "From momos to memories - she cooked warmth, traveled light, and filled every outing with joy.",
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/manashi_mondal/" }
   },
   {
     id: 9,
     name: "Saeed Mustafa",
-    nickname: "",
+    nickname: "LensLord📸",
     roll: "10600122017",
     photo: "/images/cast/saeed.webp",
     department: "Computer Science",
     birthday: "03-30",
-    oneliner: "",
+    oneliner: "When moments needed saving, his phone was always there - the unofficial keeper of our memories.",
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/saeed_mustafa0/" }
   },
   {
@@ -107,29 +107,29 @@ export const peopleData =
     photo: "/images/cast/rohit.jpg",
     department: "Computer Science",
     birthday: "06-02",
-    oneliner: "",
+    oneliner: "Half heart in plans, full heart in people - organized chaos with a habit of last-minute disappearances.",
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/rohitmaldini03/" }
   },
   {
     id: 11,
     name: "Raju Mondal",
-    nickname: "",
+    nickname: "Dealer😏",
     roll: "10600122033",
     photo: "/images/cast/raju.png",
     department: "Computer Science",
     birthday: "",
-    oneliner: "",
+    oneliner: "A little attitude, a little mystery - always on his own pitch, with cricket in his veins.",
     socialLinks: { github: "https://github.com/rajupilki-ctrl", linkedin: "https://www.linkedin.com/in/raju-mondal-a4405929a/", instagram: "https://www.instagram.com/rajumondal416/" }
   },
   {
     id: 12,
     name: "Animesh Nandy",
-    nickname: "",
+    nickname: "SavageStriker⚽",
     roll: "10600122008",
     photo: "/images/cast/animesh.jpg",
     department: "Computer Science",
-    birthday: "",
-    oneliner: "",
+    birthday: "05-15",
+    oneliner: "Straightforward words, sharp sarcasm - a football soul who never played offside in life.",
     socialLinks: { github: "https://github.com/ani-11-pro", linkedin: "https://www.linkedin.com/in/contact-ani/", instagram: "https://www.instagram.com/ulto_bangal_eee/" }
   },
   {
@@ -140,7 +140,7 @@ export const peopleData =
     photo: "/images/cast/roni.jpg",
     department: "Computer Science",
     birthday: "",
-    oneliner: "",
+    oneliner: "Living in his own digital universe - modding apps, gaming hard, and caring little for the noise around.",
     socialLinks: { github: "https://github.com/roni0777", linkedin: "#", instagram: "#" }
   },
   {
@@ -151,29 +151,29 @@ export const peopleData =
     photo: "/images/cast/shirsendu.jpg",
     department: "Computer Science",
     birthday: "",
-    oneliner: "",
+    oneliner: "Cricket on the field, code on the screen - a calm presence with a genuinely kind heart.",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
     id: 15,
     name: "Azam",
-    nickname: "",
+    nickname: "SRKFanBoy🕺🏻",
     roll: "",
     photo: "/images/cast/azam.jpeg",
     department: "Computer Science",
     birthday: "",
-    oneliner: "",
+    oneliner: "From Bihar to hostel rooms - fluent in world politics and hometown updates, even if Bengali stays a mystery",
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/im_azam9137/" }
   },
   {
     id: 16,
     name: "Nurful Shaikh",
-    nickname: "",
+    nickname: "InfoBank📊",
     roll: "10600122003",
     photo: "/images/cast/nurful.png",
     department: "Computer Science",
     birthday: "",
-    oneliner: "",
+    oneliner: "If knowledge had a helpline, it’d be him - our go-to guide for govt schemes, and real-world moves.",
     socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/%F0%9D%90%8D%F0%9D%90%AE%F0%9D%90%AB%F0%9D%90%9F%F0%9D%90%AE%F0%9D%90%A5-%F0%9D%90%92%F0%9D%90%A1%F0%9D%90%9A%F0%9D%90%A2%F0%9D%90%A4%F0%9D%90%A1-115863272/", instagram: "https://www.instagram.com/shaikhnurful/" }
   },
   {
@@ -183,8 +183,8 @@ export const peopleData =
     roll: "10601322001",
     photo: "/images/cast/ishan.jpg",
     department: "Civil Engineering",
-    birthday: "",
-    oneliner: "",
+    birthday: "06-08",
+    oneliner: "Friends everywhere, but roots always here - the extrovert who never forgot his own people.",
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/skylordishan/" }
   },
   {
@@ -194,63 +194,63 @@ export const peopleData =
     roll: "",
     photo: "/images/cast/sahanaj.jpg",
     department: "Civil Engineering",
-    birthday: "",
+    birthday: "10-22",
     oneliner: "",
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/sahanajsultana57993/" }
   },
   {
     id: 19,
     name: "Priyobroto Dutta",
-    nickname: "",
+    nickname: "FBStar🤓",
     roll: "10600122010",
     photo: "/images/cast/priyobroto.jpg",
     department: "Computer Science",
     birthday: "",
-    oneliner: "",
+    oneliner: "Charming by nature, confident by choice - turning everyday moments into his own highlight posts.",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
     id:20,
     name: "Anoushka Chaudhuri",
-    nickname: "",
+    nickname: "AestheticCoder✨",
     roll: "10600122027",
     photo: "/images/cast/anoushka.jpeg",
     department: "Computer Science",
-    birthday: "",
-    oneliner: "",
+    birthday: "05-31",
+    oneliner: "Code in logic, gen-z vibe in aesthetics - blending sharp skills with perfectly filtered moments.",
     socialLinks: { github: "https://github.com/awkwardish", linkedin: "https://www.linkedin.com/in/anoushkachaudhuri/", instagram: "https://www.instagram.com/anoushkasluggard/" }
   },
   {
     id: 21,
     name: "Srija Sarkar",
-    nickname: "",
+    nickname: "TheTopper📚",
     roll: "10600122004",
     photo: "/images/cast/srija.jpg",
     department: "Computer Science",
-    birthday: "",
-    oneliner: "",
+    birthday: "09-29",
+    oneliner: "Consistently at the top, quietly in her world of books - proving dedication speaks louder than noise.",
     socialLinks: { github: "https://github.com/srijasarkar133", linkedin: "https://www.linkedin.com/in/srija-sarkar-210383350/", instagram: "https://www.instagram.com/sriijaaaa_____/" }
   },
   {
     id: 22,
     name: "Anik Mukherjee",
-    nickname: "",
+    nickname: "AllRounder🎤",
     roll: "10600122028",
     photo: "/images/cast/anik.jpg",
     department: "Computer Science",
     birthday: "",
-    oneliner: "",
+    oneliner: "From code to chords to checkmates - a multi-talented mind living every version of life at once.",
     socialLinks: { github: "#", linkedin: "http://linkedin.com/in/anikcodes/", instagram: "https://www.instagram.com/anikmukherjee2003/" }
   },
   {
     id: 23,
     name: "Pritam Bardhan",
-    nickname: "",
+    nickname: "SilentStrategist♟️",
     roll: "",
     photo: "linear-gradient(45deg, #ffea8bff, #6aff74ff)",
     department: "Computer Science",
     birthday: "",
-    oneliner: "",
+    oneliner: "Friendly by heart, sharp by mind - building quietly, thinking deeply, and playing the long game.",
     socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/pritam-bardhan/", instagram: "#" }
   },
   {
