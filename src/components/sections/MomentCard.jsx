@@ -41,7 +41,7 @@ const EventCard = ({ event, onClick }) => {
         <div className="absolute -top-3 -right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-80 shadow-sm pointer-events-none">
            <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
              <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
-               {event.category?.substring(0, 8)}<br/>★
+               MCET<br/>{event.category?.substring(0, 8)}<br/>★
              </span>
            </div>
         </div>

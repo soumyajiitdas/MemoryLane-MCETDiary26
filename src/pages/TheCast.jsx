@@ -27,12 +27,12 @@ const Polaroid = ({ person, onClick }) => {
       whileHover={{ scale: 1.05, rotate: Math.random() > 0.5 ? 2 : -2 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}
       layoutId={`person-${person.id}`}
-      className="cursor-pointer bg-[#F7F4ED] p-3 pb-6 shadow-xl flex flex-col items-center border border-amber-900/10 relative"
+      className="cursor-pointer bg-[#fdfaf3] p-3 pb-6 shadow-xl flex flex-col items-center border border-amber-900/10 relative"
       onClick={() => onClick(person)}
       style={{
          // slight organic rotation to each card inherently
          transform: `rotate(${Math.floor(Math.random() * 4) - 2}deg)`,
-         backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')"
+         backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')"
       }}
     >
       {/* Vintage masking tape */}
@@ -168,11 +168,11 @@ const TheCast = () => {
               {/* Red vertical margin line for classical notebook effect */}
               <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
               <div className="absolute left-[34px] top-0 bottom-0 w-[1px] bg-red-800/10 pointer-events-none"></div>
-              {/* Vintage Round Stamp (e.g. for Category) */}
+              {/* Vintage Round Stamp */}
         <div className="absolute top-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-80 shadow-sm pointer-events-none">
            <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
              <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
-               MCETIAN<br/>★
+               MCET<br/>Batch'26<br/>★
              </span>
            </div>
         </div>
@@ -189,7 +189,7 @@ const TheCast = () => {
                 {/* Vintage Tape bottom right */}
                 <div className="absolute -bottom-4 -right-4 z-20 w-16 h-6 bg-amber-400/40 backdrop-blur-sm shadow-sm rotate-[15deg] border border-black/5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }} />
                 
-                <div className="bg-[#f4efe1] p-2 pb-6 shadow-[3px_5px_15px_rgba(0,0,0,0.25)] border border-[#d5d0c0] transform rotate-2">
+                <div className="bg-[#fdfaf3] p-2 pb-6 shadow-[3px_5px_15px_rgba(0,0,0,0.25)] border border-[#d5d0c0] transform rotate-2">
                   <div 
                     className="w-full aspect-square sm:aspect-[3/4] relative contrast-100 saturate-[0.8] border border-black/20"
                     style={{ backgroundImage: (selectedPerson.photo?.startsWith('http') || selectedPerson.photo?.startsWith('/')) ? `url('${selectedPerson.photo}')` : selectedPerson.photo, backgroundSize: 'cover', backgroundPosition: 'center' }}

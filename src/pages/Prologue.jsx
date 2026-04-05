@@ -37,10 +37,10 @@ const VintageStatTicket = ({ label, value, delay }) => {
         <span className="text-4xl font-serif text-[#3e3222] mb-2 font-bold">{value}</span>
         <span className="text-xs uppercase tracking-widest font-sans text-[#7d6b52] font-semibold text-center">{label}</span>
         {/* Vintage stamp overlay detail */}
-        <div className="absolute top-2 right-2 w-[69px] h-[69px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-80 shadow-sm pointer-events-none">
+        <div className="absolute top-1 right-1 w-[69px] h-[69px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-50 shadow-sm pointer-events-none">
             <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
               <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
-              '26
+              MCET<br/>Batch'26<br/>★
               </span>
             </div>
         </div>
@@ -50,36 +50,64 @@ const VintageStatTicket = ({ label, value, delay }) => {
 
 // Reusable Sticky Note for Home Page with Framer Motion
 const StickyNoteMini = ({ post, index }) => {
+  const len = post.content?.length ?? 0;
+
+  const textSize =
+    len < 120 ? 'text-2xl' :
+                'text-xl';
+
+  const contentStyle = len > 330
+    ? { maxHeight: '220px', overflowY: 'auto', paddingRight: '4px' }
+    : {};
+
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, scale: 0.8, rotate: Math.floor(Math.random() * 10) - 5 }}
       whileInView={{ opacity: 1, scale: 1, rotate: Math.floor(Math.random() * 6) - 3 }}
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.5, delay: index * 0.15, type: 'spring', damping: 15 }}
       whileHover={{ scale: 1.05, zIndex: 10 }}
-      style={{backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')"}}
+      style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')" }}
       className="sticky-note p-6 break-inside-avoid w-full max-w-sm mx-auto flex flex-col cursor-pointer"
     >
       {/* Ruled lines overlay */}
-    <div 
-      className="absolute inset-0 opacity-40 pointer-events-none"
-      style={{
+      <div
+        className="absolute inset-0 opacity-40 pointer-events-none"
+        style={{
           backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)",
           backgroundSize: "100% 28px",
-      }}
-    ></div>
-      <p className="font-['Caveat'] text-2xl leading-relaxed text-[#2c3e50] w-full mt-4">
-         "{post.content}"
-      </p>
-      
+        }}
+      />
+
+      {/* Vintage Round Stamp */}
+        <div className="absolute bottom-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-70 shadow-sm pointer-events-none">
+           <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
+             <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
+               MCET<br/>Diary'26<br/>★
+             </span>
+           </div>
+        </div>
+        <div className="push-pin -top-3" />
+
+      <div
+        className={`font-['Caveat'] ${textSize} leading-relaxed text-[#2c3e50] w-full mt-4 styling-scrollbar`}
+        style={contentStyle}
+      >
+        "{post.content}"
+      </div>
+
       <div className="mt-6 w-full flex justify-between items-end border-t border-black/5 pt-4">
-         <span className="font-['Caveat'] text-xl font-bold text-gray-800">
-           {post.author}
-         </span>
+        <span className="font-['Caveat'] text-xl font-bold text-[#1e3a8a]">
+          {post.author}
+        </span>
+        <span className="text-[11px] text-[#5D6574] font-sans tracking-widest uppercase font-medium">
+          {new Date(post.timestamp).toLocaleDateString()}
+        </span>
       </div>
     </motion.div>
   );
 };
+
 
 // A Letter to 2026
 const LetterToBatch = () => {
@@ -118,7 +146,7 @@ const LetterToBatch = () => {
       </svg>
     </div>
 
-    {/* Vintage Round Stamp (e.g. for Category) */}
+    {/* Vintage Round Stamp */}
     <div className="absolute -top-1 -right-2 sm:top-3 sm:right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-80 shadow-sm pointer-events-none">
         <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
           <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">

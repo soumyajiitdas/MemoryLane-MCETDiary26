@@ -73,7 +73,7 @@ const JourneyNode = ({ data, index }) => {
           }}
         >
            {/* Front Side */}
-           <div className="absolute inset-0 bg-white p-3 md:p-4 pb-12 md:pb-12 shadow-2xl backface-hidden flex flex-col">
+           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/rice-paper.png')] bg-white p-3 md:p-4 pb-12 md:pb-12 shadow-2xl backface-hidden flex flex-col">
               <div className="w-full h-[90%] shadow-inner border border-gray-100 bg-gray-50 overflow-hidden">
                 {data.image.startsWith('/') || data.image.startsWith('http') ? (
                    <img src={data.image} alt={data.title} className="w-full h-full object-contain" loading="lazy" />
@@ -82,7 +82,7 @@ const JourneyNode = ({ data, index }) => {
                 ) }
               </div>
               <div className="flex-1 flex items-center justify-center pt-2">
-                <p className="font-['Caveat'] text-xl md:text-2xl text-gray-800 text-center px-2">
+                <p className="font-['Caveat'] text-2xl text-gray-800 text-center px-2">
                   {data.caption}
                 </p>
               </div>
@@ -90,7 +90,7 @@ const JourneyNode = ({ data, index }) => {
 
            {/* Back Side (Diary Note) */}
            <div 
-             className="absolute inset-0 bg-[#fdfaf3] p-6 shadow-2xl backface-hidden flex flex-col items-center justify-center text-center border border-black/5"
+             className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/rice-paper.png')] bg-[#fdfaf3] p-6 shadow-2xl backface-hidden flex flex-col items-center justify-center text-center border border-black/5"
              style={{ transform: 'rotateY(180deg)' }}
            >
               {/* Paper texture overlay */}
@@ -105,6 +105,14 @@ const JourneyNode = ({ data, index }) => {
                 <p className="text-amber-700/50 font-['Caveat'] text-lg">
                   Chapter entry: {data.year}
                 </p>
+              </div>
+              {/* Vintage Round Stamp */}
+              <div className="absolute top-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-80 shadow-sm pointer-events-none">
+                <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
+                  <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
+                    MCET<br/>Diary'26<br/>★
+                  </span>
+                </div>
               </div>
 
               {/* Decorative corner detail */}

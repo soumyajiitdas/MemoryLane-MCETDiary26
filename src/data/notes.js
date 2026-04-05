@@ -16,7 +16,7 @@ export const memoriesData = [
     {
       id: 3,
       author: "Bapi",
-      content: "Can’t believe these 4 years flew by - hostel life with you all was the best. From late-night talks to crazy memories, I’ll miss everything. You’re not just friends, you’re family, love you all 💙",
+      content: "Can’t believe these 4 years went by so fast… hostel life with you guys was honestly the best time of my life. All the late-night talks, fun, and crazy memories—I’m really going to miss everything. You guys are not just friends, you’re like family to me. No matter where we go, these memories will always stay with me. Stay in touch always, love you all 💙",
       image: "",
       timestamp: "2026-04-04T20:28:00Z",
     },
@@ -27,5 +27,18 @@ export const memoriesData = [
       image: "",
       timestamp: "2026-04-04T20:28:00Z",
     },
+    {
+      id: 5,
+      author: "Nurful",
+      content: "As our journey at MCET in the Computer Science & Engineering department comes to an end, we carry with us countless memories that will last a lifetime. From late-night coding sessions and project deadlines to friendships, laughter, and unforgettable moments, these years have shaped who we are today. Though we step into new paths and challenges, the bond we’ve built here will always remain strong. MCET will forever hold a special place in our hearts. Thank you for the memories, the lessons, and the journey. Farewell to a chapter.🫡",
+      image: "",
+      timestamp: "2026-04-04T20:28:00Z",
+    },
+    {
+      id: 6,
+      author: "Priyobroto",
+      content: "My life at MCET was full of unforgettable memories. I deeply miss my friends—the laughter, the stress, and those crazy exam days. They stood beside me, helped me through backlogs, and even in those risky cheating moments. We survived everything together. Now, those days are gone, but the bond and memories still stay in my heart forever.",
+      image: "",
+      timestamp: "2026-04-04T20:28:00Z",
+    },
   ];
-  

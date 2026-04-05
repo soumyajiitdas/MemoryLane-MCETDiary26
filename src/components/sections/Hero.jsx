@@ -38,7 +38,7 @@ const Hero = () => {
          <motion.div
            key={p.id}
            initial={{ opacity: 0, scale: 0.8, x: p.x, y: p.y }}
-           animate={{ opacity: 0.15, scale: 1, x: p.x, y: p.y }}
+           animate={{ opacity: 0.16, scale: 1, x: p.x, y: p.y }}
            transition={{ duration: 1.5, delay: p.delay, ease: "easeOut" }}
            className="absolute z-0 group"
            style={{ perspective: '1000px' }}
@@ -67,7 +67,7 @@ const Hero = () => {
                   ></div>
                 </div>
                 <div className="mt-2 h-[15%] border-t border-black/5 flex items-center justify-end">
-                   <span className="text-[10px] uppercase tracking-tighter text-black/60 font-serif">#MemoryLane</span>
+                   <span className="text-[10px] uppercase tracking-tighter text-black/60 font-serif">#MCETDiary'26</span>
                 </div>
               </div>
 

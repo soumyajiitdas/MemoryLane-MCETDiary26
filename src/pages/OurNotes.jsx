@@ -5,12 +5,18 @@ import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
 import { memoriesData } from '../data/notes';
 
-// New Component for Text Notes (Colored Sticky Notes)
-// Unified Sticky Note Component
 const StickyNote = ({ post }) => {
-  const hasTape = post.id % 2 === 0;
-  // Reduced rotation for better readability and to avoid extreme column clipping
-  const rotateDeg = (post.id * 3) % 6 - 3; 
+  const hasTape   = post.id % 2 === 0;
+  const rotateDeg = (post.id * 3) % 6 - 3;
+  const len       = post.content?.length ?? 0;
+
+  // Shrink font for longer content so it stays readable without blowing up the card
+  const textSize = 'text-2xl';
+
+  // Cap card height and allow scroll for very long notes (>330 chars)
+  const contentStyle = len > 330
+    ? { maxHeight: '260px', overflowY: 'auto', paddingRight: '4px' }
+    : {};
 
   return (
     <div className="break-inside-avoid-column mb-8 perspective-1000">
@@ -19,7 +25,7 @@ const StickyNote = ({ post }) => {
         animate={{ opacity: 1, y: 0 }}
         whileHover={{ scale: 1.02, zIndex: 10, rotate: 0 }}
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className={`sticky-note p-6 md:p-8 flex flex-col shadow-[4px_8px_15px_rgba(0,0,0,0.3)] hover:shadow-[8px_15px_25px_rgba(0,0,0,0.4)] transition-shadow duration-300 w-full ${hasTape ? 'tape' : ''}`}
+        className={`sticky-note p-6 md:p-8 flex flex-col shadow-[4px_8px_15px_rgba(0,0,0,0.4)] hover:shadow-[8px_15px_25px_rgba(0,0,0,0.6)] transition-shadow duration-300 w-full ${hasTape ? 'tape' : ''}`}
         style={{
           transform: `rotate(${rotateDeg}deg)`,
           backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')",
@@ -27,37 +33,49 @@ const StickyNote = ({ post }) => {
         }}
       >
         {/* Ruled lines overlay */}
-        <div 
+        <div
           className="absolute inset-0 opacity-40 pointer-events-none"
           style={{
-              backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)",
-              backgroundSize: "100% 28px",
+            backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)",
+            backgroundSize: "100% 28px",
           }}
-        ></div>
-        {!hasTape && <div className="push-pin -top-3"></div>}
-        
-        <p className="font-['Caveat'] text-2xl mt-4 mb-4 leading-relaxed text-[#2c3e50] w-full text-center">
-           "{post.content}"
-        </p>
-        
+        />
+        {/* Vintage Round Stamp */}
+        <div className="absolute bottom-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-70 shadow-sm pointer-events-none">
+           <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
+             <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
+               MCET<br/>Diary'26<br/>★
+             </span>
+           </div>
+        </div>
+        {!hasTape && <div className="push-pin -top-3" />}
+
+        {/* Content — scrollable when very long */}
+        <div
+          className={`font-['Caveat'] ${textSize} mt-4 mb-4 leading-relaxed text-[#2c3e50] w-full text-center styling-scrollbar`}
+          style={contentStyle}
+        >
+          "{post.content}"
+        </div>
+
         {post.image && (
           <div className="w-full mb-6 z-10">
-             <img 
-               src={post.image.startsWith('linear') ? '' : post.image} 
-               style={post.image.startsWith('linear') ? { background: post.image } : {}}
-               alt="Memory"
-               className="w-full object-cover border border-[#d1d5db] shadow-sm max-h-64"
-             />
+            <img
+              src={post.image.startsWith('linear') ? '' : post.image}
+              style={post.image.startsWith('linear') ? { background: post.image } : {}}
+              alt="Memory"
+              className="w-full object-cover border border-[#d1d5db] shadow-sm max-h-64"
+            />
           </div>
         )}
-        
+
         <div className="mt-auto w-full flex justify-between items-end border-t border-[#e5e7eb] pt-4">
-           <span className="font-['Caveat'] text-2xl font-bold text-[#1e3a8a]">
-             {post.author}
-           </span>
-           <span className="text-[11px] text-[#9ca3af] font-sans tracking-widest uppercase font-medium">
-             {new Date(post.timestamp).toLocaleDateString()}
-           </span>
+          <span className="font-['Caveat'] text-2xl font-bold text-[#1e3a8a]">
+            {post.author}
+          </span>
+          <span className="text-[11px] text-[#5D6574] font-sans tracking-widest uppercase font-medium">
+            {new Date(post.timestamp).toLocaleDateString()}
+          </span>
         </div>
       </motion.div>
     </div>
