@@ -36,7 +36,8 @@ const Footer = () => {
         </div>
          {/* ── Closing quote ── */}
           <p className="text-center text-amber-700/50 text-xs font-serif m-8">
-            &#127279; Batch 2022-'26 ● Murshidabad Collage of Engineering and Technology, W.B. - 742102 🇮🇳
+            &#127279; Batch 2022-'26, All memories preserved forever...<br/>
+            ● Murshidabad Collage of Engineering and Technology, W.B. - 742102 🇮🇳
           </p>
       </div>
     </footer>

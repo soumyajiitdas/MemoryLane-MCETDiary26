@@ -18,7 +18,7 @@ export const timelineData =
     caption: "We were busy becoming, without knowing what! 💛",
     note: "Sleep was lost, peace was delayed, but we kept going. Maybe not for the outcome, but for the feeling that we were moving forward.",
     events: [2],
-    photos: [""]
+    photos: ["/images/scrapbook/08.jpg"]
   },
   {
     year: "2024-'25",

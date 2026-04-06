@@ -13,8 +13,8 @@ const StickyNote = ({ post }) => {
   // Shrink font for longer content so it stays readable without blowing up the card
   const textSize = 'text-2xl';
 
-  // Cap card height and allow scroll for very long notes (>330 chars)
-  const contentStyle = len > 330
+  // Cap card height and allow scroll for very long notes (>300 chars)
+  const contentStyle = len > 300
     ? { maxHeight: '260px', overflowY: 'auto', paddingRight: '4px' }
     : {};
 
@@ -55,7 +55,7 @@ const StickyNote = ({ post }) => {
           className={`font-['Caveat'] ${textSize} mt-4 mb-4 leading-relaxed text-[#2c3e50] w-full text-center styling-scrollbar`}
           style={contentStyle}
         >
-          "{post.content}"
+          " {post.content} "
         </div>
 
         {post.image && (

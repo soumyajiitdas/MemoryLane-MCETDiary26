@@ -16,7 +16,7 @@ export const peopleData =
     name: "Joy Bhowmik",
     nickname: "Underoos🕷️",
     roll: "10600122019",
-    photo: "/images/cast/joy.webp",
+    photo: "/images/cast/joy.jpg",
     department: "Computer Science",
     birthday: "06-08",
     oneliner: "Our forever sports kid - running on energy, smiles, and a heart that’s kind to everyone.",

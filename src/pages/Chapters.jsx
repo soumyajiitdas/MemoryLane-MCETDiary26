@@ -37,7 +37,10 @@ const JourneyNode = ({ data, index }) => {
         transition={{ duration: 0.8, type: "spring" }}
         className={`w-full md:w-1/2 px-4 md:px-16 flex flex-col justify-center text-center md:text-left ${!isEven && 'md:text-right'}`}
       >
-        <h3 className={`text-3xl md:text-5xl font-serif text-[#f4ecd8] mb-6 leading-tight max-w-lg mx-auto md:mx-0 ${!isEven ? 'md:ml-auto' : ''}`}>{data.title}</h3>
+        <h3 className={`text-3xl md:text-5xl font-serif text-[#f4ecd8] mb-3 leading-tight max-w-lg mx-auto md:mx-0 ${!isEven ? 'md:ml-auto' : ''}`}>{data.title}</h3>
+        <p className={`font-['Caveat'] mb-4 text-xl text-amber-700 italic ${!isEven ? 'md:ml-auto' : ''}`}>
+          ~ {data.subtitle}
+        </p>
         <p className={`text-gray-400 text-lg leading-relaxed font-sans font-light max-w-md mx-auto md:mx-0 ${!isEven ? 'md:ml-auto' : ''}`}>
           {data.description}
         </p>
@@ -82,7 +85,7 @@ const JourneyNode = ({ data, index }) => {
                 ) }
               </div>
               <div className="flex-1 flex items-center justify-center pt-2">
-                <p className="font-['Caveat'] text-2xl text-gray-800 text-center px-2">
+                <p className="font-['Caveat'] text-2xl text-amber-900 text-center px-2">
                   {data.caption}
                 </p>
               </div>

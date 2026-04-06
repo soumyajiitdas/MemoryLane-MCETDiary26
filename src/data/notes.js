@@ -2,8 +2,8 @@ export const memoriesData = [
     {
       id: 1,
       author: "Soumyajit",
-      content: "Five cups, a fleeting moment. No effort to hold it - yet it stayed anyway. ☕",
-      image: "/images/notes/02.jpg",
+      content: "Came here chasing degrees, but leaving with memories. 'Moments never returns' - but somewhere in those fleeting days of college and hostel life, I discovered parts of me I didn’t know existed. Wherever life takes me next, a part of me will always stay back here, for sure... 💞",
+      image: "",
       timestamp: "2026-01-28T17:26:00Z",
     },
     {
@@ -37,14 +37,14 @@ export const memoriesData = [
     {
       id: 6,
       author: "Priyobroto",
-      content: "My life at MCET was full of unforgettable memories. I deeply miss my friends—the laughter, the stress, and those crazy exam days. They stood beside me, helped me through backlogs, and even in those risky cheating moments. We survived everything together. Now, those days are gone, but the bond and memories still stay in my heart forever.",
+      content: "My life at MCET was full of unforgettable memories. I deeply miss my friends—the laughter, the stress, and those crazy exam days. They stood beside me, helped me through backlogs, and even in those risky cheating moments. We survived everything together. Now, those days are gone, but the bond and memories still stay in my heart forever. ❤️",
       image: "",
       timestamp: "2026-04-05T18:36:00Z",
     },
     {
       id: 7,
       author: "Shirsendu",
-      content: "College life isn’t just about classes—it’s about the memories we create in between. Friends become family, turning ordinary days into unforgettable stories. In the end, it’s the laughter, chaos, and togetherness that we carry forever.",
+      content: "College life isn’t just about classes—it’s about the memories we create in between. Friends become family, turning ordinary days into unforgettable stories. In the end, it’s the laughter, chaos, and togetherness that we carry forever. 🤟🏻",
       image: "",
       timestamp: "2026-04-05T23:26:00Z",
     },
