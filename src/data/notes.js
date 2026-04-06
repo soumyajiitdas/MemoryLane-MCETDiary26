@@ -4,7 +4,7 @@ export const memoriesData = [
       author: "Soumyajit🫥",
       content: "How lucky I am to have something that makes saying goodbye this hard! Thank you for every moment, every memory. Wherever life takes you, stay well!...To y'all - 'I love you 3000'.  🌻",
       image: "",
-      timestamp: "2026-01-28T17:26:00Z",
+      timestamp: "2026-04-01T17:26:00Z",
     },
     {
       id: 2,
@@ -53,6 +53,6 @@ export const memoriesData = [
       author: "Kriti🌸",
       content: "'Kuch logon ke sath sirf waqt bitane se hi...sab thik ho jata hain' - here's to the people and place that has filled my cup✨",
       image: "",
-      timestamp: "2026-04-05T23:26:00Z",
+      timestamp: "2026-04-06T18:56:00Z",
     },
   ];
