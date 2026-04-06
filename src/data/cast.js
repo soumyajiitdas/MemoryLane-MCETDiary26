@@ -58,7 +58,7 @@ export const peopleData =
   {
     id: 6,
     name: "Bapi Sarkar",
-    nickname: "Connector🔗",
+    nickname: "Connector🧩",
     roll: "10600122001",
     photo: "/images/cast/bapi.jpeg",
     department: "Computer Science",
@@ -168,7 +168,7 @@ export const peopleData =
   {
     id: 16,
     name: "Nurful Shaikh",
-    nickname: "InfoBank📊",
+    nickname: "Informer🧑‍💻",
     roll: "10600122003",
     photo: "/images/cast/nurful.png",
     department: "Computer Science",

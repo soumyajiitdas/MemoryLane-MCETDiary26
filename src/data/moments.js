@@ -31,7 +31,7 @@ export const eventsData = [
       title: "CORUS 2K25 Event",
       date: "Jul 2025",
       category: "Fest",
-      description: "From planning to perfection - CORUS 2K25 was ours, we made it happen! 🎉",
+      description: "From planning to perfection - CORUS 2K25 was ours, and we made it happen! 🎉",
       gallery: ["/images/scrapbook/27.jpg"],
       taggedPeople: ["Hulk", "Underoos", "Lebowski", "Kriti", "Legolas", "Thumblina", "Bapi", "Soumyajit"]
     },

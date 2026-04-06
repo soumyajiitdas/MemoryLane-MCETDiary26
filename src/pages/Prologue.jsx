@@ -302,7 +302,7 @@ const Prologue = () => {
              subtitle="Time left until we throw our caps and say our goodbyes."
              eyebrow="Graduation Day"
            />
-           <CountdownTimer targetDate="2026-07-17T00:00:00" />
+           <CountdownTimer targetDate="2026-07-17T23:59:59" />
            <p className="text-center font-['Caveat'] text-3xl text-amber-400 mt-12 drop-shadow-md">
               "Don't cry because it's over, smile because it happened."
            </p>
