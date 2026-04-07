@@ -23,13 +23,14 @@ const StickyNote = ({ post }) => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.02, zIndex: 10, rotate: 0 }}
-        transition={{ type: "spring", stiffness: 300, damping: 20 }}
-        className={`sticky-note p-6 md:p-8 flex flex-col shadow-[4px_8px_15px_rgba(0,0,0,0.4)] hover:shadow-[8px_15px_25px_rgba(0,0,0,0.6)] transition-shadow duration-300 w-full ${hasTape ? 'tape' : ''}`}
+        whileHover={{ scale: 1.03, zIndex: 10, rotate: 0 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+        className={`sticky-note paper-lift p-6 md:p-8 flex flex-col w-full ${hasTape ? 'tape' : ''}`}
         style={{
           transform: `rotate(${rotateDeg}deg)`,
           backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')",
-          transformOrigin: 'center top'
+          transformOrigin: 'center top',
+          boxShadow: '4px 8px 20px rgba(0,0,0,0.4)',
         }}
       >
         {/* Ruled lines overlay */}
@@ -109,7 +110,15 @@ const OurNotes = () => {
           </p>
 
           {/* Masonry Board */}
-          <div className="mb-24 columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 p-6 md:p-10 bg-corkboard rounded-xl border-4 border-[#3d3126] shadow-[inset_0_20px_50px_rgba(0,0,0,0.8),0_10px_30px_rgba(0,0,0,0.5)] relative min-h-[60vh] styling-scrollbar" style={{ columnFill: 'balance' }}>
+          <div
+            className="mb-24 columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 p-6 md:p-10 bg-corkboard rounded-2xl relative min-h-[60vh] styling-scrollbar"
+            style={{
+              columnFill: 'balance',
+              border: '5px solid #2d1f10',
+              boxShadow: 'inset 0 20px 60px rgba(0,0,0,0.85), inset 0 -10px 30px rgba(0,0,0,0.4), 0 12px 40px rgba(0,0,0,0.6), 0 4px 0 #1a0f05',
+              outline: '1px solid rgba(255,255,255,0.03)',
+            }}
+          >
              <AnimatePresence>
                 {posts.map(post => (
                   <StickyNote key={post.id} post={post} />

@@ -17,16 +17,39 @@ const JourneyNode = ({ data, index }) => {
   return (
     <div className={`relative flex flex-col md:flex-row items-center w-full mb-32 last:mb-0 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
       
-      {/* Center Track Line & Year Badge for Desktop */}
-      <div className="hidden md:flex absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-px bg-white/10" />
-      
-      <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-18 h-18 rounded-full border border-amber-500/80 bg-[var(--color-midnight)] items-center justify-center z-10 shadow-lg shadow-black/50">
-         <span className="text-amber-500 font-serif font-bold text-sm">{data.year}</span>
+      {/* Center Track Line ── amber glow */}
+      <div
+        className="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[2px]"
+        style={{
+          background: 'linear-gradient(to bottom, transparent, rgba(245,158,11,0.4) 10%, rgba(245,158,11,0.3) 85%, transparent)',
+          boxShadow: '0 0 12px rgba(245,158,11,0.15)',
+        }}
+      />
+
+      {/* Year badge ── desktop, pulsing amber ring */}
+      <div
+        className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-18 h-18 rounded-full border items-center justify-center z-10"
+        style={{
+          background: 'var(--color-midnight)',
+          borderColor: 'rgba(245,158,11,0.7)',
+          boxShadow: '0 0 20px rgba(245,158,11,0.2), 0 0 0 0 rgba(245,158,11,0.4)',
+          animation: 'amber-ring-pulse 2.5s ease-out infinite',
+        }}
+      >
+        <span className="text-amber-500 font-serif font-bold text-sm">{data.year}</span>
       </div>
 
-      {/* Date badge for Mobile */}
-      <div className="md:hidden w-18 h-18 mb-6 rounded-full border border-amber-500/80 bg-[var(--color-midnight)] flex items-center justify-center z-10 shadow-lg shadow-black/50 mx-auto">
-         <span className="text-amber-500 font-serif font-bold text-sm">{data.year}</span>
+      {/* Year badge ── mobile */}
+      <div
+        className="md:hidden w-18 h-18 mb-6 rounded-full border flex items-center justify-center z-10 mx-auto"
+        style={{
+          background: 'var(--color-midnight)',
+          borderColor: 'rgba(245,158,11,0.7)',
+          boxShadow: '0 0 16px rgba(245,158,11,0.2), 0 4px 12px rgba(0,0,0,0.5)',
+          animation: 'amber-ring-pulse 2.5s ease-out infinite',
+        }}
+      >
+        <span className="text-amber-500 font-serif font-bold text-sm">{data.year}</span>
       </div>
 
       {/* Text Side */}

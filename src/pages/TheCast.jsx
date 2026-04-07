@@ -24,34 +24,38 @@ const getRandomBg = () =>
 const Polaroid = ({ person, onClick }) => {
   return (
     <motion.div
-      whileHover={{ scale: 1.05, rotate: Math.random() > 0.5 ? 2 : -2 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      whileHover={{ scale: 1.07, rotate: Math.random() > 0.5 ? 2 : -2, y: -8 }}
+      transition={{ type: 'spring', stiffness: 360, damping: 22 }}
       layoutId={`person-${person.id}`}
-      className="cursor-pointer bg-[#fdfaf3] p-3 pb-6 shadow-xl flex flex-col items-center border border-amber-900/10 relative"
+      className="cursor-pointer bg-[#fdfaf3] p-3 pb-6 flex flex-col items-center border border-amber-900/10 relative"
       onClick={() => onClick(person)}
       style={{
-         // slight organic rotation to each card inherently
-         transform: `rotate(${Math.floor(Math.random() * 4) - 2}deg)`,
-         backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')"
+        transform: `rotate(${Math.floor(Math.random() * 4) - 2}deg)`,
+        backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')",
+        boxShadow: '3px 6px 20px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.15)',
       }}
     >
-      {/* Vintage masking tape */}
-      <div className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 ${getRandomBg()} border border-white/20 shadow-sm z-10 backdrop-blur-sm`} style={{ transform: "rotate(-2deg)" }} />
-      
-      <div 
-        className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center sepia-[0.2] contrast-[1.1]"
+      {/* Masking tape */}
+      <div
+        className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 ${getRandomBg()} border border-white/20 shadow-sm z-10 backdrop-blur-sm`}
+        style={{ transform: 'rotate(-2deg)' }}
+      />
+
+      <div
+        className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center sepia-[0.15] contrast-[1.05]"
         style={{ backgroundImage: (person.photo?.startsWith('http') || person.photo?.startsWith('/')) ? `url('${person.photo}')` : person.photo }}
       >
-        <div className="w-full h-full bg-amber-900/10 mix-blend-multiply"></div>
+        {/* Warm vignette overlay */}
+        <div className="w-full h-full" style={{ background: 'radial-gradient(circle at center, transparent 40%, rgba(120,60,10,0.12) 100%)' }} />
       </div>
-      
+
       <div className="pt-4 w-full text-center relative">
-         <h3 className="text-3xl font-['Caveat'] text-amber-950 font-medium tracking-wide">
-           {person.name.split(" ")[0]}
-         </h3>
-         <p className="text-xs text-amber-900/60 uppercase tracking-widest mt-1 scale-90 font-semibold">
-           {person.department}
-         </p>
+        <h3 className="text-3xl font-['Caveat'] text-amber-950 font-medium tracking-wide">
+          {person.name.split(' ')[0]}
+        </h3>
+        <p className="text-xs text-amber-900/60 uppercase tracking-widest mt-1 scale-90 font-semibold">
+          {person.department}
+        </p>
       </div>
     </motion.div>
   );
@@ -80,28 +84,47 @@ const TheCast = () => {
             eyebrow="MCETians"
           />
 
-          {/* Toggle Tab */}
+          {/* Toggle Tab — smooth motion indicator */}
           <div className="flex justify-center mb-12">
-            <div className="glass p-1 rounded-full inline-flex">
+            <div
+              className="glass p-1 rounded-full inline-flex relative"
+              style={{ border: '1px solid rgba(245,158,11,0.15)' }}
+            >
               <button
                 onClick={() => setView('batchmates')}
-                className={`px-8 py-2.5 rounded-full text-sm font-serif font-medium transition-all ${
-                  view === 'batchmates' 
-                    ? 'bg-[var(--color-amber)] text-black shadow-lg' 
-                    : 'text-gray-400 hover:text-white '
-                }`}
-              >
-                Roll Call
-              </button>
-              <button
-                onClick={() => setView('events')}
-                className={`px-8 py-2.5 rounded-full text-sm font-serif font-medium transition-all ${
-                  view === 'events' 
-                    ? 'bg-[var(--color-amber)] text-black shadow-lg' 
+                className={`relative px-8 py-2.5 rounded-full text-sm font-serif font-medium transition-colors z-10 ${
+                  view === 'batchmates'
+                    ? 'text-black'
                     : 'text-gray-400 hover:text-white'
                 }`}
               >
-                Events
+                {view === 'batchmates' && (
+                  <motion.span
+                    layoutId="tab-indicator"
+                    className="absolute inset-0 rounded-full"
+                    style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">Roll Call</span>
+              </button>
+              <button
+                onClick={() => setView('events')}
+                className={`relative px-8 py-2.5 rounded-full text-sm font-serif font-medium transition-colors z-10 ${
+                  view === 'events'
+                    ? 'text-black'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                {view === 'events' && (
+                  <motion.span
+                    layoutId="tab-indicator"
+                    className="absolute inset-0 rounded-full"
+                    style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span className="relative z-10">Events</span>
               </button>
             </div>
           </div>

@@ -16,34 +16,40 @@ import { timelineData } from '../data/chapters';
 
 // Vintage Ticket Card with Framer Motion
 const VintageStatTicket = ({ label, value, delay }) => {
-  const paperColor = '#eaddc5'; // Aged parchment/cream color
+  const paperColor = '#eaddc5';
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 30 }}
+    <motion.div
+      initial={{ opacity: 0, y: 30, rotate: Math.random() > 0.5 ? 1 : -1 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px" }}
-      transition={{ duration: 0.6, delay, ease: "easeOut" }}
-      whileHover={{ scale: 1.05, y: -5, transition: { duration: 0.2 } }}
-      className="relative border border-[#d4c3a3] p-6 shadow-md flex flex-col items-center justify-center min-h-[140px] cursor-pointer"
+      viewport={{ once: true, margin: '-50px' }}
+      transition={{ duration: 0.6, delay, ease: 'easeOut' }}
+      whileHover={{ scale: 1.06, y: -7, rotate: 0, transition: { duration: 0.25, type: 'spring', damping: 15 } }}
+      className="relative border border-[#d4c3a3] p-6 shadow-md flex flex-col items-center justify-center min-h-[140px] cursor-pointer glow-on-hover"
       style={{
         backgroundColor: paperColor,
-        boxShadow: "2px 4px 15px rgba(0,0,0,0.2), inset 0 0 40px rgba(100,70,30,0.15)",
+        boxShadow: '2px 4px 20px rgba(0,0,0,0.25), inset 0 0 40px rgba(100,70,30,0.12)',
         backgroundImage: `radial-gradient(circle at 0 50%, transparent 6px, ${paperColor} 7px), radial-gradient(circle at 100% 50%, transparent 6px, ${paperColor} 7px)`,
         backgroundSize: '100% 100%',
         backgroundRepeat: 'no-repeat',
         transform: `rotate(${Math.random() > 0.5 ? 1 : -1}deg)`
       }}
     >
-        <span className="text-4xl font-serif text-[#3e3222] mb-2 font-bold">{value}</span>
-        <span className="text-xs uppercase tracking-widest font-sans text-[#7d6b52] font-semibold text-center">{label}</span>
-        {/* Vintage stamp overlay detail */}
-        <div className="absolute top-1 right-1 w-[69px] h-[69px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-70 shadow-sm pointer-events-none">
-            <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
-              <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
-              MCET<br/>Batch'26<br/>★
-              </span>
-            </div>
+      <span className="text-4xl font-serif text-[#3e3222] mb-2 font-bold" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>{value}</span>
+      <span className="text-xs uppercase tracking-widest font-sans text-[#7d6b52] font-semibold text-center">{label}</span>
+      {/* Vintage stamp overlay */}
+      <motion.div
+        initial={{ scale: 1.8, rotate: -20, opacity: 0 }}
+        whileInView={{ scale: 1, rotate: -15, opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: delay + 0.3, type: 'spring', damping: 12 }}
+        className="absolute top-1 right-1 w-[69px] h-[69px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center z-20 mix-blend-multiply opacity-70 shadow-sm pointer-events-none"
+      >
+        <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
+          <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
+            MCET<br/>Batch'26<br/>★
+          </span>
         </div>
+      </motion.div>
     </motion.div>
   );
 };
@@ -64,30 +70,30 @@ const StickyNoteMini = ({ post, index }) => {
     <motion.div
       initial={{ opacity: 0, scale: 0.8, rotate: Math.floor(Math.random() * 10) - 5 }}
       whileInView={{ opacity: 1, scale: 1, rotate: Math.floor(Math.random() * 6) - 3 }}
-      viewport={{ once: true, margin: "-50px" }}
+      viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5, delay: index * 0.15, type: 'spring', damping: 15 }}
-      whileHover={{ scale: 1.05, zIndex: 10 }}
+      whileHover={{ scale: 1.05, zIndex: 10, rotate: 0 }}
       style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')" }}
-      className="sticky-note p-6 break-inside-avoid w-full max-w-sm mx-auto flex flex-col cursor-pointer"
+      className="sticky-note paper-lift p-6 break-inside-avoid w-full max-w-sm mx-auto flex flex-col cursor-pointer"
     >
       {/* Ruled lines overlay */}
       <div
         className="absolute inset-0 opacity-40 pointer-events-none"
         style={{
-          backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)",
-          backgroundSize: "100% 28px",
+          backgroundImage: 'repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)',
+          backgroundSize: '100% 28px',
         }}
       />
 
       {/* Vintage Round Stamp */}
-        <div className="absolute bottom-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-70 shadow-sm pointer-events-none">
-           <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
-             <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
-               MCET<br/>Diary'26<br/>★
-             </span>
-           </div>
+      <div className="absolute bottom-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-70 shadow-sm pointer-events-none">
+        <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
+          <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
+            MCET<br/>Diary'26<br/>★
+          </span>
         </div>
-        <div className="push-pin -top-3" />
+      </div>
+      <div className="push-pin -top-3" />
 
       <div
         className={`font-['Caveat'] ${textSize} leading-relaxed text-[#2c3e50] w-full mt-4 styling-scrollbar`}
@@ -107,37 +113,34 @@ const StickyNoteMini = ({ post, index }) => {
     </motion.div>
   );
 };
-
-
-// A Letter to 2026
 const LetterToBatch = () => {
   return (
   <section className="py-15 relative z-10 px-3">
   <motion.div 
     initial={{ opacity: 0, y: 30, rotate: -2 }}
     whileInView={{ opacity: 1, y: 0, rotate: -2 }}
-    viewport={{ once: true, margin: "-50px" }}
+    viewport={{ once: true, margin: '-50px' }}
     transition={{ duration: 0.8 }}
     className="max-w-3xl mx-auto p-10 md:p-16 relative bg-[#fdfbf7] text-[#2c3e50]"
     style={{
-      boxShadow: "8px 20px 40px rgba(0,0,0,0.25)",
+      boxShadow: '8px 20px 50px rgba(0,0,0,0.3), 4px 4px 0 rgba(0,0,0,0.04)',
       backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')",
-      backgroundSize: "100% 2.6rem",
-      lineHeight: "2.6rem"
+      backgroundSize: '100% 2.6rem',
+      lineHeight: '2.6rem'
     }}
   >
     {/* Ruled lines overlay */}
     <div 
       className="absolute inset-0 opacity-40 pointer-events-none"
       style={{
-          backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)",
-          backgroundSize: "100% 28px",
+          backgroundImage: 'repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)',
+          backgroundSize: '100% 28px',
       }}
-    ></div>
+    />
 
-    {/* Red vertical margin line for classical notebook effect */}
-    <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-red-800/30 pointer-events-none"></div>
-    <div className="absolute left-[34px] top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
+    {/* Red vertical margin lines */}
+    <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-red-800/30 pointer-events-none" />
+    <div className="absolute left-[34px] top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none" />
 
     {/* Paper Tear */}
     <div className="absolute top-0 left-0 w-full h-8 overflow-hidden transform -translate-y-full opacity-90">
@@ -146,14 +149,20 @@ const LetterToBatch = () => {
       </svg>
     </div>
 
-    {/* Vintage Round Stamp */}
-    <div className="absolute -top-1 -right-2 sm:top-3 sm:right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-80 shadow-sm pointer-events-none">
-        <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
-          <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
-            MCET Diary'26
-          </span>
-        </div>
-    </div>
+    {/* Animated wax seal stamp */}
+    <motion.div
+      initial={{ scale: 1.8, rotate: -20, opacity: 0 }}
+      whileInView={{ scale: 1, rotate: -15, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.55, delay: 0.5, type: 'spring', damping: 12 }}
+      className="absolute -top-1 -right-2 sm:top-3 sm:right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center z-20 mix-blend-multiply opacity-80 shadow-md pointer-events-none"
+    >
+      <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
+        <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
+          MCET Diary'26
+        </span>
+      </div>
+    </motion.div>
 
     {/* Title */}
     <h2 className="font-['Caveat'] text-4xl text-amber-900 border-b-2 border-amber-900 inline-block leading-tight">
@@ -164,7 +173,7 @@ const LetterToBatch = () => {
     <div className="mt-4 space-y-3 font-['Caveat'] pt-2 text-xl md:text-[26px] text-gray-900">
 
   <p>
-      It feels like yesterday we were strangers, carrying more nervousness than certainty. And now, somehow, we stand at the edge of goodbye - as stories woven into a single tapestry. These years weren’t just milestones, but the quiet, in-between moments - chai breaks that turned into therapy sessions, and sleepless nights filled with unspoken thoughts.
+      It feels like yesterday we were strangers, carrying more nervousness than certainty. And now, somehow, we stand at the edge of goodbye - as stories woven into a single tapestry. These years weren't just milestones, but the quiet, in-between moments - chai breaks that turned into therapy sessions, and sleepless nights filled with unspoken thoughts.
   </p>
 
   <p className="text-amber-900 text-center">
@@ -172,7 +181,7 @@ const LetterToBatch = () => {
   </p>
 
   <p>
-    Maybe that’s what we were - ever-changing, fleeting, yet deeply unforgettable.
+    Maybe that's what we were - ever-changing, fleeting, yet deeply unforgettable.
     As we prepare to step onto different paths, it's okay to acknowledge that some of us may drift. Some friendships are meant to be a beautiful chapter rather than the whole book, but that doesn't make the chapter any less vital.
   </p>
 
@@ -194,6 +203,7 @@ const LetterToBatch = () => {
 </section>
   );
 };
+
 
 const Prologue = () => {
   const [featuredCast, setFeaturedCast] = useState([]);
@@ -288,10 +298,17 @@ const Prologue = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
-        className="py-24 relative z-10 glass mx-4 max-w-4xl md:mx-auto rounded-xl overflow-hidden shadow-2xl border border-amber-500/20 bg-[#15120e]/95 my-12"
+        className="py-24 relative z-10 mx-4 max-w-4xl md:mx-auto rounded-2xl overflow-hidden shadow-2xl my-12"
+        style={{
+          background: 'rgba(15, 11, 6, 0.97)',
+          border: '1px solid rgba(245,158,11,0.2)',
+          boxShadow: '0 0 0 1px rgba(245,158,11,0.1), 0 25px 60px rgba(0,0,0,0.6)',
+        }}
       >
-        {/* Glow effect */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-amber-500/10 blur-[100px] pointer-events-none rounded-full"></div>
+        {/* Multi-layer glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-amber-500/10 blur-[120px] pointer-events-none rounded-full" />
+        <div className="absolute top-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(245,158,11,0.5), transparent)' }} />
+        <div className="absolute bottom-0 left-0 right-0 h-px" style={{ background: 'linear-gradient(90deg, transparent, rgba(245,158,11,0.2), transparent)' }} />
         <div className="relative z-10 px-4">
            <SectionHeading
              title="The Final Countdown"

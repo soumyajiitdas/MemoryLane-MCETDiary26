@@ -152,12 +152,27 @@ const LastPages = () => {
           </p>
 
           {/* FLIPBOOK CONTAINER */}
-          {/* We use perspective to give the 3D rotation depth */}
-          <div className="w-full max-w-[500px] aspect-[2/3] md:aspect-[3/4] relative perspective-[1500px] mt-8 mb-12">
-            
-            {/* The Book's back cover / edge (simulated depth) */}
-            <div className="absolute inset-0 bg-[#2a2217] shadow-xl rounded-sm translate-x-1 translate-y-1"></div>
-            
+          <div className="w-full max-w-[500px] aspect-[2/3] md:aspect-[3/4] relative mt-8 mb-12" style={{ perspective: '1500px' }}>
+
+            {/* Book spine / back cover depth */}
+            <div
+              className="absolute inset-0 rounded-sm"
+              style={{
+                background: 'linear-gradient(135deg, #1a1209, #2a1a0a)',
+                boxShadow: '4px 4px 20px rgba(0,0,0,0.7), -1px 0 0 rgba(245,158,11,0.05)',
+                transform: 'translate(4px, 5px)',
+              }}
+            />
+            {/* Book left spine edge */}
+            <div
+              className="absolute left-0 top-0 bottom-0 w-4 rounded-l-sm"
+              style={{
+                background: 'linear-gradient(to right, rgba(180,83,9,0.4), transparent)',
+                zIndex: 2,
+                transform: 'translate(2px, 2px)',
+              }}
+            />
+
             <AnimatePresence custom={direction}>
               <motion.div
                 key={currentPage}
@@ -166,17 +181,17 @@ const LastPages = () => {
                 initial="initial"
                 animate="animate"
                 exit="exit"
-                style={{ 
-                   transformOrigin: 'left center',
-                   backfaceVisibility: 'hidden',
+                style={{
+                  transformOrigin: 'left center',
+                  backfaceVisibility: 'hidden',
                 }}
-                className="absolute inset-0 w-full h-full bg-white shadow-[0_0_20px_rgba(0,0,0,0.5)] border border-white/10 rounded-sm overflow-hidden"
+                className="absolute inset-0 w-full h-full shadow-[0_0_30px_rgba(0,0,0,0.6),4px_4px_0_rgba(0,0,0,0.3)] border border-white/5 rounded-sm overflow-hidden"
               >
-                 <FlipbookPage 
-                   page={bookPages[currentPage]} 
-                   index={currentPage} 
-                   totalPages={bookPages.length} 
-                 />
+                <FlipbookPage
+                  page={bookPages[currentPage]}
+                  index={currentPage}
+                  totalPages={bookPages.length}
+                />
               </motion.div>
             </AnimatePresence>
 
@@ -184,27 +199,41 @@ const LastPages = () => {
 
           {/* Flipbook Controls */}
           <div className="flex items-center gap-6 mb-24">
-            <button 
+            <motion.button
               onClick={handlePrev}
               disabled={currentPage === 0}
-              className="p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-amber-500/50 disabled:opacity-30 disabled:hover:bg-white/5 transition-all text-sm flex items-center gap-2"
+              whileHover={{ scale: 1.08, x: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-3 rounded-full transition-all text-sm flex items-center gap-2 disabled:opacity-30 disabled:pointer-events-none"
+              style={{
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.1)',
+                color: 'white',
+              }}
             >
               <ChevronLeft size={20} />
               <span className="hidden sm:inline font-serif font-medium tracking-wide">Previous</span>
-            </button>
-            
-            <span className="font-serif text-[var(--color-text-muted)] tracking-widest text-sm">
-               {currentPage + 1} / {bookPages.length}
+            </motion.button>
+
+            <span className="font-serif tracking-widest text-sm" style={{ color: 'rgba(245,158,11,0.6)' }}>
+              {currentPage + 1} / {bookPages.length}
             </span>
 
-            <button 
+            <motion.button
               onClick={handleNext}
               disabled={currentPage === bookPages.length - 1}
-              className="p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-white/10 hover:border-amber-500/50 disabled:opacity-30 disabled:hover:bg-white/5 transition-all text-sm flex items-center gap-2"
+              whileHover={{ scale: 1.08, x: 2 }}
+              whileTap={{ scale: 0.95 }}
+              className="p-3 rounded-full transition-all text-sm flex items-center gap-2 disabled:opacity-30 disabled:pointer-events-none"
+              style={{
+                background: 'linear-gradient(135deg, rgba(245,158,11,0.15), rgba(180,83,9,0.1))',
+                border: '1px solid rgba(245,158,11,0.3)',
+                color: '#fcd34d',
+              }}
             >
               <span className="hidden sm:inline font-serif font-medium tracking-wide">Next</span>
               <ChevronRight size={20} />
-            </button>
+            </motion.button>
           </div>
 
           {/* The Final CTA Download Section Redesigned as a Postcard */}

@@ -196,7 +196,7 @@ export const galleryData =
     id: 35,
     src: "/images/scrapbook/35.jpg",
     caption: "During Durga Puja, 2K25",
-    album: "Events",
+    album: "Moments",
     year: "2025"
   },
 

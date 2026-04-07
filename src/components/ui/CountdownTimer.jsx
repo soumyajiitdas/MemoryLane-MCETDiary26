@@ -18,7 +18,7 @@ const NumberBox = ({ num, label }) => {
         {/* Split line effect for flip-clock look */}
         <div className="absolute top-1/2 left-0 w-full h-[1px] bg-black/30 z-20"></div>
       </div>
-      <span className="text-xs sm:text-sm uppercase tracking-widest text-[#9CA3AF] mt-3 font-medium">
+      <span className="text-xs sm:text-sm uppercase font-serif tracking-widest text-[#9CA3AF] mt-3 font-medium">
         {label}
       </span>
     </div>

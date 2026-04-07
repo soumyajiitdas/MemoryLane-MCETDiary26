@@ -150,35 +150,67 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        isScrolled ? 'glass' : 'bg-transparent'
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${
+        isScrolled
+          ? 'glass shadow-lg'
+          : 'bg-transparent'
       }`}
+      style={isScrolled ? {
+        borderBottom: '1px solid rgba(245, 158, 11, 0.2)',
+        boxShadow: '0 4px 24px rgba(0,0,0,0.4), 0 1px 0 rgba(245,158,11,0.15)'
+      } : {}}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-3">
 
-          {/* Logo */}
+          {/* Logo — shimmer on hover */}
           <div className="flex-shrink-0">
-            <NavLink to="/" className="text-2xl font-serif font-bold text-gradient whitespace-nowrap">
-              MCET <span className="font-['Caveat']">Batch</span>'26
+            <NavLink
+              to="/"
+              className="group text-2xl font-serif font-bold whitespace-nowrap relative inline-block"
+            >
+              <span className="text-gradient-animate">
+                MCET <span className="font-['Caveat']">Batch</span>'26
+              </span>
+              {/* logo glow on hover */}
+              <span
+                className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ boxShadow: '0 0 20px rgba(245,158,11,0.25)', pointerEvents: 'none' }}
+              />
             </NavLink>
           </div>
 
-          {/* Desktop nav links */}
+          {/* Desktop nav links — staggered entrance */}
           <div className="hidden md:flex items-baseline font-serif space-x-1 text-sm font-medium flex-1 justify-center">
-            {navLinks.map((link) => (
+            {navLinks.map((link, i) => (
               <NavLink
                 key={link.name}
                 to={link.path}
+                style={{ animationDelay: `${i * 0.07}s`, animationFillMode: 'backwards' }}
                 className={({ isActive }) =>
-                  `px-3 py-2 rounded-md transition-colors whitespace-nowrap ${
+                  `relative px-3 py-2 rounded-md transition-all duration-200 whitespace-nowrap group ${
                     isActive
-                      ? 'text-amber-500 bg-[var(--color-glass)]'
-                      : 'text-[var(--color-text-muted)] hover:text-white hover:bg-[var(--color-glass)]'
+                      ? 'text-amber-400'
+                      : 'text-[var(--color-text-muted)] hover:text-amber-100'
                   }`
                 }
               >
-                {link.name}
+                {({ isActive }) => (
+                  <>
+                    <span className="relative z-10">{link.name}</span>
+                    {/* hover bg */}
+                    <span className="absolute inset-0 rounded-md bg-amber-500/0 group-hover:bg-amber-500/8 transition-colors duration-200" />
+                    {/* active amber underline indicator */}
+                    {isActive && (
+                      <motion.span
+                        layoutId="nav-active-dot"
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-amber-400"
+                        style={{ boxShadow: '0 0 6px rgba(245,158,11,0.8)' }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                  </>
+                )}
               </NavLink>
             ))}
           </div>
@@ -193,37 +225,55 @@ const Navbar = () => {
             <NavMiniPlayer showDisc={false} />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-300 hover:text-white focus:outline-none flex-shrink-0"
+              className="text-gray-300 hover:text-amber-400 focus:outline-none flex-shrink-0 transition-colors duration-200 p-1"
             >
-              {isOpen ? <X size={24} /> : <Menu size={24} />}
+              <motion.div
+                animate={isOpen ? { rotate: 90 } : { rotate: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                {isOpen ? <X size={22} /> : <Menu size={22} />}
+              </motion.div>
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile dropdown */}
-      {isOpen && (
-        <div className="md:hidden glass bg-[#0a0a0f]/95 shadow-2xl border-t border-[var(--color-glass-border)]">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 font-serif">
-            {navLinks.map((link) => (
-              <NavLink
-                key={link.name}
-                to={link.path}
-                onClick={() => setIsOpen(false)}
-                className={({ isActive }) =>
-                  `block px-3 py-2 rounded-md text-base font-medium ${
-                    isActive
-                      ? 'text-amber-500 bg-[var(--color-glass)]'
-                      : 'text-[var(--color-text-muted)] hover:text-white hover:bg-[var(--color-glass)]'
-                  }`
-                }
-              >
-                {link.name}
-              </NavLink>
-            ))}
-          </div>
+      {/* Mobile dropdown — animated */}
+      <motion.div
+        initial={false}
+        animate={isOpen ? { height: 'auto', opacity: 1 } : { height: 0, opacity: 0 }}
+        transition={{ duration: 0.28, ease: [0.4, 0, 0.2, 1] }}
+        className="md:hidden overflow-hidden"
+        style={{
+          background: 'rgba(12, 10, 8, 0.97)',
+          borderBottom: isOpen ? '1px solid rgba(245,158,11,0.15)' : 'none',
+          backdropFilter: 'blur(16px)',
+        }}
+      >
+        <div className="px-3 pt-2 pb-4 space-y-0.5 font-serif">
+          {navLinks.map((link, i) => (
+            <NavLink
+              key={link.name}
+              to={link.path}
+              onClick={() => setIsOpen(false)}
+              className={({ isActive }) =>
+                `flex items-center gap-2 px-4 py-2.5 rounded-lg text-base font-medium transition-all duration-150 ${
+                  isActive
+                    ? 'text-amber-400 bg-amber-500/10'
+                    : 'text-[var(--color-text-muted)] hover:text-white hover:bg-white/5'
+                }`
+              }
+            >
+              {({ isActive }) => (
+                <>
+                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0" style={{ boxShadow: '0 0 4px rgba(245,158,11,0.8)' }} />}
+                  {link.name}
+                </>
+              )}
+            </NavLink>
+          ))}
         </div>
-      )}
+      </motion.div>
     </nav>
   );
 };
