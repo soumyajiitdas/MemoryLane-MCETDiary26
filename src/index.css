@@ -166,7 +166,7 @@ body::before {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 0px;
 }
 ::-webkit-scrollbar-track {
   background: var(--color-midnight);

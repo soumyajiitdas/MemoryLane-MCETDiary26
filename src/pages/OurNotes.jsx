@@ -115,7 +115,6 @@ const OurNotes = () => {
             style={{
               columnFill: 'balance',
               border: '5px solid #2d1f10',
-              boxShadow: 'inset 0 20px 60px rgba(0,0,0,0.85), inset 0 -10px 30px rgba(0,0,0,0.4), 0 12px 40px rgba(0,0,0,0.6), 0 4px 0 #1a0f05',
               outline: '1px solid rgba(255,255,255,0.03)',
             }}
           >
