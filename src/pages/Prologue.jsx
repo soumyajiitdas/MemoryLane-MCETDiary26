@@ -178,13 +178,13 @@ const LetterToBatch = () => {
 
   <p>
     We didn't just pass the time; we lived it. Deeply, together. 
-    <span className='inline sm:block'>No matter where the road leads, these days will always be a part of us. :)</span>
+    <span className='inline sm:block'> No matter where the road leads, these days will always be a part of us...</span>
   </p>
 
 </div>
 
     {/* Signature */}
-    <div className="mt-6 text-right">
+    <div className="mt-4 sm:mt-6 text-right">
       <span className="font-['Caveat'] text-xl font-medium md:text-2xl text-amber-900">
         — From the memories we made
       </span>
