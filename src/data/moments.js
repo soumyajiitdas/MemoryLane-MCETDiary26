@@ -1,13 +1,4 @@
 export const eventsData = [
-    {
-      id: 1,
-      title: "Freshers' Orientation",
-      date: "March 2023",
-      category: "Freshers",
-      description: "Where it all began - the start of our memories together. 💖",
-      gallery: ["/images/scrapbook/19.jpg"],
-      taggedPeople: ["Soumyajit","Underoos", "Hulk", "Lebowski", "StarLord", "Kriti", "Anik M.", "Animesh", "Srija"]
-    },
     // {
     //   id: 2,
     //   title: "Independence Day Celebration",
@@ -18,16 +9,16 @@ export const eventsData = [
     //   taggedPeople: ["Underoos", "Hulk", "Lebowski",]
     // },
     {
-      id: 2,
-      title: "Vishwakarma Puja 2K25",
+      id: 1,
+      title: "Freshers' Party Organization",
       date: "March 2025",
-      category: "Vishwakarma Puja",
-      description: "Not just a puja completed - a devotion fulfilled through effort. ✨",
-      gallery: [""],
-      taggedPeople: ["Hulk", "Underoos", "Lebowski", "Kriti", "Legolas", "Thumblina", "Bapi", "Soumyajit"]
+      category: "Freshers",
+      description: "A small effort from us, a lifelong memory for them...💖",
+      gallery: ["/images/scrapbook/34.jpg"],
+      taggedPeople: ["Soumyajit","Underoos", "Hulk", "Lebowski", "StarLord", "Kriti",]
     },
     {
-      id: 3,
+      id: 2,
       title: "CORUS 2K25 Event",
       date: "Jul 2025",
       category: "Fest",
@@ -35,6 +26,16 @@ export const eventsData = [
       gallery: ["/images/scrapbook/27.jpg"],
       taggedPeople: ["Hulk", "Underoos", "Lebowski", "Kriti", "Legolas", "Thumblina", "Bapi", "Soumyajit"]
     },
+    {
+      id: 3,
+      title: "Vishwakarma Puja 2K25",
+      date: "September 2025",
+      category: "Vishwakarma Puja",
+      description: "Not just a puja completed - a devotion fulfilled through effort. ✨",
+      gallery: [""],
+      taggedPeople: ["Hulk", "Underoos", "Lebowski", "Kriti", "Legolas", "Thumblina", "Bapi", "Soumyajit"]
+    },
+    
     {
       id: 4,
       title: "Sports Fiesta 2K26",

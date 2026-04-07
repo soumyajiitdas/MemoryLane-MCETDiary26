@@ -2,7 +2,7 @@ export const memoriesData = [
     {
       id: 1,
       author: "Soumyajit🫥",
-      content: "How lucky I am to have something that makes saying goodbye this hard! Thank you for every moment, every memory. Wherever life takes you, stay well!...To y'all - 'I love you 3000'.  🌻",
+      content: "We made it through so many random days together. Most of them didn’t even feel important back then. But now they’re the ones I keep thinking about. Feels weird that this is where it ends. Didn’t think saying goodbye would feel this heavy. Wherever life takes you, stay well…'I love you 3000.' 🌻",
       image: "",
       timestamp: "2026-04-01T17:26:00Z",
     },

@@ -37,7 +37,7 @@ const VintageStatTicket = ({ label, value, delay }) => {
         <span className="text-4xl font-serif text-[#3e3222] mb-2 font-bold">{value}</span>
         <span className="text-xs uppercase tracking-widest font-sans text-[#7d6b52] font-semibold text-center">{label}</span>
         {/* Vintage stamp overlay detail */}
-        <div className="absolute top-1 right-1 w-[69px] h-[69px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-50 shadow-sm pointer-events-none">
+        <div className="absolute top-1 right-1 w-[69px] h-[69px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-70 shadow-sm pointer-events-none">
             <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
               <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
               MCET<br/>Batch'26<br/>★
@@ -112,7 +112,7 @@ const StickyNoteMini = ({ post, index }) => {
 // A Letter to 2026
 const LetterToBatch = () => {
   return (
-  <section className="py-24 relative z-10 px-4">
+  <section className="py-15 relative z-10 px-3">
   <motion.div 
     initial={{ opacity: 0, y: 30, rotate: -2 }}
     whileInView={{ opacity: 1, y: 0, rotate: -2 }}
@@ -161,36 +161,32 @@ const LetterToBatch = () => {
     </h2>
 
     {/* Body */}
-    <div className="mt-4 space-y-5 font-['Caveat'] text-2xl pt-2 md:text-3xl text-gray-900">
+    <div className="mt-4 space-y-3 font-['Caveat'] pt-2 text-xl md:text-[26px] text-gray-900">
 
   <p>
-    It feels like yesterday we were strangers, learning names in nervous smiles.  
-    Somewhere between chai breaks, silent struggles, and sleepless nights,  
-    we became stories in each other’s lives.
+      It feels like yesterday we were strangers, carrying more nervousness than certainty. And now, somehow, we stand at the edge of goodbye - as stories woven into a single tapestry. These years weren’t just milestones, but the quiet, in-between moments - chai breaks that turned into therapy sessions, and sleepless nights filled with unspoken thoughts.
   </p>
 
-  <p className="italic text-amber-900 text-center">
+  <p className="text-amber-900 text-center">
     "What changes with every moment becomes truly beautiful."
   </p>
 
   <p>
-    Maybe that’s what we were — ever-changing, yet unforgettable.  
-    Life will pull us into different paths, but some bonds aren’t meant to stay,  
-    only to shape us. And once their purpose is fulfilled,  
-    even the closest souls drift apart.
+    Maybe that’s what we were - ever-changing, fleeting, yet deeply unforgettable.
+    As we prepare to step onto different paths, it's okay to acknowledge that some of us may drift. Some friendships are meant to be a beautiful chapter rather than the whole book, but that doesn't make the chapter any less vital.
   </p>
 
   <p>
-    Still, we lived… truly, deeply, together.  
-    <span className='block'>And that will always remain... :)</span>
+    We didn't just pass the time; we lived it. Deeply, together. 
+    <span className='inline sm:block'>No matter where the road leads, these days will always be a part of us. :)</span>
   </p>
 
 </div>
 
     {/* Signature */}
-    <div className="mt-12 sm:mt-12 text-right">
-      <span className="font-['Caveat'] text-2xl font-medium md:text-3xl text-amber-900">
-        — From the days that made us
+    <div className="mt-6 text-right">
+      <span className="font-['Caveat'] text-xl font-medium md:text-2xl text-amber-900">
+        — From the memories we made
       </span>
     </div>
 

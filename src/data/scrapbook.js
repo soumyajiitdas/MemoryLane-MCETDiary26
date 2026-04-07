@@ -185,6 +185,20 @@ export const galleryData =
     album: "Trips",
     year: "2025"
   },
+  {
+    id: 34,
+    src: "/images/scrapbook/34.jpg",
+    caption: "Moments from Freshers Party, 2K25",
+    album: "Events",
+    year: "2025"
+  },
+  {
+    id: 35,
+    src: "/images/scrapbook/35.jpg",
+    caption: "During Durga Puja, 2K25",
+    album: "Events",
+    year: "2025"
+  },
 
   // ===== 2026 =====
   {
@@ -232,7 +246,14 @@ export const galleryData =
   {
     id: 24,
     src: "/images/scrapbook/24.jpg",
-    caption: "From Fakira's show at Lalbagh, 2026",
+    caption: "From Fakira's show at Lalbagh, '26",
+    album: "Moments",
+    year: "2026"
+  },
+  {
+    id: 36,
+    src: "/images/scrapbook/36.jpg",
+    caption: "At Purulia Trip, '26",
     album: "Moments",
     year: "2026"
   }
