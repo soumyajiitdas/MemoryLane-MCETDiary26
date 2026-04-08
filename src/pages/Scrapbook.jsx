@@ -5,6 +5,7 @@ import PageTransition from '../components/layout/PageTransition';
 import GalleryGrid from '../components/sections/ScrapbookGrid';
 import Lightbox from '../components/ui/Lightbox';
 import ChapterNav from '../components/ui/ChapterNav';
+import Fireflies from '../components/ui/Fireflies';
 import { galleryData } from '../data/scrapbook';
 
 const years = ["All", "1st Year", "2nd Year", "3rd Year", "4th Year"];
@@ -67,7 +68,7 @@ const Scrapbook = () => {
       <div className="min-h-screen py-24">
         <div className="max-w-7xl mx-auto px-4">
 
-          {/* ── Top bar ── */}
+          {/* Top bar */}
           <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16 gap-8">
 
             {/* Left: Title + Year filters */}
@@ -80,6 +81,9 @@ const Scrapbook = () => {
                   Fragments of time we chose to keep. ✨
                 </p>
               </div>
+
+              {/* Firefly particles */}
+              <Fireflies/>
 
               <div className="flex flex-wrap gap-2 font-serif">
                 {years.map(year => (

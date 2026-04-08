@@ -1,24 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
-
-// Firefly background particles
-const firefliesConfig = [
-  { left: '5%',  top: '70%', '--duration': '11s', '--delay': '0s',   width: '4px', height: '4px' },
-  { left: '12%', top: '40%', '--duration': '14s', '--delay': '1.8s', width: '3px', height: '3px' },
-  { left: '20%', top: '80%', '--duration': '9s',  '--delay': '0.6s', width: '5px', height: '5px' },
-  { left: '32%', top: '55%', '--duration': '12s', '--delay': '2.4s', width: '3px', height: '3px' },
-  { left: '45%', top: '75%', '--duration': '10s', '--delay': '3.2s', width: '4px', height: '4px' },
-  { left: '58%', top: '60%', '--duration': '13s', '--delay': '0.4s', width: '5px', height: '5px' },
-  { left: '68%', top: '45%', '--duration': '8s',  '--delay': '1.2s', width: '3px', height: '3px' },
-  { left: '78%', top: '72%', '--duration': '15s', '--delay': '4.0s', width: '4px', height: '4px' },
-  { left: '88%', top: '50%', '--duration': '11s', '--delay': '2.0s', width: '6px', height: '6px' },
-  { left: '92%', top: '35%', '--duration': '9s',  '--delay': '0.9s', width: '3px', height: '3px' },
-  { left: '25%', top: '88%', '--duration': '13s', '--delay': '3.6s', width: '4px', height: '4px' },
-  { left: '52%', top: '30%', '--duration': '16s', '--delay': '1.1s', width: '3px', height: '3px' },
-  { left: '72%', top: '85%', '--duration': '10s', '--delay': '5.0s', width: '5px', height: '5px' },
-  { left: '38%', top: '20%', '--duration': '12s', '--delay': '2.8s', width: '3px', height: '3px' },
-];
+import Fireflies from '../ui/Fireflies';
 
 // Polaroids scattered in the background
 const bgPolaroids = [
@@ -46,9 +29,7 @@ const Hero = () => {
     <div className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden px-4">
 
       {/* ── Firefly particles ── */}
-      {firefliesConfig.map((style, i) => (
-        <div key={i} className="firefly" style={style} aria-hidden="true" />
-      ))}
+      <Fireflies/>
 
       {/* ── Radial spotlight behind hero text ── */}
       <div

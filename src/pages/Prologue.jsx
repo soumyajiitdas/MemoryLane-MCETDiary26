@@ -7,6 +7,7 @@ import CountdownTimer from '../components/ui/CountdownTimer';
 import SectionHeading from '../components/ui/SectionHeading';
 import PageTransition from '../components/layout/PageTransition';
 import ChapterNav from '../components/ui/ChapterNav';
+import Fireflies from '../components/ui/Fireflies';
 
 // Data imports
 import { peopleData } from '../data/cast';
@@ -231,8 +232,13 @@ const Prologue = () => {
       {/* Hero Section */}
       <Hero />
 
+      {/* Firefly particles */}
+      <Fireflies/>
+
       {/* Intro Letter */}
       <LetterToBatch />
+
+      
 
       {/* Quick Stats Summary - Vintage Tickets */}
       <section className="py-24 relative z-10">
@@ -316,7 +322,7 @@ const Prologue = () => {
              eyebrow="Graduation Day"
            />
            <CountdownTimer targetDate="2026-07-17T23:59:59" />
-           <p className="text-center font-['Caveat'] text-3xl text-amber-400 mt-12 drop-shadow-md">
+           <p className="text-center font-['Caveat'] text-3xl text-amber-600 mt-12 drop-shadow-md">
               "Don't cry because it's over, smile because it happened."
            </p>
         </div>

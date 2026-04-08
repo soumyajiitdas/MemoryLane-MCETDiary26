@@ -5,6 +5,7 @@ import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
 import { phoenixData } from '../data/phoenix';
+import Fireflies from '../components/ui/Fireflies';
 
 // 1. Organize data into a flat array of pages
 const bookPages = [
@@ -141,6 +142,9 @@ const LastPages = () => {
     <PageTransition>
       <div className="min-h-[100vh] py-24 pb-32">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center relative z-10">
+
+          {/* Firefly particles */}
+          <Fireflies/>
           
           <SectionHeading
             title="Last Pages"

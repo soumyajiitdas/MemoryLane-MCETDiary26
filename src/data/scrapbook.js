@@ -199,6 +199,20 @@ export const galleryData =
     album: "Moments",
     year: "2025"
   },
+  {
+    id: 37,
+    src: "/images/scrapbook/37.jpeg",
+    caption: "from CORUS 2K25",
+    album: "Events",
+    year: "2025"
+  },
+  {
+    id: 38,
+    src: "/images/scrapbook/38.jpeg",
+    caption: "from CORUS 2K25",
+    album: "Events",
+    year: "2025"
+  },
 
   // ===== 2026 =====
   {
@@ -253,6 +267,13 @@ export const galleryData =
   {
     id: 36,
     src: "/images/scrapbook/36.jpg",
+    caption: "At Purulia Trip, '26",
+    album: "Moments",
+    year: "2026"
+  },
+  {
+    id: 39,
+    src: "/images/scrapbook/39.jpeg",
     caption: "At Purulia Trip, '26",
     album: "Moments",
     year: "2026"

@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import BirthdayBanner from './components/ui/BirthdayBanner';
+import GridBackground from './components/ui/GridBackground';
 import ScrollToTop from './components/layout/ScrollToTop';
 
 // Global Player
@@ -25,6 +26,7 @@ function App() {
     <PlayerProvider>
       <Router>
         <ScrollToTop />
+        <GridBackground />
         <div className="flex flex-col min-h-screen">
           <BirthdayBanner />
           <Navbar />

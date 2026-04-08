@@ -169,9 +169,9 @@ const Navbar = () => {
               to="/"
               className="group text-2xl font-serif font-bold whitespace-nowrap relative inline-block"
             >
-              <span className="text-gradient-animate">
-                MCET <span className="font-['Caveat']">Batch</span>'26
-              </span>
+
+                MCET <span className='text-gradient-animate'><span className="font-['Caveat']">Batch</span>'26</span>
+              
               {/* logo glow on hover */}
               <span
                 className="absolute inset-0 rounded-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500"

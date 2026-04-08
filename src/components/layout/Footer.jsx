@@ -1,33 +1,12 @@
 import { motion } from 'framer-motion';
-
-// Firefly particle component
-const Firefly = ({ style }) => (
-  <div
-    className="firefly"
-    style={style}
-    aria-hidden="true"
-  />
-);
+import Fireflies from '../ui/Fireflies';
 
 const Footer = () => {
-  // 10 fireflies with varied positions, sizes and timings
-  const fireflies = [
-    { left: '8%',  bottom: '20%', '--duration': '10s', '--delay': '0s',   width: '4px', height: '4px' },
-    { left: '18%', bottom: '15%', '--duration': '13s', '--delay': '1.5s', width: '3px', height: '3px' },
-    { left: '30%', bottom: '30%', '--duration': '9s',  '--delay': '0.8s', width: '5px', height: '5px' },
-    { left: '50%', bottom: '10%', '--duration': '11s', '--delay': '2.2s', width: '4px', height: '4px' },
-    { left: '65%', bottom: '25%', '--duration': '8s',  '--delay': '3s',   width: '3px', height: '3px' },
-    { left: '75%', bottom: '18%', '--duration': '14s', '--delay': '0.4s', width: '5px', height: '5px' },
-    { left: '85%', bottom: '32%', '--duration': '10s', '--delay': '1s',   width: '4px', height: '4px' },
-    { left: '42%', bottom: '40%', '--duration': '12s', '--delay': '4s',   width: '3px', height: '3px' },
-    { left: '58%', bottom: '12%', '--duration': '9s',  '--delay': '2.5s', width: '6px', height: '6px' },
-    { left: '22%', bottom: '45%', '--duration': '15s', '--delay': '0.2s', width: '3px', height: '3px' },
-  ];
 
   return (
     <footer className="relative mt-auto z-10">
 
-      {/* ── Background layers (placed first so they sit behind content) ── */}
+      {/* Background layers (placed first so they sit behind content) */}
       <div className="absolute inset-0 z-0 pointer-events-none" style={{
         background: 'linear-gradient(to bottom, rgba(18,14,8,0.95) 0%, rgba(10,8,5,0.99) 100%)'
       }} />
@@ -36,7 +15,7 @@ const Footer = () => {
         style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')" }}
       />
 
-      {/* ── True Torn paper edge overlapping upward into previous section ── */}
+      {/* True Torn paper edge overlapping upward into previous section */}
       <div className="absolute top-0 left-0 w-full z-20 pointer-events-none -translate-y-[99%] drop-shadow-md" style={{ height: '28px' }}>
         <svg
           viewBox="0 0 1200 40"
@@ -60,18 +39,16 @@ const Footer = () => {
         </svg>
       </div>
 
-      {/* ── Firefly particles ── */}
-      {fireflies.map((style, i) => (
-        <Firefly key={i} style={style} />
-      ))}
+      {/* Firefly particles */}
+      <Fireflies/>
 
-      {/* ── Ambient amber glow ── */}
+      {/* Ambient amber glow */}
       <div
         className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[70%] h-48 pointer-events-none z-0"
         style={{ background: 'radial-gradient(ellipse at center bottom, rgba(245,158,11,0.06) 0%, transparent 70%)' }}
       />
 
-      {/* ── Main content ── */}
+      {/* Main content */}
       <div className="max-w-7xl mx-auto px-4 pt-10 pb-8 flex flex-col items-center relative z-10 gap-6">
 
         {/* Decorative diamond divider */}
@@ -95,10 +72,10 @@ const Footer = () => {
           transition={{ duration: 0.8, delay: 0.1 }}
           className="text-center"
         >
-          <p className="text-3xl font-serif tracking-wider text-gradient-animate inline-block">
+          <p className="text-3xl font-serif tracking-wider inline-block">
             MCET
-            <span className="font-['Caveat'] text-5xl font-normal tracking-normal ml-2 mr-1">Batch</span>
-            '26
+            <span className='text-gradient-animate'><span className="font-['Caveat'] text-5xl font-normal tracking-normal ml-2 mr-1">Batch</span>
+            '26</span>
           </p>
           <span className="ml-2 text-2xl">✨</span>
         </motion.div>
@@ -115,13 +92,12 @@ const Footer = () => {
           "A repository of memories, friendship, and unforgettable journeys."
         </motion.p>
 
-        {/* Wax seal + Crafted with */}
+        {/* Crafted with */}
         <motion.div
           initial={{ opacity: 0, scale: 0.85 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3, type: 'spring', damping: 14 }}
-          className="flex flex-col items-center gap-3"
         >
           <div className="px-6 py-2.5 rounded-full border border-amber-900/25 bg-black/30 backdrop-blur-sm">
             <p className="text-xs text-amber-700/70 uppercase tracking-[0.22em] font-medium flex items-center gap-2">
@@ -144,7 +120,7 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center text-amber-900/40 text-[11px] font-serif leading-relaxed pt-2 border-t border-amber-900/10 w-full max-w-md"
+          className="text-center text-amber-900 text-[11px] font-serif leading-relaxed pt-4 border-t border-amber-900/10 w-full max-w-md"
         >
           &#127279; Batch 2022–'26 · All memories preserved forever
           <br />

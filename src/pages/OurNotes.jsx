@@ -4,6 +4,7 @@ import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
 import { memoriesData } from '../data/notes';
+import Fireflies from '../components/ui/Fireflies';
 
 const StickyNote = ({ post }) => {
   const hasTape   = post.id % 2 === 0;
@@ -96,6 +97,9 @@ const OurNotes = () => {
     <PageTransition>
       <div className="min-h-[100vh] py-24 pb-32">
         <div className="max-w-7xl mx-auto px-4">
+          
+          {/* Firefly particles */}
+          <Fireflies/>
           
           <div className="text-center mb-16 relative">
             <SectionHeading 

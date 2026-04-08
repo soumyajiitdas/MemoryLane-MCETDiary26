@@ -4,6 +4,7 @@ import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
 import { timelineData } from '../data/chapters';
+import Fireflies from '../components/ui/Fireflies';
 
 // Ensure each data object has a placeholder image array
 const journeyData = timelineData.map((d, i) => ({
@@ -16,8 +17,11 @@ const JourneyNode = ({ data, index }) => {
 
   return (
     <div className={`relative flex flex-col md:flex-row items-center w-full mb-32 last:mb-0 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
+
+      {/* Firefly particles */}
+      <Fireflies/>
       
-      {/* Center Track Line ── amber glow */}
+      {/* Center Track Line */}
       <div
         className="hidden md:block absolute left-1/2 top-0 bottom-0 -translate-x-1/2 w-[2px]"
         style={{
@@ -26,7 +30,7 @@ const JourneyNode = ({ data, index }) => {
         }}
       />
 
-      {/* Year badge ── desktop, pulsing amber ring */}
+      {/* Year badge desktop, pulsing amber ring */}
       <div
         className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-18 h-18 rounded-full border items-center justify-center z-10"
         style={{
@@ -39,7 +43,7 @@ const JourneyNode = ({ data, index }) => {
         <span className="text-amber-500 font-serif font-bold text-sm">{data.year}</span>
       </div>
 
-      {/* Year badge ── mobile */}
+      {/* Year badge mobile */}
       <div
         className="md:hidden w-18 h-18 mb-6 rounded-full border flex items-center justify-center z-10 mx-auto"
         style={{

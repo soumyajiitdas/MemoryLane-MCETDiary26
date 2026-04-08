@@ -7,6 +7,7 @@ import ChapterNav from '../components/ui/ChapterNav';
 import { peopleData } from '../data/cast';
 import { eventsData } from '../data/moments';
 import Modal from '../components/ui/Modal';
+import Fireflies from '../components/ui/Fireflies';
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 
 // random bg color of Vintage masking tape
@@ -83,6 +84,9 @@ const TheCast = () => {
             subtitle="The faces and the events that made it all real. ❣️"
             eyebrow="MCETians"
           />
+
+          {/* Firefly particles */}
+          <Fireflies/>
 
           {/* Toggle Tab — smooth motion indicator */}
           <div className="flex justify-center mb-12">
