@@ -36,7 +36,7 @@ export const peopleData =
   {
     id: 4,
     name: "Kriti Dutta",
-    nickname: "DidiVibes🌸",
+    nickname: "VibeKeeper🌸",
     roll: "10601322036",
     photo: "/images/cast/kriti.jpg",
     department: "Civil Engineering",
@@ -58,7 +58,7 @@ export const peopleData =
   {
     id: 6,
     name: "Bapi Sarkar",
-    nickname: "Connector🧩",
+    nickname: "TheAnchor⚓",
     roll: "10600122001",
     photo: "/images/cast/bapi.jpeg",
     department: "Computer Science",
@@ -80,7 +80,7 @@ export const peopleData =
   {
     id: 8,
     name: "Manashi Mondal",
-    nickname: "MomoQueen🥟",
+    nickname: "MomoLover🥟",
     roll: "",
     photo: "/images/cast/manashi.webp",
     department: "Computer Science",
@@ -124,7 +124,7 @@ export const peopleData =
   {
     id: 12,
     name: "Animesh Nandy",
-    nickname: "SavageStriker⚽",
+    nickname: "Ani-11-pro👾",
     roll: "10600122008",
     photo: "/images/cast/animesh.jpg",
     department: "Computer Science",

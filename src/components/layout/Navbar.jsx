@@ -170,7 +170,7 @@ const Navbar = () => {
               className="group text-2xl font-serif font-bold whitespace-nowrap relative inline-block"
             >
 
-                MCET <span className='text-gradient-animate'><span className="font-['Caveat']">Batch</span>'26</span>
+                MCET <span className='text-gradient'><span className="font-['Caveat']">Batch</span>'26</span>
               
               {/* logo glow on hover */}
               <span

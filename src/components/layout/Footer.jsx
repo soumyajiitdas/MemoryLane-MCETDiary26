@@ -122,7 +122,7 @@ const Footer = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className="text-center text-amber-900 text-[11px] font-serif leading-relaxed pt-4 border-t border-amber-900/10 w-full max-w-md"
         >
-          &#127279; Batch 2022–'26 · All memories preserved forever
+          &#127279; Batch 2022–'26 · All memories preserved forever...
           <br />
           Murshidabad College of Engineering and Technology, W.B. – 742102 🇮🇳
         </motion.p>

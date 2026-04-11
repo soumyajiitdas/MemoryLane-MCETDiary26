@@ -15,7 +15,7 @@ export const memoriesData = [
     },
     {
       id: 3,
-      author: "Bapi🧩",
+      author: "Bapi⚓",
       content: "Can’t believe these 4 years went by so fast… hostel life with you guys was honestly the best time of my life. All the late-night talks, fun, and crazy memories—I’m really going to miss everything. You guys are not just friends, you’re like family to me. No matter where we go, these memories will always stay with me. Stay in touch always, love you all 💙",
       image: "",
       timestamp: "2026-04-04T20:28:00Z",
