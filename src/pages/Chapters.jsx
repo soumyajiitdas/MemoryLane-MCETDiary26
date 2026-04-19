@@ -5,6 +5,7 @@ import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
 import { timelineData } from '../data/chapters';
 import Fireflies from '../components/ui/Fireflies';
+import { DoodleHeart, DoodleSparkle } from '../components/ui/VintageDoodles';
 
 // Ensure each data object has a placeholder image array
 const journeyData = timelineData.map((d, i) => ({
@@ -40,7 +41,9 @@ const JourneyNode = ({ data, index }) => {
           animation: 'amber-ring-pulse 2.5s ease-out infinite',
         }}
       >
-        <span className="text-amber-500 font-serif font-bold text-sm">{data.year}</span>
+        <span className="text-amber-500 font-serif font-bold text-sm" style={{ position: 'relative' }}>
+          {data.year}
+        </span>
       </div>
 
       {/* Year badge mobile */}
@@ -53,7 +56,7 @@ const JourneyNode = ({ data, index }) => {
           animation: 'amber-ring-pulse 2.5s ease-out infinite',
         }}
       >
-        <span className="text-amber-500 font-serif font-bold text-sm">{data.year}</span>
+        <span className="text-amber-500 font-serif font-bold text-sm relative">{data.year}</span>
       </div>
 
       {/* Text Side */}
@@ -62,8 +65,11 @@ const JourneyNode = ({ data, index }) => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.8, type: "spring" }}
-        className={`w-full md:w-1/2 px-4 md:px-16 flex flex-col justify-center text-center md:text-left ${!isEven && 'md:text-right'}`}
+        className={`relative w-full md:w-1/2 px-4 md:px-16 flex flex-col justify-center text-center md:text-left ${!isEven && 'md:text-right'}`}
       >
+        {/* Random scattered doodle on text side */}
+        {index % 2 === 0 && <DoodleSparkle className={`w-14 h-14 absolute -top-8 ${isEven ? 'left-4' : 'right-4'} opacity-80 rotate-12 mix-blend-screen`} color="rgba(200, 200, 200, 0.8)" />}
+        {index % 2 === 1 && <DoodleHeart   className={`w-12 h-12 absolute -top-6 ${isEven ? 'left-8' : 'right-8'} opacity-80 -rotate-12 mix-blend-screen`} color="rgba(245, 50, 50, 0.8)" />}
         <h3 className={`text-3xl md:text-5xl font-serif text-[#f4ecd8] mb-3 leading-tight max-w-lg mx-auto md:mx-0 ${!isEven ? 'md:ml-auto' : ''}`}>{data.title}</h3>
         <p className={`font-['Caveat'] mb-4 text-xl text-amber-700 italic ${!isEven ? 'md:ml-auto' : ''}`}>
           ~ {data.subtitle}

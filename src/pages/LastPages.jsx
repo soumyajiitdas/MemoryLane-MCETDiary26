@@ -6,6 +6,7 @@ import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
 import { phoenixData } from '../data/phoenix';
 import Fireflies from '../components/ui/Fireflies';
+import { DoodleCrown, DoodleArrow } from '../components/ui/VintageDoodles';
 
 // 1. Organize data into a flat array of pages
 const bookPages = [
@@ -255,24 +256,32 @@ const LastPages = () => {
                 <div className="absolute top-4 right-4 w-16 h-16 border-[1.5px] border-dashed border-white/50 rounded-full pointer-events-none mix-blend-multiply opacity-60"></div>
                 <div className="absolute top-8 right-0 w-24 h-[1px] border-t border-wavy border-white/50 pointer-events-none mix-blend-multiply opacity-60"></div>
 
-                <h3 className="font-['Caveat'] text-4xl md:text-5xl text-white/80 mb-6">A Final Word...</h3>
-                <p className="font-serif italic text-xl md:text-2xl text-[#eaddc5] leading-relaxed mb-10 max-w-lg">
+                {/* Doodle Crown */}
+                <DoodleCrown className="w-16 h-16 absolute -top-8 -left-6 opacity-80 -rotate-12 mix-blend-screen" color="rgba(245, 158, 11, 0.8)" />
+
+                <h3 className="font-['Caveat'] text-4xl md:text-5xl text-white/80 mb-6 relative z-10">A Final Word...</h3>
+                <p className="font-serif italic text-xl md:text-2xl text-[#eaddc5] leading-relaxed mb-10 max-w-lg relative z-10">
                   No matter how many pages we turn, the truest parts of the story will always remain unwritten. Take this piece of history with you, wherever the next chapter leads.
                 </p>
                 
-                <a 
-                  href="/magazine/phoenix-magazine.pdf" 
-                  download
-                  className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#2a2217] text-[#f4ecd8] font-serif tracking-widest uppercase text-sm font-bold hover:bg-[#b94a4a] transition-all duration-500 overflow-hidden shadow-lg rounded-sm"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    <FileText size={18} />
-                    Download Full Magazine
-                    <Download size={18} className="group-hover:translate-y-1 transition-transform" />
-                  </span>
-                  {/* Vintage hover swoosh */}
-                  <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-150 group-hover:bg-white/10 z-0"></div>
-                </a>
+                <div className="relative inline-block z-10">
+                  <a 
+                    href="/magazine/phoenix-magazine.pdf" 
+                    download
+                    className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#2a2217] text-[#f4ecd8] font-serif tracking-widest uppercase text-sm font-bold hover:bg-[#b94a4a] transition-all duration-500 overflow-hidden shadow-lg rounded-sm"
+                  >
+                    <span className="relative z-10 flex items-center gap-2">
+                       <FileText size={18} />
+                       Download Full Magazine
+                       <Download size={18} className="group-hover:translate-y-1 transition-transform" />
+                    </span>
+                    {/* Vintage hover swoosh */}
+                    <div className="absolute inset-0 h-full w-full scale-0 rounded-2xl transition-all duration-300 group-hover:scale-150 group-hover:bg-white/10 z-0"></div>
+                  </a>
+                  {/* Arrow pointing to download */}
+                  <DoodleArrow className="hidden md:block w-16 h-16 absolute top-1/2 -right-24 -translate-y-1/2 opacity-80" color="rgba(245, 158, 11, 0.8)" />
+                </div>
+
                 <span className="text-xs font-sans uppercase tracking-[0.2em] text-[#7d6b52] mt-6 font-semibold">Draft Archive • PDF Size 27 MB</span>
              </div>
 

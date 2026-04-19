@@ -277,6 +277,34 @@ export const galleryData =
     caption: "At Purulia Trip, '26",
     album: "Moments",
     year: "2026"
-  }
+  },
+  {
+    id: 40,
+    src: "/images/scrapbook/40.jpg",
+    caption: "Chilling at 13,123 ft.",
+    album: "Trips",
+    year: "2026"
+  },
+  {
+    id: 41,
+    src: "/images/scrapbook/41.jpg",
+    caption: "Moments from East Sikkim Trip, '26",
+    album: "Trips",
+    year: "2026"
+  },
+  {
+    id: 42,
+    src: "/images/scrapbook/42.jpg",
+    caption: "At East Sikkim Trip, '26",
+    album: "Trips",
+    year: "2026"
+  },
+  {
+    id: 43,
+    src: "/images/scrapbook/43.jpg",
+    caption: "At MG Marg, Gantok",
+    album: "Trips",
+    year: "2026"
+  },
 ];
   

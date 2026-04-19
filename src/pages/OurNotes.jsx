@@ -5,11 +5,15 @@ import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
 import { memoriesData } from '../data/notes';
 import Fireflies from '../components/ui/Fireflies';
+import { DoodleCrown, DoodleHeart } from '../components/ui/VintageDoodles';
 
 const StickyNote = ({ post }) => {
   const hasTape   = post.id % 2 === 0;
   const rotateDeg = (post.id * 3) % 6 - 3;
   const len       = post.content?.length ?? 0;
+  
+  const showHeart = post.id % 3 === 0;
+  const showCrown = post.id % 4 === 1;
 
   // Shrink font for longer content so it stays readable without blowing up the card
   const textSize = 'text-2xl';
@@ -34,6 +38,14 @@ const StickyNote = ({ post }) => {
           boxShadow: '4px 8px 20px rgba(0,0,0,0.4)',
         }}
       >
+        {/* Heart doodle roughly drawn in empty space */}
+        {showHeart && (
+          <DoodleHeart className="hidden sm:inline w-12 h-12 absolute top-5 left-1 opacity-60 -rotate-[15deg] mix-blend-multiply" color="rgba(200, 50, 50, 0.8)" />
+        )}
+        {showCrown && (
+          <DoodleCrown className="w-12 h-12 absolute top-3 right-3 rotate-12 opacity-60 mix-blend-multiply" color="rgba(0,0,200,0.8)" />
+        )}
+
         {/* Ruled lines overlay */}
         <div
           className="absolute inset-0 opacity-40 pointer-events-none"
@@ -43,7 +55,7 @@ const StickyNote = ({ post }) => {
           }}
         />
         {/* Vintage Round Stamp */}
-        <div className="absolute bottom-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-70 shadow-sm pointer-events-none">
+        <div className="absolute bottom-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-60 shadow-sm pointer-events-none">
            <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
              <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
                MCET<br/>Diary'26<br/>★
@@ -71,11 +83,11 @@ const StickyNote = ({ post }) => {
           </div>
         )}
 
-        <div className="mt-auto w-full flex justify-between items-end border-t border-[#e5e7eb] pt-4">
-          <span className="font-['Caveat'] text-2xl font-bold text-[#1e3a8a]">
+        <div className="mt-auto w-full flex justify-between items-end border-t border-[#e5e7eb] pt-4 relative">
+          <span className="font-['Caveat'] text-2xl font-bold text-[#1e3a8a] relative z-10">
             {post.author}
           </span>
-          <span className="text-[11px] text-[#5D6574] font-sans tracking-widest uppercase font-medium">
+          <span className="text-[11px] text-[#5D6574] font-sans tracking-widest uppercase font-medium relative z-10">
             {new Date(post.timestamp).toLocaleDateString()}
           </span>
         </div>

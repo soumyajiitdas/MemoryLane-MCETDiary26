@@ -301,12 +301,12 @@ body::before {
   left: 50%;
   transform: translateX(-50%) rotate(-2deg);
   width: 80px;
-  height: 25px;
-  background-color: rgba(255, 255, 255, 0.6);
+  height: 28px;
+  background-color: rgba(255, 255, 255, 0.45);
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  border-left: 1px solid rgba(255,255,255,0.4);
-  border-right: 1px solid rgba(255,255,255,0.4);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(4px);
+  /* Jagged edges for realistic torn masking tape */
+  clip-path: polygon(0 5%, 5% 0, 10% 6%, 15% 1%, 20% 5%, 25% 0, 30% 7%, 35% 2%, 40% 5%, 45% 0, 50% 6%, 55% 1%, 60% 4%, 65% 0, 70% 5%, 75% 1%, 80% 6%, 85% 0, 90% 5%, 95% 2%, 100% 6%, 100% 96%, 95% 100%, 90% 94%, 85% 99%, 80% 95%, 75% 100%, 70% 94%, 65% 99%, 60% 95%, 55% 100%, 50% 94%, 45% 100%, 40% 95%, 35% 100%, 30% 94%, 25% 99%, 20% 94%, 15% 100%, 10% 95%, 5% 100%, 0 95%);
   z-index: 10;
 }
 

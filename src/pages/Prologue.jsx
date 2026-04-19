@@ -8,6 +8,8 @@ import SectionHeading from '../components/ui/SectionHeading';
 import PageTransition from '../components/layout/PageTransition';
 import ChapterNav from '../components/ui/ChapterNav';
 import Fireflies from '../components/ui/Fireflies';
+import PaperTear from '../components/ui/PaperTear';
+import { DoodleHeart, DoodleSparkle, DoodleArrow } from '../components/ui/VintageDoodles';
 
 // Data imports
 import { peopleData } from '../data/cast';
@@ -35,8 +37,10 @@ const VintageStatTicket = ({ label, value, delay }) => {
         transform: `rotate(${Math.random() > 0.5 ? 1 : -1}deg)`
       }}
     >
-      <span className="text-4xl font-serif text-[#3e3222] mb-2 font-bold" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>{value}</span>
-      <span className="text-xs uppercase tracking-widest font-sans text-[#7d6b52] font-semibold text-center">{label}</span>
+      <span className="text-4xl font-serif text-[#3e3222] mb-2 font-bold relative z-10" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
+        {value}
+      </span>
+      <span className="text-xs uppercase tracking-widest font-sans text-[#7d6b52] font-semibold text-center z-10 relative">{label}</span>
       {/* Vintage stamp overlay */}
       <motion.div
         initial={{ scale: 1.8, rotate: -20, opacity: 0 }}
@@ -143,12 +147,8 @@ const LetterToBatch = () => {
     <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-red-800/30 pointer-events-none" />
     <div className="absolute left-[34px] top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none" />
 
-    {/* Paper Tear */}
-    <div className="absolute top-0 left-0 w-full h-8 overflow-hidden transform -translate-y-full opacity-90">
-      <svg viewBox="0 0 1000 20" preserveAspectRatio="none" className="w-full h-full text-[#fdfbf7]" fill="currentColor">
-        <path d="M0,20 L0,10 Q10,0 20,10 T40,10 T60,10 T80,10 T100,10 T120,10 T140,10 T160,10 T180,10 T200,10 T220,10 T240,10 T260,10 T280,10 T300,10 T320,10 T340,10 T360,10 T380,10 T400,10 T420,10 T440,10 T460,10 T480,10 T500,10 T520,10 T540,10 T560,10 T580,10 T600,10 T620,10 T640,10 T660,10 T680,10 T700,10 T720,10 T740,10 T760,10 T780,10 T800,10 T820,10 T840,10 T860,10 T880,10 T900,10 T920,10 T940,10 T960,10 T980,10 L1000,0 L1000,20 Z" />
-      </svg>
-    </div>
+    {/* Paper Tear from previous section */}
+    <PaperTear color="#fdfbf7" className="opacity-90" />
 
     {/* Animated wax seal stamp */}
     <motion.div
@@ -238,8 +238,6 @@ const Prologue = () => {
       {/* Intro Letter */}
       <LetterToBatch />
 
-      
-
       {/* Quick Stats Summary - Vintage Tickets */}
       <section className="py-24 relative z-10">
         <div className="max-w-7xl mx-auto px-4">
@@ -248,6 +246,7 @@ const Prologue = () => {
             subtitle="A look back at everything we’ve been through."
             eyebrow="By the Numbers"
           />
+          <DoodleHeart className="w-20 h-20 absolute top-13 right-7 sm:top-15 sm:left-135 opacity-80 -rotate-20" color="rgba(245, 158, 11, 0.6)" />
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 max-w-5xl mx-auto mt-12">
             {stats.map((stat, i) => (
               <VintageStatTicket key={i} label={stat.label} value={stat.value} delay={i * 0.1} />
@@ -264,11 +263,15 @@ const Prologue = () => {
         <section className="py-24 relative z-10">
 
           <div className="max-w-7xl mx-auto px-4 text-center">
-             <SectionHeading
-               title="Familiar Faces"
-               subtitle="The people who made these years unforgettable."
-               eyebrow="Cast Spotlight"
-             />
+             <div className="relative inline-block">
+               <SectionHeading
+                 title="Familiar Faces"
+                 subtitle="The people who made these years unforgettable."
+                 eyebrow="Cast Spotlight"
+               />
+               <DoodleSparkle className="w-20 h-20 absolute -top-15 -right-1 sm:-top-10 sm:-right-16 opacity-80" color="rgba(245, 158, 11, 0.6)" />
+             </div>
+             
              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-16 pb-8">
                {featuredCast.map((person, idx) => (
                  <motion.div
@@ -291,8 +294,9 @@ const Prologue = () => {
                  </motion.div>
                ))}
              </div>
-             <Link to="/the-cast" className="inline-block mt-8 font-serif italic text-amber-500 hover:text-white transition-colors text-xl border-b border-amber-500/30 pb-1">
+             <Link to="/the-cast" className="relative inline-block mt-8 font-serif italic text-amber-500 hover:text-white transition-colors text-xl border-b border-amber-500/30 pb-1">
                 Meet the full cast &rarr;
+                <DoodleArrow className="w-16 h-16 absolute -right-20 top-0 opacity-80 rotate-90" color="rgba(200, 200, 200, 0.8)" />
              </Link>
           </div>
         </section>

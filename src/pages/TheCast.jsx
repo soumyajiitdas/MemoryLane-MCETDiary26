@@ -9,6 +9,7 @@ import { eventsData } from '../data/moments';
 import Modal from '../components/ui/Modal';
 import Fireflies from '../components/ui/Fireflies';
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import { DoodleCrown } from '../components/ui/VintageDoodles';
 
 // random bg color of Vintage masking tape
 const bgColors = [
@@ -23,6 +24,9 @@ const getRandomBg = () =>
 
 // Polaroid Component
 const Polaroid = ({ person, onClick }) => {
+  // Show a crown doodle for specific people or pseudo-randomly based on ID length/value
+  const showCrown = (person.id % 3 === 0) || (person.id === 1);
+
   return (
     <motion.div
       whileHover={{ scale: 1.07, rotate: Math.random() > 0.5 ? 2 : -2, y: -8 }}
@@ -36,11 +40,15 @@ const Polaroid = ({ person, onClick }) => {
         boxShadow: '3px 6px 20px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.15)',
       }}
     >
+
       {/* Masking tape */}
       <div
         className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 ${getRandomBg()} border border-white/20 shadow-sm z-10 backdrop-blur-sm`}
         style={{ transform: 'rotate(-2deg)' }}
       />
+
+      {/* Crown doodle rendering above card */}
+      {showCrown && (<DoodleCrown className="w-15 h-15 absolute -top-10 -right-5 rotate-15 z-20 opacity-80"  />)}
 
       <div
         className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center sepia-[0.15] contrast-[1.05]"
@@ -221,6 +229,7 @@ const TheCast = () => {
                     className="w-full aspect-square sm:aspect-[3/4] relative contrast-100 saturate-[0.8] border border-black/20"
                     style={{ backgroundImage: (selectedPerson.photo?.startsWith('http') || selectedPerson.photo?.startsWith('/')) ? `url('${selectedPerson.photo}')` : selectedPerson.photo, backgroundSize: 'cover', backgroundPosition: 'center' }}
                   >
+                    <DoodleCrown className="w-20 h-20 absolute -top-12 -right-6 rotate-18 z-20 opacity-80" color="rgba(255, 162, 0, 1)" />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.5)_100%)]"></div>
                   </div>
                   <p className="text-center font-['Caveat'] text-2xl text-[#4a4235] mt-3 opacity-90">{selectedPerson?.nickname?.trim()? `@${selectedPerson.nickname}`: `@${selectedPerson?.name?.split(' ')?.[0] || 'user'}'s shot📸`}</p>

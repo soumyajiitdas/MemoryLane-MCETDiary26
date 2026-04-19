@@ -2,12 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
 import Fireflies from '../ui/Fireflies';
+import { DoodleArrow, DoodleSparkle, DoodleCrown } from '../ui/VintageDoodles';
 
 // Polaroids scattered in the background
 const bgPolaroids = [
   { id: 1, rot: -12, x: '-30vw', y: '-10vh', img: '/images/scrapbook/24.jpg', bg: 'linear-gradient(to right, #f68084, #a6c0fe)', delay: 0,   note: "We lived our moments, without worrying about the rest.", date: "Mar 2026" },
   { id: 2, rot: 8,   x: '25vw',  y: '-15vh', img: '/images/scrapbook/31.jpg', bg: 'linear-gradient(to right, #4facfe, #00f2fe)', delay: 0.2, note: "In every moment, we found our own perfection.", date: "Oct 2023" },
-  { id: 3, rot: -5,  x: '-20vw', y: '25vh',  img: '/images/scrapbook/15.jpg', bg: 'linear-gradient(to right, #ff0844, #ffb199)', delay: 0.4, note: "Good times never go to waste.", date: "Feb 2026" },
+  { id: 3, rot: -5,  x: '-20vw', y: '25vh',  img: '/images/scrapbook/40.jpg', bg: 'linear-gradient(to right, #ff0844, #ffb199)', delay: 0.4, note: "Good times never go to waste.", date: "Feb 2026" },
   { id: 4, rot: 15,  x: '35vw',  y: '20vh',  img: '/images/scrapbook/04.jpg', bg: 'linear-gradient(to right, #f83600, #f9d423)', delay: 0.6, note: "From first steps to forever memories.", date: "Mar 2023" },
 ];
 
@@ -129,25 +130,29 @@ const Hero = () => {
         </motion.div>
 
         {/* Hero Title — shimmer animated gradient */}
-        <motion.h1
-          variants={itemVariants}
-          className="text-6xl md:text-8xl lg:text-9xl font-['Caveat'] text-white tracking-tighter drop-shadow-lg"
-        >
-          MCET{' '}
-          <span
-            className="font-serif"
-            style={{
-              background: 'linear-gradient(to right, #fcd34d, #f59e0b, #b45309, #f59e0b, #fcd34d)',
-              backgroundSize: '300% auto',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              animation: 'shimmer-sweep 5s linear infinite',
-            }}
+        <motion.div variants={itemVariants} className="relative inline">
+          {/* Sketch Sparkle Doodle floating near the title */}
+          <DoodleSparkle className="w-16 h-16 top-[-30px] right-[-40px] opacity-80" />
+          <DoodleCrown className="w-12 h-12 sm:w-20 sm:h-20 absolute -top-2 -left-65 sm:-top-5 sm:-left-106 -rotate-15 mix-blend-screen opacity-60" color="rgba(245, 158, 11, 0.8)" />
+          <h1
+            className="text-6xl md:text-8xl lg:text-9xl font-['Caveat'] text-white tracking-tighter drop-shadow-lg"
           >
-            Diary'26
-          </span>
-        </motion.h1>
+            MCET{' '}
+            <span
+              className="font-serif relative"
+              style={{
+                background: 'linear-gradient(to right, #fcd34d, #f59e0b, #b45309, #f59e0b, #fcd34d)',
+                backgroundSize: '300% auto',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                animation: 'shimmer-sweep 5s linear infinite',
+              }}
+            >
+              Diary'26
+            </span>
+          </h1>
+        </motion.div>
 
         {/* Cursive Quote */}
         <motion.p
@@ -174,8 +179,11 @@ const Hero = () => {
             hidden: { opacity: 0, y: 30 },
             visible: { opacity: 1, y: 0, transition: { duration: 1, ease: 'easeOut', delay: 0.5 } }
           }}
-          className="flex flex-col sm:flex-row gap-4 items-center justify-center mt-12 pt-8 font-serif"
+          className="relative flex flex-col sm:flex-row gap-4 items-center justify-center mt-12 pt-8 font-serif"
         >
+          {/* Sketch Arrow pointing outwards */}
+          <DoodleArrow className="hidden md:block w-24 h-24 absolute left-[-180px] top-[-20px] opacity-80 transform -scale-x-100 rotate-45" />
+
           <Button size="lg" variant="primary" onClick={() => window.location.href = '/chapters'}>
             Read The Chapters →
           </Button>

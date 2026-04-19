@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import Fireflies from '../ui/Fireflies';
+import { DoodleHeart, DoodleCrown } from '../ui/VintageDoodles';
 
 const Footer = () => {
 
@@ -63,7 +64,7 @@ const Footer = () => {
           <span className="text-amber-500/60 text-sm font-serif" style={{ textShadow: '0 0 8px rgba(245,158,11,0.4)' }}>✦</span>
           <div className="h-px flex-1" style={{ background: 'linear-gradient(to left, transparent, rgba(245,158,11,0.4))' }} />
         </motion.div>
-
+        <DoodleCrown className="w-10 h-10 absolute top-16 left-18 sm:top-16 sm:left-120 opacity-70 -rotate-15 mix-blend-screen" color="rgba(245, 158, 11, 0.8)" />
         {/* Branding */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -120,8 +121,11 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="text-center text-amber-900 text-[11px] font-serif leading-relaxed pt-4 border-t border-amber-900/10 w-full max-w-md"
+          className="relative text-center text-amber-900 text-[11px] font-serif leading-relaxed pt-4 border-t border-amber-900/10 w-full max-w-md"
         >
+          {/* Heart doodle near the final text */}
+          <DoodleHeart className="hidden sm:inline w-12 h-12 absolute -top-4 -right-10 opacity-80 rotate-12" color="rgba(245, 158, 11, 0.8)" />
+
           &#127279; Batch 2022–'26 · All memories preserved forever...
           <br />
           Murshidabad College of Engineering and Technology, W.B. – 742102 🇮🇳

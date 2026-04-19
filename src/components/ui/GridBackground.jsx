@@ -34,8 +34,8 @@ const GridBackground = () => {
           className="w-full h-full"
           style={{
             backgroundImage: `
-              linear-gradient(to right, rgba(207, 151, 31, 0.15) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(229, 177, 35, 0.15) 1px, transparent 1px)
+              linear-gradient(to right, rgba(255, 174, 0, 0.15) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(252, 186, 3, 0.15) 1px, transparent 1px)
             `,
             backgroundSize: "40px 40px",
             filter: "blur(0.3px)"
