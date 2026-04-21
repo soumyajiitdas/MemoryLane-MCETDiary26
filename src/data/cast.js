@@ -245,9 +245,9 @@ export const peopleData =
   {
     id: 23,
     name: "Pritam Bardhan",
-    nickname: "SilentStrategist♟️",
+    nickname: "Iconoclast♟️",
     roll: "",
-    photo: "linear-gradient(45deg, #ffea8bff, #6aff74ff)",
+    photo: "/images/cast/pritam.jpeg",
     department: "Computer Science",
     birthday: "",
     oneliner: "Friendly by heart, sharp by mind - building quietly, thinking deeply, and playing the long game.",

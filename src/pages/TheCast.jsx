@@ -229,7 +229,7 @@ const TheCast = () => {
                     className="w-full aspect-square sm:aspect-[3/4] relative contrast-100 saturate-[0.8] border border-black/20"
                     style={{ backgroundImage: (selectedPerson.photo?.startsWith('http') || selectedPerson.photo?.startsWith('/')) ? `url('${selectedPerson.photo}')` : selectedPerson.photo, backgroundSize: 'cover', backgroundPosition: 'center' }}
                   >
-                    <DoodleCrown className="w-20 h-20 absolute -top-12 -right-6 rotate-18 z-20 opacity-80" color="rgba(255, 162, 0, 1)" />
+                    <DoodleCrown className="w-20 h-20 absolute bottom-1 sm:-top-12 sm:-right-6 -rotate-18 sm:rotate-18 z-20 opacity-80" color="rgba(255, 162, 0, 1)" />
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.5)_100%)]"></div>
                   </div>
                   <p className="text-center font-['Caveat'] text-2xl text-[#4a4235] mt-3 opacity-90">{selectedPerson?.nickname?.trim()? `@${selectedPerson.nickname}`: `@${selectedPerson?.name?.split(' ')?.[0] || 'user'}'s shot📸`}</p>

@@ -4,16 +4,29 @@ import { Download, FileText, ChevronLeft, ChevronRight, Flower2 } from 'lucide-r
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
-import { phoenixData } from '../data/phoenix';
+import { phoenixPages } from '../data/phoenix';
 import Fireflies from '../components/ui/Fireflies';
-import { DoodleCrown, DoodleArrow } from '../components/ui/VintageDoodles';
+import { DoodleCrown, DoodleArrow, DoodleHeart, DoodleCircle, DoodleSparkle } from '../components/ui/VintageDoodles';
 
-// 1. Organize data into a flat array of pages
-const bookPages = [
-  { type: 'cover', src: '/images/phoenix/phoenix-cover.webp' },
-  ...phoenixData.images.map(i => ({ type: 'image', ...i })),
-  ...phoenixData.stories.map(s => ({ type: 'story', ...s })),
-  ...phoenixData.poems.map(p => ({ type: 'poem', ...p })),
+// Cover is always pinned first; remaining pages are sorted by id.
+const cover = phoenixPages.find(p => p.type === 'cover');
+const rest  = phoenixPages.filter(p => p.type !== 'cover').sort((a, b) => a.id - b.id);
+const bookPages = cover ? [cover, ...rest] : rest;
+
+// Doodle sets — one per content type, rendered as absolute pencil sketches on each page
+const pageDoodles = [
+  { type: 'image', doodles: [
+    { C: DoodleHeart,   pos: 'top-2 right-2',    size: 'w-10 h-10', rotate: 'rotate-12'       },
+    { C: DoodleSparkle, pos: 'bottom-8 left-2',   size: 'w-8 h-8',  rotate: '-rotate-6'       },
+  ]},
+  { type: 'story', doodles: [
+    { C: DoodleArrow,   pos: 'top-2 right-2',    size: 'w-12 h-12', rotate: 'rotate-[130deg]' },
+    { C: DoodleCircle,  pos: 'bottom-6 right-8',  size: 'w-10 h-10', rotate: 'rotate-6'       },
+  ]},
+  { type: 'poem', doodles: [
+    { C: DoodleCrown,   pos: 'top-2 left-2',     size: 'w-10 h-10', rotate: '-rotate-12'      },
+    { C: DoodleHeart,   pos: 'bottom-6 right-2',  size: 'w-8 h-8',  rotate: 'rotate-12'       },
+  ]},
 ];
 
 const FlipbookPage = ({ page, index, totalPages }) => {
@@ -26,6 +39,9 @@ const FlipbookPage = ({ page, index, totalPages }) => {
     );
   }
 
+  // Pick the doodle config for this page type
+  const doodleConfig = pageDoodles.find(d => d.type === page.type)?.doodles ?? [];
+
   return (
     <div className="w-full h-full bg-[#fcf9f2] text-[#3e3222] relative flex flex-col overflow-hidden px-6 py-6 md:px-10 md:py-8">
       
@@ -33,6 +49,15 @@ const FlipbookPage = ({ page, index, totalPages }) => {
       <div className="absolute inset-0 pointer-events-none opacity-40 mix-blend-multiply z-0" 
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E")` }}>
       </div>
+
+      {/* Pencil Sketch Doodles — unique per page type */}
+      {doodleConfig.map(({ C, pos, size, rotate }, i) => (
+        <C
+          key={i}
+          className={`${size} absolute ${pos} ${rotate} opacity-60 mix-blend-multiply pointer-events-none z-30`}
+          color="rgba(100, 80, 60, 0.8)"
+        />
+      ))}
 
       {/* Header Ribbon (Fixed) */}
       <div className="relative z-20 w-full flex-shrink-0 pb-2 border-b border-[#3e3222]/20 mb-4">

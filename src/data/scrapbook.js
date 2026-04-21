@@ -281,7 +281,7 @@ export const galleryData =
   {
     id: 40,
     src: "/images/scrapbook/40.jpg",
-    caption: "Chilling at 13,123 ft.",
+    caption: "Chilling at 15,000 ft.",
     album: "Trips",
     year: "2026"
   },
