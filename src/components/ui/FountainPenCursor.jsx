@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 
-// ─── Fountain pen nib SVG ─────────────────────────────────────────────────────
+// ─── Fountain Pen Nib SVG ─────────────────────────────────────────────────────
 const PenNib = ({ isHovering }) => {
   const inkColor   = isHovering ? '#f59e0b' : '#fcd34d';
   const bodyColor  = '#2a2017';
@@ -50,28 +50,64 @@ const MagnifyingGlass = () => (
   </svg>
 );
 
+// ─── Eraser Tip SVG ───────────────────────────────────────────────────────────
+const EraserTip = () => (
+  <svg
+    width="28" height="18" viewBox="0 0 32 22" fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    style={{ overflow: 'visible', filter: 'drop-shadow(0 2px 5px rgba(0,0,0,0.35))' }}
+    aria-hidden="true"
+  >
+    {/* Main eraser body */}
+    <rect x="1" y="2" width="22" height="14" rx="2.5" fill="#fda4af" stroke="#fb7185" strokeWidth="0.8" />
+    {/* Centre stripe label */}
+    <rect x="1" y="8" width="22" height="4" fill="#f43f5e" opacity="0.35" />
+    {/* Brand line detail */}
+    <line x1="5" y1="5" x2="18" y2="5" stroke="#fb7185" strokeWidth="0.6" strokeLinecap="round" opacity="0.6" />
+    {/* Metal ferrule band */}
+    <rect x="22" y="2" width="8" height="14" rx="1.5" fill="#d1d5db" stroke="#9ca3af" strokeWidth="0.5" />
+    <rect x="23.5" y="3" width="2" height="12" rx="1" fill="rgba(255,255,255,0.45)" />
+    {/* Rubber erasing edge (bottom of eraser) */}
+    <rect x="1" y="14" width="22" height="4" rx="1.5" fill="#fecdd3" />
+    {/* Eraser dust/shavings beneath */}
+    <ellipse cx="5"  cy="20" rx="2"   ry="0.7" fill="#fda4af" opacity="0.5" />
+    <ellipse cx="11" cy="21" rx="1.5" ry="0.6" fill="#fda4af" opacity="0.4" />
+    <ellipse cx="17" cy="20" rx="2"   ry="0.7" fill="#fda4af" opacity="0.45" />
+  </svg>
+);
+
 // ─── Ink Splat Drop ───────────────────────────────────────────────────────────
+// FIX: rotate moved OUT of style into animate props so framer-motion's
+// transform matrix doesn't conflict. top:0/left:0 make positioning unambiguous.
 const InkDrop = ({ x, y, angle, distance, size, onDone }) => (
   <motion.div
-    initial={{ x, y, scale: 0, opacity: 1 }}
-    animate={{
-      x: x + Math.cos(angle) * distance,
-      y: y + Math.sin(angle) * distance,
-      scale: 1,
-      opacity: 0,
+    initial={{
+      x,
+      y,
+      scale:   0,
+      opacity: 1,
+      rotate:  (angle * 180) / Math.PI,
     }}
-    transition={{ duration: 0.5, ease: [0.22, 0.61, 0.36, 1] }}
+    animate={{
+      x:       x + Math.cos(angle) * distance,
+      y:       y + Math.sin(angle) * distance,
+      scale:   1,
+      opacity: 0,
+      rotate:  (angle * 180) / Math.PI + 60,
+    }}
+    transition={{ duration: 0.6, ease: [0.22, 0.61, 0.36, 1] }}
     onAnimationComplete={onDone}
     style={{
-      position: 'fixed',
-      width: size,
-      height: size * 1.4,
+      position:     'fixed',
+      top:          0,       // explicit anchor — framer x/y are transforms from here
+      left:         0,
+      width:        size,
+      height:       size * 1.4,
       borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
-      background: 'radial-gradient(circle at 35% 35%, #fcd34d, #b45309)',
+      background:   'radial-gradient(circle at 35% 35%, #fcd34d, #b45309)',
       pointerEvents: 'none',
-      zIndex: 10009,
+      zIndex:       10009,
       transformOrigin: 'center',
-      rotate: `${(angle * 180) / Math.PI}deg`,
     }}
     aria-hidden="true"
   />
@@ -79,37 +115,50 @@ const InkDrop = ({ x, y, angle, distance, size, onDone }) => (
 
 // ─── Main Cursor Component ────────────────────────────────────────────────────
 const FountainPenCursor = () => {
-  const cursorRef   = useRef(null);
-  const modeRef     = useRef('default');
-  const visibleRef  = useRef(false);
-  // Tilt — tracked separately so position stays instant
-  const tiltRef     = useRef(0);     // current smoothed tilt (degrees)
-  const targetTilt  = useRef(0);     // target tilt from movement direction
-  const prevPos     = useRef({ x: 0, y: 0 });
-  const rafId       = useRef(null);
+  // Only activate on devices with a fine pointer (mouse/trackpad).
+  // On touch/mobile there is no cursor at all — skip everything.
+  const [isMouse] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches
+  );
+
+  const cursorRef  = useRef(null);
+  const modeRef    = useRef('default');
+  const visibleRef = useRef(false);
+  const tiltRef    = useRef(0);
+  const targetTilt = useRef(0);
+  const prevPos    = useRef({ x: 0, y: 0 });
+  const rafId      = useRef(null);
 
   const [mode,      setMode]      = useState('default');
   const [inkSplats, setInkSplats] = useState([]);
   const [visible,   setVisible]   = useState(false);
 
   useEffect(() => {
+    // Skip entirely on touch devices — no mouse cursor to customise.
+    if (!isMouse) return;
+
     document.documentElement.classList.add('custom-cursor');
 
-    // ── Compute mode from DOM element ──────────────────────────────────────
-    const getMode = (el) => {
+    // ── Mode detection ─────────────────────────────────────────────────────
+    // Uses elementsFromPoint so pointer-events:visibleStroke/none doodles are
+    // reliably detected even when hovering between stroke lines.
+    const getMode = (el, x, y) => {
+      // Check ALL elements at cursor pos — catches doodles with pointer-events:none
+      const stack = document.elementsFromPoint(x, y);
+      const onDoodle = stack.some(e => e.closest?.('[data-doodle="true"]'));
+      if (onDoodle) return 'eraser';
+
       if (!el) return 'default';
-      if (el.closest('[data-photo="true"]') || el.closest('img, [role="img"]')) return 'doodle';
-      if (el.closest('[data-doodle="true"]'))                                     return 'doodle';
+      if (el.closest('[data-photo="true"]') || el.closest('img, [role="img"]')) return 'photo';
       if (el.closest('a, button, [role="button"], input, label, select, textarea')) return 'link';
       return 'default';
     };
 
-    // ── Continuous RAF loop — smoothly lerps tilt toward target ───────────────
-    // Runs independently of mousemove so the position update is never delayed.
+    // ── RAF tilt loop ──────────────────────────────────────────────────────
     const animateTilt = () => {
       const diff = targetTilt.current - tiltRef.current;
       if (Math.abs(diff) > 0.05) {
-        tiltRef.current += diff * 0.35; // fast lerp: responsive but organic
+        tiltRef.current += diff * 0.35;
         if (cursorRef.current) {
           cursorRef.current.style.transform =
             `translate(${prevPos.current.x}px, ${prevPos.current.y}px) rotate(${tiltRef.current}deg)`;
@@ -119,37 +168,30 @@ const FountainPenCursor = () => {
     };
     rafId.current = requestAnimationFrame(animateTilt);
 
-    // ── Single mousemove handler does everything ───────────────────────────
-    // Position is updated with direct DOM manipulation — zero React overhead.
-    // Mode is only updated via setState when it actually changes.
+    // ── Mousemove — position + mode ────────────────────────────────────────
     const onMove = (e) => {
       const { clientX: x, clientY: y } = e;
 
-      // 1. Position — instant, no lerp, no RAF delay
       if (cursorRef.current) {
         cursorRef.current.style.transform =
           `translate(${x}px, ${y}px) rotate(${tiltRef.current}deg)`;
       }
 
-      // 2. Tilt target — derived from velocity direction, capped at ±20°
       const dx = x - prevPos.current.x;
       const dy = y - prevPos.current.y;
       const speed = Math.sqrt(dx * dx + dy * dy);
       if (speed > 1.2) {
         const angle = (Math.atan2(dy, dx) * 180) / Math.PI - 90;
-        // Clamp to ±20° for a subtle pen-writing tilt
         targetTilt.current = Math.max(-20, Math.min(20, angle));
       }
       prevPos.current = { x, y };
 
-      // 2. Visibility (fires at most once)
       if (!visibleRef.current) {
         visibleRef.current = true;
         setVisible(true);
       }
 
-      // 3. Mode — only re-renders when the category actually changes
-      const newMode = getMode(e.target);
+      const newMode = getMode(e.target, x, y);
       if (newMode !== modeRef.current) {
         modeRef.current = newMode;
         setMode(newMode);
@@ -159,9 +201,9 @@ const FountainPenCursor = () => {
     const onLeave = () => { visibleRef.current = false; setVisible(false); };
     const onEnter = () => { visibleRef.current = true;  setVisible(true);  };
 
-    window.addEventListener('mousemove',    onMove,   { passive: true });
-    document.addEventListener('mouseleave', onLeave,  { passive: true });
-    document.addEventListener('mouseenter', onEnter,  { passive: true });
+    window.addEventListener('mousemove',    onMove,  { passive: true });
+    document.addEventListener('mouseleave', onLeave, { passive: true });
+    document.addEventListener('mouseenter', onEnter, { passive: true });
 
     return () => {
       document.documentElement.classList.remove('custom-cursor');
@@ -170,79 +212,95 @@ const FountainPenCursor = () => {
       document.removeEventListener('mouseleave', onLeave);
       document.removeEventListener('mouseenter', onEnter);
     };
-  }, []); // runs once — never re-attaches
+  }, [isMouse]);
 
   // ── Click → ink splat ─────────────────────────────────────────────────────
   const handleClick = useCallback((e) => {
     const { clientX: x, clientY: y } = e;
-    const count = 5 + Math.floor(Math.random() * 4);
+    const count = 6 + Math.floor(Math.random() * 5); // 6–10 drops
     setInkSplats(prev => [
       ...prev,
       ...Array.from({ length: count }, (_, i) => ({
-        id: `${Date.now()}-${i}`,
-        x: x - 3,
-        y: y - 3,
-        angle:    (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.7,
-        distance: 16 + Math.random() * 26,
-        size:     3 + Math.random() * 4,
+        id:       `${Date.now()}-${i}`,
+        x:        x - 4,
+        y:        y - 4,
+        angle:    (Math.PI * 2 * i) / count + (Math.random() - 0.5) * 0.8,
+        distance: 24 + Math.random() * 36,   // fly further for visibility
+        size:     5 + Math.random() * 6,      // bigger drops
       })),
     ]);
   }, []);
 
   useEffect(() => {
+    if (!isMouse) return;
     window.addEventListener('mousedown', handleClick);
     return () => window.removeEventListener('mousedown', handleClick);
-  }, [handleClick]);
+  }, [handleClick, isMouse]);
 
   const removeInkSplat = useCallback(
     (id) => setInkSplats(prev => prev.filter(s => s.id !== id)),
     []
   );
 
-  const isDoodle   = mode === 'doodle';
+  // Don't render anything on touch/mobile devices
+  if (!isMouse) return null;
+
+  // ── Derived state ──────────────────────────────────────────────────────────
+  const isPhoto   = mode === 'photo';
+  const isEraser  = mode === 'eraser';
   const isHovering = mode === 'link';
+
+  // Hotspot adjustments per cursor type
+  const marginTop = isPhoto || isEraser ? -13 : -1;
 
   return (
     <>
-      {/* ── Cursor shell — positioned with direct DOM transform ── */}
+      {/* ── Cursor shell ── */}
       <div
         ref={cursorRef}
         aria-hidden="true"
         style={{
-          position:      'fixed',
-          top:    0,
-          left:   0,
-          width:  30,
-          height: 34,
-          // Hotspot: nib tip (top-centre of SVG) for pen, centre for glass
+          position:   'fixed',
+          top:        0,
+          left:       0,
+          width:      34,
+          height:     34,
           marginLeft: -13,
-          marginTop:  isDoodle ? -13 : -1,
+          marginTop,
           pointerEvents: 'none',
-          // Above the graduation banner overlay (z-index 10000–10002)
-          zIndex:        10010,
-          willChange:    'transform',
-          opacity:       visible ? 1 : 0,
-          // Only transition opacity and the hotspot shift — NOT position
-          transition:    'opacity 0.15s ease, margin-top 0.15s ease',
+          zIndex:     10010,
+          willChange: 'transform',
+          opacity:    visible ? 1 : 0,
+          transition: 'opacity 0.15s ease, margin-top 0.15s ease',
         }}
       >
         <AnimatePresence mode="wait">
-          {isDoodle ? (
+          {isPhoto ? (
             <motion.div
               key="glass"
               initial={{ opacity: 0, scale: 0.6 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{   opacity: 0, scale: 0.6 }}
+              animate={{ opacity: 1, scale: 1   }}
+              exit={{   opacity: 0, scale: 0.6  }}
               transition={{ duration: 0.12 }}
             >
               <MagnifyingGlass />
+            </motion.div>
+          ) : isEraser ? (
+            <motion.div
+              key="eraser"
+              initial={{ opacity: 0, scale: 0.6, rotate: -10 }}
+              animate={{ opacity: 1, scale: 1,   rotate: 0   }}
+              exit={{   opacity: 0, scale: 0.6, rotate: 10  }}
+              transition={{ duration: 0.12 }}
+            >
+              <EraserTip />
             </motion.div>
           ) : (
             <motion.div
               key="pen"
               initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{   opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1   }}
+              exit={{   opacity: 0, scale: 0.8  }}
               transition={{ duration: 0.12 }}
             >
               <PenNib isHovering={isHovering} />
@@ -254,7 +312,7 @@ const FountainPenCursor = () => {
                   style={{
                     position:     'absolute',
                     top:          -6,
-                    left:        '5%',
+                    left:         '5%',
                     transform:    'translateX(-50%)',
                     width:        16,
                     height:       16,

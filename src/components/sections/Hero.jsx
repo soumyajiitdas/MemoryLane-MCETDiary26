@@ -71,6 +71,7 @@ const Hero = () => {
             <div className="absolute inset-0 p-3 backface-hidden">
               <div className="w-full h-[80%] shadow-inner bg-black/5 overflow-hidden">
                 <div
+                  
                   className="w-full h-full mix-blend-multiply transition-transform duration-700 group-hover:scale-110"
                   style={{ background: p.img ? `url(${p.img}) center/cover no-repeat` : p.bg }}
                 />
@@ -81,6 +82,7 @@ const Hero = () => {
             </div>
             {/* Back */}
             <div
+              data-photo="true"
               className="absolute inset-0 p-6 backface-hidden bg-[#fdfaf3] flex flex-col items-center justify-center text-center border border-black/5"
               style={{ transform: 'rotateY(180deg)' }}
             >

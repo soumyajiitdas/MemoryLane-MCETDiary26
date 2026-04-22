@@ -9,7 +9,7 @@ import PageTransition from '../components/layout/PageTransition';
 import ChapterNav from '../components/ui/ChapterNav';
 import Fireflies from '../components/ui/Fireflies';
 import PaperTear from '../components/ui/PaperTear';
-import { DoodleHeart, DoodleSparkle, DoodleArrow } from '../components/ui/VintageDoodles';
+import { DoodleHeart, DoodleSparkle, DoodleArrow, DoodleCrown } from '../components/ui/VintageDoodles';
 
 // Data imports
 import { peopleData } from '../data/cast';
@@ -101,6 +101,7 @@ const StickyNoteMini = ({ post, index }) => {
       <div className="push-pin -top-3" />
 
       <div
+        data-photo="true"
         className={`font-['Caveat'] ${textSize} leading-relaxed text-[#2c3e50] w-full mt-4 styling-scrollbar`}
         style={contentStyle}
       >
@@ -174,7 +175,7 @@ const LetterToBatch = () => {
     <div className="mt-4 space-y-3 font-['Caveat'] pt-2 text-xl md:text-[26px] text-gray-900">
 
   <p>
-      It feels like yesterday we were strangers, carrying more nervousness than certainty. And now, somehow, we stand at the edge of goodbye - as stories woven into a single tapestry. These years weren't just milestones, but the quiet, in-between moments - chai breaks that turned into therapy sessions, and sleepless nights filled with unspoken thoughts.
+      It feels unreal how something that began with unfamiliar faces and hesitant conversations has become a place that feels like home. We walked in carrying uncertainty, and somehow, without noticing, we built a world out of ordinary days. These years were never just about lectures, exams, or milestones, but the quiet, in-between moments - chai breaks, sleepless nights filled with unspoken thoughts.
   </p>
 
   <p className="text-amber-900 text-center">
@@ -182,21 +183,21 @@ const LetterToBatch = () => {
   </p>
 
   <p>
-    Maybe that's what we were - ever-changing, fleeting, yet deeply unforgettable.
+    Maybe that's what we were, ever-changing, fleeting, yet deeply unforgettable.
     As we prepare to step onto different paths, it's okay to acknowledge that some of us may drift. Some friendships are meant to be a beautiful chapter rather than the whole book, but that doesn't make the chapter any less vital.
   </p>
 
   <p>
-    We didn't just pass the time; we lived it. Deeply, together. 
+    We didn’t just spend these years… we lived them. Deeply, together.
     <span className='inline sm:block'> No matter where the road leads, these days will always be a part of us...</span>
   </p>
 
 </div>
 
     {/* Signature */}
-    <div className="mt-4 sm:mt-6 text-right">
+    <div className="mt-4 sm:mt-5 text-right">
       <span className="font-['Caveat'] text-xl font-medium md:text-2xl text-amber-900">
-        — From the memories we made
+        — From the memories we made :)
       </span>
     </div>
 
@@ -284,11 +285,13 @@ const Prologue = () => {
                    className="w-[calc(50%-0.5rem)] sm:w-40 md:w-48 bg-[#fdfbf7] p-2 sm:p-3 pb-4 sm:pb-6 shadow-xl border border-black/10 cursor-pointer flex flex-col justify-center"
                  >
                    <div 
+                     data-photo="true"
                      className="w-full aspect-[4/5] bg-gray-200 mb-2 sm:mb-4 mix-blend-multiply border border-black/5"
                      style={{ 
                        background: person.photo.startsWith('linear') ? person.photo : `url(${person.photo}) center/cover no-repeat` 
                      }}
                    ></div>
+                   <DoodleCrown className="w-16 h-16 absolute bottom-1 -top-11 -right-6 rotate-18 z-20 opacity-50" />
                    <h3 className="font-['Caveat'] text-xl sm:text-2xl text-amber-900 font-bold truncate">{`@${person.name.split(' ')[0]}`}</h3>
                    <p className="text-[10px] sm:text-xs text-amber-700/70 tracking-wider">{person.roll || "1060012****"}</p>
                  </motion.div>

@@ -271,7 +271,7 @@ const LastPages = () => {
              initial={{ opacity: 0, y: 30 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
-             className="pt-20 mt-12 border-t border-[#3e3222]/20 w-full max-w-3xl flex flex-col items-center text-center relative"
+             className="pt-20 mt-12 border-t border-[#3e3222]/40 w-full max-w-3xl flex flex-col items-center text-center relative"
           >
              <Flower2 size={32} className="text-[#b94a4a] absolute top-0 -translate-y-1/2 bg-[var(--color-midnight)] px-4 box-content" />
              

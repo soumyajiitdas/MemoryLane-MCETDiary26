@@ -132,7 +132,7 @@ const JourneyNode = ({ data, index }) => {
               {/* Paper texture overlay */}
               <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/paper.png')]"></div>
               
-              <div className="relative z-10 space-y-4">
+              <div className="relative z-10 space-y-4" data-photo="true">
                 <div className="w-12 h-px bg-amber-900/20 mx-auto"></div>
                 <p className="text-amber-900 font-['Caveat'] text-2xl leading-relaxed">
                   "{data.note}"

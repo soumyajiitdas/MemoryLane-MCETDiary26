@@ -170,7 +170,7 @@ const Navbar = () => {
               className="group text-2xl font-serif font-bold whitespace-nowrap relative inline-block"
             >
 
-                <span className="font-['Caveat']">MCET </span><span className='text-gradient'><span className="font-['Caveat']">Batch</span>'26</span>
+                <span className="font-['Caveat']">MCET </span><span className='text-gradient-animate'><span className="font-['Caveat']">Batch</span>'26</span>
               
               {/* logo glow on hover */}
               <span
@@ -221,7 +221,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile: mini player (no disc) + hamburger */}
-          <div className="md:hidden flex items-center gap-2 flex-shrink-0">
+          <div className="md:hidden flex items-center gap-3 flex-shrink-0">
             <NavMiniPlayer showDisc={false} />
             <button
               onClick={() => setIsOpen(!isOpen)}
