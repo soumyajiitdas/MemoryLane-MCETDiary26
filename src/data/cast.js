@@ -62,7 +62,7 @@ export const peopleData =
     roll: "10600122001",
     photo: "/images/cast/bapi.jpeg",
     department: "Computer Science",
-    birthday: "04-26",
+    birthday: "04-22",
     oneliner: "Busy with life, yet never too busy for people - the one who kept every bond alive.",
     socialLinks: { github: "https://github.com/bapisarkar22", linkedin: "https://www.linkedin.com/in/bapisarkar2005/", instagram: "https://www.instagram.com/bapisarkar1498/" }
   },

@@ -12,11 +12,20 @@ export default defineConfig({
     assetsInlineLimit: 0,
     rollupOptions: {
       output: {
-        // Split vendor libs so the main app bundle stays small and loads fast
-        manualChunks: {
-          'react-vendor':   ['react', 'react-dom', 'react-router-dom'],
-          'motion-vendor':  ['framer-motion'],
-          'icons-vendor':   ['lucide-react', 'react-icons'],
+        // Vite 8 (Rolldown) requires manualChunks to be a function, not an object
+        manualChunks(id) {
+          if (id.includes('node_modules/react') ||
+              id.includes('node_modules/react-dom') ||
+              id.includes('node_modules/react-router-dom')) {
+            return 'react-vendor';
+          }
+          if (id.includes('node_modules/framer-motion')) {
+            return 'motion-vendor';
+          }
+          if (id.includes('node_modules/lucide-react') ||
+              id.includes('node_modules/react-icons')) {
+            return 'icons-vendor';
+          }
         },
       },
     },
