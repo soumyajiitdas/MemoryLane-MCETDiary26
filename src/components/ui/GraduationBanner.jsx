@@ -14,7 +14,7 @@ const GRAD_DATE_STR = '2026-07-17'; // ← Graduation date (YYYY-MM-DD)
 // DEV TESTING: Set this to `true` to always show the banner during development.
 // Set it back to `false` before deploying!
 // ─────────────────────────────────────────────────────────────────────────────
-const DEV_FORCE_SHOW = true;
+const DEV_FORCE_SHOW = false;
 
 /** True only if today's local date is graduation day */
 const isGraduationDay = () => {
