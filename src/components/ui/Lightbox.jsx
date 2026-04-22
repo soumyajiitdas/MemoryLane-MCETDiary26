@@ -79,11 +79,23 @@ const Lightbox = ({ images, currentIndex, isOpen, onClose, onNavigate }) => {
             onClick={onClose} // Close when clicking outside image
           >
             <div 
-              className="relative w-full h-[80vh] rounded-lg overflow-hidden shadow-2xl bg-contain bg-center bg-no-repeat"
-              style={{ backgroundImage: (currentImage.src?.startsWith('http') || currentImage.src?.startsWith('/')) ? `url('${currentImage.src}')` : currentImage.src }} 
+              className="relative w-full h-[80vh] rounded-lg overflow-hidden shadow-2xl flex items-center justify-center bg-black/40"
               onClick={(e) => e.stopPropagation()} // Prevent close when clicking image
             >
-             {/* If we had real images: <img src={currentImage.src} className="w-full h-full object-contain" /> */}
+              {(currentImage.src?.startsWith('http') || currentImage.src?.startsWith('/')) ? (
+                <img
+                  key={currentImage.src}
+                  src={currentImage.src}
+                  alt={currentImage.caption || 'Memory'}
+                  decoding="async"
+                  className="w-full h-full object-contain"
+                />
+              ) : (
+                <div
+                  className="w-full h-full bg-contain bg-center bg-no-repeat"
+                  style={{ backgroundImage: currentImage.src }}
+                />
+              )}
             </div>
             
             {(currentImage.caption || currentImage.year) && (

@@ -155,7 +155,12 @@ const Scrapbook = () => {
 
           <GalleryGrid
             images={filteredImages}
-            onImageClick={(idx) => setLightboxIndex(idx)}
+            onImageClick={(visibleIdx, visibleImages) => {
+              // find the true index in filteredImages for the lightbox
+              const clickedId = visibleImages[visibleIdx]?.id;
+              const trueIdx = filteredImages.findIndex(img => img.id === clickedId);
+              setLightboxIndex(trueIdx >= 0 ? trueIdx : visibleIdx);
+            }}
           />
 
           {filteredImages.length === 0 && (
