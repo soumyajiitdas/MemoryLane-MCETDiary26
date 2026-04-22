@@ -51,6 +51,7 @@ const Polaroid = ({ person, onClick }) => {
       {showCrown && (<DoodleCrown className="w-15 h-15 absolute -top-10 -right-5 rotate-15 z-20 opacity-80"  />)}
 
       <div
+        data-photo="true"
         className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center sepia-[0.15] contrast-[1.05]"
         style={{ backgroundImage: (person.photo?.startsWith('http') || person.photo?.startsWith('/')) ? `url('${person.photo}')` : person.photo }}
       >
@@ -226,6 +227,7 @@ const TheCast = () => {
                 
                 <div className="bg-[#fdfaf3] p-2 pb-6 shadow-[3px_5px_15px_rgba(0,0,0,0.25)] border border-[#d5d0c0] transform rotate-2">
                   <div 
+                    data-photo="true"
                     className="w-full aspect-square sm:aspect-[3/4] relative contrast-100 saturate-[0.8] border border-black/20"
                     style={{ backgroundImage: (selectedPerson.photo?.startsWith('http') || selectedPerson.photo?.startsWith('/')) ? `url('${selectedPerson.photo}')` : selectedPerson.photo, backgroundSize: 'cover', backgroundPosition: 'center' }}
                   >

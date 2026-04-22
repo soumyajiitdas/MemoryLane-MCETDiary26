@@ -5,8 +5,9 @@ const defaultColor = "rgba(200, 200, 200, 0.8)"; // 80% opacity pencil sketch co
 export const DoodleArrow = ({ className, color = defaultColor, style }) => (
   <svg 
     viewBox="0 0 100 100" 
-    className={`absolute pointer-events-none ${className}`} 
-    style={style}
+    className={`absolute doodle-element ${className}`} 
+    data-doodle="true"
+    style={{ ...style, pointerEvents: 'visibleStroke' }}
     fill="none" 
     stroke={color} 
     strokeWidth="1.5" 
@@ -21,8 +22,9 @@ export const DoodleArrow = ({ className, color = defaultColor, style }) => (
 export const DoodleHeart = ({ className, color = defaultColor, style }) => (
   <svg 
     viewBox="0 0 100 100" 
-    className={`absolute pointer-events-none ${className}`} 
-    style={style}
+    className={`absolute doodle-element ${className}`} 
+    data-doodle="true"
+    style={{ ...style, pointerEvents: 'visibleStroke' }}
     fill="none" 
     stroke={color} 
     strokeWidth="1.5" 
@@ -37,8 +39,9 @@ export const DoodleHeart = ({ className, color = defaultColor, style }) => (
 export const DoodleCrown = ({ className, color = defaultColor, style }) => (
   <svg 
     viewBox="0 0 100 100" 
-    className={`absolute pointer-events-none ${className}`} 
-    style={style}
+    className={`absolute doodle-element ${className}`} 
+    data-doodle="true"
+    style={{ ...style, pointerEvents: 'visibleStroke' }}
     fill="none" 
     stroke={color} 
     strokeWidth="1.5" 
@@ -54,8 +57,9 @@ export const DoodleCrown = ({ className, color = defaultColor, style }) => (
 export const DoodleCircle = ({ className, color = defaultColor, style }) => (
   <svg 
     viewBox="0 0 100 100" 
-    className={`absolute pointer-events-none ${className}`} 
-    style={style}
+    className={`absolute doodle-element ${className}`} 
+    data-doodle="true"
+    style={{ ...style, pointerEvents: 'visibleStroke' }}
     fill="none" 
     stroke={color} 
     strokeWidth="1.5" 
@@ -70,8 +74,9 @@ export const DoodleCircle = ({ className, color = defaultColor, style }) => (
 export const DoodleSparkle = ({ className, color = defaultColor, style }) => (
   <svg 
     viewBox="0 0 100 100" 
-    className={`absolute pointer-events-none ${className}`} 
-    style={style}
+    className={`absolute doodle-element ${className}`} 
+    data-doodle="true"
+    style={{ ...style, pointerEvents: 'visibleStroke' }}
     fill="none" 
     stroke={color} 
     strokeWidth="1.5" 

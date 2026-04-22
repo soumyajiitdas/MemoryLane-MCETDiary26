@@ -66,6 +66,7 @@ const StickyNote = ({ post }) => {
 
         {/* Content — scrollable when very long */}
         <div
+          data-photo="true"
           className={`font-['Caveat'] ${textSize} mt-4 mb-4 leading-relaxed text-[#2c3e50] w-full text-center styling-scrollbar`}
           style={contentStyle}
         >
@@ -73,7 +74,7 @@ const StickyNote = ({ post }) => {
         </div>
 
         {post.image && (
-          <div className="w-full mb-6 z-10">
+          <div className="w-full mb-6 z-10" data-photo="true">
             <img
               src={post.image.startsWith('linear') ? '' : post.image}
               style={post.image.startsWith('linear') ? { background: post.image } : {}}

@@ -61,6 +61,7 @@ const EventCard = ({ event, onClick }) => {
             {/* The Image */}
             <div className="overflow-hidden">
                <div 
+                 data-photo="true"
                  className="w-full aspect-[16/9] bg-cover bg-center border border-black/10 sepia-[0.15] transition-transform duration-700 group-hover:scale-[1.05] group-hover:sepia-0"
                  style={{ backgroundImage: (event.gallery[0]?.startsWith('http') || event.gallery[0]?.startsWith('/')) ? `url('${event.gallery[0]}')` : (event.gallery[0] || 'linear-gradient(to bottom, #d4a373, #faedcd)') }}
                >

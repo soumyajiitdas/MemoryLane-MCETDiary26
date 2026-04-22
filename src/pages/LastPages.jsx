@@ -94,7 +94,7 @@ const FlipbookPage = ({ page, index, totalPages }) => {
 
         {page.type === 'image' && (
           <div className="flex flex-col items-center justify-center min-h-full">
-            <div className="w-full aspect-square max-w-[350px] bg-cover bg-center shadow-inner border border-[#d4c3a3]" style={{ backgroundImage: `url(${page.src})` }}></div>
+            <div data-photo="true" className="w-full aspect-square max-w-[350px] bg-cover bg-center shadow-inner border border-[#d4c3a3]" style={{ backgroundImage: `url(${page.src})` }}></div>
             <p className="font-['Caveat'] text-2xl text-center text-[#5c4a35] mt-4 px-4 tracking-tight">
               "{page.caption}"
             </p>

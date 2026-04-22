@@ -1,5 +1,63 @@
 @import "tailwindcss";
 
+/* ═══════════════════════════════════════════════════════════════
+   FOUNTAIN PEN CURSOR — hide the default OS cursor site-wide
+   The custom cursor component renders in its place.
+   ═══════════════════════════════════════════════════════════════ */
+html.custom-cursor *,
+html.custom-cursor {
+  cursor: none !important;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DIARY MODE — `html.diary-mode` cascades everywhere
+   ═══════════════════════════════════════════════════════════════ */
+html {
+  transition: filter 0.5s ease;
+}
+html.diary-mode {
+  filter: sepia(0.22) brightness(1.02);
+}
+html.diary-mode body {
+  background-color: #f0e9d8 !important;
+  background-image:
+    repeating-linear-gradient(
+      transparent, transparent 31px,
+      rgba(139,100,50,0.08) 31px, rgba(139,100,50,0.08) 32px
+    ),
+    linear-gradient(
+      to right,
+      transparent 48px,
+      rgba(180,80,60,0.12) 48px, rgba(180,80,60,0.12) 50px,
+      transparent 50px
+    ) !important;
+  color: #2a1f0e !important;
+  animation: diary-enter 0.4s ease-out forwards;
+}
+html.diary-mode *, html.diary-mode h1, html.diary-mode h2,
+html.diary-mode h3, html.diary-mode p, html.diary-mode span,
+html.diary-mode button, html.diary-mode a, html.diary-mode li {
+  font-family: 'Caveat', cursive !important;
+}
+html.diary-mode .glass {
+  background: rgba(245,232,200,0.55) !important;
+  border-color: rgba(139,100,50,0.25) !important;
+  color: #2a1f0e !important;
+}
+html.diary-mode body::before {
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+}
+html.diary-mode nav {
+  background: rgba(240,233,216,0.85) !important;
+  border-bottom-color: rgba(139,100,50,0.2) !important;
+}
+@keyframes diary-enter {
+  0%   { opacity: 0.5; transform: scaleX(0.98) skewY(0.3deg); }
+  100% { opacity: 1;   transform: scaleX(1)    skewY(0deg); }
+}
+
+
 @theme {
   --color-midnight: #151412;
   --color-surface: #1e1c1a;
