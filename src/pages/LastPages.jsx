@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Download, FileText, ChevronLeft, ChevronRight, Flower2 } from 'lucide-react';
+import { Download, FileText, ChevronLeft, ChevronRight, Flower2, Play } from 'lucide-react';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
 import { phoenixPages } from '../data/phoenix';
 import Fireflies from '../components/ui/Fireflies';
 import { DoodleCrown, DoodleArrow, DoodleHeart, DoodleCircle, DoodleSparkle } from '../components/ui/VintageDoodles';
+import EndCredits from '../components/ui/EndCredits';
 
 // Cover is always pinned first; remaining pages are sorted by id.
 const cover = phoenixPages.find(p => p.type === 'cover');
@@ -128,6 +129,7 @@ const FlipbookPage = ({ page, index, totalPages }) => {
 const LastPages = () => {
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(1); // 1 for next, -1 for prev
+  const [showCredits, setShowCredits] = useState(false);
 
   const handleNext = () => {
     if (currentPage < bookPages.length - 1) {
@@ -165,6 +167,7 @@ const LastPages = () => {
   };
 
   return (
+    <>
     <PageTransition>
       <div className="min-h-[100vh] py-24 pb-32">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center relative z-10">
@@ -310,15 +313,74 @@ const LastPages = () => {
                 <span className="text-xs font-sans uppercase tracking-[0.2em] text-[#7d6b52] mt-6 font-semibold">Draft Archive • PDF Size 27 MB</span>
              </div>
 
-             <div className="flex justify-between items-center w-full mt-12">
+             {/* ── Credits trigger — premium ── */}
+             <motion.div
+               initial={{ opacity: 0, y: 16 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               transition={{ delay: 0.4, duration: 1, ease: 'easeOut' }}
+               className="mt-10 mb-6 flex flex-col items-center gap-5"
+             >
+               {/* Decorative divider */}
+               <div className="flex items-center gap-4 w-64">
+                 <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, transparent, rgba(245,158,11,0.25))' }} />
+                 <span className="font-serif text-[0.58rem] tracking-[0.32em] uppercase whitespace-nowrap" style={{ color: 'rgba(245,158,11,0.35)' }}>stories told</span>
+                 <div className="flex-1 h-px" style={{ background: 'linear-gradient(to left, transparent, rgba(245,158,11,0.25))' }} />
+               </div>
+
+               {/* The button */}
+               <div className="relative group cursor-pointer" onClick={() => setShowCredits(true)}>
+                 {/* Outer glow ring — appears on hover */}
+                 <div
+                   className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                   style={{
+                     boxShadow: '0 0 32px rgba(245,158,11,0.14)',
+                     background: 'transparent',
+                   }}
+                 />
+                 {/* Button surface */}
+                 <button
+                   className="relative flex items-center gap-3.5 px-10 py-3.5 rounded-full font-serif tracking-[0.22em] uppercase text-xs transition-all duration-500"
+                   style={{
+                     background: 'linear-gradient(135deg, rgba(245,158,11,0.07) 0%, rgba(180,83,9,0.04) 100%)',
+                     border: '1px solid rgba(245,158,11,0.22)',
+                     color: 'rgba(245,158,11,0.6)',
+                     letterSpacing: '0.28em',
+                   }}
+                   onMouseEnter={e => {
+                     e.currentTarget.style.background = 'linear-gradient(135deg, rgba(245,158,11,0.13) 0%, rgba(180,83,9,0.08) 100%)';
+                     e.currentTarget.style.borderColor = 'rgba(245,158,11,0.45)';
+                     e.currentTarget.style.color = 'rgba(245,158,11,0.92)';
+                   }}
+                   onMouseLeave={e => {
+                     e.currentTarget.style.background = 'linear-gradient(135deg, rgba(245,158,11,0.07) 0%, rgba(180,83,9,0.04) 100%)';
+                     e.currentTarget.style.borderColor = 'rgba(245,158,11,0.22)';
+                     e.currentTarget.style.color = 'rgba(245,158,11,0.6)';
+                   }}
+                 >
+                   <Play size={12} className="group-hover:translate-x-0.5 transition-transform duration-300" />
+                   Roll Credits
+                 </button>
+               </div>
+
+               {/* Subtitle */}
+               <p className="font-serif text-[0.6rem] tracking-[0.25em] uppercase" style={{ color: 'rgba(180,140,80,0.4)' }}>
+                 A Cinematic End
+               </p>
+             </motion.div>
+
+             <div className="flex justify-between items-center w-full mt-10">
                <ChapterNav direction="prev" chapterName="Our Notes" path="/our-notes" />
                <ChapterNav direction="next" chapterName="Prologue" path="/" labelOverride="Return to" />
              </div>
           </motion.div>
-
         </div>
       </div>
     </PageTransition>
+
+    {/* End Credits — full screen overlay, mounted outside PageTransition */}
+    <EndCredits isOpen={showCredits} onClose={() => setShowCredits(false)} />
+    </>
   );
 };
 

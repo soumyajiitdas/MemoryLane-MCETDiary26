@@ -106,7 +106,7 @@ const InkDrop = ({ x, y, angle, distance, size, onDone }) => (
       borderRadius: '50% 50% 50% 50% / 60% 60% 40% 40%',
       background:   'radial-gradient(circle at 35% 35%, #fcd34d, #b45309)',
       pointerEvents: 'none',
-      zIndex:       10009,
+      zIndex:       10019,
       transformOrigin: 'center',
     }}
     aria-hidden="true"
@@ -268,7 +268,7 @@ const FountainPenCursor = () => {
           marginLeft: -13,
           marginTop,
           pointerEvents: 'none',
-          zIndex:     10010,
+          zIndex:     10020,
           willChange: 'transform',
           opacity:    visible ? 1 : 0,
           transition: 'opacity 0.15s ease, margin-top 0.15s ease',
