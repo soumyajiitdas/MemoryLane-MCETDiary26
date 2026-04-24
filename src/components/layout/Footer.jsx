@@ -16,7 +16,7 @@ const Footer = () => {
         style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')" }}
       />
 
-      {/* True Torn paper edge overlapping upward into previous section */}
+      {/* Torn paper edge overlapping upward into previous section */}
       <div className="absolute top-0 left-0 w-full z-20 pointer-events-none -translate-y-[99%] drop-shadow-md" style={{ height: '28px' }}>
         <svg
           viewBox="0 0 1200 40"
@@ -24,8 +24,7 @@ const Footer = () => {
           className="w-full h-full block"
           aria-hidden="true"
         >
-          {/* Jagged, sharp path simulating the paper rip. 
-              The fill perfectly matches the very top color of the footer gradient `rgba(18,14,8,0.95)` */}
+          {/* Jagged, sharp path simulating the paper rip. */}
           <path
             d="M0,40 L0,15 L30,25 L75,10 L110,25 L160,5 L220,30 L270,15 L320,32 L380,10 L440,25 L490,5 L550,22 L600,10 L640,30 L710,12 L770,25 L830,5 L890,30 L950,15 L1010,28 L1060,8 L1110,32 L1160,15 L1200,25 L1200,40 Z"
             fill="rgba(18,14,8,0.95)"
@@ -41,7 +40,7 @@ const Footer = () => {
       </div>
 
       {/* Firefly particles */}
-      <Fireflies/>
+      <Fireflies />
 
       {/* Ambient amber glow */}
       <div
@@ -76,7 +75,7 @@ const Footer = () => {
           <p className="text-3xl font-serif tracking-wider inline-block">
             MCET
             <span className='text-gradient-animate'><span className="font-['Caveat'] text-5xl font-normal tracking-normal ml-2 mr-1">Batch</span>
-            '26</span>
+              '26</span>
           </p>
           <span className="ml-2 text-2xl">✨</span>
         </motion.div>

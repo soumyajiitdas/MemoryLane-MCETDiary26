@@ -110,7 +110,7 @@ const JourneyNode = ({ data, index }) => {
         >
            {/* Front Side */}
            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/rice-paper.png')] bg-white p-3 md:p-4 pb-12 md:pb-12 shadow-2xl backface-hidden flex flex-col">
-              <div className="w-full h-[90%] shadow-inner border border-gray-100 bg-gray-50 overflow-hidden">
+              <div className={`w-full h-[90%] shadow-inner border border-gray-100 bg-gray-50 overflow-hidden ${index === timelineData.length - 1 ? '' : 'grayscale-[90%]'}`}>
                 {data.image.startsWith('/') || data.image.startsWith('http') ? (
                    <img src={data.image} alt={data.title} className="w-full h-full object-contain" loading="lazy" />
                 ) : (

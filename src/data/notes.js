@@ -9,7 +9,7 @@ export const memoriesData = [
     {
       id: 2,
       author: "Anoushka✨",
-      content: "Different journeys, shared time - wishing everyone the best ahead! 😇",
+      content: "Different journeys, shared time - wishing everyone the best ahead!",
       image: "",
       timestamp: "2026-04-02T23:05:00Z",
     },
@@ -23,7 +23,7 @@ export const memoriesData = [
     {
       id: 4,
       author: "Srija📚",
-      content: "Four years, countless memory, endless laughter... wishing us the success we deserve as we step into the new chapter. 🌟",
+      content: "Four years, countless memory, endless laughter... wishing us the success we deserve as we step into the new chapter.",
       image: "",
       timestamp: "2026-04-04T20:28:00Z",
     },
@@ -37,14 +37,14 @@ export const memoriesData = [
     {
       id: 6,
       author: "Priyobroto🤓",
-      content: "My life at MCET was full of unforgettable memories. I deeply miss my friends—the laughter, the stress, and those crazy exam days. They stood beside me, helped me through backlogs, and even in those risky cheating moments. We survived everything together. Now, those days are gone, but the bond and memories still stay in my heart forever. ❤️",
+      content: "My life at MCET was full of unforgettable memories. I deeply miss my friends—the laughter, the stress, and those crazy exam days. They stood beside me, helped me through backlogs, and even in those risky cheating moments. We survived everything together. Now, those days are gone, but the bond and memories still stay in my heart forever.",
       image: "",
       timestamp: "2026-04-05T18:36:00Z",
     },
     {
       id: 7,
       author: "Shirsendu😎",
-      content: "College life isn’t just about classes—it’s about the memories we create in between. Friends become family, turning ordinary days into unforgettable stories. In the end, it’s the laughter, chaos, and togetherness that we carry forever. 🤟🏻",
+      content: "College life isn’t just about classes—it’s about the memories we create in between. Friends become family, turning ordinary days into unforgettable stories. In the end, it’s the laughter, chaos, and togetherness that we carry forever.",
       image: "",
       timestamp: "2026-04-05T23:26:00Z",
     },
@@ -58,7 +58,7 @@ export const memoriesData = [
     {
       id: 9,
       author: "Subhodeep🎯",
-      content: "In the high altitudes of life where the air gets thin, you guys are the oxygen that keeps my heart beating and my spirit soaring. 🫀",
+      content: "In the high altitudes of life where the air gets thin, you guys are the oxygen that keeps my heart beating and my spirit soaring.",
       image: "",
       timestamp: "2026-04-18T09:36:00Z",
     },
@@ -72,7 +72,7 @@ export const memoriesData = [
     {
       id: 11,
       author: "Pritam♟️",
-      content: "When I first joined MCET through lateral entry, I felt like an outsider. Everyone already knew each other, and I was often met with curious looks and the question, “Who are you?” It was not easy to adjust at the beginning, as I had to find my place in a group that was already formed. However, as days passed, things slowly began to change. Through interactions, shared classes, and moments of laughter, I started building connections. Gradually, the same people who once saw me as a stranger began to accept me. In time, I was no longer “the new student,” but one of them. This journey taught me that acceptance takes time, but genuine effort and patience can turn unfamiliar faces into friends. 😇",
+      content: "When I first joined MCET through lateral entry, I felt like an outsider. Everyone already knew each other, and I was often met with curious looks and the question, “Who are you?” It was not easy to adjust at the beginning, as I had to find my place in a group that was already formed. However, as days passed, things slowly began to change. Through interactions, shared classes, and moments of laughter, I started building connections. Gradually, the same people who once saw me as a stranger began to accept me. In time, I was no longer “the new student,” but one of them. This journey taught me that acceptance takes time, but genuine effort and patience can turn unfamiliar faces into friends.",
       image: "",
       timestamp: "2026-04-21T18:16:00Z",
     },
@@ -85,7 +85,7 @@ export const memoriesData = [
     },
     {
       id: 13,
-      author: "Sahanaj💫",
+      author: "Sahanaj🌿",
       content: "College life is a beautiful mix of chaos and memories, where friends become family. These are the days we’ll miss the most someday.",
       image: "",
       timestamp: "2026-04-21T18:49:00Z",
@@ -96,11 +96,26 @@ export const memoriesData = [
       content: "A journey that's not what I thought but the one I lived and grew with some chunk cuties I met in the college 🥹🫶🏻",
       image: "",
       timestamp: "2026-04-21T23:16:00Z",
-    },{
+    },
+    {
       id: 15,
       author: "Manashi🥟",
       content: "MCET r Suru ta hoyechilo 'Lateral' ar 'Regular' diye, Ar sesh hochhe Pahar , Somudro periye endless future trip planning diye. Aktai message rekhe jete chai jano proti bochor kom kore akta trip jano amra korte pari..........🤞🏻💛",
       image: "",
       timestamp: "2026-04-21T20:58:00Z",
+    },
+    {
+      id: 16,
+      author: "Raju🏏",
+      content: "We might forget the formulas and the dates, but I’ll never forget our chaotic group chats. As we move toward our dreams, I know one thing for sure: our bond isn't going anywhere. Distance might change, but our college stories will stay gold forever.",
+      image: "",
+      timestamp: "2026-04-24T18:11:00Z",
+    },
+    {
+      id: 17,
+      author: "Saptarshi🔐",
+      content: "From the slow summer days spent in class, listening to teachers and chatting with friends to not doze off, to the stress filled exam days where we leaned on each other for advice (and maybe shared a few answers) , I will never forget these four years. Thanks for the memories, guys. Please stay in touch.",
+      image: "",
+      timestamp: "2026-04-24T18:31:00Z",
     },
   ];

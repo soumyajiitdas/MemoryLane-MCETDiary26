@@ -44,7 +44,7 @@ const VintageStatTicket = ({ label, value, delay }) => {
       {/* Vintage stamp overlay */}
       <motion.div
         initial={{ scale: 1.8, rotate: -20, opacity: 0 }}
-        whileInView={{ scale: 1, rotate: -15, opacity: 1 }}
+        whileInView={{ scale: 1, rotate: -15, opacity: 0.6 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: delay + 0.3, type: 'spring', damping: 12 }}
         className="absolute top-1 right-1 w-[69px] h-[69px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center z-20 mix-blend-multiply opacity-70 shadow-sm pointer-events-none"
@@ -91,7 +91,7 @@ const StickyNoteMini = ({ post, index }) => {
       />
 
       {/* Vintage Round Stamp */}
-      <div className="absolute bottom-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-70 shadow-sm pointer-events-none">
+      <div className="absolute bottom-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-60 shadow-sm pointer-events-none">
         <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
           <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
             MCET<br/>Diary'26<br/>★
@@ -149,12 +149,12 @@ const LetterToBatch = () => {
     <div className="absolute left-[34px] top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none" />
 
     {/* Paper Tear from previous section */}
-    <PaperTear color="#fdfbf7" className="opacity-90" />
+    <PaperTear color="#fdfbf7" className="opacity-75" />
 
     {/* Animated wax seal stamp */}
     <motion.div
       initial={{ scale: 1.8, rotate: -20, opacity: 0 }}
-      whileInView={{ scale: 1, rotate: -15, opacity: 1 }}
+      whileInView={{ scale: 1, rotate: -15, opacity: 0.8 }}
       viewport={{ once: true }}
       transition={{ duration: 0.55, delay: 0.5, type: 'spring', damping: 12 }}
       className="absolute -top-1 -right-2 sm:top-3 sm:right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center z-20 mix-blend-multiply opacity-80 shadow-md pointer-events-none"
@@ -167,18 +167,18 @@ const LetterToBatch = () => {
     </motion.div>
 
     {/* Title */}
-    <h2 className="font-['Caveat'] text-4xl text-amber-900 border-b-2 border-amber-900 inline-block leading-tight">
+    <h2 className="font-['Caveat'] text-4xl text-amber-900/80 border-b-2 border-amber-900/80 inline-block leading-tight">
       Dearest Batch of 2026,
     </h2>
 
     {/* Body */}
-    <div className="mt-4 space-y-3 font-['Caveat'] pt-2 text-xl md:text-[26px] text-gray-900">
+    <div className="mt-4 space-y-3 font-['Caveat'] pt-2 text-xl md:text-[26px] text-gray-900/80">
 
   <p>
       It feels unreal how something that began with unfamiliar faces and hesitant conversations has become a place that feels like home. We walked in carrying uncertainty, and somehow, without noticing, we built a world out of ordinary days. These years were never just about lectures, exams, or milestones, but the quiet, in-between moments - chai breaks, sleepless nights filled with unspoken thoughts.
   </p>
 
-  <p className="text-amber-900 text-center">
+  <p className="text-amber-900/85 text-center">
     "What changes with every moment becomes truly beautiful."
   </p>
 
@@ -196,7 +196,7 @@ const LetterToBatch = () => {
 
     {/* Signature */}
     <div className="mt-4 sm:mt-5 text-right">
-      <span className="font-['Caveat'] text-xl font-medium md:text-2xl text-amber-900">
+      <span className="font-['Caveat'] text-xl font-medium md:text-2xl text-amber-900/85">
         — From the memories we made :)
       </span>
     </div>

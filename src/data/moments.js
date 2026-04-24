@@ -1,6 +1,6 @@
 export const eventsData = [
     // {
-    //   id: 2,
+    //   id: 1,
     //   title: "Independence Day Celebration",
     //   date: "August 2022",
     //   category: "Independence Day",

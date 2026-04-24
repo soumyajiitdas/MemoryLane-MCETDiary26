@@ -118,7 +118,7 @@ const FountainPenCursor = () => {
   // Only activate on devices with a fine pointer (mouse/trackpad).
   // On touch/mobile there is no cursor at all — skip everything.
   const [isMouse] = useState(
-    () => typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches
+    () => typeof window !== 'undefined' && window.matchMedia('(any-pointer: fine)').matches
   );
 
   const cursorRef  = useRef(null);

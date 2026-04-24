@@ -113,7 +113,7 @@ export const peopleData =
   {
     id: 11,
     name: "Raju Mondal",
-    nickname: "Dealer😏",
+    nickname: "Dealer🏏",
     roll: "10600122033",
     photo: "/images/cast/raju.png",
     department: "Computer Science",
@@ -249,7 +249,7 @@ export const peopleData =
     roll: "",
     photo: "/images/cast/pritam.jpeg",
     department: "Computer Science",
-    birthday: "",
+    birthday: "09-26",
     oneliner: "Friendly by heart, sharp by mind - building quietly, thinking deeply, and playing the long game.",
     socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/pritam-bardhan/", instagram: "#" }
   },
@@ -267,7 +267,7 @@ export const peopleData =
   {
     id: 25,
     name: "Abhijit Karmakar",
-    nickname: "RescueMind🧠",
+    nickname: "JugaadMind🧠",
     roll: "10600122002",
     photo: "linear-gradient(45deg, #43E97B, #38F9D7)",
     department: "Computer Science",
@@ -293,7 +293,7 @@ export const peopleData =
     roll: "10600122023",
     photo: "/images/cast/saptarshi.jpeg",
     department: "Computer Science",
-    birthday: "",
+    birthday: "01-04",
     oneliner: "A cybersecurity enthusiast, sharp in academics - and the kind of friend you can always count on.",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
