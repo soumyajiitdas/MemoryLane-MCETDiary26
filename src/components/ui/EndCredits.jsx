@@ -1,15 +1,16 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Play, Pause, X } from 'lucide-react';
+import { Play, Pause, X, Volume2, VolumeX } from 'lucide-react';
 import { peopleData } from '../../data/cast';
 import {
   DoodleHeart, DoodleSparkle, DoodleArrow,
   DoodleCrown, DoodleCircle,
 } from './VintageDoodles';
+import { usePlayer } from '../../context/PlayerContext';
 
 const castNames = peopleData.map(p => p.name);
 const DURATION  = 80;
-const BG        = '#0d0904';   // warm dark — matches site midnight
+const BG        = '#0d0904';
 
 // ─── Design tokens ────────────────────────────────────────────────────────────
 const SERIF = "'Playfair Display', serif";
@@ -120,14 +121,36 @@ const DoodleLayer = () => (
   </div>
 );
 
-// ─── Component ────────────────────────────────────────────────────────────────
 const EndCredits = ({ isOpen, onClose }) => {
   const [isPaused,    setIsPaused]    = useState(false);
   const [showEndCard, setShowEndCard] = useState(false);
   const rollRef = useRef(null);
 
+  const { isPlaying, playTrack, fadeOutStop, activeTrack } = usePlayer();
+  const [startedByCredits, setStartedByCredits] = useState(false);
+
+  const hasCheckedAutoPlay = useRef(false);
+
+  // Play background song if not already playing (only trigger once per open)
+  useEffect(() => {
+    if (isOpen && !hasCheckedAutoPlay.current) {
+      hasCheckedAutoPlay.current = true;
+      // Small timeout to ensure context is ready and UI has started rendering
+      const t = setTimeout(() => {
+        if (!isPlaying) {
+          playTrack(0);      // set song to play, 0 = first, 1 = second and so on...
+          setStartedByCredits(true);
+        }
+      }, 300);
+      return () => clearTimeout(t);
+    }
+    
+    if (!isOpen) {
+      hasCheckedAutoPlay.current = false;
+    }
+  }, [isOpen, isPlaying, playTrack]);
+
   // ── Scroll lock — works on iOS Safari, Android Chrome, and desktop ──────────
-  // overflow:hidden alone doesn't stop scroll on mobile; position:fixed does.
   useEffect(() => {
     if (!isOpen) return;
 
@@ -151,14 +174,20 @@ const EndCredits = ({ isOpen, onClose }) => {
     };
   }, [isOpen]);
 
-  // Reset on close
+  // Reset on close + Handle Fade Out
   useEffect(() => {
     if (!isOpen) {
       setIsPaused(false);
       setShowEndCard(false);
       if (rollRef.current) rollRef.current.style.animationPlayState = 'running';
+
+      // Fade out if we started it
+      if (startedByCredits) {
+        fadeOutStop(2500);
+        setStartedByCredits(false);
+      }
     }
-  }, [isOpen]);
+  }, [isOpen, startedByCredits, fadeOutStop]);
 
   // Auto-close 5 s after end card appears
   useEffect(() => {
@@ -226,6 +255,10 @@ const EndCredits = ({ isOpen, onClose }) => {
             transition={{ delay:0.8, duration:0.5 }}
             style={{ position:'absolute', top:'1.1rem', right:'1.1rem', display:'flex', gap:'0.4rem', zIndex:10 }}
           >
+            <button onClick={() => playTrack(activeTrack !== null ? activeTrack : 0)} style={iconBtn} aria-label={!isPlaying ? 'Unmute' : 'Mute'}
+              onMouseEnter={e=>{ e.currentTarget.style.background='rgba(240,165,40,0.16)'; e.currentTarget.style.color='rgba(240,165,40,0.95)'; }}
+              onMouseLeave={e=>{ e.currentTarget.style.background='rgba(240,165,40,0.08)'; e.currentTarget.style.color='rgba(240,165,40,0.65)'; }}
+            >{!isPlaying ? <VolumeX size={13}/> : <Volume2 size={13}/>}</button>
             <button onClick={togglePause} style={iconBtn} aria-label={isPaused ? 'Resume' : 'Pause'}
               onMouseEnter={e=>{ e.currentTarget.style.background='rgba(240,165,40,0.16)'; e.currentTarget.style.color='rgba(240,165,40,0.95)'; }}
               onMouseLeave={e=>{ e.currentTarget.style.background='rgba(240,165,40,0.08)'; e.currentTarget.style.color='rgba(240,165,40,0.65)'; }}

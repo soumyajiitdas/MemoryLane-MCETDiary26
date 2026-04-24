@@ -99,23 +99,24 @@ const MiniVinyl = ({ isPlaying, isResetting, size = 26 }) => {
 /* ── Inline mini player pill ─────────────────────────────────────────  */
 const NavMiniPlayer = ({ showDisc = true }) => {
   const { currentTrack, isPlaying, isResetting, activeTrack, playTrack, stop } = usePlayer();
-  if (!currentTrack) return null;
 
   return (
-    <motion.div
-      key="nav-player"
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.25, ease: 'easeOut' }}
-      className="flex items-center gap-2 px-3 py-1.5 rounded-full min-w-0"
-      style={{
-        background: 'rgba(80, 54, 18, 0.34)',
-        border: '1px solid rgba(187, 120, 20, 0.6)',
-        boxShadow: '0 2px 12px rgba(0,0,0,0.4)',
-        backdropFilter: 'blur(8px)',
-      }}
-    >
+    <AnimatePresence>
+      {currentTrack && (
+        <motion.div
+          key="nav-player"
+          initial={{ opacity: 0, width: 0, paddingLeft: 0, paddingRight: 0, border: 'none', marginLeft: 0 }}
+          animate={{ opacity: 1, width: 'auto', paddingLeft: 12, paddingRight: 12, border: '1px solid rgba(187, 120, 20, 0.6)', marginLeft: 8 }}
+          exit={{ opacity: 0, width: 0, paddingLeft: 0, paddingRight: 0, border: 'none', marginLeft: 0 }}
+          transition={{ duration: 0.4, ease: 'easeInOut' }}
+          className="flex items-center gap-2 py-1.5 rounded-full min-w-0 overflow-hidden"
+          style={{
+            background: 'rgba(80, 54, 18, 0.34)',
+            boxShadow: '0 2px 12px rgba(0,0,0,0.4)',
+            backdropFilter: 'blur(8px)',
+            whiteSpace: 'nowrap',
+          }}
+        >
       {/* Vinyl disc — desktop only */}
       {showDisc && <MiniVinyl isPlaying={isPlaying} isResetting={isResetting} size={26} />}
 
@@ -142,7 +143,9 @@ const NavMiniPlayer = ({ showDisc = true }) => {
       >
         <X className='w-4 h-4' />
       </button>
-    </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
