@@ -32,10 +32,18 @@ const BigTitle = ({ children }) => (
   }}>{children}</p>
 );
 
+const Title = ({ children }) => (
+  <p style={{
+    fontFamily: SERIF, fontWeight: 300, textTransform: 'uppercase',
+    fontSize: 'clamp(1.5rem, 3vw, 2.5rem)',
+    color: COL.gold, letterSpacing: '0.1em', lineHeight: 1,
+  }}>{children}</p>
+);
+
 const SectionLabel = ({ children }) => (
   <p style={{
     fontFamily: SERIF, fontWeight: 400, textTransform: 'uppercase',
-    fontSize: 'clamp(0.72rem, 1.8vw, 0.85rem)',
+    fontSize: 'clamp(0.72rem, 2vw, 0.85rem)',
     color: COL.label, letterSpacing: '0.38em', marginBottom: '1.2rem',
   }}>{children}</p>
 );
@@ -242,12 +250,12 @@ const EndCredits = ({ isOpen, onClose }) => {
             <Verse>until it wasn't...</Verse>
             <Rule />
 
-            <SectionLabel>Shot across</SectionLabel>
+            <SectionLabel>Memories across</SectionLabel>
             {['Classrooms','Playground','Corridors','Labs','Last benches'].map(x=><Item key={x}>{x}</Item>)}
             <Rule />
 
             <SectionLabel>Captured in</SectionLabel>
-            {['Late nights','Chai - adda','Unplanned outings','College Events', 'Meetups'].map(x=><Item key={x}>{x}</Item>)}
+            {['Late nights','Chai - adda','Unplanned outings','College Events', 'Meetups', 'Trips'].map(x=><Item key={x}>{x}</Item>)}
             <Rule />
 
             <Verse>No one told us</Verse>
@@ -277,7 +285,7 @@ const EndCredits = ({ isOpen, onClose }) => {
 
             <Verse>Guess this is goodbye...Take Care</Verse>
             <Gap h="1rem" />
-            <BigTitle>Thanks for Everything</BigTitle>
+            <Title>Thanks for Everything</Title>
             <Gap h="1rem" />
             <Verse>...I love you 3000 ♡</Verse>
 

@@ -61,7 +61,7 @@ const Hero = () => {
           <motion.div
             initial={{ rotate: p.rot }}
             whileHover={{
-              rotateY: 180, rotate: 0, scale: 1.4, opacity: 1, zIndex: 50,
+              rotateY: 180, rotate: 0, scale: 1.1, opacity: 1, zIndex: 50,
               transition: { duration: 0.6, type: 'spring', damping: 18 }
             }}
             className="relative w-40 h-48 md:w-56 md:h-64 bg-white p-3 shadow-2xl border border-black/10 cursor-pointer"

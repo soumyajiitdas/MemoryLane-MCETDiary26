@@ -190,12 +190,12 @@ export const peopleData =
   {
     id: 18,
     name: "Sahanaj Sultana",
-    nickname: "",
+    nickname: "Solace🌿",
     roll: "10601322035",
     photo: "/images/cast/sahanaj.jpg",
     department: "Civil Engineering",
     birthday: "10-22",
-    oneliner: "",
+    oneliner: "Quiet by nature, lost in her own world - finding her own way, at her own pace.",
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/sahanajsultana57993/" }
   },
   {
@@ -267,34 +267,34 @@ export const peopleData =
   {
     id: 25,
     name: "Abhijit Karmakar",
-    nickname: "",
+    nickname: "RescueMind🧠",
     roll: "10600122002",
     photo: "linear-gradient(45deg, #43E97B, #38F9D7)",
     department: "Computer Science",
     birthday: "",
-    oneliner: "",
+    oneliner: "Hardworking by nature, helpful by instinct - even when paths changed, he was always the one who found a way to fix things.",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
     id: 26,
     name: "Manab Mandal",
-    nickname: "",
+    nickname: "Contrarian⭐",
     roll: "10600122005",
     photo: "linear-gradient(45deg, #FAD961, #F76B1C)",
     department: "Computer Science",
     birthday: "",
-    oneliner: "",
+    oneliner: "He who not here to agree, but to understand - even if it meant standing alone to prove a point.",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
     id: 27,
     name: "Saptarshi Mandal",
-    nickname: "",
+    nickname: "CyberSentinel🔐",
     roll: "10600122023",
     photo: "linear-gradient(45deg, #89F7FE, #66A6FF)",
     department: "Computer Science",
     birthday: "",
-    oneliner: "",
+    oneliner: "A cybersecurity enthusiast, sharp in academics - and the kind of friend you can always count on.",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {

@@ -96,5 +96,11 @@ export const memoriesData = [
       content: "A journey that's not what I thought but the one I lived and grew with some chunk cuties I met in the college 🥹🫶🏻",
       image: "",
       timestamp: "2026-04-21T23:16:00Z",
+    },{
+      id: 15,
+      author: "Manashi🥟",
+      content: "MCET r Suru ta hoyechilo 'Lateral' ar 'Regular' diye, Ar sesh hochhe Pahar , Somudro periye endless future trip planning diye. Aktai message rekhe jete chai jano proti bochor kom kore akta trip jano amra korte pari..........🤞🏻💛",
+      image: "",
+      timestamp: "2026-04-21T20:58:00Z",
     },
   ];

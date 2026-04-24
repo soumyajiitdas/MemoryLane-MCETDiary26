@@ -358,14 +358,14 @@ const LastPages = () => {
                      e.currentTarget.style.color = 'rgba(245,158,11,0.6)';
                    }}
                  >
-                   <Play size={12} className="group-hover:translate-x-0.5 transition-transform duration-300" />
+                   <Play size={15} className="group-hover:translate-x-0.5 transition-transform duration-300" />
                    Roll Credits
                  </button>
                </div>
 
                {/* Subtitle */}
-               <p className="font-serif text-[0.6rem] tracking-[0.25em] uppercase" style={{ color: 'rgba(180,140,80,0.4)' }}>
-                 A Cinematic End
+               <p className="font-['Caveat'] text-[0.6rem] tracking-[0.25em] uppercase" style={{ color: 'rgba(180,140,80,0.8)' }}>
+                 Not an end - just a beginning of something new...
                </p>
              </motion.div>
 
