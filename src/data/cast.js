@@ -29,7 +29,7 @@ export const peopleData =
     roll: "10600122032",
     photo: "/images/cast/indrajit.jpg",
     department: "Computer Science",
-    birthday: "08-14",
+    birthday: "08-19",
     oneliner: "The gym-built energy of the group - planner of trips, bringer of vibes, and chaos wrapped in calm",
     socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/indrajit-ghosh-a53291390/", instagram: "https://www.instagram.com/indra5000q/" }
   },
@@ -51,7 +51,7 @@ export const peopleData =
     roll: "10600122035",
     photo: "/images/cast/raihan.png",
     department: "Computer Science",
-    birthday: "",
+    birthday: "10-01",
     oneliner: "A mind full of art, code, and words - leading quietly while living every bit of college life deeply.",
     socialLinks: { github: "https://github.com/raihanahamed01", linkedin: "https://www.linkedin.com/in/raihan-ahamed-910a3727a/", instagram: "https://www.instagram.com/ra1_haaann/" }
   },
@@ -117,7 +117,7 @@ export const peopleData =
     roll: "10600122033",
     photo: "/images/cast/raju.png",
     department: "Computer Science",
-    birthday: "",
+    birthday: "08-18",
     oneliner: "A little attitude, a little mystery - always on his own pitch, with cricket in his veins.",
     socialLinks: { github: "https://github.com/rajupilki-ctrl", linkedin: "https://www.linkedin.com/in/raju-mondal-a4405929a/", instagram: "https://www.instagram.com/rajumondal416/" }
   },
@@ -161,7 +161,7 @@ export const peopleData =
     roll: "",
     photo: "/images/cast/azam.jpeg",
     department: "Computer Science",
-    birthday: "",
+    birthday: "01-12",
     oneliner: "From Bihar to hostel rooms - fluent in world politics and hometown updates, even if Bengali stays a mystery",
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/im_azam9137/" }
   },
@@ -238,7 +238,7 @@ export const peopleData =
     roll: "10600122028",
     photo: "/images/cast/anik.jpg",
     department: "Computer Science",
-    birthday: "",
+    birthday: "04-30",
     oneliner: "From code to chords to checkmates - a multi-talented mind living every version of life at once.",
     socialLinks: { github: "#", linkedin: "http://linkedin.com/in/anikcodes/", instagram: "https://www.instagram.com/anikmukherjee2003/" }
   },
@@ -260,7 +260,7 @@ export const peopleData =
     roll: "10600122021",
     photo: "/images/cast/pratik.webp",
     department: "Computer Science",
-    birthday: "",
+    birthday: "08-20",
     oneliner: "",
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/pratikmondal.06/" }
   },
@@ -291,7 +291,7 @@ export const peopleData =
     name: "Saptarshi Mandal",
     nickname: "CyberSentinel🔐",
     roll: "10600122023",
-    photo: "linear-gradient(45deg, #89F7FE, #66A6FF)",
+    photo: "/images/cast/saptarshi.jpeg",
     department: "Computer Science",
     birthday: "",
     oneliner: "A cybersecurity enthusiast, sharp in academics - and the kind of friend you can always count on.",
@@ -304,7 +304,7 @@ export const peopleData =
     roll: "10600122022",
     photo: "linear-gradient(45deg, #8b9effff, #ffeb6aff)",
     department: "Computer Science",
-    birthday: "",
+    birthday: "03-23",
     oneliner: "",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },

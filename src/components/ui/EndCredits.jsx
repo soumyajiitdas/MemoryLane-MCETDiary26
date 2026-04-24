@@ -126,12 +126,29 @@ const EndCredits = ({ isOpen, onClose }) => {
   const [showEndCard, setShowEndCard] = useState(false);
   const rollRef = useRef(null);
 
-  // Lock body scroll
+  // ── Scroll lock — works on iOS Safari, Android Chrome, and desktop ──────────
+  // overflow:hidden alone doesn't stop scroll on mobile; position:fixed does.
   useEffect(() => {
     if (!isOpen) return;
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = prev; };
+
+    const scrollY = window.scrollY;
+
+    // Freeze the page at current scroll position
+    document.body.style.position   = 'fixed';
+    document.body.style.top        = `-${scrollY}px`;
+    document.body.style.left       = '0';
+    document.body.style.right      = '0';
+    document.body.style.overflow   = 'hidden';
+
+    return () => {
+      // Restore position and scroll back to where the user was
+      document.body.style.position = '';
+      document.body.style.top      = '';
+      document.body.style.left     = '';
+      document.body.style.right    = '';
+      document.body.style.overflow = '';
+      window.scrollTo({ top: scrollY, behavior: 'instant' });
+    };
   }, [isOpen]);
 
   // Reset on close
