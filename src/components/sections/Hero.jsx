@@ -30,7 +30,7 @@ const Hero = () => {
     <div className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden px-4">
 
       {/* ── Firefly particles ── */}
-      <Fireflies/>
+      <Fireflies count={10}/>
 
       {/* ── Radial spotlight behind hero text ── */}
       <div
@@ -161,7 +161,7 @@ const Hero = () => {
           variants={itemVariants}
           className="text-2xl md:text-4xl text-[var(--color-text-muted)] mt-6 font-['Caveat'] italic font-medium pt-4"
         >
-          "The best days we'll never forget..."
+          "The days we'll never forget..."
         </motion.p>
 
         {/* Batch subtitle */}

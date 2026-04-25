@@ -20,7 +20,7 @@ const JourneyNode = ({ data, index }) => {
     <div className={`relative flex flex-col md:flex-row items-center w-full mb-32 last:mb-0 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
 
       {/* Firefly particles */}
-      <Fireflies/>
+      <Fireflies count={20}/>
       
       {/* Center Track Line */}
       <div
@@ -181,9 +181,9 @@ const Chapters = () => {
           <SectionHeading
             title="Chapters"
             subtitle="The story we lived, not just remembered. 🍻"
-            eyebrow="Our Timeline"
+            eyebrow="Our Journey"
           />
-          <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-12 mb-32 italic">
+          <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-8 mb-32 italic">
              " Here's to the nights that turned into mornings, with the friends that turned into family. "
           </p>
 

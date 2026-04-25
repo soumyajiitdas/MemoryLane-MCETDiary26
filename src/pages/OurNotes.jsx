@@ -112,7 +112,7 @@ const OurNotes = () => {
         <div className="max-w-7xl mx-auto px-4">
           
           {/* Firefly particles */}
-          <Fireflies/>
+          <Fireflies count={20}/>
           
           <div className="text-center mb-16 relative">
             <SectionHeading 
@@ -122,7 +122,7 @@ const OurNotes = () => {
             />
           </div>
 
-          <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-12 mb-32 italic">
+          <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-12 mb-24 italic">
              " It’s strange how endings don’t feel like endings at first. "
           </p>
 

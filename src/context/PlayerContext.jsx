@@ -7,14 +7,14 @@ export const TRACKLIST = [
     title: "Yaariyaan",
     feat: "Cocktail",
     duration: "4:25 min",
-    src: '/music/background-music.mp3',
+    src: '/music/Yaariyaan.mp3',
   },
   {
     track: '02',
-    title: "End of the Beginning",
+    title: "End of Beginning",
     feat: "DJO",
     duration: "3:00 min",
-    src: '/music/background-music_02.m4a',
+    src: '/music/End_of_Beginning.m4a',
   },
 ];
 

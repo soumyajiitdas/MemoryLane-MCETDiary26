@@ -115,24 +115,24 @@ const GalleryGrid = ({ images, onImageClick }) => {
           animate={{ opacity: 1, y: 0 }}
           className="flex flex-col items-center gap-2 mt-12"
         >
-          <p className="text-sm text-gray-500 font-serif">
-            Showing <span className="text-amber-400">{visibleCount}</span> of <span className="text-amber-400">{images.length}</span> memories
+          <p className="text-sm text-gray-500 font-['Caveat'] uppercase">
+            Showing <span className="text-amber-400">{visibleCount}</span> of <span className="text-amber-400">{images.length}</span> fragments
           </p>
           <motion.button
             onClick={loadMore}
             whileHover={{ scale: 1.04 }}
             whileTap={{ scale: 0.97 }}
-            className="relative px-8 py-3 font-serif text-sm font-medium rounded-full overflow-hidden"
+            className="relative px-5 py-3 font-serif text-sm font-medium rounded-full overflow-hidden"
             style={{
-              background: 'linear-gradient(135deg, rgba(245,158,11,0.15), rgba(180,83,9,0.1))',
-              border: '1px solid rgba(245,158,11,0.35)',
-              color: '#fcd34d',
+              background: 'linear-gradient(135deg, rgba(22, 16, 6, 0.5), rgba(21, 12, 6, 0.6))',
+              border: '1px solid rgba(100, 66, 7, 0.35)',
+              color: '#d7b02cff',
             }}
           >
             {/* Shimmer sweep on hover */}
             <span className="absolute inset-0 -translate-x-full hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/10 to-transparent" />
             <span className="relative z-10">
-              Load more memories ↓ &nbsp;
+              Unfold more ↓ &nbsp;
               <span className="text-amber-500/60">({images.length - visibleCount} remaining)</span>
             </span>
           </motion.button>
@@ -141,8 +141,8 @@ const GalleryGrid = ({ images, onImageClick }) => {
 
       {/* All loaded indicator */}
       {!hasMore && images.length > PAGE_SIZE && (
-        <p className="text-center text-xs text-gray-600 font-serif mt-10 tracking-widest uppercase">
-          ✦ All {images.length} memories loaded ✦
+        <p className="text-center text-sm text-gray-600 font-['Caveat'] mt-10 tracking-widest uppercase">
+          ✦ All <span className='text-amber-700'>{images.length}</span> fragments loaded ✦
         </p>
       )}
     </>

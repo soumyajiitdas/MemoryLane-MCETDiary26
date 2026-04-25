@@ -118,4 +118,18 @@ export const memoriesData = [
       image: "",
       timestamp: "2026-04-24T18:31:00Z",
     },
+    {
+      id: 18,
+      author: "Anik S.🫠",
+      content: "We entered as strangers, survived as classmates, and are leaving as a core memory. Thanks for making the 'chaos' of college the most organized joy of my life.",
+      image: "",
+      timestamp: "2026-04-25T20:49:00Z",
+    },
+    {
+      id: 19,
+      author: "Ishme🌟",
+      content: "Some moments are so iconic that the seasons of memory seem to pause in front of them… nothing comes close. From “Kal milenge” to “Kab milenge”—four years ago, it was just a dialogue, but now it hits hard. Maybe we will be together in another universe. Thank you, vai log, for the best memories.",
+      image: "",
+      timestamp: "2026-04-25T23:34:00Z",
+    },
   ];

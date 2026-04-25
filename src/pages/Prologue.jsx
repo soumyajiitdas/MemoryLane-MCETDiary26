@@ -234,7 +234,7 @@ const Prologue = () => {
       <Hero />
 
       {/* Firefly particles */}
-      <Fireflies/>
+      <Fireflies count={40}/>
 
       {/* Intro Letter */}
       <LetterToBatch />

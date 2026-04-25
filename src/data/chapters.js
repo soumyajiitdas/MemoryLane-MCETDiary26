@@ -14,7 +14,7 @@ export const timelineData =
     year: "2023-'24",
     title: "When Chaos Became Normal",
     subtitle: "Chaos, Creation & Late Nights",
-    description: "Somewhere along the way, confusion turned into confidence. We stopped just attending college - we started becoming a part of it. college-events, responsibilities, and reckless late nights became routine. Sleep schedules broke, but something else formed - 'belonging'.",
+    description: "As days blurred into nights, confusion turned into confidence. We stopped just attending college - we started becoming a part of it. college-events, responsibilities, and reckless late nights became routine. Sleep schedules broke, but something else formed - 'belonging'.",
     caption: "We were busy becoming, without knowing what! 💛",
     note: "Sleep was lost, peace was delayed, but we kept going. Maybe not for the outcome, but for the feeling that we were moving forward.",
     events: [2],
@@ -25,7 +25,7 @@ export const timelineData =
     title: "The Phase That Changed Us",
     subtitle: "Reality, Distance & Quiet Realizations",
     description: "Reality began to knock louder - internships, expectations, and the weight of what comes next. Yet, in between it all, we found ways to escape. Trips turned into stories, stress turned into jokes, and the bond only grew stronger in the chaos of becoming something more.",
-    caption: "Somewhere between pressure and peace! 💜",
+    caption: "Caught in the balance of pressure and peace! 💜",
     note: "Trips, laughter, escapes - they weren’t distractions. They were reminders that life isn’t just about reaching somewhere, but about surviving the journey.",
     events: [3],
     photos: ["/images/scrapbook/23.jpg"]

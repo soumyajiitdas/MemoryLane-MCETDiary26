@@ -40,7 +40,7 @@ const Footer = () => {
       </div>
 
       {/* Firefly particles */}
-      <Fireflies />
+      <Fireflies count={12}/>
 
       {/* Ambient amber glow */}
       <div

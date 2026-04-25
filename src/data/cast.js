@@ -236,7 +236,7 @@ export const peopleData =
     name: "Anik Mukherjee",
     nickname: "AllRounder🎤",
     roll: "10600122028",
-    photo: "/images/cast/anik.jpg",
+    photo: "/images/cast/anikM.jpg",
     department: "Computer Science",
     birthday: "04-30",
     oneliner: "From code to chords to checkmates - a multi-talented mind living every version of life at once.",
@@ -266,28 +266,6 @@ export const peopleData =
   },
   {
     id: 25,
-    name: "Abhijit Karmakar",
-    nickname: "JugaadMind🧠",
-    roll: "10600122002",
-    photo: "linear-gradient(45deg, #43E97B, #38F9D7)",
-    department: "Computer Science",
-    birthday: "",
-    oneliner: "Hardworking by nature, helpful by instinct - even when paths changed, he was always the one who found a way to fix things.",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
-  },
-  {
-    id: 26,
-    name: "Manab Mandal",
-    nickname: "Contrarian⭐",
-    roll: "10600122005",
-    photo: "linear-gradient(45deg, #FAD961, #F76B1C)",
-    department: "Computer Science",
-    birthday: "",
-    oneliner: "He who not here to agree, but to understand - even if it meant standing alone to prove a point.",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
-  },
-  {
-    id: 27,
     name: "Saptarshi Mandal",
     nickname: "CyberSentinel🔐",
     roll: "10600122023",
@@ -298,14 +276,36 @@ export const peopleData =
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
+    id: 26,
+    name: "Abhijit Karmakar",
+    nickname: "JugaadMind🧠",
+    roll: "10600122002",
+    photo: "linear-gradient(45deg, #43E97B, #38F9D7)",
+    department: "Computer Science",
+    birthday: "",
+    oneliner: "Hardworking by nature, helpful by instinct - even when paths changed, he was always the one who found a way to fix things.",
+    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+  },
+  {
+    id: 27,
+    name: "Manab Mandal",
+    nickname: "Contrarian⭐",
+    roll: "10600122005",
+    photo: "linear-gradient(45deg, #FAD961, #F76B1C)",
+    department: "Computer Science",
+    birthday: "",
+    oneliner: "He who not here to agree, but to understand - even if it meant standing alone to prove a point.",
+    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+  },
+  {
     id: 28,
     name: "Anik Sarkar",
-    nickname: "",
+    nickname: "EasyGuy🫠",
     roll: "10600122022",
-    photo: "linear-gradient(45deg, #8b9effff, #ffeb6aff)",
+    photo: "/images/cast/anikS.jpeg",
     department: "Computer Science",
     birthday: "03-23",
-    oneliner: "",
+    oneliner: "Doesn’t say much - but always polite, and effortlessly friendly to everyone.",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
 ]

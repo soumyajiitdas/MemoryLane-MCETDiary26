@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { Menu, Play, Pause, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePlayer } from '../../context/PlayerContext';
+import Fireflies from '../ui/Fireflies';
 import PaperTear from '../ui/PaperTear';
 
 function useIsMobile() {
@@ -40,7 +41,7 @@ const MarqueeText = ({ text, className = '' }) => {
           transition={{ duration: 7, ease: 'linear', repeat: Infinity }}
         >
           {/* doubled text with separator so loop is invisible */}
-          {text}&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;{text}&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;
+          {text}&nbsp;&nbsp;&nbsp;&nbsp;&#9734;&nbsp;&nbsp;&nbsp;&nbsp;{text}&nbsp;&nbsp;&nbsp;&nbsp;&#9734;&nbsp;&nbsp;&nbsp;&nbsp;
         </motion.span>
       ) : (
         <span>{text}</span>
@@ -194,6 +195,10 @@ const Navbar = () => {
         />
       </div>
 
+      {/* Firefly particles — clipping wrapper prevents overflow on mobile */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-[-1]">
+        <Fireflies count={8} />
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex items-center justify-between h-16 gap-2 overflow-hidden">
 
