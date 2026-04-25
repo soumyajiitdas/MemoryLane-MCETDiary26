@@ -64,7 +64,7 @@ export const memoriesData = [
     },
     {
       id: 10,
-      author: "Rohit🎯",
+      author: "Rohit😇",
       content: "I gave more than I ever said out loud and I walked away with less than I deserved...Still thank you for the memories the lessons and the version of me that learned to let go...Friendship meant everything… until it didn’t. Well I have said enough...",
       image: "",
       timestamp: "2026-04-20T22:38:00Z",

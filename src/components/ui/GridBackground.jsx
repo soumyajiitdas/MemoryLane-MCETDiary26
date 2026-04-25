@@ -25,7 +25,7 @@ const GridBackground = () => {
   return (
     <div className="fixed inset-0 z-[2] pointer-events-none overflow-hidden">
 
-      {/* GRID LAYERS (supporting only) */}
+      {/* GRID LAYERS */}
       <div
         className="absolute inset-0"
         style={{
@@ -84,21 +84,20 @@ const GridBackground = () => {
 
       {/* VIGNETTE (focus control) */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 hidden sm:block"
         style={{
           background:
             "radial-gradient(circle at center, transparent 50%, rgba(0,0,0,0.55) 100%)",
         }}
       />
 
-      {/* NOISE (alive, subtle) */}
-      <motion.div
-        className="absolute inset-0 opacity-[0.02]"
-        animate={{ opacity: [0.02, 0.035, 0.02] }}
-        transition={{ duration: 8, repeat: Infinity }}
+      {/* Noise Overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.035]"
         style={{
-          backgroundImage: "url('https://www.transparenttextures.com/patterns/noise.png')",
-          mixBlendMode: "soft-light",
+          backgroundImage:
+            "url('https://www.transparenttextures.com/patterns/noise.png')",
+          mixBlendMode: "overlay",
         }}
       />
 
