@@ -163,9 +163,9 @@ const FountainPenCursor = () => {
     const mousePos = { x: 0, y: 0 };
     const curPos   = { x: 0, y: 0 };
 
-    // Lerp factor: 0.14 ≈ silky smooth chase without feeling laggy.
-    // Lower = dreamier, higher = snappier. 0.10–0.18 is the sweet spot.
-    const LERP = 0.14;
+    // Lerp factor: 0.28 ≈ fast but still smooth.
+    // Lower = dreamier, higher = snappier. 0.10–0.40 is the range.
+    const LERP = 0.28;
     const TILT_LERP = 0.30;
 
     // ── Unified RAF loop — handles position lerp + tilt ease ───────────────
@@ -310,7 +310,7 @@ const FountainPenCursor = () => {
           marginLeft: -13,
           marginTop,
           pointerEvents: 'none',
-          zIndex:     99999,
+          zIndex:     10020,
           willChange: 'transform',
           opacity:    visible ? 1 : 0,
           transition: 'opacity 0.15s ease, margin-top 0.15s ease',
