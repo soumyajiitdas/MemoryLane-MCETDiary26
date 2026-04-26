@@ -86,7 +86,7 @@ const Hero = () => {
               className="absolute inset-0 p-6 backface-hidden bg-[#fdfaf3] flex flex-col items-center justify-center text-center border border-black/5"
               style={{ transform: 'rotateY(180deg)' }}
             >
-              <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/paper.png')]" />
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/textures/paper.png')]" />
               <p className="text-amber-900 font-['Caveat'] text-xl md:text-2xl leading-tight">"{p.note}"</p>
               <div className="mt-4 pt-4 border-t border-amber-900/10 w-full">
                 <span className="text-amber-700/60 font-['Caveat'] text-sm">— {p.date}</span>

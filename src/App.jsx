@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
@@ -13,13 +14,21 @@ import { PlayerProvider }    from './context/PlayerContext';
 import FountainPenCursor     from './components/ui/FountainPenCursor';
 import GraduationBanner      from './components/ui/GraduationBanner';
 
-// Pages
-import Prologue  from './pages/Prologue';
-import Chapters  from './pages/Chapters';
-import TheCast   from './pages/TheCast';
-import Scrapbook from './pages/Scrapbook';
-import OurNotes  from './pages/OurNotes';
-import LastPages from './pages/LastPages';
+// Pages — lazy loaded so each route's JS is only fetched on first navigation
+const Prologue  = lazy(() => import('./pages/Prologue'));
+const Chapters  = lazy(() => import('./pages/Chapters'));
+const TheCast   = lazy(() => import('./pages/TheCast'));
+const Scrapbook = lazy(() => import('./pages/Scrapbook'));
+const OurNotes  = lazy(() => import('./pages/OurNotes'));
+const LastPages = lazy(() => import('./pages/LastPages'));
+
+// Minimal loading fallback shown during route chunk fetch
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-[60vh]">
+    <div className="w-8 h-8 rounded-full border-2 border-amber-500/30 border-t-amber-400 animate-spin" />
+  </div>
+);
+
 
 function App() {
   return (
@@ -33,16 +42,18 @@ function App() {
             <Navbar />
 
             <main className="flex-grow mt-20 overflow-x-hidden w-full">
-              <AnimatePresence mode="wait">
-                <Routes>
-                  <Route path="/"           element={<Prologue />}  />
-                  <Route path="/chapters"   element={<Chapters />}  />
-                  <Route path="/the-cast"   element={<TheCast />}   />
-                  <Route path="/scrapbook"  element={<Scrapbook />} />
-                  <Route path="/our-notes"  element={<OurNotes />}  />
-                  <Route path="/last-pages" element={<LastPages />} />
-                </Routes>
-              </AnimatePresence>
+              <Suspense fallback={<PageLoader />}>
+                <AnimatePresence mode="wait">
+                  <Routes>
+                    <Route path="/"           element={<Prologue />}  />
+                    <Route path="/chapters"   element={<Chapters />}  />
+                    <Route path="/the-cast"   element={<TheCast />}   />
+                    <Route path="/scrapbook"  element={<Scrapbook />} />
+                    <Route path="/our-notes"  element={<OurNotes />}  />
+                    <Route path="/last-pages" element={<LastPages />} />
+                  </Routes>
+                </AnimatePresence>
+              </Suspense>
             </main>
 
             <Footer />

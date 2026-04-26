@@ -64,7 +64,7 @@ const BirthdayBanner = () => {
             className="relative w-full z-[100]"
           >
             {/* Main sticky banner */}
-            <div className="px-4 py-3 bg-[url('https://www.transparenttextures.com/patterns/aged-paper.png')] bg-[#FEB05D]/90 shadow-xl border-b-2 border-amber-900/20 overflow-hidden relative">
+            <div className="px-4 py-3 bg-[url('/textures/aged-paper.png')] bg-[#FEB05D]/90 shadow-xl border-b-2 border-amber-900/20 overflow-hidden relative">
               <div className="max-w-7xl mx-auto flex items-center justify-between relative z-10">
                 <div className="flex items-center space-x-3 w-full justify-center">
                   <Gift className="text-amber-800 animate-bounce" size={24} strokeWidth={2} />

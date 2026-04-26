@@ -182,7 +182,7 @@ const Navbar = () => {
         className="absolute inset-0 pointer-events-none z-[-2]"
         style={{
           background: 'linear-gradient(to bottom, rgba(20, 15, 9, 0.95) 0%, rgba(17, 13, 8, 0.99) 100%)',
-          backdropFilter: 'blur(12px)',
+          backdropFilter: 'blur(8px)',
           WebkitBackdropFilter: 'blur(12px)'
         }}
       >
@@ -190,7 +190,7 @@ const Navbar = () => {
           className="absolute inset-0 w-full h-full mix-blend-overlay"
           style={{
             opacity: 0.12,
-            backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')"
+            backgroundImage: "url('/textures/stardust.png')"
           }}
         />
       </div>
@@ -288,14 +288,14 @@ const Navbar = () => {
         style={{
           background: 'rgba(10, 8, 5, 0.99)',
           borderBottom: isOpen ? '1px solid rgba(245,158,11,0.15)' : 'none',
-          backdropFilter: 'blur(16px)',
+          backdropFilter: 'blur(12px)',
         }}
       >
         <div
           className="absolute inset-0 w-full h-full pointer-events-none mix-blend-overlay"
           style={{
             opacity: 0.12,
-            backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')"
+            backgroundImage: "url('/textures/stardust.png')"
           }}
         />
         <div className="px-3 pt-2 pb-4 space-y-0.5 font-serif relative z-10">

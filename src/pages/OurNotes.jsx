@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -33,7 +33,7 @@ const StickyNote = ({ post }) => {
         className={`sticky-note paper-lift p-6 md:p-8 flex flex-col w-full ${hasTape ? 'tape' : ''}`}
         style={{
           transform: `rotate(${rotateDeg}deg)`,
-          backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')",
+          backgroundImage: "url('/textures/rice-paper.png')",
           transformOrigin: 'center top',
           boxShadow: '4px 8px 20px rgba(0,0,0,0.4)',
         }}
@@ -99,6 +99,9 @@ const StickyNote = ({ post }) => {
 
 
 const OurNotes = () => {
+  // Page title for Lighthouse SEO score
+  useEffect(() => { document.title = "MCET Diary'26 | Our Notes - Words We Left"; }, []);
+
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
@@ -118,7 +121,7 @@ const OurNotes = () => {
             <SectionHeading 
               title="Our Notes" 
               subtitle="Few lines for the days we didn’t want to end. 📜"
-              eyebrow="Final Goodbyes"
+              eyebrow="Words We Left"
             />
           </div>
 

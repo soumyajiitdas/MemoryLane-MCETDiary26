@@ -134,49 +134,85 @@ const FountainPenCursor = () => {
   const [visible,   setVisible]   = useState(false);
 
   useEffect(() => {
-    // Skip entirely on touch devices — no mouse cursor to customise.
     if (!isMouse) return;
 
     document.documentElement.classList.add('custom-cursor');
 
-    // ── Mode detection ─────────────────────────────────────────────────────
-    // Uses elementsFromPoint so pointer-events:visibleStroke/none doodles are
-    // reliably detected even when hovering between stroke lines.
+    // ── Mode detection — throttled to ≥6px movement ────────────────────────
+    const lastModeCheck = { x: -999, y: -999 };
+    const MODE_THRESHOLD_SQ = 36;
+
     const getMode = (el, x, y) => {
-      // Check ALL elements at cursor pos — catches doodles with pointer-events:none
+      const dx = x - lastModeCheck.x;
+      const dy = y - lastModeCheck.y;
+      if (dx * dx + dy * dy < MODE_THRESHOLD_SQ) return modeRef.current;
+      lastModeCheck.x = x;
+      lastModeCheck.y = y;
       const stack = document.elementsFromPoint(x, y);
       const onDoodle = stack.some(e => e.closest?.('[data-doodle="true"]'));
       if (onDoodle) return 'eraser';
-
       if (!el) return 'default';
       if (el.closest('[data-photo="true"]') || el.closest('img, [role="img"]')) return 'photo';
       if (el.closest('a, button, [role="button"], input, label, select, textarea')) return 'link';
       return 'default';
     };
 
-    // ── RAF tilt loop ──────────────────────────────────────────────────────
-    const animateTilt = () => {
-      const diff = targetTilt.current - tiltRef.current;
-      if (Math.abs(diff) > 0.05) {
-        tiltRef.current += diff * 0.35;
-        if (cursorRef.current) {
-          cursorRef.current.style.transform =
-            `translate(${prevPos.current.x}px, ${prevPos.current.y}px) rotate(${tiltRef.current}deg)`;
-        }
-      }
-      rafId.current = requestAnimationFrame(animateTilt);
-    };
-    rafId.current = requestAnimationFrame(animateTilt);
+    // ── Lerp state — separate from prevPos used for speed/angle calc ───────
+    // curPos: the rendered cursor position (lerped each frame)
+    // mousePos: the raw mouse target (updated instantly in onMove)
+    const mousePos = { x: 0, y: 0 };
+    const curPos   = { x: 0, y: 0 };
 
-    // ── Mousemove — position + mode ────────────────────────────────────────
+    // Lerp factor: 0.28 ≈ fast but still smooth.
+    // Lower = dreamier, higher = snappier. 0.10–0.40 is the range.
+    const LERP = 0.28;
+    const TILT_LERP = 0.30;
+
+    // ── Unified RAF loop — handles position lerp + tilt ease ───────────────
+    // Self-suspending: stops when both position and tilt are settled.
+    const animate = () => {
+      let needsFrame = false;
+
+      // Position lerp
+      const px = mousePos.x - curPos.x;
+      const py = mousePos.y - curPos.y;
+      if (Math.abs(px) > 0.08 || Math.abs(py) > 0.08) {
+        curPos.x += px * LERP;
+        curPos.y += py * LERP;
+        needsFrame = true;
+      } else {
+        // Snap to avoid sub-pixel drift
+        curPos.x = mousePos.x;
+        curPos.y = mousePos.y;
+      }
+
+      // Tilt ease
+      const td = targetTilt.current - tiltRef.current;
+      if (Math.abs(td) > 0.05) {
+        tiltRef.current += td * TILT_LERP;
+        needsFrame = true;
+      } else {
+        tiltRef.current = targetTilt.current;
+      }
+
+      // Apply both in a single transform — one style mutation per frame
+      if (cursorRef.current) {
+        cursorRef.current.style.transform =
+          `translate(${curPos.x}px, ${curPos.y}px) rotate(${tiltRef.current}deg)`;
+      }
+
+      rafId.current = needsFrame ? requestAnimationFrame(animate) : null;
+    };
+
+    // ── Mousemove — record target only, never touch the DOM ────────────────
     const onMove = (e) => {
       const { clientX: x, clientY: y } = e;
 
-      if (cursorRef.current) {
-        cursorRef.current.style.transform =
-          `translate(${x}px, ${y}px) rotate(${tiltRef.current}deg)`;
-      }
+      // Update raw target
+      mousePos.x = x;
+      mousePos.y = y;
 
+      // Tilt from movement direction
       const dx = x - prevPos.current.x;
       const dy = y - prevPos.current.y;
       const speed = Math.sqrt(dx * dx + dy * dy);
@@ -196,6 +232,11 @@ const FountainPenCursor = () => {
         modeRef.current = newMode;
         setMode(newMode);
       }
+
+      // Kick off the RAF loop if it isn't already running
+      if (!rafId.current) {
+        rafId.current = requestAnimationFrame(animate);
+      }
     };
 
     const onLeave = () => { visibleRef.current = false; setVisible(false); };
@@ -207,12 +248,13 @@ const FountainPenCursor = () => {
 
     return () => {
       document.documentElement.classList.remove('custom-cursor');
-      cancelAnimationFrame(rafId.current);
+      if (rafId.current) cancelAnimationFrame(rafId.current);
       window.removeEventListener('mousemove',    onMove);
       document.removeEventListener('mouseleave', onLeave);
       document.removeEventListener('mouseenter', onEnter);
     };
   }, [isMouse]);
+
 
   // ── Click → ink splat ─────────────────────────────────────────────────────
   const handleClick = useCallback((e) => {

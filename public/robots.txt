@@ -1,0 +1,8 @@
+# robots.txt for MCET Diary'26
+# https://mcetdiary26.vercel.app
+
+User-agent: *
+Allow: /
+
+# Point crawlers to the sitemap
+Sitemap: https://mcetdiary26.vercel.app/sitemap.xml

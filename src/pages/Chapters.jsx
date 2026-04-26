@@ -1,4 +1,4 @@
-import React from 'react';
+﻿﻿import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -109,7 +109,7 @@ const JourneyNode = ({ data, index }) => {
           }}
         >
            {/* Front Side */}
-           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/rice-paper.png')] bg-white p-3 md:p-4 pb-12 md:pb-12 shadow-2xl backface-hidden flex flex-col">
+           <div className="absolute inset-0 bg-[url('/textures/rice-paper.png')] bg-white p-3 md:p-4 pb-12 md:pb-12 shadow-2xl backface-hidden flex flex-col">
               <div className={`w-full h-[90%] shadow-inner border border-gray-100 bg-gray-50 overflow-hidden ${index === timelineData.length - 1 ? '' : 'grayscale-[90%]'}`}>
                 {data.image.startsWith('/') || data.image.startsWith('http') ? (
                    <img src={data.image} alt={data.title} className="w-full h-full object-contain" loading="lazy" />
@@ -126,11 +126,11 @@ const JourneyNode = ({ data, index }) => {
 
            {/* Back Side (Diary Note) */}
            <div 
-             className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/rice-paper.png')] bg-[#fdfaf3] p-6 shadow-2xl backface-hidden flex flex-col items-center justify-center text-center border border-black/5"
+             className="absolute inset-0 bg-[url('/textures/rice-paper.png')] bg-[#fdfaf3] p-6 shadow-2xl backface-hidden flex flex-col items-center justify-center text-center border border-black/5"
              style={{ transform: 'rotateY(180deg)' }}
            >
               {/* Paper texture overlay */}
-              <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/paper.png')]"></div>
+              <div className="absolute inset-0 opacity-[0.04] pointer-events-none bg-[url('/textures/paper.png')]"></div>
               
               <div className="relative z-10 space-y-4" data-photo="true">
                 <div className="w-12 h-px bg-amber-900/20 mx-auto"></div>
@@ -174,6 +174,9 @@ const JourneyNode = ({ data, index }) => {
 };
 
 const Chapters = () => {
+  // Page title for Lighthouse SEO score
+  useEffect(() => { document.title = "MCET Diary'26 | Chapters - Four Year Stories"; }, []);
+
   return (
     <PageTransition>
       <div className="min-h-[100vh] py-24 overflow-hidden relative">
@@ -181,7 +184,7 @@ const Chapters = () => {
           <SectionHeading
             title="Chapters"
             subtitle="The story we lived, not just remembered. 🍻"
-            eyebrow="Our Journey"
+            eyebrow="Four Year Stories"
           />
           <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-8 mb-32 italic">
              " Here's to the nights that turned into mornings, with the friends that turned into family. "

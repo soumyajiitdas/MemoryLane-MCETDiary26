@@ -35,7 +35,7 @@ const GridBackground = () => {
             "radial-gradient(circle at center, black 45%, transparent 100%)",
         }}
       >
-        {/* Background grid (soft + blurred) */}
+        {/* Background grid */}
         <motion.div style={{ y: slowY, opacity: gridOpacity }} className="absolute inset-0">
           <div
             className="absolute inset-0"
@@ -45,7 +45,6 @@ const GridBackground = () => {
                 linear-gradient(to bottom, rgba(255,220,120,0.05) 1px, transparent 1px)
               `,
               backgroundSize: "90px 80px",
-              filter: "blur(1.2px)",
             }}
           />
         </motion.div>
@@ -60,7 +59,6 @@ const GridBackground = () => {
                 linear-gradient(to bottom, rgba(255,174,0,0.12) 1px, transparent 1px)
               `,
               backgroundSize: "44px 40px",
-              filter: "blur(0.6px)",
             }}
           />
         </motion.div>
@@ -76,7 +74,6 @@ const GridBackground = () => {
               `,
               backgroundSize: "55px 48px",
               transform: "rotate(1.5deg) translate(12px, 8px)",
-              filter: "blur(0.3px)",
             }}
           />
         </motion.div>
@@ -87,7 +84,7 @@ const GridBackground = () => {
         className="absolute inset-0 hidden sm:block"
         style={{
           background:
-            "radial-gradient(circle at center, transparent 50%, rgba(0,0,0,0.55) 100%)",
+            "radial-gradient(circle at center, transparent 65%, rgba(0,0,0,0.55) 100%)",
         }}
       />
 
@@ -96,7 +93,7 @@ const GridBackground = () => {
         className="absolute inset-0 opacity-[0.035]"
         style={{
           backgroundImage:
-            "url('https://www.transparenttextures.com/patterns/noise.png')",
+            "url('/textures/noise.png')",
           mixBlendMode: "overlay",
         }}
       />
