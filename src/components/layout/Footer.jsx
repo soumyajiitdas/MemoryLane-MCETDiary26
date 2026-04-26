@@ -13,7 +13,7 @@ const Footer = () => {
       }} />
       <div
         className="absolute inset-0 opacity-[0.12] z-0 pointer-events-none"
-        style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/stardust.png')" }}
+        style={{ backgroundImage: "url('/textures/stardust.png')" }}
       />
 
       {/* Torn paper edge overlapping upward into previous section */}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Home / Prologue -->
+  <url>
+    <loc>https://mcetdiary26.vercel.app/</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Chapters -->
+  <url>
+    <loc>https://mcetdiary26.vercel.app/chapters</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- The Cast -->
+  <url>
+    <loc>https://mcetdiary26.vercel.app/the-cast</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Scrapbook -->
+  <url>
+    <loc>https://mcetdiary26.vercel.app/scrapbook</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Our Notes -->
+  <url>
+    <loc>https://mcetdiary26.vercel.app/our-notes</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Last Pages -->
+  <url>
+    <loc>https://mcetdiary26.vercel.app/last-pages</loc>
+    <lastmod>2026-04-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

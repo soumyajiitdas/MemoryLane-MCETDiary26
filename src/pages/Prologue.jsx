@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import Hero from '../components/sections/Hero';
@@ -20,9 +20,11 @@ import { timelineData } from '../data/chapters';
 // Vintage Ticket Card with Framer Motion
 const VintageStatTicket = ({ label, value, delay }) => {
   const paperColor = '#eaddc5';
+  // Stable tilt: computed once per mount, never re-randomized on re-render
+  const tilt = useMemo(() => (Math.random() > 0.5 ? 1 : -1), []);
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30, rotate: Math.random() > 0.5 ? 1 : -1 }}
+      initial={{ opacity: 0, y: 30, rotate: tilt }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.6, delay, ease: 'easeOut' }}
@@ -34,7 +36,7 @@ const VintageStatTicket = ({ label, value, delay }) => {
         backgroundImage: `radial-gradient(circle at 0 50%, transparent 6px, ${paperColor} 7px), radial-gradient(circle at 100% 50%, transparent 6px, ${paperColor} 7px)`,
         backgroundSize: '100% 100%',
         backgroundRepeat: 'no-repeat',
-        transform: `rotate(${Math.random() > 0.5 ? 1 : -1}deg)`
+        transform: `rotate(${tilt}deg)`
       }}
     >
       <span className="text-4xl font-serif text-[#3e3222] mb-2 font-bold relative z-10" style={{ textShadow: '0 1px 3px rgba(0,0,0,0.1)' }}>
@@ -78,7 +80,7 @@ const StickyNoteMini = ({ post, index }) => {
       viewport={{ once: true, margin: '-50px' }}
       transition={{ duration: 0.5, delay: index * 0.15, type: 'spring', damping: 15 }}
       whileHover={{ scale: 1.05, zIndex: 10, rotate: 0 }}
-      style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')" }}
+      style={{ backgroundImage: "url('/textures/rice-paper.png')" }}
       className="sticky-note paper-lift p-6 break-inside-avoid w-full max-w-sm mx-auto flex flex-col cursor-pointer"
     >
       {/* Ruled lines overlay */}
@@ -130,7 +132,7 @@ const LetterToBatch = () => {
     className="max-w-3xl mx-auto p-10 md:p-16 relative bg-[#fdfbf7] text-[#2c3e50]"
     style={{
       boxShadow: '8px 20px 50px rgba(0,0,0,0.3), 4px 4px 0 rgba(0,0,0,0.04)',
-      backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')",
+      backgroundImage: "url('/textures/rice-paper.png')",
       backgroundSize: '100% 2.6rem',
       lineHeight: '2.6rem'
     }}
@@ -208,6 +210,9 @@ const LetterToBatch = () => {
 
 
 const Prologue = () => {
+  // Page title for Lighthouse SEO score
+  useEffect(() => { document.title = "MCET Diary'26 | Prologue - Where It Began"; }, []);
+
   const [featuredCast, setFeaturedCast] = useState([]);
   const [recentMemories, setRecentMemories] = useState([]);
 

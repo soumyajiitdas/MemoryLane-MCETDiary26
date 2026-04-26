@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, FileText, ChevronLeft, ChevronRight, Flower2, Play } from 'lucide-react';
 import PageTransition from '../components/layout/PageTransition';
@@ -127,6 +127,9 @@ const FlipbookPage = ({ page, index, totalPages }) => {
 };
 
 const LastPages = () => {
+  // Page title for Lighthouse SEO score
+  useEffect(() => { document.title = "MCET Diary'26 | Last Pages - The Final Chapter"; }, []);
+
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(1); // 1 for next, -1 for prev
   const [showCredits, setShowCredits] = useState(false);
@@ -178,7 +181,7 @@ const LastPages = () => {
           <SectionHeading
             title="Last Pages"
             subtitle="What remained when the story found its end. 🦸"
-            eyebrow="Phoenix Magazine"
+            eyebrow="The Final Chapter"
           />
           <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-10 mb-16 italic">
              " For the memories we couldn't fit into the margins... "

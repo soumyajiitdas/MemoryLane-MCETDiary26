@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+﻿import React, { useEffect, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDownUp, SlidersHorizontal } from 'lucide-react';
 import PageTransition from '../components/layout/PageTransition';
@@ -28,6 +28,9 @@ const yearMapping = {
 };
 
 const Scrapbook = () => {
+  // Page title for Lighthouse SEO score
+  useEffect(() => { document.title = "MCET Diary'26 | Scrapbook - Scattered Memories"; }, []);
+
   const [activeYear,    setActiveYear]    = useState("All");
   const [albumIndex,    setAlbumIndex]    = useState(0);   // cycles through albums[]
   const [sortOrder,     setSortOrder]     = useState("random");
@@ -97,7 +100,7 @@ const Scrapbook = () => {
                           }}
                         />
                         <p className="text-amber-500/60 uppercase tracking-[0.32em] text-xs font-sans">
-                          Frames of Us
+                          Scattered Memories
                         </p>
                         <span
                           className="w-1.5 h-1.5 rounded-full inline-block flex-shrink-0"

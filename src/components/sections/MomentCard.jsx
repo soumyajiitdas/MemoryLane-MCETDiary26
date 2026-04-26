@@ -21,7 +21,7 @@ const EventCard = ({ event, onClick }) => {
         }}
       >
         {/* Background Texture Layers */}
-        <div className="absolute inset-0 bg-white" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')" }}></div>
+        <div className="absolute inset-0 bg-white" style={{ backgroundImage: "url('/textures/rice-paper.png')" }}></div>
         
         {/* Ruled lines overlay */}
         <div 
@@ -56,7 +56,7 @@ const EventCard = ({ event, onClick }) => {
           >
             {/* Washi Tape */}
             <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-7 bg-amber-600/30 backdrop-blur-sm border border-amber-800/10 shadow-[1px_2px_3px_rgba(0,0,0,0.05)]"
-                 style={{ transform: "rotate(-3deg)", backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')" }}></div>
+                 style={{ transform: "rotate(-3deg)", backgroundImage: "url('/textures/rice-paper.png')" }}></div>
             
             {/* The Image */}
             <div className="overflow-hidden">

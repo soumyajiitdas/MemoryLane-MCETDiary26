@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -24,26 +24,30 @@ const getRandomBg = () =>
 
 // Polaroid Component
 const Polaroid = ({ person, onClick }) => {
-  // Show a crown doodle for specific people or pseudo-randomly based on ID length/value
   const showCrown = (person.id % 3 === 0) || (person.id === 1);
+
+  // Stable random values — computed once per mount, never on re-render
+  const hoverRotate = useMemo(() => (Math.random() > 0.5 ? 2 : -2), []);
+  const baseRotation = useMemo(() => Math.floor(Math.random() * 4) - 2, []);
+  const tapeBg = useMemo(() => bgColors[Math.floor(Math.random() * bgColors.length)], []);
 
   return (
     <motion.div
-      whileHover={{ scale: 1.07, rotate: Math.random() > 0.5 ? 2 : -2, y: -8 }}
+      whileHover={{ scale: 1.07, rotate: hoverRotate, y: -8 }}
       transition={{ type: 'spring', stiffness: 360, damping: 22 }}
       layoutId={`person-${person.id}`}
       className="cursor-pointer bg-[#fdfaf3] p-3 pb-6 flex flex-col items-center border border-amber-900/10 relative"
       onClick={() => onClick(person)}
       style={{
-        transform: `rotate(${Math.floor(Math.random() * 4) - 2}deg)`,
-        backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')",
+        transform: `rotate(${baseRotation}deg)`,
+        backgroundImage: "url('/textures/rice-paper.png')",
         boxShadow: '3px 6px 20px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.15)',
       }}
     >
 
       {/* Masking tape */}
       <div
-        className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 ${getRandomBg()} border border-white/20 shadow-sm z-10 backdrop-blur-sm`}
+        className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 ${tapeBg} border border-white/20 shadow-sm z-10 backdrop-blur-sm`}
         style={{ transform: 'rotate(-2deg)' }}
       />
 
@@ -72,6 +76,9 @@ const Polaroid = ({ person, onClick }) => {
 };
 
 const TheCast = () => {
+  // Page title for Lighthouse SEO score
+  useEffect(() => { document.title = "MCET Diary'26 | The Cast - Faces of Us"; }, []);
+
   const [view, setView] = useState('batchmates'); // 'batchmates' | 'events'
   const [selectedPerson, setSelectedPerson] = useState(null);
 
@@ -91,7 +98,7 @@ const TheCast = () => {
           <SectionHeading
             title="The Cast"
             subtitle="The faces and the events that made it all real. ❣️"
-            eyebrow="MCETians"
+            eyebrow="Faces of Us"
           />
 
           {/* Firefly particles */}
@@ -192,7 +199,7 @@ const TheCast = () => {
         {selectedPerson && (
           <div className="w-full relative py-6 md:p-8 flex flex-col items-center overflow-hidden">
             {/* The main scrapbook paper background spanning the modal */}
-            <div className="absolute inset-0 bg-[#f9f5eb] shadow-inner" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')" }}>
+            <div className="absolute inset-0 bg-[#f9f5eb] shadow-inner" style={{ backgroundImage: "url('/textures/rice-paper.png')" }}>
               {/* Ruled lines overlay */}
               <div 
                 className="absolute inset-0 opacity-40 pointer-events-none"
@@ -212,7 +219,7 @@ const TheCast = () => {
              </span>
            </div>
         </div>
-              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/noise-lines.png')] opacity-20 mix-blend-overlay"></div>
+              <div className="absolute inset-0 bg-[url('/textures/noise-lines.png')] opacity-20 mix-blend-overlay"></div>
             </div>
 
             {/* Scrapbook Content Container */}
@@ -221,9 +228,9 @@ const TheCast = () => {
               {/* Left Column: Taped Photo */}
               <div className="relative w-64 flex-shrink-0">
                 {/* Vintage Tape top left */}
-                <div className="absolute -top-5 -left-4 z-20 w-20 h-6 bg-green-400/40 backdrop-blur-sm shadow-sm rotate-[-12deg] border border-black/5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }} />
+                <div className="absolute -top-5 -left-4 z-20 w-20 h-6 bg-green-400/40 backdrop-blur-sm shadow-sm rotate-[-12deg] border border-black/5" style={{ backgroundImage: "url('/textures/aged-paper.png')" }} />
                 {/* Vintage Tape bottom right */}
-                <div className="absolute -bottom-4 -right-4 z-20 w-16 h-6 bg-amber-400/40 backdrop-blur-sm shadow-sm rotate-[15deg] border border-black/5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }} />
+                <div className="absolute -bottom-4 -right-4 z-20 w-16 h-6 bg-amber-400/40 backdrop-blur-sm shadow-sm rotate-[15deg] border border-black/5" style={{ backgroundImage: "url('/textures/aged-paper.png')" }} />
                 
                 <div className="bg-[#fdfaf3] p-2 pb-6 shadow-[3px_5px_15px_rgba(0,0,0,0.25)] border border-[#d5d0c0] transform rotate-2">
                   <div 
@@ -249,7 +256,7 @@ const TheCast = () => {
                    
                    <div className="flex items-center gap-3 mt-3">
                      {/* Torn paper scrap for nickname */}
-                     <div className="relative inline-block bg-[#dbd4bf] px-3 py-1 shadow-sm transform -rotate-2 border border-black/5" style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/aged-paper.png')" }}>
+                     <div className="relative inline-block bg-[#dbd4bf] px-3 py-1 shadow-sm transform -rotate-2 border border-black/5" style={{ backgroundImage: "url('/textures/aged-paper.png')" }}>
                        <span className="font-['Courier_New'] font-bold text-[#5c2415] text-sm md:text-base tracking-widest lowercase">
                          "{selectedPerson.roll || "1060012****"}"
                        </span>
@@ -287,7 +294,7 @@ const TheCast = () => {
                         target="_blank" 
                         rel="noopener noreferrer"
                         className={`w-12 h-12 bg-[#faf8f2] shadow-[1px_3px_5px_rgba(0,0,0,0.2)] border border-[#dcd8cc] flex items-center justify-center text-[#5c2415] hover:bg-[#5c2415] hover:text-[#faf8f2] transition-colors transform ${rotations[idx % rotations.length]}`}
-                        style={{ backgroundImage: "url('https://www.transparenttextures.com/patterns/rice-paper.png')" }}
+                        style={{ backgroundImage: "url('/textures/rice-paper.png')" }}
                         aria-label={network}
                       >
                         {getSocialIcon(network)}
