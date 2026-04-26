@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import Fireflies from '../ui/Fireflies';
 import { DoodleHeart, DoodleCrown } from '../ui/VintageDoodles';
 
 const Footer = () => {
@@ -38,9 +37,6 @@ const Footer = () => {
           />
         </svg>
       </div>
-
-      {/* Firefly particles */}
-      <Fireflies count={12}/>
 
       {/* Ambient amber glow */}
       <div

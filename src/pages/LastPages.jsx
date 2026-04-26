@@ -4,8 +4,8 @@ import { Download, FileText, ChevronLeft, ChevronRight, Flower2, Play } from 'lu
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
-import { phoenixPages } from '../data/phoenix';
 import Fireflies from '../components/ui/Fireflies';
+import { phoenixPages } from '../data/phoenix';
 import { DoodleCrown, DoodleArrow, DoodleHeart, DoodleCircle, DoodleSparkle } from '../components/ui/VintageDoodles';
 import EndCredits from '../components/ui/EndCredits';
 
@@ -172,11 +172,12 @@ const LastPages = () => {
   return (
     <>
     <PageTransition>
+
+      {/* Firefly Particles */}
+      <Fireflies count={25}/>
+
       <div className="min-h-[100vh] py-24 pb-32">
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center relative z-10">
-
-          {/* Firefly particles */}
-          <Fireflies count={25}/>
           
           <SectionHeading
             title="Last Pages"

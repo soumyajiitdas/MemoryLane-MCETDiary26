@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Play, Pause, X, Volume2, VolumeX } from 'lucide-react';
-import Fireflies from '../ui/Fireflies';
 import { peopleData } from '../../data/cast';
+import Fireflies from './Fireflies';
 import {
   DoodleHeart, DoodleSparkle, DoodleArrow,
   DoodleCrown, DoodleCircle,
@@ -226,6 +226,9 @@ const EndCredits = ({ isOpen, onClose }) => {
             `,
           }}
         >
+          {/* Firefly particles */}
+          <Fireflies count={15} />
+          
           <style>{`
             @keyframes credits-roll {
               from { transform: translateY(100vh); }
@@ -249,9 +252,6 @@ const EndCredits = ({ isOpen, onClose }) => {
 
           {/* Doodles */}
           <DoodleLayer />
-
-          {/* Firefly particles */}
-          <Fireflies />
 
           {/* Controls — icon-only, top-right */}
           <motion.div

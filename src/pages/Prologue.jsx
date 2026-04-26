@@ -83,6 +83,7 @@ const StickyNoteMini = ({ post, index }) => {
       style={{ backgroundImage: "url('/textures/rice-paper.png')" }}
       className="sticky-note paper-lift p-6 break-inside-avoid w-full max-w-sm mx-auto flex flex-col cursor-pointer"
     >
+
       {/* Ruled lines overlay */}
       <div
         className="absolute inset-0 opacity-40 pointer-events-none"
@@ -235,11 +236,12 @@ const Prologue = () => {
 
   return (
     <PageTransition>
+
+      {/* Firefly Particles */}
+      <Fireflies count={40}/>
+
       {/* Hero Section */}
       <Hero />
-
-      {/* Firefly particles */}
-      <Fireflies count={40}/>
 
       {/* Intro Letter */}
       <LetterToBatch />

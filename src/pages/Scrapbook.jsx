@@ -68,6 +68,10 @@ const Scrapbook = () => {
 
   return (
     <PageTransition>
+
+      {/* Firefly Particles */}
+      <Fireflies count={25}/>
+
       <div className="min-h-screen py-24">
         <div className="max-w-7xl mx-auto px-4">
 
@@ -161,9 +165,6 @@ const Scrapbook = () => {
                         Fragments of time we chose to keep. ✨
                       </motion.p>
                   </motion.div>
-
-              {/* Firefly particles */}
-              <Fireflies count={30}/>
 
               <div className="flex flex-wrap gap-2 font-serif">
                 {years.map(year => (

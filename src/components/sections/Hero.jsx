@@ -1,12 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
-import Fireflies from '../ui/Fireflies';
 import { DoodleArrow, DoodleSparkle, DoodleCrown } from '../ui/VintageDoodles';
 
 // Polaroids scattered in the background
 const bgPolaroids = [
-  { id: 1, rot: -12, x: '-30vw', y: '-10vh', img: '/images/scrapbook/24.jpg', bg: 'linear-gradient(to right, #f68084, #a6c0fe)', delay: 0,   note: "We lived our moments, without worrying about the rest.", date: "Mar 2026" },
+  { id: 1, rot: -12, x: '-30vw', y: '-10vh', img: '/images/scrapbook/24.webp', bg: 'linear-gradient(to right, #f68084, #a6c0fe)', delay: 0,   note: "We lived our moments, without worrying about the rest.", date: "Mar 2026" },
   { id: 2, rot: 8,   x: '25vw',  y: '-15vh', img: '/images/scrapbook/31.jpg', bg: 'linear-gradient(to right, #4facfe, #00f2fe)', delay: 0.2, note: "In every moment, we found our own perfection.", date: "Oct 2023" },
   { id: 3, rot: -5,  x: '-20vw', y: '25vh',  img: '/images/scrapbook/40.jpg', bg: 'linear-gradient(to right, #ff0844, #ffb199)', delay: 0.4, note: "Good times never go to waste.", date: "Feb 2026" },
   { id: 4, rot: 15,  x: '35vw',  y: '20vh',  img: '/images/scrapbook/04.jpg', bg: 'linear-gradient(to right, #f83600, #f9d423)', delay: 0.6, note: "From first steps to forever memories.", date: "Mar 2023" },
@@ -28,9 +27,6 @@ const itemVariants = {
 const Hero = () => {
   return (
     <div className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden px-4">
-
-      {/* ── Firefly particles ── */}
-      <Fireflies count={10}/>
 
       {/* ── Radial spotlight behind hero text ── */}
       <div

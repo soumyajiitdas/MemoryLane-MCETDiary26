@@ -3,8 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
-import { memoriesData } from '../data/notes';
 import Fireflies from '../components/ui/Fireflies';
+import { memoriesData } from '../data/notes';
 import { DoodleCrown, DoodleHeart } from '../components/ui/VintageDoodles';
 
 const StickyNote = ({ post }) => {
@@ -111,11 +111,12 @@ const OurNotes = () => {
 
   return (
     <PageTransition>
+
+      {/* Firefly Particles */}
+      <Fireflies count={20}/>
+
       <div className="min-h-[100vh] py-24 pb-32">
         <div className="max-w-7xl mx-auto px-4">
-          
-          {/* Firefly particles */}
-          <Fireflies count={20}/>
           
           <div className="text-center mb-16 relative">
             <SectionHeading 
