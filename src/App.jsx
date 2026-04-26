@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
 // Layout
@@ -15,7 +15,7 @@ const FountainPenCursor = lazy(() => import('./components/ui/FountainPenCursor')
 const GraduationBanner = lazy(() => import('./components/ui/GraduationBanner'));
 
 // Pages — lazy loaded so each route's JS is only fetched on first navigation
-const Prologue  = lazy(() => import('./pages/Prologue'));
+import Prologue from './pages/Prologue';
 const Chapters  = lazy(() => import('./pages/Chapters'));
 const TheCast   = lazy(() => import('./pages/TheCast'));
 const Scrapbook = lazy(() => import('./pages/Scrapbook'));
@@ -29,6 +29,22 @@ const PageLoader = () => (
   </div>
 );
 
+function AnimatedRoutes() {
+  const location = useLocation();
+  
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        <Route path="/"           element={<Prologue />}  />
+        <Route path="/chapters"   element={<Suspense fallback={<PageLoader />}><Chapters /></Suspense>}  />
+        <Route path="/the-cast"   element={<Suspense fallback={<PageLoader />}><TheCast /></Suspense>}   />
+        <Route path="/scrapbook"  element={<Suspense fallback={<PageLoader />}><Scrapbook /></Suspense>} />
+        <Route path="/our-notes"  element={<Suspense fallback={<PageLoader />}><OurNotes /></Suspense>}  />
+        <Route path="/last-pages" element={<Suspense fallback={<PageLoader />}><LastPages /></Suspense>} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
 
 function App() {
   return (
@@ -44,18 +60,7 @@ function App() {
             <Navbar />
 
             <main className="flex-grow mt-20 overflow-x-hidden w-full">
-              <Suspense fallback={<PageLoader />}>
-                <AnimatePresence mode="wait">
-                  <Routes>
-                    <Route path="/"           element={<Prologue />}  />
-                    <Route path="/chapters"   element={<Chapters />}  />
-                    <Route path="/the-cast"   element={<TheCast />}   />
-                    <Route path="/scrapbook"  element={<Scrapbook />} />
-                    <Route path="/our-notes"  element={<OurNotes />}  />
-                    <Route path="/last-pages" element={<LastPages />} />
-                  </Routes>
-                </AnimatePresence>
-              </Suspense>
+              <AnimatedRoutes />
             </main>
 
             <Footer />

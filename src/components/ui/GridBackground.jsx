@@ -36,7 +36,7 @@ const GridBackground = () => {
         }}
       >
         {/* Background grid */}
-        <motion.div style={{ y: slowY, opacity: gridOpacity }} className="absolute inset-0">
+        <motion.div style={{ y: slowY, opacity: gridOpacity, willChange: 'transform, opacity' }} className="absolute inset-0">
           <div
             className="absolute inset-0"
             style={{
@@ -50,7 +50,7 @@ const GridBackground = () => {
         </motion.div>
 
         {/* Mid grid */}
-        <motion.div style={{ y: mediumY, opacity: gridOpacity }} className="absolute inset-0">
+        <motion.div style={{ y: mediumY, opacity: gridOpacity, willChange: 'transform, opacity' }} className="absolute inset-0">
           <div
             className="absolute inset-0"
             style={{
@@ -64,7 +64,7 @@ const GridBackground = () => {
         </motion.div>
 
         {/* Foreground grid (slightly rotated for imperfection) */}
-        <motion.div style={{ y: fastY, opacity: gridOpacity }} className="absolute inset-0">
+        <motion.div style={{ y: fastY, opacity: gridOpacity, willChange: 'transform, opacity' }} className="absolute inset-0">
           <div
             className="absolute inset-0"
             style={{

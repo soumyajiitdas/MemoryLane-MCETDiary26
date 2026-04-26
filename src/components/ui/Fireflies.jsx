@@ -11,9 +11,10 @@ const generateFireflies = (count = 20) =>
     height: `${3 + Math.random() * 3}px`,
   }));
 
-export default function Fireflies({ count = 15 }) {
+export default function Fireflies({ count = 30 }) {
   // Prevent regeneration on every render
-  const firefliesConfig = useMemo(() => generateFireflies(count), [count]);
+  const safeCount = count;
+  const firefliesConfig = useMemo(() => generateFireflies(safeCount), [safeCount]);
 
   return (
     <div className="fireflies-container">

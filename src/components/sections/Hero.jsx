@@ -138,15 +138,7 @@ const Hero = () => {
           >
             MCET{' '}
             <span
-              className="font-serif relative"
-              style={{
-                background: 'linear-gradient(to right, #fcd34d, #f59e0b, #b45309, #f59e0b, #fcd34d)',
-                backgroundSize: '300% auto',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                animation: 'shimmer-sweep 5s linear infinite',
-              }}
+              className="font-serif relative text-gradient-animate"
             >
               Diary'26
             </span>

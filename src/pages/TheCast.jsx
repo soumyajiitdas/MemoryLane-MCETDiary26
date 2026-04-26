@@ -1,4 +1,4 @@
-﻿import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
@@ -35,7 +35,6 @@ const Polaroid = ({ person, onClick }) => {
     <motion.div
       whileHover={{ scale: 1.07, rotate: hoverRotate, y: -8 }}
       transition={{ type: 'spring', stiffness: 360, damping: 22 }}
-      layoutId={`person-${person.id}`}
       className="cursor-pointer bg-[#fdfaf3] p-3 pb-6 flex flex-col items-center border border-amber-900/10 relative"
       onClick={() => onClick(person)}
       style={{

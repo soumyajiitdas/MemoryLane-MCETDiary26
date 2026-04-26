@@ -181,7 +181,7 @@ export const peopleData =
     name: "Ishme Azam Hossain",
     nickname: "SkyLord🌟",
     roll: "10601322001",
-    photo: "/images/cast/ishme.jpg",
+    photo: "/images/cast/ishme.jpeg",
     department: "Civil Engineering",
     birthday: "06-08",
     oneliner: "Friends everywhere, but roots always here - the extrovert who never forgot his own people.",
