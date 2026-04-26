@@ -157,60 +157,34 @@ const FountainPenCursor = () => {
       return 'default';
     };
 
-    // ── Lerp state — separate from prevPos used for speed/angle calc ───────
-    // curPos: the rendered cursor position (lerped each frame)
-    // mousePos: the raw mouse target (updated instantly in onMove)
-    const mousePos = { x: 0, y: 0 };
-    const curPos   = { x: 0, y: 0 };
+    // ── Tilt ease via self-suspending RAF ──────────────────────────────────
+    // Position is set directly (no lag). Only the rotation eases — fast.
+    const TILT_LERP = 0.35;
 
-    // Lerp factor: 0.28 ≈ fast but still smooth.
-    // Lower = dreamier, higher = snappier. 0.10–0.40 is the range.
-    const LERP = 0.28;
-    const TILT_LERP = 0.30;
-
-    // ── Unified RAF loop — handles position lerp + tilt ease ───────────────
-    // Self-suspending: stops when both position and tilt are settled.
-    const animate = () => {
-      let needsFrame = false;
-
-      // Position lerp
-      const px = mousePos.x - curPos.x;
-      const py = mousePos.y - curPos.y;
-      if (Math.abs(px) > 0.08 || Math.abs(py) > 0.08) {
-        curPos.x += px * LERP;
-        curPos.y += py * LERP;
-        needsFrame = true;
-      } else {
-        // Snap to avoid sub-pixel drift
-        curPos.x = mousePos.x;
-        curPos.y = mousePos.y;
-      }
-
-      // Tilt ease
+    const animateTilt = () => {
       const td = targetTilt.current - tiltRef.current;
       if (Math.abs(td) > 0.05) {
         tiltRef.current += td * TILT_LERP;
-        needsFrame = true;
+        if (cursorRef.current) {
+          cursorRef.current.style.transform =
+            `translate(${prevPos.current.x}px, ${prevPos.current.y}px) rotate(${tiltRef.current}deg)`;
+        }
+        rafId.current = requestAnimationFrame(animateTilt);
       } else {
         tiltRef.current = targetTilt.current;
+        rafId.current = null;
       }
-
-      // Apply both in a single transform — one style mutation per frame
-      if (cursorRef.current) {
-        cursorRef.current.style.transform =
-          `translate(${curPos.x}px, ${curPos.y}px) rotate(${tiltRef.current}deg)`;
-      }
-
-      rafId.current = needsFrame ? requestAnimationFrame(animate) : null;
     };
 
-    // ── Mousemove — record target only, never touch the DOM ────────────────
+    // ── Mousemove — direct 1:1 position, no lerp ───────────────────────────
     const onMove = (e) => {
       const { clientX: x, clientY: y } = e;
 
-      // Update raw target
-      mousePos.x = x;
-      mousePos.y = y;
+      // Snap directly — zero lag, native cursor feel
+      if (cursorRef.current) {
+        cursorRef.current.style.transform =
+          `translate(${x}px, ${y}px) rotate(${tiltRef.current}deg)`;
+      }
 
       // Tilt from movement direction
       const dx = x - prevPos.current.x;
@@ -218,7 +192,13 @@ const FountainPenCursor = () => {
       const speed = Math.sqrt(dx * dx + dy * dy);
       if (speed > 1.2) {
         const angle = (Math.atan2(dy, dx) * 180) / Math.PI - 90;
-        targetTilt.current = Math.max(-20, Math.min(20, angle));
+        const newTilt = Math.max(-20, Math.min(20, angle));
+        if (newTilt !== targetTilt.current) {
+          targetTilt.current = newTilt;
+          if (!rafId.current) {
+            rafId.current = requestAnimationFrame(animateTilt);
+          }
+        }
       }
       prevPos.current = { x, y };
 
@@ -231,11 +211,6 @@ const FountainPenCursor = () => {
       if (newMode !== modeRef.current) {
         modeRef.current = newMode;
         setMode(newMode);
-      }
-
-      // Kick off the RAF loop if it isn't already running
-      if (!rafId.current) {
-        rafId.current = requestAnimationFrame(animate);
       }
     };
 

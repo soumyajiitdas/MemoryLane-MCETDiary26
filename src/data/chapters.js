@@ -18,7 +18,7 @@ export const timelineData =
     caption: "We were busy becoming, without knowing what! 💛",
     note: "Sleep was lost, peace was delayed, but we kept going. Maybe not for the outcome, but for the feeling that we were moving forward.",
     events: [2],
-    photos: ["/images/scrapbook/08.jpg"]
+    photos: ["/images/scrapbook/08.webp"]
   },
   {
     year: "2024-'25",
@@ -38,6 +38,6 @@ export const timelineData =
     caption: "Nothing was meant to stay, and yet it mattered! 💚",
     note: "We say we’ll stay in touch. Maybe we will, maybe we won’t. Life moves, people change. But some connections don’t need presence - they remain, as a silent part of who we became.",
     events: [4],
-    photos: ["/images/scrapbook/24.jpg"]
+    photos: ["/images/scrapbook/24.webp"]
   }
 ];

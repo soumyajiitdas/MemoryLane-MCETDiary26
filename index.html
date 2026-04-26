@@ -47,6 +47,16 @@
     <link rel="icon" type="image/png" sizes="512x512" href="/favicons/android-chrome-512x512.png" />
     <link rel="manifest" href="/favicons/site.webmanifest" />
 
+    <!--
+      Critical resource preloads — these are on the LCP path.
+      Lighthouse identified paper.png as the LCP element (background-image on Hero).
+      Resource load delay was 2,021ms because CSS background images are not
+      discoverable until stylesheets are parsed. Preloading here tells the browser
+      to fetch these during initial HTML parsing, closing that delay.
+    -->
+    <link rel="preload" as="image" href="/textures/paper.png" fetchpriority="high" />
+    <link rel="preload" as="image" href="/textures/rice-paper.png" />
+
     <!-- Fonts — preconnect + preload for fastest possible font delivery -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />

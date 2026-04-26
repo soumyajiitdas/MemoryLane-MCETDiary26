@@ -4,10 +4,10 @@ import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import MomentCard from '../components/sections/MomentCard';
 import ChapterNav from '../components/ui/ChapterNav';
+import Fireflies from '../components/ui/Fireflies';
 import { peopleData } from '../data/cast';
 import { eventsData } from '../data/moments';
 import Modal from '../components/ui/Modal';
-import Fireflies from '../components/ui/Fireflies';
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { DoodleCrown } from '../components/ui/VintageDoodles';
 
@@ -93,6 +93,10 @@ const TheCast = () => {
 
   return (
     <PageTransition>
+
+      {/* Firefly Particles */}
+      <Fireflies count={25}/>
+
       <div className="min-h-screen py-24">
         <div className="max-w-7xl mx-auto px-4">
           <SectionHeading
@@ -100,9 +104,6 @@ const TheCast = () => {
             subtitle="The faces and the events that made it all real. ❣️"
             eyebrow="Faces of Us"
           />
-
-          {/* Firefly particles */}
-          <Fireflies count={30}/>
 
           {/* Toggle Tab — smooth motion indicator */}
           <div className="flex justify-center mb-12">

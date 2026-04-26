@@ -18,9 +18,6 @@ const JourneyNode = ({ data, index }) => {
 
   return (
     <div className={`relative flex flex-col md:flex-row items-center w-full mb-32 last:mb-0 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
-
-      {/* Firefly particles */}
-      <Fireflies count={20}/>
       
       {/* Center Track Line */}
       <div
@@ -159,15 +156,11 @@ const JourneyNode = ({ data, index }) => {
         </motion.div>
         
         {/* Mobile-only hint */}
-        <motion.div 
-          animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 2, repeat: Infinity }}
-          className="md:hidden mt-4 text-gray-500 text-xs flex items-center gap-2"
-        >
+        <div className="md:hidden mt-4 text-gray-500 text-xs flex items-center gap-2">
           <span className="w-4 h-px bg-gray-600"></span>
           Hold photo to read note
           <span className="w-4 h-px bg-gray-600"></span>
-        </motion.div>
+        </div>
       </motion.div>
     </div>
   );
@@ -179,6 +172,10 @@ const Chapters = () => {
 
   return (
     <PageTransition>
+
+      {/* Firefly Particles */}
+      <Fireflies count={30}/>
+
       <div className="min-h-[100vh] py-24 overflow-hidden relative">
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <SectionHeading
