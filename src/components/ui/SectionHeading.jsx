@@ -49,7 +49,7 @@ const SectionHeading = ({ title, subtitle, eyebrow, className = '' }) => {
 
       {/* Main title with glow + brush-stroke underline */}
       <h2
-        className="font-['Playfair_Display'] text-4xl md:text-5xl font-bold text-amber-100 inline-block relative"
+        className="font-['Playfair_Display'] text-4xl md:text-5xl font-semibold text-amber-100 inline-block relative"
         style={{ textShadow: '0 2px 32px rgba(200,140,50,0.28), 0 0 60px rgba(245,158,11,0.1)' }}
       >
         {title}

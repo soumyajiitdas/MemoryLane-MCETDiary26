@@ -7,14 +7,14 @@ export const TRACKLIST = [
     title: "Yaariyaan",
     feat: "Cocktail",
     duration: "4:25 min",
-    src: '/music/background-music.mp3',
+    src: '/music/Yaariyaan.mp3',
   },
   {
     track: '02',
-    title: "End of the Beginning",
+    title: "End of Beginning",
     feat: "DJO",
     duration: "3:00 min",
-    src: '/music/background-music_02.m4a',
+    src: '/music/End_of_Beginning.m4a',
   },
 ];
 
@@ -127,12 +127,37 @@ export const PlayerProvider = ({ children }) => {
   /** Stop playback entirely */
   const stop = useCallback(() => {
     const audio = audioRef.current;
-    audio.pause();
-    audio.currentTime = 0;
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+      audio.volume = 1; // ensure volume is reset
+    }
     setIsPlaying(false);
     setActiveTrack(null);
     setRevealed(false);
   }, []);
+
+  /** Smoothly fade out volume then stop */
+  const fadeOutStop = useCallback((duration = 2000) => {
+    const audio = audioRef.current;
+    if (!audio || audio.paused) {
+      stop();
+      return;
+    }
+
+    const steps = 20;
+    const stepTime = duration / steps;
+    const volumeStep = audio.volume / steps;
+
+    const fadeInterval = setInterval(() => {
+      if (audio.volume > volumeStep) {
+        audio.volume -= volumeStep;
+      } else {
+        clearInterval(fadeInterval);
+        stop();
+      }
+    }, stepTime);
+  }, [stop]);
 
   const currentTrack = activeTrack !== null ? TRACKLIST[activeTrack] : null;
 
@@ -147,6 +172,7 @@ export const PlayerProvider = ({ children }) => {
       playTrack,
       toggleVinyl,
       stop,
+      fadeOutStop,
     }}>
       {children}
     </PlayerContext.Provider>

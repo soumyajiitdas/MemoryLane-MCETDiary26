@@ -95,7 +95,7 @@ const TheCast = () => {
           />
 
           {/* Firefly particles */}
-          <Fireflies/>
+          <Fireflies count={30}/>
 
           {/* Toggle Tab — smooth motion indicator */}
           <div className="flex justify-center mb-12">
@@ -137,7 +137,7 @@ const TheCast = () => {
                     transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                   />
                 )}
-                <span className="relative z-10">Events</span>
+                <span className="relative z-10">Moments</span>
               </button>
             </div>
           </div>

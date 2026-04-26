@@ -173,14 +173,14 @@ const LastPages = () => {
         <div className="max-w-7xl mx-auto px-4 flex flex-col items-center relative z-10">
 
           {/* Firefly particles */}
-          <Fireflies/>
+          <Fireflies count={25}/>
           
           <SectionHeading
             title="Last Pages"
             subtitle="What remained when the story found its end. 🦸"
             eyebrow="Phoenix Magazine"
           />
-          <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-12 mb-16 italic">
+          <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-10 mb-16 italic">
              " For the memories we couldn't fit into the margins... "
           </p>
 
@@ -324,7 +324,7 @@ const LastPages = () => {
                {/* Decorative divider */}
                <div className="flex items-center gap-4 w-64">
                  <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, transparent, rgba(245,158,11,0.25))' }} />
-                 <span className="font-serif text-[0.58rem] tracking-[0.32em] uppercase whitespace-nowrap" style={{ color: 'rgba(245,158,11,0.35)' }}>stories told</span>
+                 <span className="font-serif text-[0.58rem] tracking-[0.32em] uppercase whitespace-nowrap" style={{ color: 'rgba(245,158,11,0.35)' }}>One Last Look</span>
                  <div className="flex-1 h-px" style={{ background: 'linear-gradient(to left, transparent, rgba(245,158,11,0.25))' }} />
                </div>
 

@@ -32,7 +32,7 @@ function App() {
             <BirthdayBanner />
             <Navbar />
 
-            <main className="flex-grow mt-20">
+            <main className="flex-grow mt-20 overflow-x-hidden w-full">
               <AnimatePresence mode="wait">
                 <Routes>
                   <Route path="/"           element={<Prologue />}  />

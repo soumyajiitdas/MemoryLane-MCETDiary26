@@ -1,6 +1,6 @@
 export const eventsData = [
     // {
-    //   id: 2,
+    //   id: 1,
     //   title: "Independence Day Celebration",
     //   date: "August 2022",
     //   category: "Independence Day",
@@ -31,7 +31,7 @@ export const eventsData = [
       title: "Vishwakarma Puja 2K25",
       date: "September 2025",
       category: "Vishwakarma Puja",
-      description: "Not just a puja completed - a devotion fulfilled through effort. ✨",
+      description: "From endless pandal prep to the final prasad - a team effort we'll never forget. ✨",
       gallery: [""],
       taggedPeople: ["Hulk", "Underoos", "Lebowski", "Kriti", "Legolas", "Thumblina", "Bapi", "Soumyajit"]
     },

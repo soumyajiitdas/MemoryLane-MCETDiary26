@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
-// Firefly background particles
+// Firefly generator
 const generateFireflies = (count = 20) =>
   Array.from({ length: count }).map(() => ({
     left: `${Math.random() * 100}%`,
@@ -11,9 +11,10 @@ const generateFireflies = (count = 20) =>
     height: `${3 + Math.random() * 3}px`,
   }));
 
-const firefliesConfig = generateFireflies(15);
+export default function Fireflies({ count = 15 }) {
+  // Prevent regeneration on every render
+  const firefliesConfig = useMemo(() => generateFireflies(count), [count]);
 
-export default function Fireflies() {
   return (
     <div className="fireflies-container">
       {firefliesConfig.map((style, i) => (

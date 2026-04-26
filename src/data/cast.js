@@ -113,7 +113,7 @@ export const peopleData =
   {
     id: 11,
     name: "Raju Mondal",
-    nickname: "Dealer😏",
+    nickname: "Dealer🏏",
     roll: "10600122033",
     photo: "/images/cast/raju.png",
     department: "Computer Science",
@@ -236,7 +236,7 @@ export const peopleData =
     name: "Anik Mukherjee",
     nickname: "AllRounder🎤",
     roll: "10600122028",
-    photo: "/images/cast/anik.jpg",
+    photo: "/images/cast/anikM.jpg",
     department: "Computer Science",
     birthday: "04-30",
     oneliner: "From code to chords to checkmates - a multi-talented mind living every version of life at once.",
@@ -249,7 +249,7 @@ export const peopleData =
     roll: "",
     photo: "/images/cast/pritam.jpeg",
     department: "Computer Science",
-    birthday: "",
+    birthday: "09-26",
     oneliner: "Friendly by heart, sharp by mind - building quietly, thinking deeply, and playing the long game.",
     socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/pritam-bardhan/", instagram: "#" }
   },
@@ -266,8 +266,19 @@ export const peopleData =
   },
   {
     id: 25,
+    name: "Saptarshi Mandal",
+    nickname: "CyberSentinel🔐",
+    roll: "10600122023",
+    photo: "/images/cast/saptarshi.jpeg",
+    department: "Computer Science",
+    birthday: "01-04",
+    oneliner: "A cybersecurity enthusiast, sharp in academics - and the kind of friend you can always count on.",
+    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+  },
+  {
+    id: 26,
     name: "Abhijit Karmakar",
-    nickname: "RescueMind🧠",
+    nickname: "JugaadMind🧠",
     roll: "10600122002",
     photo: "linear-gradient(45deg, #43E97B, #38F9D7)",
     department: "Computer Science",
@@ -276,7 +287,7 @@ export const peopleData =
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
-    id: 26,
+    id: 27,
     name: "Manab Mandal",
     nickname: "Contrarian⭐",
     roll: "10600122005",
@@ -287,25 +298,14 @@ export const peopleData =
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
   {
-    id: 27,
-    name: "Saptarshi Mandal",
-    nickname: "CyberSentinel🔐",
-    roll: "10600122023",
-    photo: "/images/cast/saptarshi.jpeg",
-    department: "Computer Science",
-    birthday: "",
-    oneliner: "A cybersecurity enthusiast, sharp in academics - and the kind of friend you can always count on.",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
-  },
-  {
     id: 28,
     name: "Anik Sarkar",
-    nickname: "",
+    nickname: "EasyGuy🫠",
     roll: "10600122022",
-    photo: "linear-gradient(45deg, #8b9effff, #ffeb6aff)",
+    photo: "/images/cast/anikS.jpeg",
     department: "Computer Science",
     birthday: "03-23",
-    oneliner: "",
+    oneliner: "Doesn’t say much - but always polite, and effortlessly friendly to everyone.",
     socialLinks: { github: "#", linkedin: "#", instagram: "#" }
   },
 ]

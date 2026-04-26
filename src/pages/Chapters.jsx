@@ -20,7 +20,7 @@ const JourneyNode = ({ data, index }) => {
     <div className={`relative flex flex-col md:flex-row items-center w-full mb-32 last:mb-0 ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'}`}>
 
       {/* Firefly particles */}
-      <Fireflies/>
+      <Fireflies count={20}/>
       
       {/* Center Track Line */}
       <div
@@ -110,7 +110,7 @@ const JourneyNode = ({ data, index }) => {
         >
            {/* Front Side */}
            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/rice-paper.png')] bg-white p-3 md:p-4 pb-12 md:pb-12 shadow-2xl backface-hidden flex flex-col">
-              <div className="w-full h-[90%] shadow-inner border border-gray-100 bg-gray-50 overflow-hidden">
+              <div className={`w-full h-[90%] shadow-inner border border-gray-100 bg-gray-50 overflow-hidden ${index === timelineData.length - 1 ? '' : 'grayscale-[90%]'}`}>
                 {data.image.startsWith('/') || data.image.startsWith('http') ? (
                    <img src={data.image} alt={data.title} className="w-full h-full object-contain" loading="lazy" />
                 ) : (
@@ -181,9 +181,9 @@ const Chapters = () => {
           <SectionHeading
             title="Chapters"
             subtitle="The story we lived, not just remembered. 🍻"
-            eyebrow="Our Timeline"
+            eyebrow="Our Journey"
           />
-          <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-12 mb-32 italic">
+          <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-8 mb-32 italic">
              " Here's to the nights that turned into mornings, with the friends that turned into family. "
           </p>
 

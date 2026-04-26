@@ -4,44 +4,102 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 const GridBackground = () => {
   const { scrollYProgress } = useScroll();
 
-  // Grid movement (slow drift)
-  const gridYRaw = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const gridY = useSpring(gridYRaw, { stiffness: 40, damping: 20 });
+  // Parallax speeds
+  const slowY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 60]), {
+    stiffness: 40,
+    damping: 20,
+  });
 
-  // Grid fade out
-  const gridOpacity = useTransform(scrollYProgress, [0, 0.6], [0.25, 0]);
+  const mediumY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 100]), {
+    stiffness: 40,
+    damping: 20,
+  });
 
-  // Glow fade
-  const glowOpacity = useTransform(scrollYProgress, [0, 0.4], [0.25, 0]);
+  const fastY = useSpring(useTransform(scrollYProgress, [0, 1], [0, 140]), {
+    stiffness: 40,
+    damping: 20,
+  });
+
+  const gridOpacity = useTransform(scrollYProgress, [0, 0.4], [0.3, 0]);
 
   return (
     <div className="fixed inset-0 z-[2] pointer-events-none overflow-hidden">
 
-      {/* Glow Layer */}
-      <motion.div
-        style={{ opacity: glowOpacity }}
+      {/* GRID LAYERS */}
+      <div
         className="absolute inset-0"
+        style={{
+          maskImage:
+            "radial-gradient(circle at center, black 45%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(circle at center, black 45%, transparent 100%)",
+        }}
       >
-        <div className="w-full h-full bg-[radial-gradient(circle_at_50%_30%,rgba(245,158,11,0.18),transparent_60%)]" />
-      </motion.div>
+        {/* Background grid (soft + blurred) */}
+        <motion.div style={{ y: slowY, opacity: gridOpacity }} className="absolute inset-0">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255,220,120,0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,220,120,0.05) 1px, transparent 1px)
+              `,
+              backgroundSize: "90px 80px",
+              filter: "blur(1.2px)",
+            }}
+          />
+        </motion.div>
 
-      {/* Grid Layer */}
-      <motion.div
-        style={{ y: gridY, opacity: gridOpacity }}
-        className="absolute inset-0"
-      >
-        <div
-          className="w-full h-full"
-          style={{
-            backgroundImage: `
-              linear-gradient(to right, rgba(255, 174, 0, 0.15) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(252, 186, 3, 0.15) 1px, transparent 1px)
-            `,
-            backgroundSize: "40px 40px",
-            filter: "blur(0.3px)"
-          }}
-        />
-      </motion.div>
+        {/* Mid grid */}
+        <motion.div style={{ y: mediumY, opacity: gridOpacity }} className="absolute inset-0">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255,174,0,0.12) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,174,0,0.12) 1px, transparent 1px)
+              `,
+              backgroundSize: "44px 40px",
+              filter: "blur(0.6px)",
+            }}
+          />
+        </motion.div>
+
+        {/* Foreground grid (slightly rotated for imperfection) */}
+        <motion.div style={{ y: fastY, opacity: gridOpacity }} className="absolute inset-0">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(to right, rgba(255,200,50,0.08) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255,200,50,0.08) 1px, transparent 1px)
+              `,
+              backgroundSize: "55px 48px",
+              transform: "rotate(1.5deg) translate(12px, 8px)",
+              filter: "blur(0.3px)",
+            }}
+          />
+        </motion.div>
+      </div>
+
+      {/* VIGNETTE (focus control) */}
+      <div
+        className="absolute inset-0 hidden sm:block"
+        style={{
+          background:
+            "radial-gradient(circle at center, transparent 50%, rgba(0,0,0,0.55) 100%)",
+        }}
+      />
+
+      {/* Noise Overlay */}
+      <div
+        className="absolute inset-0 opacity-[0.035]"
+        style={{
+          backgroundImage:
+            "url('https://www.transparenttextures.com/patterns/noise.png')",
+          mixBlendMode: "overlay",
+        }}
+      />
 
     </div>
   );
