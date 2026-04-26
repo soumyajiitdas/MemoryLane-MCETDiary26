@@ -4,7 +4,7 @@ import { DoodleHeart, DoodleCrown } from '../ui/VintageDoodles';
 const Footer = () => {
 
   return (
-    <footer className="relative mt-auto z-10">
+    <footer className="relative mt-auto z-10 min-h-[400px]">
 
       {/* Background layers (placed first so they sit behind content) */}
       <div className="absolute inset-0 z-0 pointer-events-none" style={{

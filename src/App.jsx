@@ -5,14 +5,14 @@ import { AnimatePresence } from 'framer-motion';
 // Layout
 import Navbar        from './components/layout/Navbar';
 import Footer        from './components/layout/Footer';
-import BirthdayBanner from './components/ui/BirthdayBanner';
+const BirthdayBanner = lazy(() => import('./components/ui/BirthdayBanner'));
 import GridBackground from './components/ui/GridBackground';
 import ScrollToTop   from './components/layout/ScrollToTop';
 
 // Global features
 import { PlayerProvider }    from './context/PlayerContext';
-import FountainPenCursor     from './components/ui/FountainPenCursor';
-import GraduationBanner      from './components/ui/GraduationBanner';
+const FountainPenCursor = lazy(() => import('./components/ui/FountainPenCursor'));
+const GraduationBanner = lazy(() => import('./components/ui/GraduationBanner'));
 
 // Pages — lazy loaded so each route's JS is only fetched on first navigation
 const Prologue  = lazy(() => import('./pages/Prologue'));
@@ -38,7 +38,9 @@ function App() {
           <GridBackground />
 
           <div className="flex flex-col min-h-screen">
-            <BirthdayBanner />
+            <Suspense fallback={null}>
+              <BirthdayBanner />
+            </Suspense>
             <Navbar />
 
             <main className="flex-grow mt-20 overflow-x-hidden w-full">
@@ -61,10 +63,14 @@ function App() {
 
           {/* Fountain Pen Cursor — rendered outside layout so it sits above
               every element (z-9999) and is never clipped by overflow:hidden */}
-          <FountainPenCursor />
+          <Suspense fallback={null}>
+            <FountainPenCursor />
+          </Suspense>
 
           {/* Graduation Day Banner — shows only on 17 July 2026, z-10000+ */}
-          <GraduationBanner />
+          <Suspense fallback={null}>
+            <GraduationBanner />
+          </Suspense>
 
         </Router>
       </PlayerProvider>

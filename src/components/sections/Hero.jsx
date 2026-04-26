@@ -98,6 +98,7 @@ const Hero = () => {
         initial="hidden"
         animate="visible"
         className="relative z-10 text-center max-w-4xl mx-auto space-y-6"
+        style={{ willChange: 'transform, opacity' }}
       >
         {/* Cursive "Our" with animated scribble underline */}
         <motion.div
