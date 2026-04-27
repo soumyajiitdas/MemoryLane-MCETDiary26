@@ -59,7 +59,7 @@ function App() {
             </Suspense>
             <Navbar />
 
-            <main className="flex-grow mt-20 overflow-x-hidden w-full">
+            <main className="relative flex-grow mt-20 overflow-x-hidden w-full">
               <AnimatedRoutes />
             </main>
 

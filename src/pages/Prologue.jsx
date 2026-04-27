@@ -10,6 +10,7 @@ import ChapterNav from '../components/ui/ChapterNav';
 import Fireflies from '../components/ui/Fireflies';
 import PaperTear from '../components/ui/PaperTear';
 import { DoodleHeart, DoodleSparkle, DoodleArrow, DoodleCrown } from '../components/ui/VintageDoodles';
+import { getTrailingEmoji } from "../utils/emojiExtract";
 
 // Data imports
 import { peopleData } from '../data/cast';
@@ -237,11 +238,11 @@ const Prologue = () => {
   return (
     <PageTransition>
 
-      {/* Firefly Particles */}
-      <Fireflies count={40}/>
-
       {/* Hero Section */}
       <Hero />
+
+      {/* Firefly Particles */}
+      <Fireflies count={40}/>
 
       {/* Intro Letter */}
       <LetterToBatch />
@@ -281,7 +282,10 @@ const Prologue = () => {
              </div>
              
              <div className="flex flex-wrap justify-center gap-4 sm:gap-6 mt-16 pb-8">
-               {featuredCast.map((person, idx) => (
+               {featuredCast.map((person, idx) => {
+                const emoji = getTrailingEmoji(person.nickname);
+
+                return (
                  <motion.div
                    key={person.id || idx}
                    initial={{ opacity: 0, y: 40, rotate: (idx % 2 === 0 ? -4 : 4) }}
@@ -299,10 +303,10 @@ const Prologue = () => {
                      }}
                    ></div>
                    <DoodleCrown className="w-16 h-16 absolute bottom-1 -top-11 -right-6 rotate-18 z-20 opacity-50" />
-                   <h3 className="font-['Caveat'] text-xl sm:text-2xl text-amber-900 font-bold truncate">{`@${person.name.split(' ')[0]}`}</h3>
-                   <p className="text-[10px] sm:text-xs text-amber-700/70 tracking-wider">{person.roll || "1060012****"}</p>
+                   <h3 className="font-['Caveat'] text-xl sm:text-2xl text-amber-900 font-bold truncate">{`${person.name.split(' ')[0]}${emoji}`}</h3>
+                   <p className="text-xs text-amber-700/70 tracking-wider">{person.roll || "1060012****"}</p>
                  </motion.div>
-               ))}
+               )})}
              </div>
              <Link to="/the-cast" className="relative inline-block mt-8 font-serif italic text-amber-500 hover:text-white transition-colors text-xl border-b border-amber-500/30 pb-1">
                 Meet the full cast &rarr;

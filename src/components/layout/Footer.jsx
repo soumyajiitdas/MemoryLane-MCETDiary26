@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { DoodleHeart, DoodleCrown } from '../ui/VintageDoodles';
+import Fireflies from '../ui/Fireflies';
 
 const Footer = () => {
 
@@ -47,6 +48,9 @@ const Footer = () => {
       {/* Main content */}
       <div className="max-w-7xl mx-auto px-4 pt-10 pb-8 flex flex-col items-center relative z-10 gap-6">
 
+        {/* Fireflies component */}
+      <Fireflies count={8}/>
+
         {/* Decorative diamond divider */}
         <motion.div
           initial={{ scaleX: 0, opacity: 0 }}
@@ -59,7 +63,7 @@ const Footer = () => {
           <span className="text-amber-500/60 text-sm font-serif" style={{ textShadow: '0 0 8px rgba(245,158,11,0.4)' }}>✦</span>
           <div className="h-px flex-1" style={{ background: 'linear-gradient(to left, transparent, rgba(245,158,11,0.4))' }} />
         </motion.div>
-        <DoodleCrown className="w-10 h-10 absolute top-16 left-18 sm:top-16 sm:left-120 opacity-70 -rotate-15 mix-blend-screen" color="rgba(245, 158, 11, 0.8)" />
+        <DoodleCrown className="w-10 h-10 absolute top-22 left-19 sm:left-120 opacity-70 -rotate-15 mix-blend-screen" color="rgba(245, 158, 11, 0.8)" />
         {/* Branding */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -103,7 +107,7 @@ const Footer = () => {
                 transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
                 className="text-red-500 text-sm inline-block"
               >
-                ❤️
+                🤎
               </motion.span>
               by Batch 2022–'26
             </p>

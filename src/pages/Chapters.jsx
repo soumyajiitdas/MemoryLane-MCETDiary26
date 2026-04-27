@@ -156,10 +156,10 @@ const JourneyNode = ({ data, index }) => {
         </motion.div>
         
         {/* Mobile-only hint */}
-        <div className="md:hidden mt-4 text-gray-500 text-xs flex items-center gap-2">
-          <span className="w-4 h-px bg-gray-600"></span>
+        <div className="md:hidden font-['Caveat'] uppercase mt-4 text-gray-600 text-xs flex items-center gap-2">
+          <span className="w-4 h-px bg-gray-700"></span>
           Hold photo to read note
-          <span className="w-4 h-px bg-gray-600"></span>
+          <span className="w-4 h-px bg-gray-700"></span>
         </div>
       </motion.div>
     </div>

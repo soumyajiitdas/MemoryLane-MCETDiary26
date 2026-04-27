@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Button from '../ui/Button';
-import { DoodleArrow, DoodleSparkle, DoodleCrown } from '../ui/VintageDoodles';
+import { DoodleArrow, DoodleSparkle, DoodleCrown } from '../ui/VintageDoodles'
+import Fireflies from '../ui/Fireflies';
 
 // Polaroids scattered in the background
 const bgPolaroids = [
@@ -27,6 +28,9 @@ const itemVariants = {
 const Hero = () => {
   return (
     <div className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden px-4">
+
+      {/* Fireflies component */}
+      <Fireflies count={8}/>
 
       {/* ── Radial spotlight behind hero text ── */}
       <div
@@ -132,7 +136,7 @@ const Hero = () => {
         <motion.div variants={itemVariants} className="relative inline">
           {/* Sketch Sparkle Doodle floating near the title */}
           <DoodleSparkle className="w-16 h-16 top-[-30px] right-[-40px] opacity-80" />
-          <DoodleCrown className="w-12 h-12 sm:w-20 sm:h-20 absolute -top-2 -left-65 sm:-top-5 sm:-left-106 -rotate-15 mix-blend-screen opacity-60" color="rgba(245, 158, 11, 0.8)" />
+          <DoodleCrown className="w-12 h-12 sm:w-20 sm:h-20 absolute -top-2 -left-65 sm:-top-5 sm:-left-106 -rotate-15 mix-blend-screen opacity-80 sm:opacity-60" color="rgba(245, 158, 11, 0.8)" />
           <h1
             className="text-6xl md:text-8xl lg:text-9xl font-['Caveat'] text-white tracking-tighter drop-shadow-lg"
           >

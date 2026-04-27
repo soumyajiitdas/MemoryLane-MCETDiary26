@@ -1,11 +1,11 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
 import Fireflies from '../components/ui/Fireflies';
-import { memoriesData } from '../data/notes';
 import { DoodleCrown, DoodleHeart } from '../components/ui/VintageDoodles';
+import { memoriesData } from '../data/notes';
 
 const StickyNote = ({ post }) => {
   const hasTape   = post.id % 2 === 0;
@@ -24,7 +24,7 @@ const StickyNote = ({ post }) => {
     : {};
 
   return (
-    <div className="break-inside-avoid-column mb-8 perspective-1000">
+    <div className="break-inside-avoid-column mb-8 perspective-1000 inline-block w-full">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -48,7 +48,7 @@ const StickyNote = ({ post }) => {
 
         {/* Ruled lines overlay */}
         <div
-          className="absolute inset-0 opacity-40 pointer-events-none"
+          className="absolute inset-0 opacity-40 pointer-events-none z-0"
           style={{
             backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)",
             backgroundSize: "100% 28px",
@@ -102,12 +102,7 @@ const OurNotes = () => {
   // Page title for Lighthouse SEO score
   useEffect(() => { document.title = "MCET Diary'26 | Our Notes - Words We Left"; }, []);
 
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    const shuffledPosts = [...memoriesData].sort(() => 0.5 - Math.random());
-    setPosts(shuffledPosts);
-  }, []);
+  const [posts, setPosts] = useState(() => [...memoriesData].sort(() => 0.5 - Math.random()));
 
   return (
     <PageTransition>
