@@ -1,11 +1,13 @@
-﻿import React, { useEffect, useState, useMemo } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowDownUp, SlidersHorizontal } from 'lucide-react';
 import PageTransition from '../components/layout/PageTransition';
+import SectionHeading from '../components/ui/SectionHeading';
 import GalleryGrid from '../components/sections/ScrapbookGrid';
 import Lightbox from '../components/ui/Lightbox';
 import ChapterNav from '../components/ui/ChapterNav';
 import Fireflies from '../components/ui/Fireflies';
+import { DoodleSparkle, DoodleArrow, DoodleCrown } from '../components/ui/VintageDoodles';
 import { galleryData } from '../data/scrapbook';
 
 const years = ["All", "1st Year", "2nd Year", "3rd Year", "4th Year"];
@@ -28,7 +30,6 @@ const yearMapping = {
 };
 
 const Scrapbook = () => {
-  // Page title for Lighthouse SEO score
   useEffect(() => { document.title = "MCET Diary'26 | Scrapbook - Scattered Memories"; }, []);
 
   const [activeYear,    setActiveYear]    = useState("All");
@@ -68,215 +69,146 @@ const Scrapbook = () => {
 
   return (
     <PageTransition>
+      <div className="relative overflow-hidden w-full min-h-screen">
+        {/* Subtle background texture for the entire page overlaying global bg */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.1]" style={{ backgroundImage: "url('/textures/paper-grain.png')", mixBlendMode: "overlay", zIndex: 1 }}></div>
 
-      {/* Firefly Particles */}
-      <Fireflies count={25}/>
+        {/* Subtle Background Typography */}
+        <div className="absolute top-5 sm:-top-4 right-12 sm:right-146 text-[10rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
+          Relics
+        </div>
 
-      <div className="min-h-screen py-24">
-        <div className="max-w-7xl mx-auto px-4">
+        {/* Firefly Particles */}
+        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={30}/></div>
 
-          {/* Top bar */}
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16 gap-8">
+        <div className="py-24 pb-30 relative z-20">
+          <div className="max-w-[1400px] mx-auto px-4 relative z-10">
 
-            {/* Left: Title + Year filters */}
-            <div className="flex-1">
-              <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-80px' }}
-                    transition={{ duration: 0.7, ease: 'easeOut' }}
-                    className="mb-8"
-                  >
-                    {/* Eyebrow label with decorative amber dot */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 8 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.05 }}
-                        className="flex items-center justify-left gap-2 mb-3"
-                      >
-                        {/* Small amber wax dot */}
-                        <span
-                          className="w-1.5 h-1.5 rounded-full inline-block flex-shrink-0"
-                          style={{
-                            background: 'radial-gradient(circle at 35% 35%, #fcd34d, #b45309)',
-                            boxShadow: '0 0 6px rgba(245,158,11,0.5)',
-                          }}
-                        />
-                        <p className="text-amber-500/60 uppercase tracking-[0.32em] text-xs font-sans">
-                          Scattered Memories
-                        </p>
-                        <span
-                          className="w-1.5 h-1.5 rounded-full inline-block flex-shrink-0"
-                          style={{
-                            background: 'radial-gradient(circle at 35% 35%, #fcd34d, #b45309)',
-                            boxShadow: '0 0 6px rgba(245,158,11,0.5)',
-                          }}
-                        />
-                      </motion.div>
+            <div className="text-center mb-16 relative">
+              <DoodleArrow className="w-24 h-24 absolute -top-10 left-10 md:left-40 opacity-30 -rotate-[135deg] mix-blend-screen hidden md:block" color="#F59E0B" />
+              <DoodleSparkle className="w-20 h-20 absolute top-10 right-10 md:right-40 opacity-30 mix-blend-screen hidden md:block" color="#F59E0B" />
               
-                    {/* Main title with glow + brush-stroke underline */}
-                    <h2
-                      className="font-['Playfair_Display'] text-4xl md:text-5xl font-semibold text-amber-100 inline-block relative"
-                      style={{ textShadow: '0 2px 32px rgba(200,140,50,0.28), 0 0 60px rgba(245,158,11,0.1)' }}
+              <SectionHeading
+                title="Scrapbook"
+                subtitle="Fragments of time we chose to keep."
+                eyebrow="Scattered Memories"
+              />
+            </div>
+
+            <p className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-20 max-w-2xl mx-auto">
+               "Photographs are tickets to moments that would otherwise be gone..."
+            </p>
+
+            {/* Top bar with filters */}
+            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16 gap-8 border-b border-white/5 pb-8 relative z-20">
+              {/* Left: Year filters */}
+              <div className="flex-1">
+                <div className="flex flex-wrap gap-2 font-sans">
+                  {years.map(year => (
+                    <button
+                      key={year}
+                      onClick={() => setActiveYear(year)}
+                      className={`px-6 py-2 rounded-full text-xs tracking-widest font-semibold uppercase transition-all duration-300 ${
+                        activeYear === year
+                          ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20'
+                          : 'bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10'
+                      }`}
                     >
-                      Scrapbook
-                      {/* Animated brush-stroke SVG underline */}
-                      <motion.svg
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        viewBox="0 0 200 12"
-                        className="absolute -bottom-3 left-0 w-full"
-                        preserveAspectRatio="none"
-                        aria-hidden="true"
-                        style={{ overflow: 'visible' }}
-                      >
-                        <motion.path
-                          d="M2,8 Q25,3 50,8 T100,6 T150,9 T198,5"
-                          fill="none"
-                          stroke="url(#brushGrad)"
-                          strokeWidth="3"
-                          strokeLinecap="round"
-                          initial={{ pathLength: 0 }}
-                          whileInView={{ pathLength: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 1.1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                        />
-                        <defs>
-                          <linearGradient id="brushGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%"   stopColor="transparent" />
-                            <stop offset="25%"  stopColor="rgba(245,158,11,0.7)" />
-                            <stop offset="75%"  stopColor="rgba(245,158,11,0.85)" />
-                            <stop offset="100%" stopColor="transparent" />
-                          </linearGradient>
-                        </defs>
-                      </motion.svg>
-                    </h2>
-              
-                    {/* Subtitle */}
-                      <motion.p
-                        initial={{ opacity: 0, y: 8 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="text-amber-500/65 max-w-2xl mt-6 text-base md:text-lg font-sans"
-                      >
-                        Fragments of time we chose to keep. ✨
-                      </motion.p>
-                  </motion.div>
+                      {year}
+                    </button>
+                  ))}
+                </div>
+              </div>
 
-              <div className="flex flex-wrap gap-2 font-serif">
-                {years.map(year => (
-                  <button
-                    key={year}
-                    onClick={() => setActiveYear(year)}
-                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                      activeYear === year
-                        ? 'bg-[var(--color-amber)] text-black'
-                        : 'glass text-gray-400 hover:text-white hover:bg-[var(--color-glass)]'
-                    }`}
-                  >
-                    {year}
-                  </button>
-                ))}
+              {/* Right: Sort + Album cycle button */}
+              <div className="flex items-center gap-4 flex-shrink-0 self-start lg:self-end">
+                {/* Sort */}
+                <button
+                  onClick={cycleSort}
+                  className="flex items-center gap-2 px-6 py-2 rounded-full text-xs font-sans tracking-widest uppercase font-semibold text-white/60 hover:text-white hover:bg-white/5 border border-white/10 transition-colors"
+                >
+                  <ArrowDownUp size={16} />
+                  {sortOrder === "random" ? "Random" : sortOrder === "newest" ? "Newest" : "Oldest"}
+                </button>
+
+                {/* Album cycle button */}
+                <motion.button
+                  onClick={cycleAlbum}
+                  whileTap={{ scale: 0.93 }}
+                  className={`relative flex items-center gap-2 px-6 py-2 rounded-full text-xs font-sans tracking-widest uppercase font-semibold transition-all duration-300 overflow-hidden ${
+                    activeAlbum !== "All"
+                      ? 'bg-amber-500/20 border border-amber-500/50 text-amber-300'
+                      : 'bg-amber-500 text-black shadow-lg shadow-amber-500/20'
+                  }`}
+                >
+                  <SlidersHorizontal size={16} />
+
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={activeAlbum}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.18 }}
+                      className="flex items-center gap-1.5"
+                    >
+                      <span>{activeAlbum === "All" ? "All Albums" : activeAlbum}</span>
+                      {activeAlbum === "All" ? "" : albumEmoji[activeAlbum]}
+                    </motion.span>
+                  </AnimatePresence>
+                </motion.button>
               </div>
             </div>
 
-            {/* Right: Sort + Album cycle button (where Upload was) */}
-            <div className="flex items-center gap-4 flex-shrink-0 self-start lg:self-end pb-2">
+            <div className="relative">
+              {/* Radial gradient glow in background */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] max-w-4xl h-[80%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/5 via-amber-500/5 to-transparent pointer-events-none"></div>
 
-              {/* Sort */}
-              <button
-                onClick={cycleSort}
-                className="flex items-center gap-2 px-4 py-2 glass rounded-lg text-sm text-[var(--color-text-muted)] hover:text-white font-serif transition-colors"
+              <GalleryGrid
+                images={filteredImages}
+                onImageClick={(visibleIdx, visibleImages) => {
+                  const clickedId = visibleImages[visibleIdx]?.id;
+                  const trueIdx = filteredImages.findIndex(img => img.id === clickedId);
+                  setLightboxIndex(trueIdx >= 0 ? trueIdx : visibleIdx);
+                }}
+              />
+            </div>
+
+            {filteredImages.length === 0 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="text-center py-20 text-white/40"
               >
-                <ArrowDownUp size={16} />
-                {sortOrder === "random" ? "Shuffle (Random)" : sortOrder === "newest" ? "Newest First" : "Oldest First"}
-              </button>
+                <p className="text-5xl mb-4">📭</p>
+                <p className="text-xl font-serif font-light">
+                  No photos in <span className="text-amber-400">{activeAlbum}</span>
+                  {activeYear !== "All" && ` for ${activeYear}`}.
+                </p>
+                <button
+                  onClick={() => { setAlbumIndex(0); setActiveYear("All"); }}
+                  className="mt-6 text-sm text-amber-500 hover:text-amber-400 transition-colors underline font-sans tracking-widest uppercase"
+                >
+                  Clear filters
+                </button>
+              </motion.div>
+            )}
 
-              {/* Album cycle button — exact position of the old Upload button */}
-              <motion.button
-                onClick={cycleAlbum}
-                whileTap={{ scale: 0.93 }}
-                className={`relative flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-serif transition-all duration-300 overflow-hidden ${
-                  activeAlbum !== "All"
-                    ? 'bg-amber-500/20 border border-amber-500/50 text-amber-300'
-                    : 'bg-[var(--color-amber)] text-black'
-                }`}
-              >
-                <SlidersHorizontal size={16} />
-
-                {/* Animated label swap */}
-                <AnimatePresence mode="wait">
-                  <motion.span
-                    key={activeAlbum}
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -8 }}
-                    transition={{ duration: 0.18 }}
-                    className="flex items-center gap-1.5"
-                  >
-                    
-                    <span>{activeAlbum === "All" ? "All Albums" : activeAlbum}</span>
-                    {activeAlbum === "All" ? "" : albumEmoji[activeAlbum]}
-                  </motion.span>
-                </AnimatePresence>
-              </motion.button>
+            <div className="flex justify-between items-center w-full mt-32 border-t border-amber-900/40 pt-12 relative z-20">
+              <ChapterNav direction="prev" chapterName="The Cast" path="/the-cast" />
+              <ChapterNav direction="next" chapterName="Our Notes" path="/our-notes" />
             </div>
           </div>
-
-          {/* Quote */}
-          <div className="mb-12 border-l-4 border-amber-500/50 pl-6 py-2">
-            <p className="font-['Caveat'] text-3xl text-gray-300 italic">
-              " Photographs are tickets to moments that would otherwise be gone..."
-            </p>
-          </div>
-
-          <GalleryGrid
-            images={filteredImages}
-            onImageClick={(visibleIdx, visibleImages) => {
-              // find the true index in filteredImages for the lightbox
-              const clickedId = visibleImages[visibleIdx]?.id;
-              const trueIdx = filteredImages.findIndex(img => img.id === clickedId);
-              setLightboxIndex(trueIdx >= 0 ? trueIdx : visibleIdx);
-            }}
-          />
-
-          {filteredImages.length === 0 && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-20 text-[var(--color-text-muted)]"
-            >
-              <p className="text-5xl mb-4">📭</p>
-              <p className="text-xl font-serif">
-                No photos in <span className="text-amber-400">{activeAlbum}</span>
-                {activeYear !== "All" && ` for ${activeYear}`}.
-              </p>
-              <button
-                onClick={() => { setAlbumIndex(0); setActiveYear("All"); }}
-                className="mt-4 text-sm text-amber-500/60 hover:text-amber-400 transition-colors underline"
-              >
-                Clear filters
-              </button>
-            </motion.div>
-          )}
-
-          <div className="flex justify-between items-center w-full mt-20">
-            <ChapterNav direction="prev" chapterName="The Cast" path="/the-cast" />
-            <ChapterNav direction="next" chapterName="Our Notes" path="/our-notes" />
-          </div>
         </div>
-      </div>
 
-      <Lightbox
-        images={filteredImages}
-        currentIndex={lightboxIndex}
-        isOpen={lightboxIndex >= 0}
-        onClose={() => setLightboxIndex(-1)}
-        onNavigate={setLightboxIndex}
-      />
+        <Lightbox
+          images={filteredImages}
+          currentIndex={lightboxIndex}
+          isOpen={lightboxIndex >= 0}
+          onClose={() => setLightboxIndex(-1)}
+          onNavigate={setLightboxIndex}
+        />
+      </div>
     </PageTransition>
   );
 };

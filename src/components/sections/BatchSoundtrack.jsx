@@ -111,7 +111,7 @@ const BatchSoundtrack = () => {
   const headerPlayState = (isPlaying && !isResetting) ? 'running' : 'paused';
 
   return (
-    <section className="py-14 relative z-10 overflow-hidden" id="batch-soundtrack">
+    <section className="py-0 sm:py-14 relative z-10 overflow-hidden" id="batch-soundtrack">
       {/* Ambient glow */}
       <div className="absolute inset-0 pointer-events-none">
         <div

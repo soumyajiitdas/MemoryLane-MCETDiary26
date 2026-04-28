@@ -9,7 +9,7 @@ import { peopleData } from '../data/cast';
 import { eventsData } from '../data/moments';
 import Modal from '../components/ui/Modal';
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
-import { DoodleCrown } from '../components/ui/VintageDoodles';
+import { DoodleCrown, DoodleSparkle, DoodleArrow, DoodleHeart } from '../components/ui/VintageDoodles';
 
 // random bg color of Vintage masking tape
 const bgColors = [
@@ -19,10 +19,6 @@ const bgColors = [
   "bg-blue-200/50"
 ];
 
-const getRandomBg = () =>
-  bgColors[Math.floor(Math.random() * bgColors.length)];
-
-// Polaroid Component
 const Polaroid = ({ person, onClick }) => {
   const showCrown = (person.id % 3 === 0) || (person.id === 1);
 
@@ -41,30 +37,34 @@ const Polaroid = ({ person, onClick }) => {
         transform: `rotate(${baseRotation}deg)`,
         backgroundImage: "url('/textures/rice-paper.png')",
         boxShadow: '3px 6px 20px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.15)',
+        willChange: "transform, opacity"
       }}
     >
 
       {/* Masking tape */}
       <div
-        className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 ${tapeBg} border border-white/20 shadow-sm z-10 backdrop-blur-sm`}
+        className={`absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-6 ${tapeBg} border border-white/20 shadow-sm z-10`}
         style={{ transform: 'rotate(-2deg)' }}
       />
 
       {/* Crown doodle rendering above card */}
-      {showCrown && (<DoodleCrown className="w-15 h-15 absolute -top-10 -right-5 rotate-15 z-20 opacity-80"  />)}
+      {showCrown && (<DoodleCrown className="w-15 h-15 absolute -top-10 -right-5 rotate-15 z-20 opacity-80" color="#1e3a8a" />)}
 
       <div
         data-photo="true"
-        className="w-full aspect-[4/5] bg-gray-200 shadow-inner bg-cover bg-center sepia-[0.15] contrast-[1.05]"
+        className="w-full aspect-[4/5] bg-gray-200 shadow-[inset_0_0_15px_rgba(0,0,0,0.2)] bg-cover bg-center sepia-[0.15] contrast-[1.05] relative overflow-hidden"
         style={{ backgroundImage: (person.photo?.startsWith('http') || person.photo?.startsWith('/')) ? `url('${person.photo}')` : person.photo }}
       >
+        {/* Subtle glass reflection */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
         {/* Warm vignette overlay */}
-        <div className="w-full h-full" style={{ background: 'radial-gradient(circle at center, transparent 40%, rgba(120,60,10,0.12) 100%)' }} />
+        <div className="w-full h-full pointer-events-none" style={{ background: 'radial-gradient(circle at center, transparent 40%, rgba(120,60,10,0.12) 100%)' }} />
       </div>
 
       <div className="pt-4 w-full text-center relative">
         <h3 className="text-3xl font-['Caveat'] text-amber-950 font-medium tracking-wide">
-          {person.name.split(' ')[0]}
+          <span className='block sm:hidden'>{person.name.split(' ')[0]}</span>
+          <span className='hidden sm:block'>{person.name}</span>
         </h3>
         <p className="text-xs text-amber-900/60 uppercase tracking-widest mt-1 scale-90 font-semibold">
           {person.department}
@@ -75,7 +75,6 @@ const Polaroid = ({ person, onClick }) => {
 };
 
 const TheCast = () => {
-  // Page title for Lighthouse SEO score
   useEffect(() => { document.title = "MCET Diary'26 | The Cast - Faces of Us"; }, []);
 
   const [view, setView] = useState('batchmates'); // 'batchmates' | 'events'
@@ -92,100 +91,118 @@ const TheCast = () => {
 
   return (
     <PageTransition>
+      <div className="relative overflow-hidden w-full min-h-screen">
+        {/* Subtle background texture for the entire page overlaying global bg */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.1]" style={{ backgroundImage: "url('/textures/paper-grain.png')", mixBlendMode: "overlay", zIndex: 1 }}></div>
+        {/* Subtle Background Typography */}
+        <div className="absolute top-5 sm:-top-4 right-16 sm:right-149 text-[10rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
+          Peers
+        </div>
 
-      {/* Firefly Particles */}
-      <Fireflies count={25}/>
+        {/* Firefly Particles */}
+        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={30}/></div>
 
-      <div className="min-h-screen py-24">
-        <div className="max-w-7xl mx-auto px-4">
-          <SectionHeading
-            title="The Cast"
-            subtitle="The faces and the events that made it all real. ❣️"
-            eyebrow="Faces of Us"
-          />
+        <div className="py-24 pb-30 relative z-20">
+          <div className="max-w-[1400px] mx-auto px-4 relative z-10">
+            
+            <div className="text-center mb-16 relative">
+              <DoodleSparkle className="w-24 h-24 absolute -top-10 left-10 md:left-40 opacity-30 mix-blend-screen hidden md:block" color="#F59E0B" />
+              <DoodleHeart className="w-20 h-20 absolute top-10 right-10 md:right-40 opacity-30 -rotate-12 mix-blend-screen hidden md:block" color="#F59E0B" />
 
-          {/* Toggle Tab — smooth motion indicator */}
-          <div className="flex justify-center mb-12">
-            <div
-              className="glass p-1 rounded-full inline-flex relative"
-              style={{ border: '1px solid rgba(245,158,11,0.15)' }}
-            >
-              <button
-                onClick={() => setView('batchmates')}
-                className={`relative px-8 py-2.5 rounded-full text-sm font-serif font-medium transition-colors z-10 ${
-                  view === 'batchmates'
-                    ? 'text-black'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                {view === 'batchmates' && (
-                  <motion.span
-                    layoutId="tab-indicator"
-                    className="absolute inset-0 rounded-full"
-                    style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">Roll Call</span>
-              </button>
-              <button
-                onClick={() => setView('events')}
-                className={`relative px-8 py-2.5 rounded-full text-sm font-serif font-medium transition-colors z-10 ${
-                  view === 'events'
-                    ? 'text-black'
-                    : 'text-gray-400 hover:text-white'
-                }`}
-              >
-                {view === 'events' && (
-                  <motion.span
-                    layoutId="tab-indicator"
-                    className="absolute inset-0 rounded-full"
-                    style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">Moments</span>
-              </button>
+              <SectionHeading
+                title="The Cast"
+                subtitle="The faces and the events that made it all real."
+                eyebrow="Faces of Us"
+              />
             </div>
-          </div>
-          
-          <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] mb-16 italic">
-              " We didn't realize we were making memories, we just knew we were having fun. "
-          </p>
 
-          <AnimatePresence mode="wait">
-            {view === 'batchmates' ? (
-              <motion.div
-                key="batchmates"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-8"
+            {/* Toggle Tab — smooth motion indicator */}
+            <div className="flex justify-center mb-10">
+              <div
+                className="bg-white/5 backdrop-blur-md p-1 rounded-full inline-flex relative border border-white/10"
               >
-                {peopleData.map((person) => (
-                   <div key={person.id} className="px-2">
-                     <Polaroid person={person} onClick={setSelectedPerson} />
-                   </div>
-                ))}
-              </motion.div>
-            ) : (
-              <motion.div
-                key="events"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8"
-              >
-                {eventsData.map((event) => (
-                  <MomentCard key={event.id} event={event} onClick={() => {}} />
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
+                <button
+                  onClick={() => setView('batchmates')}
+                  className={`relative px-8 py-2.5 rounded-full text-md font-serif font-medium transition-colors z-10 ${
+                    view === 'batchmates'
+                      ? 'text-black'
+                      : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  {view === 'batchmates' && (
+                    <motion.span
+                      layoutId="tab-indicator"
+                      className="absolute inset-0 rounded-full"
+                      style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">Roll Call</span>
+                </button>
+                <button
+                  onClick={() => setView('events')}
+                  className={`relative px-8 py-2.5 rounded-full text-md font-serif font-medium transition-colors z-10 ${
+                    view === 'events'
+                      ? 'text-black'
+                      : 'text-white/60 hover:text-white'
+                  }`}
+                >
+                  {view === 'events' && (
+                    <motion.span
+                      layoutId="tab-indicator"
+                      className="absolute inset-0 rounded-full"
+                      style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
+                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">Moments</span>
+                </button>
+              </div>
+            </div>
+            
+            <p className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-20 max-w-2xl mx-auto">
+                "We didn't realize we were making memories, we just knew we were having fun..."
+            </p>
 
-          <div className="flex justify-between items-center w-full mt-20">
-            <ChapterNav direction="prev" chapterName="Chapters" path="/chapters" />
-            <ChapterNav direction="next" chapterName="Scrapbook" path="/scrapbook" />
+            <div className="relative">
+              {/* Radial gradient glow in background */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] max-w-4xl h-[80%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/10 via-amber-500/5 to-transparent pointer-events-none"></div>
+
+              <AnimatePresence mode="wait">
+                {view === 'batchmates' ? (
+                  <motion.div
+                    key="batchmates"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-8 relative z-10"
+                  >
+                    {peopleData.map((person) => (
+                       <div key={person.id} className="px-2">
+                         <Polaroid person={person} onClick={setSelectedPerson} />
+                       </div>
+                    ))}
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="events"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -20 }}
+                    className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10"
+                  >
+                    {eventsData.map((event) => (
+                      <MomentCard key={event.id} event={event} onClick={() => {}} />
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <div className="flex justify-between items-center w-full mt-32 border-t border-amber-900/40 pt-12 relative z-20">
+              <ChapterNav direction="prev" chapterName="Chapters" path="/chapters" />
+              <ChapterNav direction="next" chapterName="Scrapbook" path="/scrapbook" />
+            </div>
           </div>
         </div>
       </div>
@@ -212,13 +229,13 @@ const TheCast = () => {
               <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
               <div className="absolute left-[34px] top-0 bottom-0 w-[1px] bg-red-800/10 pointer-events-none"></div>
               {/* Vintage Round Stamp */}
-        <div className="absolute top-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-80 shadow-sm pointer-events-none">
-           <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
-             <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
-               MCET<br/>Batch'26<br/>★
-             </span>
-           </div>
-        </div>
+              <div className="absolute top-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-80 shadow-sm pointer-events-none">
+                 <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
+                   <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
+                     MCET<br/>Batch'26<br/>★
+                   </span>
+                 </div>
+              </div>
               <div className="absolute inset-0 bg-[url('/textures/noise-lines.png')] opacity-20 mix-blend-overlay"></div>
             </div>
 
@@ -275,7 +292,7 @@ const TheCast = () => {
                   {/* Paperclip */}
                   <div className="absolute -top-6 right-8 w-4 h-12 border-2 border-zinc-400 rounded-full z-10" style={{ transform: "rotate(15deg)", background: "linear-gradient(90deg, transparent 40%, rgba(255,255,255,0.4) 50%, transparent 60%)" }}></div>
 
-                  <div className="relative z-10 py-6 px-4">
+                  <div className="relative z-10 py-6 px-4" data-photo="true">
                     <p className="text-2xl text-[#1a1c29] font-['Caveat'] leading-[32px] pt-1 opacity-90">
                       " {selectedPerson.oneliner || "A familiar face from those moments that still linger."} "
                     </p>

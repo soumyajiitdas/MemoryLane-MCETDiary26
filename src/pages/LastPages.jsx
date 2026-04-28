@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Download, FileText, ChevronLeft, ChevronRight, Flower2, Play } from 'lucide-react';
 import PageTransition from '../components/layout/PageTransition';
@@ -127,7 +127,6 @@ const FlipbookPage = ({ page, index, totalPages }) => {
 };
 
 const LastPages = () => {
-  // Page title for Lighthouse SEO score
   useEffect(() => { document.title = "MCET Diary'26 | Last Pages - The Final Chapter"; }, []);
 
   const [currentPage, setCurrentPage] = useState(0);
@@ -172,109 +171,123 @@ const LastPages = () => {
   return (
     <>
     <PageTransition>
+      <div className="relative overflow-hidden w-full min-h-screen">
+        {/* Subtle background texture for the entire page overlaying global bg */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.1]" style={{ backgroundImage: "url('/textures/paper-grain.png')", mixBlendMode: "overlay", zIndex: 1 }}></div>
 
-      {/* Firefly Particles */}
-      <Fireflies count={25}/>
+          {/* Subtle Background Typography */}
+          <div className="absolute top-5 sm:-top-4 -right-2 sm:right-125 text-[10rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
+            Closure
+          </div>
 
-      <div className="min-h-[100vh] py-24 pb-32">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col items-center relative z-10">
-          
-          <SectionHeading
-            title="Last Pages"
-            subtitle="What remained when the story found its end. 🦸"
-            eyebrow="The Final Chapter"
-          />
-          <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-10 mb-16 italic">
-             " For the memories we couldn't fit into the margins... "
-          </p>
+        {/* Firefly Particles */}
+        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={30}/></div>
 
-          {/* FLIPBOOK CONTAINER */}
-          <div className="w-full max-w-[500px] aspect-[2/3] md:aspect-[3/4] relative mt-8 mb-12" style={{ perspective: '1500px' }}>
+        <div className="py-24 pb-30 relative z-20">
+          <div className="max-w-7xl mx-auto px-4 flex flex-col items-center relative z-10">
+            
+            <div className="text-center mb-16 relative">
+              <DoodleSparkle className="w-24 h-24 absolute -top-10 left-10 md:-left-85 opacity-30 mix-blend-screen hidden md:block" color="#F59E0B" />
+              <DoodleArrow className="w-20 h-20 absolute top-10 right-10 md:-right-85 opacity-30 rotate-45 mix-blend-screen hidden md:block" color="#F59E0B" />
 
-            {/* Book spine / back cover depth */}
-            <div
-              className="absolute inset-0 rounded-sm"
-              style={{
-                background: 'linear-gradient(135deg, #1a1209, #2a1a0a)',
-                boxShadow: '4px 4px 20px rgba(0,0,0,0.7), -1px 0 0 rgba(245,158,11,0.05)',
-                transform: 'translate(4px, 5px)',
-              }}
-            />
-            {/* Book left spine edge */}
-            <div
-              className="absolute left-0 top-0 bottom-0 w-4 rounded-l-sm"
-              style={{
-                background: 'linear-gradient(to right, rgba(180,83,9,0.4), transparent)',
-                zIndex: 2,
-                transform: 'translate(2px, 2px)',
-              }}
-            />
+              <SectionHeading
+                title="Last Pages"
+                subtitle="What remained when the story found its end."
+                eyebrow="The Final Chapter"
+              />
+            </div>
 
-            <AnimatePresence custom={direction}>
-              <motion.div
-                key={currentPage}
-                custom={direction}
-                variants={pageVariants}
-                initial="initial"
-                animate="animate"
-                exit="exit"
+            <p className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 -mt-10 mb-16 max-w-2xl mx-auto">
+               "For the memories we couldn't fit into the margins..."
+            </p>
+
+            {/* FLIPBOOK CONTAINER */}
+            <div className="w-full max-w-[500px] aspect-[2/3] md:aspect-[3/4] relative mt-8 mb-12" style={{ perspective: '1500px' }}>
+
+              {/* Book spine / back cover depth */}
+              <div
+                className="absolute inset-0 rounded-sm"
                 style={{
-                  transformOrigin: 'left center',
-                  backfaceVisibility: 'hidden',
+                  background: 'linear-gradient(135deg, #1a1209, #2a1a0a)',
+                  boxShadow: '4px 4px 20px rgba(0,0,0,0.7), -1px 0 0 rgba(245,158,11,0.05)',
+                  transform: 'translate(4px, 5px)',
                 }}
-                className="absolute inset-0 w-full h-full shadow-[0_0_30px_rgba(0,0,0,0.6),4px_4px_0_rgba(0,0,0,0.3)] border border-white/5 rounded-sm overflow-hidden"
+              />
+              {/* Book left spine edge */}
+              <div
+                className="absolute left-0 top-0 bottom-0 w-4 rounded-l-sm"
+                style={{
+                  background: 'linear-gradient(to right, rgba(180,83,9,0.4), transparent)',
+                  zIndex: 2,
+                  transform: 'translate(2px, 2px)',
+                }}
+              />
+
+              <AnimatePresence custom={direction}>
+                <motion.div
+                  key={currentPage}
+                  custom={direction}
+                  variants={pageVariants}
+                  initial="initial"
+                  animate="animate"
+                  exit="exit"
+                  style={{
+                    transformOrigin: 'left center',
+                    backfaceVisibility: 'hidden',
+                  }}
+                  className="absolute inset-0 w-full h-full shadow-[0_0_30px_rgba(0,0,0,0.6),4px_4px_0_rgba(0,0,0,0.3)] border border-white/5 rounded-sm overflow-hidden"
+                >
+                  <FlipbookPage
+                    page={bookPages[currentPage]}
+                    index={currentPage}
+                    totalPages={bookPages.length}
+                  />
+                </motion.div>
+              </AnimatePresence>
+
+            </div>
+
+            {/* Flipbook Controls */}
+            <div className="flex items-center gap-6 mb-24">
+              <motion.button
+                onClick={handlePrev}
+                disabled={currentPage === 0}
+                whileHover={{ scale: 1.08, x: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-3 rounded-full transition-all text-sm flex items-center gap-2 disabled:opacity-30 disabled:pointer-events-none"
+                style={{
+                  background: 'rgba(255,255,255,0.05)',
+                  border: '1px solid rgba(255,255,255,0.1)',
+                  color: 'white',
+                }}
               >
-                <FlipbookPage
-                  page={bookPages[currentPage]}
-                  index={currentPage}
-                  totalPages={bookPages.length}
-                />
-              </motion.div>
-            </AnimatePresence>
+                <ChevronLeft size={20} />
+                <span className="hidden sm:inline font-serif font-medium tracking-wide">Previous</span>
+              </motion.button>
 
-          </div>
+              <span className="font-serif tracking-widest text-sm" style={{ color: 'rgba(245,158,11,0.6)' }}>
+                {currentPage + 1} / {bookPages.length}
+              </span>
 
-          {/* Flipbook Controls */}
-          <div className="flex items-center gap-6 mb-24">
-            <motion.button
-              onClick={handlePrev}
-              disabled={currentPage === 0}
-              whileHover={{ scale: 1.08, x: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-3 rounded-full transition-all text-sm flex items-center gap-2 disabled:opacity-30 disabled:pointer-events-none"
-              style={{
-                background: 'rgba(255,255,255,0.05)',
-                border: '1px solid rgba(255,255,255,0.1)',
-                color: 'white',
-              }}
-            >
-              <ChevronLeft size={20} />
-              <span className="hidden sm:inline font-serif font-medium tracking-wide">Previous</span>
-            </motion.button>
+              <motion.button
+                onClick={handleNext}
+                disabled={currentPage === bookPages.length - 1}
+                whileHover={{ scale: 1.08, x: 2 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-3 rounded-full transition-all text-sm flex items-center gap-2 disabled:opacity-30 disabled:pointer-events-none"
+                style={{
+                  background: 'linear-gradient(135deg, rgba(245,158,11,0.15), rgba(180,83,9,0.1))',
+                  border: '1px solid rgba(245,158,11,0.3)',
+                  color: '#fcd34d',
+                }}
+              >
+                <span className="hidden sm:inline font-serif font-medium tracking-wide">Next</span>
+                <ChevronRight size={20} />
+              </motion.button>
+            </div>
 
-            <span className="font-serif tracking-widest text-sm" style={{ color: 'rgba(245,158,11,0.6)' }}>
-              {currentPage + 1} / {bookPages.length}
-            </span>
-
-            <motion.button
-              onClick={handleNext}
-              disabled={currentPage === bookPages.length - 1}
-              whileHover={{ scale: 1.08, x: 2 }}
-              whileTap={{ scale: 0.95 }}
-              className="p-3 rounded-full transition-all text-sm flex items-center gap-2 disabled:opacity-30 disabled:pointer-events-none"
-              style={{
-                background: 'linear-gradient(135deg, rgba(245,158,11,0.15), rgba(180,83,9,0.1))',
-                border: '1px solid rgba(245,158,11,0.3)',
-                color: '#fcd34d',
-              }}
-            >
-              <span className="hidden sm:inline font-serif font-medium tracking-wide">Next</span>
-              <ChevronRight size={20} />
-            </motion.button>
-          </div>
-
-          {/* The Final CTA Download Section Redesigned as a Postcard */}
-          <motion.div 
+            {/* The Final CTA Download Section Redesigned as a Postcard */}
+            <motion.div 
              initial={{ opacity: 0, y: 30 }}
              whileInView={{ opacity: 1, y: 0 }}
              viewport={{ once: true }}
@@ -290,8 +303,8 @@ const LastPages = () => {
 
                 {/* Doodle Crown */}
                 <DoodleCrown className="w-16 h-16 absolute -top-8 -left-6 opacity-80 -rotate-12 mix-blend-screen" color="rgba(245, 158, 11, 0.8)" />
-
-                <h3 className="font-['Caveat'] text-4xl md:text-5xl text-white/80 mb-6 relative z-10">A Final Word...</h3>
+                
+                  <h3 className="font-['Caveat'] text-4xl md:text-5xl text-white/80 mb-6 relative z-10">A Final <span className="text-amber-700/90">Word...</span></h3>
                 <p className="font-serif italic text-xl md:text-2xl text-[#eaddc5] leading-relaxed mb-10 max-w-lg relative z-10">
                   No matter how many pages we turn, the truest parts of the story will always remain unwritten. Take this piece of history with you, wherever the next chapter leads.
                 </p>
@@ -317,67 +330,68 @@ const LastPages = () => {
                 <span className="text-xs font-sans uppercase tracking-[0.2em] text-[#7d6b52] mt-6 font-semibold">Draft Archive • PDF Size 27 MB</span>
              </div>
 
-             {/* ── Credits trigger — premium ── */}
-             <motion.div
-               initial={{ opacity: 0, y: 16 }}
-               whileInView={{ opacity: 1, y: 0 }}
-               viewport={{ once: true }}
-               transition={{ delay: 0.4, duration: 1, ease: 'easeOut' }}
-               className="mt-10 mb-6 flex flex-col items-center gap-5"
-             >
-               {/* Decorative divider */}
-               <div className="flex items-center gap-4 w-64">
-                 <div className="flex-1 h-px" style={{ background: 'linear-gradient(to right, transparent, rgba(245,158,11,0.25))' }} />
-                 <span className="font-serif text-[0.58rem] tracking-[0.32em] uppercase whitespace-nowrap" style={{ color: 'rgba(245,158,11,0.35)' }}>One Last Look</span>
-                 <div className="flex-1 h-px" style={{ background: 'linear-gradient(to left, transparent, rgba(245,158,11,0.25))' }} />
-               </div>
+               {/* ── Credits trigger — premium ── */}
+               <motion.div
+                 initial={{ opacity: 0, y: 16 }}
+                 whileInView={{ opacity: 1, y: 0 }}
+                 viewport={{ once: true }}
+                 transition={{ delay: 0.4, duration: 1, ease: 'easeOut' }}
+                 className="mt-10 mb-6 flex flex-col items-center gap-5"
+               >
+                 {/* Decorative divider */}
+                 <div className="flex items-center gap-4 w-64">
+                   <div className="flex-1 h-[1px]" style={{ background: 'linear-gradient(to right, transparent, rgba(245,158,11,0.25))' }} />
+                   <span className="font-sans text-[0.6rem] tracking-[0.32em] uppercase font-semibold whitespace-nowrap" style={{ color: 'rgba(245,158,11,0.5)' }}>One Last Look</span>
+                   <div className="flex-1 h-[1px]" style={{ background: 'linear-gradient(to left, transparent, rgba(245,158,11,0.25))' }} />
+                 </div>
 
-               {/* The button */}
-               <div className="relative group cursor-pointer" onClick={() => setShowCredits(true)}>
-                 {/* Outer glow ring — appears on hover */}
-                 <div
-                   className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-                   style={{
-                     boxShadow: '0 0 32px rgba(245,158,11,0.14)',
-                     background: 'transparent',
-                   }}
-                 />
-                 {/* Button surface */}
-                 <button
-                   className="relative flex items-center gap-3.5 px-10 py-3.5 rounded-full font-serif tracking-[0.22em] uppercase text-xs transition-all duration-500"
-                   style={{
-                     background: 'linear-gradient(135deg, rgba(245,158,11,0.07) 0%, rgba(180,83,9,0.04) 100%)',
-                     border: '1px solid rgba(245,158,11,0.22)',
-                     color: 'rgba(245,158,11,0.6)',
-                     letterSpacing: '0.28em',
-                   }}
-                   onMouseEnter={e => {
-                     e.currentTarget.style.background = 'linear-gradient(135deg, rgba(245,158,11,0.13) 0%, rgba(180,83,9,0.08) 100%)';
-                     e.currentTarget.style.borderColor = 'rgba(245,158,11,0.45)';
-                     e.currentTarget.style.color = 'rgba(245,158,11,0.92)';
-                   }}
-                   onMouseLeave={e => {
-                     e.currentTarget.style.background = 'linear-gradient(135deg, rgba(245,158,11,0.07) 0%, rgba(180,83,9,0.04) 100%)';
-                     e.currentTarget.style.borderColor = 'rgba(245,158,11,0.22)';
-                     e.currentTarget.style.color = 'rgba(245,158,11,0.6)';
-                   }}
-                 >
-                   <Play size={15} className="group-hover:translate-x-0.5 transition-transform duration-300" />
-                   Roll Credits
-                 </button>
-               </div>
+                 {/* The button */}
+                 <div className="relative group cursor-pointer mt-4" onClick={() => setShowCredits(true)}>
+                   {/* Outer glow ring — appears on hover */}
+                   <div
+                     className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"
+                     style={{
+                       boxShadow: '0 0 32px rgba(245,158,11,0.14)',
+                       background: 'transparent',
+                     }}
+                   />
+                   {/* Button surface */}
+                   <button
+                     className="relative flex items-center gap-3.5 px-10 py-3.5 rounded-full font-sans font-bold tracking-[0.22em] uppercase text-xs transition-all duration-500"
+                     style={{
+                       background: 'linear-gradient(135deg, rgba(245,158,11,0.07) 0%, rgba(180,83,9,0.04) 100%)',
+                       border: '1px solid rgba(245,158,11,0.22)',
+                       color: 'rgba(245,158,11,0.6)',
+                       letterSpacing: '0.28em',
+                     }}
+                     onMouseEnter={e => {
+                       e.currentTarget.style.background = 'linear-gradient(135deg, rgba(245,158,11,0.13) 0%, rgba(180,83,9,0.08) 100%)';
+                       e.currentTarget.style.borderColor = 'rgba(245,158,11,0.45)';
+                       e.currentTarget.style.color = 'rgba(245,158,11,0.92)';
+                     }}
+                     onMouseLeave={e => {
+                       e.currentTarget.style.background = 'linear-gradient(135deg, rgba(245,158,11,0.07) 0%, rgba(180,83,9,0.04) 100%)';
+                       e.currentTarget.style.borderColor = 'rgba(245,158,11,0.22)';
+                       e.currentTarget.style.color = 'rgba(245,158,11,0.6)';
+                     }}
+                   >
+                     <Play size={15} className="group-hover:translate-x-0.5 transition-transform duration-300" />
+                     Roll Credits
+                   </button>
+                 </div>
 
-               {/* Subtitle */}
-               <p className="font-['Caveat'] text-[0.6rem] tracking-[0.25em] uppercase" style={{ color: 'rgba(180,140,80,0.8)' }}>
-                 Not an end - just a beginning of something new...
-               </p>
-             </motion.div>
-
-             <div className="flex justify-between items-center w-full mt-10">
-               <ChapterNav direction="prev" chapterName="Our Notes" path="/our-notes" />
-               <ChapterNav direction="next" chapterName="Prologue" path="/" labelOverride="Return to" />
-             </div>
-          </motion.div>
+                 {/* Subtitle */}
+                 <p className="font-serif italic text-sm mt-4" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                   Not an end - just a beginning of something new...
+                 </p>
+               </motion.div>
+            </motion.div>
+            
+              <div className="flex justify-between items-center w-full pt-12">
+                <ChapterNav direction="prev" chapterName="Our Notes" path="/our-notes" />
+                <ChapterNav direction="next" chapterName="Prologue" path="/" labelOverride="Return to" />
+              </div>
+          </div>
         </div>
       </div>
     </PageTransition>

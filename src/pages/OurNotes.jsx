@@ -1,149 +1,157 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
 import ChapterNav from '../components/ui/ChapterNav';
 import Fireflies from '../components/ui/Fireflies';
-import { DoodleCrown, DoodleHeart } from '../components/ui/VintageDoodles';
+import { DoodleCrown, DoodleHeart, DoodleSparkle, DoodleArrow } from '../components/ui/VintageDoodles';
 import { memoriesData } from '../data/notes';
 
-const StickyNote = ({ post }) => {
-  const hasTape   = post.id % 2 === 0;
-  const rotateDeg = (post.id * 3) % 6 - 3;
-  const len       = post.content?.length ?? 0;
-  
-  const showHeart = post.id % 3 === 0;
-  const showCrown = post.id % 4 === 1;
+const PremiumStickyNote = ({ post, index }) => {
+  const len = post.content?.length ?? 0;
+  const textSize = len < 120 ? 'text-2xl' : 'text-xl';
+  const contentStyle = len > 330 ? { maxHeight: '200px', overflowY: 'auto', paddingRight: '8px' } : {};
+  const rotation = useMemo(() => Math.floor(Math.random() * 6) - 3, []);
 
-  // Shrink font for longer content so it stays readable without blowing up the card
-  const textSize = 'text-2xl';
-
-  // Cap card height and allow scroll for very long notes (>303 chars)
-  const contentStyle = len > 303
-    ? { maxHeight: '260px', overflowY: 'auto', paddingRight: '4px' }
-    : {};
+  // Determine if we show doodles based on index
+  const showHeart = index % 5 === 0;
+  const showCrown = index % 6 === 2;
 
   return (
-    <div className="break-inside-avoid-column mb-8 perspective-1000 inline-block w-full">
+    <div className="break-inside-avoid-column mb-10 perspective-1000 inline-block w-full">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.03, zIndex: 10, rotate: 0 }}
-        transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-        className={`sticky-note paper-lift p-6 md:p-8 flex flex-col w-full ${hasTape ? 'tape' : ''}`}
-        style={{
-          transform: `rotate(${rotateDeg}deg)`,
-          backgroundImage: "url('/textures/rice-paper.png')",
-          transformOrigin: 'center top',
-          boxShadow: '4px 8px 20px rgba(0,0,0,0.4)',
-        }}
+        initial={{ opacity: 0, scale: 0.9, y: 30 }}
+        whileInView={{ opacity: 1, scale: 1, y: 0 }}
+        viewport={{ once: true, margin: '-50px' }}
+        transition={{ duration: 0.7, delay: (index % 10) * 0.08, ease: [0.23, 1, 0.32, 1] }}
+        whileHover={{ scale: 1.05, zIndex: 30, rotate: 0, y: -5, boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)" }}
+        className="relative w-full mx-auto flex flex-col cursor-pointer transition-shadow duration-500"
+        style={{ willChange: "transform, opacity", transform: `rotate(${rotation}deg)` }}
       >
-        {/* Heart doodle roughly drawn in empty space */}
-        {showHeart && (
-          <DoodleHeart className="hidden sm:inline w-12 h-12 absolute top-5 left-1 opacity-60 -rotate-[15deg] mix-blend-multiply" color="rgba(200, 50, 50, 0.8)" />
-        )}
-        {showCrown && (
-          <DoodleCrown className="w-12 h-12 absolute top-3 right-3 rotate-12 opacity-60 mix-blend-multiply" color="rgba(0,0,200,0.8)" />
-        )}
-
-        {/* Ruled lines overlay */}
-        <div
-          className="absolute inset-0 opacity-40 pointer-events-none z-0"
-          style={{
-            backgroundImage: "repeating-linear-gradient(transparent, transparent 27px, #6098cc 27px, #6098cc 28px)",
-            backgroundSize: "100% 28px",
+        {/* Note Body */}
+        <div 
+          className="p-8 pb-6 flex flex-col bg-[#FDFBF7] shadow-[2px_4px_15px_rgba(0,0,0,0.08)] relative overflow-hidden"
+          style={{ 
+            backgroundImage: "url('/textures/rice-paper.png')",
+            clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2px))'
           }}
-        />
-        {/* Vintage Round Stamp */}
-        <div className="absolute bottom-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-60 shadow-sm pointer-events-none">
-           <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
-             <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
-               MCET<br/>Diary'26<br/>★
-             </span>
-           </div>
-        </div>
-        {!hasTape && <div className="push-pin -top-3" />}
-
-        {/* Content — scrollable when very long */}
-        <div
-          data-photo="true"
-          className={`font-['Caveat'] ${textSize} mt-4 mb-4 leading-relaxed text-[#2c3e50] w-full text-center styling-scrollbar`}
-          style={contentStyle}
         >
-          "{post.content}"
-        </div>
+          {/* Pin */}
+          <div className="push-pin -top-3" />
 
-        {post.image && (
-          <div className="w-full mb-6 z-10" data-photo="true">
-            <img
-              src={post.image.startsWith('linear') ? '' : post.image}
-              style={post.image.startsWith('linear') ? { background: post.image } : {}}
-              alt="Memory"
-              className="w-full object-cover border border-[#d1d5db] shadow-sm max-h-64"
-            />
+          {/* Ruled Lines */}
+          <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(transparent, transparent 27px, #4A90E2 27px, #4A90E2 28px)', backgroundSize: '100% 28px' }} />
+
+          {/* Doodles inside note */}
+          {showHeart && <DoodleHeart className="absolute top-4 left-2 w-10 h-10 opacity-40 -rotate-[15deg] mix-blend-multiply" color="#8B2323" />}
+          {showCrown && <DoodleCrown className="absolute top-2 right-2 w-10 h-10 rotate-12 opacity-40 mix-blend-multiply" color="#1e3a8a" />}
+
+          {/* Content */}
+          <div className={`font-['Caveat'] ${textSize} leading-[28px] text-[#2c3e50] w-full mt-2 text-center styling-scrollbar relative z-10`} style={contentStyle} data-photo="true">
+            "{post.content}"
           </div>
-        )}
 
-        <div className="mt-auto w-full flex justify-between items-end border-t border-[#e5e7eb] pt-4 relative">
-          <span className="font-['Caveat'] text-2xl font-bold text-[#1e3a8a] relative z-10">
-            {post.author}
-          </span>
-          <span className="text-[11px] text-[#5D6574] font-sans tracking-widest uppercase font-medium relative z-10">
-            {new Date(post.timestamp).toLocaleDateString()}
-          </span>
+          {/* Image (if exists) */}
+          {post.image && (
+            <div className="w-full mt-6 mb-2 z-10 relative" data-photo="true">
+              <div className="relative w-full bg-white overflow-hidden border border-black/5 shadow-[0_2px_8px_rgba(0,0,0,0.1)] p-2 pb-6">
+                 <div 
+                   className="w-full h-48 sm:h-56 transition-transform duration-700 hover:scale-105"
+                   style={{ 
+                     background: post.image.startsWith('linear') ? post.image : `url(${post.image}) center/cover no-repeat` 
+                   }}
+                 ></div>
+                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+              </div>
+            </div>
+          )}
+
+          {/* Footer Info */}
+          <div className="mt-8 w-full flex justify-between items-end border-t border-black/5 pt-4 relative z-10">
+            <span className="font-['Caveat'] text-2xl font-bold text-[#1e3a8a]">{post.author}</span>
+            <span className="text-[10px] text-[#8b95a5] font-sans tracking-[0.15em] uppercase font-semibold">{new Date(post.timestamp).toLocaleDateString()}</span>
+          </div>
+
+          {/* Vintage Round Stamp */}
+          <div
+            className="absolute bottom-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/50 rounded-full flex items-center justify-center rotate-[-15deg] z-30 opacity-50 shadow-sm pointer-events-none"
+          >
+            <div className="border-[1.5px] border-dashed border-red-800/50 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
+              <span className="text-[10px] font-bold text-red-800/70 uppercase tracking-tighter block mt-0.5">
+                MCET<br />Diary'26<br />★
+              </span>
+            </div>
+          </div>
+
+
+
         </div>
+        {/* Curling shadow effect */}
+        <div className="absolute -bottom-2 left-4 right-4 h-4 shadow-[0_15px_15px_rgba(0,0,0,0.15)] -z-10 rounded-[100%]"></div>
+
+
       </motion.div>
     </div>
   );
 };
 
-
 const OurNotes = () => {
-  // Page title for Lighthouse SEO score
   useEffect(() => { document.title = "MCET Diary'26 | Our Notes - Words We Left"; }, []);
-
   const [posts, setPosts] = useState(() => [...memoriesData].sort(() => 0.5 - Math.random()));
 
   return (
     <PageTransition>
+      <div className="relative overflow-hidden w-full min-h-screen">
+        {/* Subtle background texture for the entire page overlaying global bg */}
+        <div className="absolute inset-0 pointer-events-none opacity-[0.1]" style={{ backgroundImage: "url('/textures/paper-grain.png')", mixBlendMode: "overlay", zIndex: 1 }}></div>
 
-      {/* Firefly Particles */}
-      <Fireflies count={20}/>
+        {/* Subtle Background Typography */}
+        <div className="absolute top-5 sm:-top-4 -right-20 sm:right-109 text-[10rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
+          Imprints
+        </div>
 
-      <div className="min-h-[100vh] py-24 pb-32">
-        <div className="max-w-7xl mx-auto px-4">
-          
-          <div className="text-center mb-16 relative">
-            <SectionHeading 
-              title="Our Notes" 
-              subtitle="Few lines for the days we didn’t want to end. 📜"
-              eyebrow="Words We Left"
-            />
-          </div>
+        {/* Firefly Particles */}
+        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={30}/></div>
 
-          <p className="text-center font-['Caveat'] text-3xl text-[var(--color-text-muted)] -mt-12 mb-24 italic">
-             " It’s strange how endings don’t feel like endings at first. "
-          </p>
+        <div className="py-24 pb-30 relative z-20">
+          <div className="max-w-[1600px] mx-auto px-4 md:px-8">
+            
+            <div className="text-center mb-16 relative">
+              <DoodleSparkle className="w-24 h-24 absolute -top-10 left-10 md:left-40 opacity-30 mix-blend-screen hidden md:block" color="#F59E0B" />
+              <DoodleArrow className="w-20 h-20 absolute top-10 right-10 md:right-40 opacity-30 rotate-45 mix-blend-screen hidden md:block" color="#F59E0B" />
+              
+              <SectionHeading 
+                title="Our Notes" 
+                subtitle="Few lines for the days we didn’t want to end."
+                eyebrow="Words We Left"
+              />
+            </div>
 
-          {/* Masonry Board */}
-          <div
-            className="mb-24 columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-6 p-6 md:p-10 bg-corkboard rounded-2xl relative min-h-[60vh] styling-scrollbar"
-            style={{
-              columnFill: 'balance',
-              border: '5px solid #2d1f10',
-              outline: '1px solid rgba(255,255,255,0.03)',
-            }}
-          >
-             <AnimatePresence>
-                {posts.map(post => (
-                  <StickyNote key={post.id} post={post} />
-                ))}
-            </AnimatePresence>
-          </div>
+            <p className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 -mt-10 mb-20 max-w-2xl mx-auto">
+               "It’s strange how endings don’t feel like endings at first..."
+            </p>
 
-          <div className="flex justify-between items-center w-full mt-20">
-            <ChapterNav direction="prev" chapterName="Scrapbook" path="/scrapbook" />
-            <ChapterNav direction="next" chapterName="Last Pages" path="/last-pages" />
+            {/* Masonry Board - Refined styling matching Prologue */}
+            <div className="relative w-full">
+              {/* Radial gradient glow in background */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] max-w-4xl h-[600px] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/10 via-amber-500/5 to-transparent pointer-events-none"></div>
+
+              <div
+                className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-8 relative z-10 styling-scrollbar"
+                style={{ columnFill: 'balance' }}
+              >
+                 <AnimatePresence>
+                    {posts.map((post, idx) => (
+                      <PremiumStickyNote key={post.id} post={post} index={idx} />
+                    ))}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            <div className="flex justify-between items-center w-full mt-32 border-t border-amber-900/40 pt-12 relative z-20">
+              <ChapterNav direction="prev" chapterName="Scrapbook" path="/scrapbook" />
+              <ChapterNav direction="next" chapterName="Last Pages" path="/last-pages" />
+            </div>
           </div>
         </div>
       </div>

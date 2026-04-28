@@ -127,7 +127,7 @@ const CountdownTimer = () => {
     <div className="flex flex-col items-center gap-4">
       {/* Context label */}
       <p
-        className="font-['Caveat'] text-xl text-amber-500/70 tracking-wide"
+        className="font-['Caveat'] text-2xl pt-8 text-amber-500/70 tracking-wide"
         style={{ letterSpacing: '0.05em' }}
       >
         {isCountup ? '⏳ Time since graduation…' : '⏳ Counting down to graduation…'}
