@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import { Menu, Play, Pause, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePlayer } from '../../context/PlayerContext';
@@ -117,32 +117,32 @@ const NavMiniPlayer = ({ showDisc = true }) => {
             whiteSpace: 'nowrap',
           }}
         >
-      {/* Vinyl disc — desktop only */}
-      {showDisc && <MiniVinyl isPlaying={isPlaying} isResetting={isResetting} size={26} />}
+          {/* Vinyl disc — desktop only */}
+          {showDisc && <MiniVinyl isPlaying={isPlaying} isResetting={isResetting} size={26} />}
 
-      {/* Scrolling track name */}
-      <MarqueeText
-        text={currentTrack.title}
-        className="text-amber-300/80 text-xs font-['Playfair_Display'] min-w-0"
-      />
+          {/* Scrolling track name */}
+          <MarqueeText
+            text={currentTrack.title}
+            className="text-amber-300/80 text-xs font-['Playfair_Display'] min-w-0"
+          />
 
-      {/* Play / Pause */}
-      <button
-        onClick={() => playTrack(activeTrack)}
-        className="text-amber-400/80 hover:text-amber-200 transition-colors text-[10px] leading-none flex-shrink-0"
-        aria-label={isPlaying ? 'Pause' : 'Play'}
-      >
-        {isPlaying ? <Pause className='w-4 h-4' /> : <Play className='w-4 h-4' />}
-      </button>
+          {/* Play / Pause */}
+          <button
+            onClick={() => playTrack(activeTrack)}
+            className="text-amber-400/80 hover:text-amber-200 transition-colors text-[10px] leading-none flex-shrink-0"
+            aria-label={isPlaying ? 'Pause' : 'Play'}
+          >
+            {isPlaying ? <Pause className='w-4 h-4' /> : <Play className='w-4 h-4' />}
+          </button>
 
-      {/* Stop */}
-      <button
-        onClick={stop}
-        className="text-amber-600/70 hover:text-amber-400 transition-colors text-xs leading-none flex-shrink-0"
-        aria-label="Stop"
-      >
-        <X className='w-4 h-4' />
-      </button>
+          {/* Stop */}
+          <button
+            onClick={stop}
+            className="text-amber-600/70 hover:text-amber-400 transition-colors text-xs leading-none flex-shrink-0"
+            aria-label="Stop"
+          >
+            <X className='w-4 h-4' />
+          </button>
         </motion.div>
       )}
     </AnimatePresence>
@@ -315,9 +315,9 @@ const Navbar = () => {
       </motion.div>
 
       {/* Torn paper edge hanging downward from the navbar */}
-      <PaperTear 
-        color="rgba(5, 5, 5, 0.99)" 
-        flip={true} 
+      <PaperTear
+        color="rgba(5, 5, 5, 0.99)"
+        flip={true}
         strokeColor="rgba(255,255,255,0.05)"
         height="12px"
         dense={!isMobile}

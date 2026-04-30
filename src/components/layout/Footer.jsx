@@ -94,18 +94,18 @@ const Footer = () => {
           transition={{ duration: 0.6, delay: 0.3, type: 'spring', damping: 14 }}
           className="mt-6"
         >
-          <div className="px-8 py-3 rounded-full border border-white/5 bg-white/5 backdrop-blur-sm shadow-inner relative">
-            <DoodleCrown className="w-10 h-10 absolute -top-4 -left-4 opacity-50 -rotate-12 mix-blend-screen" color="#F59E0B" />
-            <p className="text-xs text-white/60 uppercase tracking-[0.2em] font-sans font-semibold flex items-center gap-2">
-              Crafted with
+          <div className="px-5 sm:px-8 py-3 rounded-2xl sm:rounded-full border border-white/5 bg-white/5 backdrop-blur-sm shadow-inner relative max-w-[90vw]">
+            <DoodleCrown className="w-8 h-8 sm:w-10 sm:h-10 absolute -top-3 sm:-top-4 -left-3 sm:-left-4 opacity-50 -rotate-12 mix-blend-screen" color="#F59E0B" />
+            <p className="text-[10px] sm:text-xs text-white/60 uppercase tracking-widest sm:tracking-[0.2em] font-sans font-semibold flex flex-wrap justify-center items-center gap-1.5 sm:gap-2 text-center">
+              <span>Crafted with</span>
               <motion.span
                 animate={{ scale: [1, 1.3, 1] }}
                 transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
-                className="text-amber-500 text-sm inline-block drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]"
+                className="text-amber-500 text-xs sm:text-sm inline-block drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]"
               >
                 🤎
               </motion.span>
-              by Batch 2022–'26
+              <span>by Batch 2022–'26</span>
             </p>
           </div>
         </motion.div>

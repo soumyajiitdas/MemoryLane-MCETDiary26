@@ -317,7 +317,7 @@ const LastPages = () => {
                   >
                     <span className="relative z-10 flex items-center gap-2">
                        <FileText size={18} />
-                       Download Full Magazine
+                       <span className='hidden sm:inline'>Download Full</span><span className='inline sm:hidden'>Phoenix</span>Magazine
                        <Download size={18} className="group-hover:translate-y-1 transition-transform" />
                     </span>
                     {/* Vintage hover swoosh */}
