@@ -21,12 +21,9 @@ const Scrapbook = lazy(() => import('./pages/Scrapbook'));
 const OurNotes = lazy(() => import('./pages/OurNotes'));
 const LastPages = lazy(() => import('./pages/LastPages'));
 
-// Minimal loading fallback shown during route chunk fetch
-const PageLoader = () => (
-  <div className="flex items-center justify-center min-h-[60vh]">
-    <div className="w-8 h-8 rounded-full border-2 border-amber-500/30 border-t-amber-400 animate-spin" />
-  </div>
-);
+// Custom Diary Loading fallback shown during route chunk fetch
+import DiaryLoader from './components/ui/DiaryLoader';
+const PageLoader = DiaryLoader;
 
 function AnimatedRoutes() {
   const location = useLocation();

@@ -9,6 +9,7 @@ import {
   DoodleCrown, DoodleCircle,
 } from './VintageDoodles';
 import { usePlayer } from '../../context/PlayerContext';
+import { noSleep } from '../../utils/noSleep';
 
 const castNames = peopleData.map(p => p.name);
 const CREDITS_DUR = 90;
@@ -195,9 +196,9 @@ const Hole = () => (
 const DoodleLayer = () => (
   <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', zIndex: 0, overflow: 'hidden' }}>
     {/* Corners */}
-    <DoodleHeart style={{ position: 'absolute', top: '4%', left: '3%', width: 72, height: 72, opacity: 0.16, transform: 'rotate(-18deg)' }} color="rgba(245,158,11,0.9)" />
+    <DoodleCrown style={{ position: 'absolute', top: '4%', left: '3%', width: 72, height: 72, opacity: 0.16, transform: 'rotate(-18deg)' }} color="rgba(245,158,11,0.9)" />
     <DoodleSparkle style={{ position: 'absolute', top: '8%', right: '4%', width: 62, height: 62, opacity: 0.15, transform: 'rotate(22deg)' }} color="rgba(245,158,11,0.9)" />
-    <DoodleCrown style={{ position: 'absolute', bottom: '5%', right: '3%', width: 70, height: 70, opacity: 0.15, transform: 'rotate(-10deg)' }} color="rgba(245,158,11,0.9)" />
+    <DoodleCircle style={{ position: 'absolute', bottom: '5%', right: '3%', width: 70, height: 70, opacity: 0.15, transform: 'rotate(-10deg)' }} color="rgba(245,158,11,0.9)" />
     <DoodleArrow style={{ position: 'absolute', bottom: '6%', left: '4%', width: 62, height: 62, opacity: 0.14, transform: 'rotate(35deg)' }} color="rgba(245,158,11,0.9)" />
     {/* Sides — left */}
     <DoodleCircle style={{ position: 'absolute', top: '28%', left: '1.5%', width: 70, height: 70, opacity: 0.14, transform: 'rotate(-5deg)' }} color="rgba(245,158,11,0.9)" />
@@ -205,7 +206,7 @@ const DoodleLayer = () => (
     <DoodleSparkle style={{ position: 'absolute', top: '74%', left: '3%', width: 60, height: 60, opacity: 0.14, transform: 'rotate(-25deg)' }} color="rgba(245,158,11,0.9)" />
     {/* Sides — right */}
     <DoodleCrown style={{ position: 'absolute', top: '20%', right: '2%', width: 66, height: 66, opacity: 0.13, transform: 'rotate(-8deg)' }} color="rgba(245,158,11,0.9)" />
-    <DoodleCircle style={{ position: 'absolute', top: '44%', right: '1.5%', width: 72, height: 72, opacity: 0.13, transform: 'rotate(12deg)' }} color="rgba(245,158,11,0.9)" />
+    <DoodleHeart style={{ position: 'absolute', top: '44%', right: '1.5%', width: 72, height: 72, opacity: 0.13, transform: 'rotate(12deg)' }} color="rgba(245,158,11,0.9)" />
     <DoodleArrow style={{ position: 'absolute', top: '65%', right: '3%', width: 60, height: 60, opacity: 0.14, transform: 'rotate(-40deg)' }} color="rgba(245,158,11,0.9)" />
     <DoodleSparkle style={{ position: 'absolute', top: '38%', left: '48%', width: 48, height: 48, opacity: 0.07, transform: 'rotate(5deg)' }} color="rgba(245,158,11,0.9)" />
   </div>
@@ -264,7 +265,7 @@ const FilmStrip = ({ isPaused }) => {
                 background: 'linear-gradient(to top, rgba(8, 5, 0, 0.92) 0%, transparent 100%)',
                 padding: '18px 8px 6px',
               }}>
-                <p style={{ fontFamily: MONO, fontSize: '1.2rem', color: 'rgba(220,160,20,0.9)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <p style={{ fontFamily: MONO, fontSize: '1rem', color: 'rgba(220,160,20,0.9)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {photo.caption}
                 </p>
                 <p style={{ fontFamily: MONO, fontSize: '0.9rem', color: 'rgba(200,140,20,0.45)', margin: '2px 0 0', letterSpacing: '0.2em' }}>
@@ -366,7 +367,7 @@ const CreditsInner = ({ rollRef, onEnd }) => (
     <SectionLabel c="Put Together By" />
     <MedTitle c="Someone from within" />
     <Gap h="0.5rem" />
-    <Verse c="(who didn't want to forget)" />
+    <Verse c="who didn't want to forget..." />
     <Rule />
     <Verse c="It didn't feel like much back then" />
     <Verse c="just days passing" />
@@ -422,7 +423,7 @@ const EndCard = ({ onClose }) => (
 
     <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8, duration: 1.4 }}
       style={{ fontFamily: HAND, fontStyle: 'italic', fontSize: 'clamp(1.1rem,4vw,1.8rem)', color: 'rgba(200,170,110,0.38)', letterSpacing: '0.1em', margin: 0 }}>
-      A few days, a lifetime's weight...
+      A few days, a lifetime's weight... :)
     </motion.p>
 
     <motion.p initial={{ opacity: 0 }} animate={{ opacity: 0.35 }} transition={{ delay: 2.8, duration: 1.5 }}
@@ -454,6 +455,52 @@ const EndCredits = ({ isOpen, onClose }) => {
   const { isPlaying, playTrack, fadeOutStop, activeTrack } = usePlayer();
   const [startedByCredits, setStartedByCredits] = useState(false);
   const hasCheckedAutoPlay = useRef(false);
+  const wakeLockRef = useRef(null);
+
+  // Keep screen awake while credits are playing
+  useEffect(() => {
+    // 1. NoSleep.js disable fallback (enable is triggered synchronously in LastPages.jsx)
+    if (!isOpen) {
+      noSleep.disable();
+    }
+
+    // 2. Native WakeLock API for modern devices
+    const requestWakeLock = async () => {
+      try {
+        if ('wakeLock' in navigator && isOpen && document.visibilityState === 'visible') {
+          wakeLockRef.current = await navigator.wakeLock.request('screen');
+        }
+      } catch (err) {
+        // Silently ignore failures (e.g. Low Power Mode)
+      }
+    };
+
+    const handleVisibilityChange = () => {
+      if (isOpen && document.visibilityState === 'visible') {
+        requestWakeLock();
+      }
+    };
+
+    if (isOpen) {
+      requestWakeLock();
+      document.addEventListener('visibilitychange', handleVisibilityChange);
+    } else {
+      if (wakeLockRef.current) {
+        wakeLockRef.current.release().catch(() => {});
+        wakeLockRef.current = null;
+      }
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    }
+
+    return () => {
+      noSleep.disable();
+      if (wakeLockRef.current) {
+        wakeLockRef.current.release().catch(() => {});
+        wakeLockRef.current = null;
+      }
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     const onResize = () => setIsDesktop(window.innerWidth >= 1024);
@@ -517,7 +564,7 @@ const EndCredits = ({ isOpen, onClose }) => {
           <style>{GLOBAL_CSS}</style>
 
           {/* Aged paper texture — separate layer, never flickered */}
-          <div style={{ position: 'absolute', inset: 0, backgroundImage: "url('/textures/aged-paper.png')", backgroundSize: '600px', opacity: 0.23, zIndex: 0, pointerEvents: 'none' }} />
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: "url('/textures/aged-paper.png')", backgroundSize: '600px', opacity: 0.20, zIndex: 0, pointerEvents: 'none' }} />
 
           {/* Flicker overlay — only dims content, base stays solid */}
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(4,2,0,0.18)', zIndex: 0, pointerEvents: 'none', animation: 'flicker 8s ease-in-out infinite' }} />
@@ -527,8 +574,6 @@ const EndCredits = ({ isOpen, onClose }) => {
           <ScratchLines />
           <BurnVignette />
           <Fireflies count={15} />
-          {/* Doodles */}
-          <DoodleLayer />
 
           {/* Controls */}
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1, duration: 0.6 }}
@@ -555,12 +600,16 @@ const EndCredits = ({ isOpen, onClose }) => {
               </div>
               <div style={{ width: '55%', height: '100%', overflow: 'hidden', position: 'relative' }}>
                 <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: 50, background: 'linear-gradient(to right,rgba(4,2,0,0.7),transparent)', zIndex: 2, pointerEvents: 'none' }} />
+                {/* Doodles */}
+                <DoodleLayer />
                 <CreditsInner rollRef={rollRef} onEnd={() => setShowEndCard(true)} />
                 <AnimatePresence>{showEndCard && <EndCard onClose={onClose} />}</AnimatePresence>
               </div>
             </div>
           ) : (
             <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative', zIndex: 1 }}>
+              {/* Doodles */}
+              <DoodleLayer />
               <CreditsInner rollRef={rollRef} onEnd={() => setShowEndCard(true)} />
               <AnimatePresence>{showEndCard && <EndCard onClose={onClose} />}</AnimatePresence>
             </div>

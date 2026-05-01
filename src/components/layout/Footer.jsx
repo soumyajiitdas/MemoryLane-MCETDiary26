@@ -103,7 +103,7 @@ const Footer = () => {
                 transition={{ duration: 1.2, repeat: Infinity, ease: 'easeInOut' }}
                 className="text-amber-500 text-xs sm:text-sm inline-block drop-shadow-[0_0_8px_rgba(245,158,11,0.5)]"
               >
-                🤎
+                🧡
               </motion.span>
               <span>by Batch 2022–'26</span>
             </p>

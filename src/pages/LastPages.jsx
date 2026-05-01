@@ -8,6 +8,7 @@ import Fireflies from '../components/ui/Fireflies';
 import { phoenixPages } from '../data/phoenix';
 import { DoodleCrown, DoodleArrow, DoodleHeart, DoodleCircle, DoodleSparkle } from '../components/ui/VintageDoodles';
 import EndCredits from '../components/ui/EndCredits';
+import { noSleep } from '../utils/noSleep';
 
 // Cover is always pinned first; remaining pages are sorted by id.
 const cover = phoenixPages.find(p => p.type === 'cover');
@@ -186,7 +187,13 @@ const LastPages = () => {
         <div className="py-24 pb-30 relative z-20">
           <div className="max-w-7xl mx-auto px-4 flex flex-col items-center relative z-10">
             
-            <div className="text-center mb-16 relative">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-center mb-16 relative"
+            >
               <DoodleSparkle className="w-24 h-24 absolute -top-10 left-10 md:-left-85 opacity-30 mix-blend-screen hidden md:block" color="#F59E0B" />
               <DoodleArrow className="w-20 h-20 absolute top-10 right-10 md:-right-85 opacity-30 rotate-45 mix-blend-screen hidden md:block" color="#F59E0B" />
 
@@ -195,11 +202,17 @@ const LastPages = () => {
                 subtitle="What remained when the story found its end."
                 eyebrow="The Final Chapter"
               />
-            </div>
+            </motion.div>
 
-            <p className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 -mt-10 mb-16 max-w-2xl mx-auto">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 1 }}
+              className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 -mt-10 mb-16 max-w-2xl mx-auto"
+            >
                "For the memories we couldn't fit into the margins..."
-            </p>
+            </motion.p>
 
             {/* FLIPBOOK CONTAINER */}
             <div className="w-full max-w-[500px] aspect-[2/3] md:aspect-[3/4] relative mt-8 mb-12" style={{ perspective: '1500px' }}>
@@ -248,7 +261,13 @@ const LastPages = () => {
             </div>
 
             {/* Flipbook Controls */}
-            <div className="flex items-center gap-6 mb-24">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="flex items-center gap-6 mb-24"
+            >
               <motion.button
                 onClick={handlePrev}
                 disabled={currentPage === 0}
@@ -284,7 +303,7 @@ const LastPages = () => {
                 <span className="hidden sm:inline font-serif font-medium tracking-wide">Next</span>
                 <ChevronRight size={20} />
               </motion.button>
-            </div>
+            </motion.div>
 
             {/* The Final CTA Download Section Redesigned as a Postcard */}
             <motion.div 
@@ -304,7 +323,7 @@ const LastPages = () => {
                 {/* Doodle Crown */}
                 <DoodleCrown className="w-16 h-16 absolute -top-8 -left-6 opacity-80 -rotate-12 mix-blend-screen" color="rgba(245, 158, 11, 0.8)" />
                 
-                  <h3 className="font-['Caveat'] text-4xl md:text-5xl text-white/80 mb-6 relative z-10">A Final <span className="text-amber-700/90">Word...</span></h3>
+                  <h3 className="font-['Caveat'] text-4xl md:text-5xl text-white/80 mb-6 relative z-10">A Final <span className="text-amber-500/90">Word...</span></h3>
                 <p className="font-serif italic text-xl md:text-2xl text-[#eaddc5] leading-relaxed mb-10 max-w-lg relative z-10">
                   No matter how many pages we turn, the truest parts of the story will always remain unwritten. Take this piece of history with you, wherever the next chapter leads.
                 </p>
@@ -346,7 +365,10 @@ const LastPages = () => {
                  </div>
 
                  {/* The button */}
-                 <div className="relative group cursor-pointer mt-4" onClick={() => setShowCredits(true)}>
+                 <div className="relative group cursor-pointer mt-4" onClick={() => {
+                   noSleep.enable();
+                   setShowCredits(true);
+                 }}>
                    {/* Outer glow ring — appears on hover */}
                    <div
                      className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700"
@@ -381,8 +403,8 @@ const LastPages = () => {
                  </div>
 
                  {/* Subtitle */}
-                 <p className="font-serif italic text-sm mt-4" style={{ color: 'rgba(255,255,255,0.4)' }}>
-                   Not an end - just a beginning of something new...
+                 <p className="font-serif italic text-md mt-4" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                   "Not an end - just a beginning of something new..."
                  </p>
                </motion.div>
             </motion.div>

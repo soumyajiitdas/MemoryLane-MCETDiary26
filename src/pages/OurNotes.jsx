@@ -29,9 +29,9 @@ const PremiumStickyNote = ({ post, index }) => {
         style={{ willChange: "transform, opacity", transform: `rotate(${rotation}deg)` }}
       >
         {/* Note Body */}
-        <div 
+        <div
           className="p-8 pb-6 flex flex-col bg-[#FDFBF7] shadow-[2px_4px_15px_rgba(0,0,0,0.08)] relative overflow-hidden"
-          style={{ 
+          style={{
             backgroundImage: "url('/textures/rice-paper.png')",
             clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2px))'
           }}
@@ -55,13 +55,13 @@ const PremiumStickyNote = ({ post, index }) => {
           {post.image && (
             <div className="w-full mt-6 mb-2 z-10 relative" data-photo="true">
               <div className="relative w-full bg-white overflow-hidden border border-black/5 shadow-[0_2px_8px_rgba(0,0,0,0.1)] p-2 pb-6">
-                 <div 
-                   className="w-full h-48 sm:h-56 transition-transform duration-700 hover:scale-105"
-                   style={{ 
-                     background: post.image.startsWith('linear') ? post.image : `url(${post.image}) center/cover no-repeat` 
-                   }}
-                 ></div>
-                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                <div
+                  className="w-full h-48 sm:h-56 transition-transform duration-700 hover:scale-105"
+                  style={{
+                    background: post.image.startsWith('linear') ? post.image : `url(${post.image}) center/cover no-repeat`
+                  }}
+                ></div>
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
               </div>
             </div>
           )}
@@ -111,25 +111,37 @@ const OurNotes = () => {
         </div>
 
         {/* Firefly Particles */}
-        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={30}/></div>
+        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={30} /></div>
 
         <div className="py-24 pb-30 relative z-20">
           <div className="max-w-[1600px] mx-auto px-4 md:px-8">
-            
-            <div className="text-center mb-16 relative">
+
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-center mb-16 relative"
+            >
               <DoodleSparkle className="w-24 h-24 absolute -top-10 left-10 md:left-40 opacity-30 mix-blend-screen hidden md:block" color="#F59E0B" />
               <DoodleArrow className="w-20 h-20 absolute top-10 right-10 md:right-40 opacity-30 rotate-45 mix-blend-screen hidden md:block" color="#F59E0B" />
-              
-              <SectionHeading 
-                title="Our Notes" 
+
+              <SectionHeading
+                title="Our Notes"
                 subtitle="Few lines for the days we didn’t want to end."
                 eyebrow="Words We Left"
               />
-            </div>
+            </motion.div>
 
-            <p className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 -mt-10 mb-20 max-w-2xl mx-auto">
-               "It’s strange how endings don’t feel like endings at first..."
-            </p>
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 1 }}
+              className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 -mt-10 mb-20 max-w-2xl mx-auto"
+            >
+              "It’s strange how endings don’t feel like endings at first..."
+            </motion.p>
 
             {/* Masonry Board - Refined styling matching Prologue */}
             <div className="relative w-full">
@@ -140,15 +152,15 @@ const OurNotes = () => {
                 className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-8 relative z-10 styling-scrollbar"
                 style={{ columnFill: 'balance' }}
               >
-                 <AnimatePresence>
-                    {posts.map((post, idx) => (
-                      <PremiumStickyNote key={post.id} post={post} index={idx} />
-                    ))}
+                <AnimatePresence>
+                  {posts.map((post, idx) => (
+                    <PremiumStickyNote key={post.id} post={post} index={idx} />
+                  ))}
                 </AnimatePresence>
               </div>
             </div>
 
-            <div className="flex justify-between items-center w-full mt-32 border-t border-amber-900/40 pt-12 relative z-20">
+            <div className="flex justify-between items-center w-full mt-16 sm:mt-32 sm:border-t sm:border-amber-900/40 pt-0 sm:pt-12 relative z-20">
               <ChapterNav direction="prev" chapterName="Scrapbook" path="/scrapbook" />
               <ChapterNav direction="next" chapterName="Last Pages" path="/last-pages" />
             </div>

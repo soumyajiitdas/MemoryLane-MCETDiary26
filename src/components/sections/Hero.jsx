@@ -143,8 +143,8 @@ const Hero = () => {
             <DoodleCrown className="w-16 h-16 md:w-20 md:h-20 absolute -top-12 -left-8 -rotate-12 mix-blend-screen opacity-50 pointer-events-none" color="#F59E0B" />
 
             {/* Subtle Background Typography */}
-            <div className="absolute top-90 -left-13 sm:-top-48 sm:left-165 text-[8rem] md:text-[14rem] opacity-50 font-serif text-white/5 text-left sm:text-right leading-none select-none pointer-events-none tracking-tighter">
-              Our Memory Lane
+            <div className="absolute top-90 -left-13 sm:-top-48 sm:left-165 text-[8rem] md:text-[14rem] opacity-35 font-serif text-white/5 text-left sm:text-right leading-none select-none pointer-events-none tracking-tighter">
+              <span className='hidden sm:inline'>...</span>Our Memory Lane<span className='inline sm:hidden'>...</span>
             </div>
 
             <h1 className="text-[5.5rem] sm:text-[8rem] lg:text-[9rem] font-serif text-white/95 uppercase leading-[0.85] tracking-tighter drop-shadow-lg">

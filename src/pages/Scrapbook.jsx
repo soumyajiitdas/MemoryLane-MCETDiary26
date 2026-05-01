@@ -84,23 +84,41 @@ const Scrapbook = () => {
         <div className="py-24 pb-30 relative z-20">
           <div className="max-w-[1400px] mx-auto px-4 relative z-10">
 
-            <div className="text-center mb-16 relative">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-center mb-16 relative"
+            >
               <DoodleArrow className="w-24 h-24 absolute -top-10 left-10 md:left-40 opacity-30 -rotate-[135deg] mix-blend-screen hidden md:block" color="#F59E0B" />
               <DoodleSparkle className="w-20 h-20 absolute top-10 right-10 md:right-40 opacity-30 mix-blend-screen hidden md:block" color="#F59E0B" />
               
               <SectionHeading
-                title="Scrapbook"
+                title="Our Scrapbook"
                 subtitle="Fragments of time we chose to keep."
                 eyebrow="Scattered Memories"
               />
-            </div>
+            </motion.div>
 
-            <p className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-20 max-w-2xl mx-auto">
+            <motion.p 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3, duration: 1 }}
+              className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-20 max-w-2xl mx-auto"
+            >
                "Photographs are tickets to moments that would otherwise be gone..."
-            </p>
+            </motion.p>
 
             {/* Top bar with filters */}
-            <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16 gap-8 border-b border-white/5 pb-8 relative z-20">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16 gap-8 border-b border-white/5 pb-8 relative z-20"
+            >
               {/* Left: Year filters */}
               <div className="flex-1">
                 <div className="flex flex-wrap gap-2 font-sans">
@@ -158,7 +176,7 @@ const Scrapbook = () => {
                   </AnimatePresence>
                 </motion.button>
               </div>
-            </div>
+            </motion.div>
 
             <div className="relative">
               {/* Radial gradient glow in background */}
@@ -194,7 +212,7 @@ const Scrapbook = () => {
               </motion.div>
             )}
 
-            <div className="flex justify-between items-center w-full mt-32 border-t border-amber-900/40 pt-12 relative z-20">
+            <div className="flex justify-between items-center w-full mt-16 sm:mt-32 sm:border-t border-amber-900/40 pt-0 sm:pt-12 relative z-20">
               <ChapterNav direction="prev" chapterName="The Cast" path="/the-cast" />
               <ChapterNav direction="next" chapterName="Our Notes" path="/our-notes" />
             </div>

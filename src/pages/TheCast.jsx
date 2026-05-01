@@ -238,29 +238,29 @@ const CastDossier = ({ person, onClose }) => {
                 {/* 4. Birthday Card */}
                 {person.birthday && (
                   <DraggableItem constraintsRef={constraintsRef} defaultLeft={pos.bday.left} defaultTop={pos.bday.top} initialRotate={-11} delay={0.5}>
-                    <div style={{ width: 135, background: 'linear-gradient(160deg,#fdf3e0,#f5e6c8)', boxShadow: '3px 6px 20px rgba(0,0,0,0.35)', border: '1px solid rgba(180,130,60,0.35)', padding: '12px 10px 14px', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ width: isMobile ? 130 : 135, background: 'linear-gradient(160deg,#fdf3e0,#f5e6c8)', boxShadow: '3px 6px 20px rgba(0,0,0,0.35)', border: '1px solid rgba(180,130,60,0.35)', padding: '12px 10px 14px', display: 'flex', flexDirection: 'column', alignItems: 'center', position: 'relative', overflow: 'hidden' }}>
                       <div style={{ position: 'absolute', inset: 5, border: '1.5px solid rgba(160,100,30,0.3)', borderRadius: 2, pointerEvents: 'none' }} />
                       <div style={{ position: 'absolute', top: 6, right: 6, fontSize: 14, opacity: 0.5 }}>✿</div>
                       <div style={{ position: 'absolute', bottom: 6, left: 6, fontSize: 14, opacity: 0.5 }}>✿</div>
                       <span style={{ fontSize: 28, marginBottom: 4 }}>🎂</span>
                       <span style={{ fontFamily: '"Courier New",monospace', fontSize: 8, fontWeight: 700, color: 'rgba(120,70,10,0.6)', letterSpacing: '0.22em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 4 }}>Birthday</span>
                       <span style={{ fontFamily: 'Caveat,cursive', fontSize: 26, fontWeight: 700, color: '#451a03', textAlign: 'center', lineHeight: 1.1 }}>{new Date(`2000-${person.birthday}`).toLocaleDateString('en-IN', { month: 'short', day: 'numeric' })}</span>
-                      <span style={{ fontFamily: 'Caveat,cursive', fontSize: 13, color: 'rgba(120,70,10,0.5)', marginTop: 5, textAlign: 'center' }}>wishing you warmth 🌸</span>
+                      <span style={{ fontFamily: 'Caveat,cursive', fontSize: isMobile ? 12 : 13, color: 'rgba(120,70,10,0.5)', marginTop: 5, textAlign: 'center' }}>Wishing you warmth 🍀</span>
                     </div>
                   </DraggableItem>
                 )}
 
                 {/* 5. Roll Bag Tag */}
                 <DraggableItem constraintsRef={constraintsRef} defaultLeft={pos.bagtag.left} defaultTop={pos.bagtag.top} initialRotate={14} delay={0.3}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: isMobile ? 120 : 150 }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: isMobile ? 110 : 150 }}>
                     <svg width="30" height="28" viewBox="0 0 30 28" style={{ marginBottom: -2 }}>
                       <path d="M15 0 Q5 10 15 18 Q25 10 15 28" stroke="#a07040" strokeWidth="1.5" fill="none" strokeDasharray="2,1" />
                     </svg>
                     <div style={{ background: 'linear-gradient(160deg,#e8d4a8,#d4b87a)', border: '1.5px solid rgba(140,90,30,0.5)', padding: '8px 10px 10px', width: '100%', boxShadow: '2px 4px 14px rgba(0,0,0,0.3)', clipPath: 'polygon(50% 0%,100% 0%,100% 90%,50% 100%,0% 90%,0% 0%)', position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                       <div style={{ position: 'absolute', top: 6, left: '50%', transform: 'translateX(-50%)', width: 10, height: 10, borderRadius: '50%', background: 'rgba(100,60,10,0.25)', border: '1.5px solid rgba(100,60,10,0.5)' }} />
-                      <span style={{ fontFamily: '"Courier New",monospace', fontSize: isMobile ? 7.7 : 10, fontWeight: 700, color: 'rgba(80,45,5,0.65)', letterSpacing: '0.18em', textTransform: 'uppercase', marginTop: 14, marginBottom: 3 }}>Roll No.</span>
-                      <span style={{ fontFamily: '"Courier New",monospace', fontSize: isMobile ? 12 : 15, fontWeight: 700, color: '#3d1a00', letterSpacing: '0.04em', textAlign: 'center', lineHeight: 1.3 }}>{person.roll || '10600122XXX'}</span>
-                      <span style={{ fontFamily: 'Caveat,cursive', fontSize: isMobile ? 13 : 16, color: 'rgba(100,55,10,0.5)', marginTop: 4 }}>MCET '26</span>
+                      <span style={{ fontFamily: '"Courier New",monospace', fontSize: isMobile ? 7.3 : 10, fontWeight: 700, color: 'rgba(80,45,5,0.65)', letterSpacing: '0.18em', textTransform: 'uppercase', marginTop: 14, marginBottom: 3 }}>Roll No.</span>
+                      <span style={{ fontFamily: '"Courier New",monospace', fontSize: isMobile ? 11 : 15, fontWeight: 700, color: '#3d1a00', letterSpacing: '0.04em', textAlign: 'center', lineHeight: 1.3 }}>{person.roll || '1060012XXXX'}</span>
+                      <span style={{ fontFamily: 'Caveat,cursive', fontSize: isMobile ? 11 : 16, color: 'rgba(100,55,10,0.5)', marginTop: 4 }}>MCET '26</span>
                     </div>
                   </div>
                 </DraggableItem>
@@ -269,10 +269,10 @@ const CastDossier = ({ person, onClose }) => {
                 {person.nickname && (
                   <DraggableItem constraintsRef={constraintsRef} defaultLeft={pos.nickname.left} defaultTop={pos.nickname.top} initialRotate={-16} delay={0.6}>
                     <div style={{ width: isMobile ? 165 : 195, position: 'relative' }}>
-                      <div style={{ background: 'rgba(140,15,15,0.92)', padding: '10px 12px 12px', border: '3px solid rgba(100,5,5,0.7)', boxShadow: '0 0 0 2px rgba(180,40,40,0.3), 3px 6px 18px rgba(0,0,0,0.45)', position: 'relative', overflow: 'hidden' }}>
+                      <div style={{ background: 'rgba(140,15,15,0.92)', padding: '10px 12px 12px', border: '3px solid rgba(100,5,5,0.7)', boxShadow: '0 0 0 2px rgba(180,40,40,0.3), 3px 6px 18px rgba(0,0,0,0.45)', position: 'relative', overflow: 'visible' }}>
                         <div style={{ position: 'absolute', inset: 0, opacity: 0.06, backgroundImage: 'repeating-linear-gradient(45deg,#000 0,#000 1px,transparent 0,transparent 50%)', backgroundSize: '4px 4px' }} />
                         <p style={{ fontFamily: '"Courier New",monospace', fontSize: 8, fontWeight: 700, color: 'rgba(255,230,210,0.75)', letterSpacing: '0.35em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 6, borderBottom: '1px solid rgba(255,255,255,0.15)', paddingBottom: 5 }}>A.K.A.</p>
-                        <p style={{ fontFamily: 'Caveat,cursive', fontSize: isMobile ? 26 : 32, fontWeight: 700, color: '#fdf5e8', textAlign: 'center', lineHeight: 1.05, textShadow: '0 0 8px rgba(255,150,100,0.4)', margin: 0 }}>{person.nickname}</p>
+                        <p style={{ fontFamily: 'Caveat,cursive', fontSize: isMobile ? 20 : 32, fontWeight: 700, color: '#fdf5e8', textAlign: 'center', lineHeight: 1.05, textShadow: '0 0 8px rgba(255,150,100,0.4)', margin: 0, wordBreak: 'break-word' }}>{person.nickname}</p>
                         <p style={{ fontFamily: '"Courier New",monospace', fontSize: 7, color: 'rgba(255,220,180,0.45)', textAlign: 'center', marginTop: 6, letterSpacing: '0.2em' }}>✦ EST. MCET ✦</p>
                       </div>
                       <div style={{ position: 'absolute', top: -3, left: -3, width: 10, height: 10, border: '2px solid rgba(140,15,15,0.5)', borderRadius: '50%' }} />
@@ -344,7 +344,13 @@ const TheCast = () => {
         <div className="py-24 pb-30 relative z-20">
           <div className="max-w-[1400px] mx-auto px-4 relative z-10">
 
-            <div className="text-center mb-16 relative">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="text-center mb-16 relative"
+            >
               <DoodleSparkle className="w-24 h-24 absolute -top-10 left-10 md:left-40 opacity-30 mix-blend-screen hidden md:block" color="#F59E0B" />
               <DoodleHeart className="w-20 h-20 absolute top-10 right-10 md:right-40 opacity-30 -rotate-12 mix-blend-screen hidden md:block" color="#F59E0B" />
 
@@ -353,10 +359,16 @@ const TheCast = () => {
                 subtitle="The faces and the events that made it all real."
                 eyebrow="Faces of Us"
               />
-            </div>
+            </motion.div>
 
             {/* Toggle Tab — smooth motion indicator */}
-            <div className="flex justify-center mb-10">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2, duration: 1 }}
+              className="flex justify-center mb-10"
+            >
               <div
                 className="bg-white/5 backdrop-blur-md p-1 rounded-full inline-flex relative border border-white/10"
               >
@@ -395,11 +407,17 @@ const TheCast = () => {
                   <span className="relative z-10">Moments</span>
                 </button>
               </div>
-            </div>
+            </motion.div>
 
-            <p className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-20 max-w-2xl mx-auto">
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4, duration: 1 }}
+              className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-20 max-w-2xl mx-auto"
+            >
               "We didn't realize we were making memories, we just knew we were having fun..."
-            </p>
+            </motion.p>
 
             <div className="relative">
               {/* Radial gradient glow in background */}
@@ -436,7 +454,7 @@ const TheCast = () => {
               </AnimatePresence>
             </div>
 
-            <div className="flex justify-between items-center w-full mt-32 border-t border-amber-900/40 pt-12 relative z-20">
+            <div className="flex justify-between items-center w-full mt-16 sm:mt-32 sm:border-t border-amber-900/40 pt-0 sm:pt-12 relative z-20">
               <ChapterNav direction="prev" chapterName="Chapters" path="/chapters" />
               <ChapterNav direction="next" chapterName="Scrapbook" path="/scrapbook" />
             </div>

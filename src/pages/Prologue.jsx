@@ -452,7 +452,7 @@ const Prologue = () => {
   const stats = [
     { label: 'Batchmates', value: peopleData.length },
     { label: 'Events Logged', value: eventsData.length },
-    { label: 'Memories Shared', value: memoriesData.length },
+    { label: 'Imprints Shared', value: memoriesData.length },
     { label: 'Years Together', value: timelineData.length }
   ];
 
@@ -463,7 +463,48 @@ const Prologue = () => {
         <div className="absolute inset-0 pointer-events-none opacity-[0.1]" style={{ backgroundImage: "url('/textures/paper-grain.png')", mixBlendMode: "overlay", zIndex: 1 }}></div>
 
         {/* Hero Section */}
-        <Hero />
+        <div className="relative w-full z-20">
+          <Hero />
+        </div>
+
+        {/* Full-Width Dark Vintage Quote Divider */}
+        <div className="w-full relative z-20 flex justify-center opacity-100">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="w-full relative"
+          >
+            {/* The dark vintage paper strip */}
+            <div className="w-full bg-[#140F0A] py-4 relative flex flex-col items-center justify-center"
+              style={{ backgroundImage: "url('/textures/paper-grain.png')" }}>
+
+              {/* Darkened Edges effect */}
+              <div className="absolute inset-0 shadow-[inset_0_0_60px_rgba(0,0,0,0.9)] pointer-events-none"></div>
+
+              {/* Paper Tears on Top and Bottom */}
+              <PaperTear color="#140F0A" strokeColor="rgba(245,158,11,0.05)" flip={false} height="18px" className="z-20" dense={true} />
+              <PaperTear color="#140F0A" strokeColor="rgba(245,158,11,0.05)" flip={true} height="18px" className="z-20" dense={true} />
+
+              {/* Subtle Noise Texture */}
+              <div className="absolute inset-0 opacity-30 mix-blend-multiply pointer-events-none" style={{ backgroundImage: "url('/textures/noise.png')" }}></div>
+
+              {/* Golden highlight line on edges */}
+              <div className="absolute top-0 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500/10 to-transparent z-10"></div>
+              <div className="absolute bottom-0 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500/10 to-transparent z-10"></div>
+              <DoodleHeart className="w-8 h-8 left-120 opacity-80 mix-blend-screen text-amber-500 -rotate-15" color="#640505ff hidden sm:inline" />
+              <DoodleHeart className="w-8 h-8 right-120 opacity-80 mix-blend-screen text-amber-500 rotate-15" color="#640505ff hidden sm:inline" />
+              {/* Quote Text */}
+              <div className="relative z-10 max-w-4xl px-6 text-center flex flex-col items-center gap-4">
+
+                <p className="font-['Caveat'] text-md sm:text-2xl text-amber-500/60 tracking-wide leading-relaxed tracking-wider">
+                  Not much time, yet enough to leave something permanent...
+                </p>
+              </div>
+            </div>
+          </motion.div>
+        </div>
 
         {/* Firefly Particles */}
         <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={35} /></div>
@@ -473,31 +514,36 @@ const Prologue = () => {
 
         {/* Quick Stats Summary - Vintage Tickets */}
         <section className="py-24 md:py-30 relative z-20">
-          <div className="max-w-[1400px] mx-auto px-4 flex flex-col lg:flex-row-reverse items-center justify-between">
+          <div className="max-w-[1400px] mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
 
-            <div className="w-full lg:w-[40%] relative">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="w-full lg:w-[40%] relative"
+            >
               {/* Subtle Background Typography */}
-              <div className="absolute -top-23 sm:-top-24 right-40 sm:-right-20  text-[10rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
+              <div className="absolute -top-23 sm:-top-24 -left-11 sm:-left-20 text-[10rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
                 Stats
               </div>
 
-              <h2 className="text-sm md:text-base font-sans font-semibold tracking-[0.3em] text-amber-500 uppercase mb-6 flex items-center gap-4 lg:justify-end">
-                <span className="w-12 h-[1px] bg-amber-500/50 block lg:hidden"></span>
+              <h2 className="text-sm md:text-base font-sans font-semibold tracking-[0.3em] text-amber-500 uppercase mb-6 flex items-center gap-4">
+                <span className="w-12 h-[1px] bg-amber-500/50 block"></span>
                 The Math
-                <span className="w-12 h-[1px] bg-amber-500/50 hidden lg:block"></span>
               </h2>
 
-              <h3 className="text-6xl md:text-7xl lg:text-[6rem] font-['Caveat'] text-white/90 leading-tight mb-6 text-left lg:text-right tracking-wide drop-shadow-md">
+              <h3 className="text-6xl md:text-7xl lg:text-[6rem] font-['Caveat'] text-white/90 leading-tight mb-6 tracking-wide drop-shadow-md">
                 By The <span className="text-amber-500/90">Numbers</span>
               </h3>
 
-              <p className="text-lg text-white/50 font-sans leading-relaxed max-w-md ml-auto text-left lg:text-right">
+              <p className="text-lg text-white/50 font-sans leading-relaxed max-w-md">
                 A quick look back at the quantifiable moments of our journey together. Behind every number is a story.
               </p>
-            </div>
+            </motion.div>
 
-            {/* Left Scattered Tickets */}
-            <div className="w-full lg:w-[60%] relative min-h-[400px] flex items-center justify-center">
+            {/* Right Scattered Tickets */}
+            <div className="w-full lg:w-[60%] relative min-h-[400px] flex items-center justify-center lg:justify-end">
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-500/10 via-amber-500/5 to-transparent pointer-events-none"></div>
 
               <DoodleHeart className="w-32 h-32 absolute -bottom-4 -left-4 lg:-left-12 opacity-30 -rotate-12 mix-blend-screen hidden lg:block" color="#F59E0B" />
@@ -523,7 +569,13 @@ const Prologue = () => {
             <div className="max-w-[1400px] mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
 
               {/* Left Text */}
-              <div className="w-full lg:w-[40%] relative">
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="w-full lg:w-[40%] relative"
+              >
                 {/* Subtle Background Typography */}
                 <div className="absolute -top-23 sm:-top-24 -left-11 sm:-left-20 text-[10rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
                   Cast
@@ -550,7 +602,7 @@ const Prologue = () => {
                     <span className="font-sans text-sm tracking-[0.2em] uppercase font-semibold">Meet Everyone</span>
                   </Link>
                 </div>
-              </div>
+              </motion.div>
 
               {/* Right Scattered Polaroids (Premium glass reflection) */}
               <div ref={castContainerRef} className="w-full lg:w-[60%] relative min-h-[500px] flex items-center justify-center lg:justify-end mt-6 lg:mt-0">
@@ -579,36 +631,41 @@ const Prologue = () => {
 
         {/* Countdown to Farewell */}
         <section className="py-6 md:py-30 relative z-20">
-          <div className="max-w-[1400px] mx-auto px-4 flex flex-col lg:flex-row-reverse items-center justify-between gap-12 lg:gap-24">
+          <div className="max-w-[1400px] mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
 
-            {/* Right Text */}
-            <div className="w-full lg:w-[40%] relative">
+            {/* Left Text */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="w-full lg:w-[40%] relative"
+            >
               {/* Subtle Background Typography */}
-              <div className="absolute -top-23 sm:-top-24 right-26 sm:-right-20 text-[10rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
+              <div className="absolute -top-23 sm:-top-24 -left-11 sm:-left-20 text-[10rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
                 Clock
               </div>
 
-              <h2 className="text-sm md:text-base font-sans font-semibold tracking-[0.3em] text-amber-500 uppercase mb-6 flex items-center gap-4 lg:justify-end">
-                <span className="w-12 h-[1px] bg-amber-500/50 block lg:hidden"></span>
+              <h2 className="text-sm md:text-base font-sans font-semibold tracking-[0.3em] text-amber-500 uppercase mb-6 flex items-center gap-4">
+                <span className="w-12 h-[1px] bg-amber-500/50 block"></span>
                 Until Farewell
-                <span className="w-12 h-[1px] bg-amber-500/50 hidden lg:block"></span>
               </h2>
 
-              <h3 className="text-6xl md:text-7xl lg:text-[6rem] font-['Caveat'] text-white/90 leading-tight mb-6 text-left lg:text-right tracking-wide drop-shadow-md">
+              <h3 className="text-6xl md:text-7xl lg:text-[6rem] font-['Caveat'] text-white/90 leading-tight mb-6 tracking-wide drop-shadow-md">
                 The Final <span className="text-amber-500/90">Countdown</span>
               </h3>
 
-              <p className="text-lg text-white/50 font-sans leading-relaxed max-w-md ml-auto text-left lg:text-right mb-8">
+              <p className="text-lg text-white/50 font-sans leading-relaxed max-w-md mb-8">
                 Time left until we throw our caps and say our goodbyes. Every second passing is a moment we won't get back.
               </p>
 
-              <p className="font-serif italic text-2xl text-amber-500/80 max-w-md ml-auto text-left lg:text-right font-light leading-relaxed">
-                "Don't cry because it's over, smile because it happened."
+              <p className="font-['Caveat'] italic text-2xl tracking-wide text-amber-500/80 max-w-xl font-light leading-relaxed">
+                "Don't cry because it's over, smile because it happened!"
               </p>
-            </div>
+            </motion.div>
 
-            {/* Left Timer */}
-            <div className="w-full lg:w-[60%] relative min-h-[400px] flex items-center justify-center lg:justify-start">
+            {/* Right Timer */}
+            <div className="w-full lg:w-[60%] relative min-h-[400px] flex items-center justify-center lg:justify-end">
               {/* Optimized Radial Gradient Glow */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-500/10 to-transparent pointer-events-none blur-xl"></div>
 
@@ -647,22 +704,30 @@ const Prologue = () => {
         <section className="py-24 md:py-30 relative z-20">
           <div className="max-w-[1400px] mx-auto px-4 text-center relative">
 
-            <div className="absolute -top-16 sm:-top-24 right-47 sm:right-113 text-[8rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
-              Notes
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative z-10"
+            >
+              <div className="absolute -top-16 sm:-top-24 right-13 sm:right-113 text-[8rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
+                Notes
+              </div>
 
-            <DoodleArrow className="w-20 h-20 absolute top-0 left-0 md:left-20 opacity-40 -rotate-[120deg] mix-blend-screen hidden md:block" color="#F59E0B" />
-            <h2 className="text-sm md:text-base font-sans font-semibold tracking-[0.3em] text-amber-500 uppercase mb-6 flex items-center justify-center gap-4">
-              <span className="w-12 h-[1px] bg-amber-500/50 block"></span>
-              From Our Highlights
-              <span className="w-12 h-[1px] bg-amber-500/50 block"></span>
-            </h2>
-            <h3 className="text-6xl md:text-7xl lg:text-[6rem] font-['Caveat'] text-white/90 leading-tight mb-6 tracking-wide drop-shadow-md">
-              Little Things We <span className="text-amber-500/90">Wrote</span>
-            </h3>
-            <p className="text-lg text-white/50 font-sans max-w-xl mx-auto mb-20">
-              Words that stayed when everything else moved on. A glimpse into the thoughts we shared.
-            </p>
+              <DoodleArrow className="w-20 h-20 absolute top-0 left-0 md:left-20 opacity-40 -rotate-[120deg] mix-blend-screen hidden md:block" color="#F59E0B" />
+              <h2 className="text-sm md:text-base font-sans font-semibold tracking-[0.3em] text-amber-500 uppercase mb-6 flex items-center justify-center gap-4">
+                <span className="w-12 h-[1px] bg-amber-500/50 block"></span>
+                From Our Highlights
+                <span className="w-12 h-[1px] bg-amber-500/50 block"></span>
+              </h2>
+              <h3 className="text-6xl md:text-7xl lg:text-[6rem] font-['Caveat'] text-white/90 leading-tight mb-6 tracking-wide drop-shadow-md">
+                Little Things We <span className="text-amber-500/90">Wrote</span>
+              </h3>
+              <p className="text-lg text-white/50 font-sans max-w-xl mx-auto mb-20">
+                Words that stayed when everything else moved on. A glimpse into the thoughts we shared.
+              </p>
+            </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-8 max-w-6xl mx-auto mt-16 pb-16 px-6 overflow-visible">
               {recentMemories.map((post, idx) => (
