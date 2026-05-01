@@ -409,7 +409,7 @@ const LastPages = () => {
                </motion.div>
             </motion.div>
             
-              <div className="flex justify-between items-center w-full pt-12">
+              <div className="flex justify-between items-center -mt-2 sm:mt-0 w-full pt-12">
                 <ChapterNav direction="prev" chapterName="Our Notes" path="/our-notes" />
                 <ChapterNav direction="next" chapterName="Prologue" path="/" labelOverride="Return to" />
               </div>

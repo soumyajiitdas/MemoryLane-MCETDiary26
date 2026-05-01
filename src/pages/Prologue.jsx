@@ -300,7 +300,7 @@ const InteractiveCastCard = ({ person, idx, containerRef, updateZIndex, currentZ
 // Letter To Batch
 const LetterToBatch = () => {
   return (
-    <section className="py-24 md:py-40 relative z-10 px-4 max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 lg:gap-24">
+    <section className="py-26 md:py-40 relative z-10 px-4 max-w-[1400px] mx-auto flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12 lg:gap-24">
 
       {/* Left Side: Elegant Editorial Decor */}
       <div className="w-full lg:w-[45%] pt-10 lg:pt-20 relative">
@@ -493,13 +493,13 @@ const Prologue = () => {
               {/* Golden highlight line on edges */}
               <div className="absolute top-0 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500/10 to-transparent z-10"></div>
               <div className="absolute bottom-0 w-full h-[1px] bg-gradient-to-r from-transparent via-amber-500/10 to-transparent z-10"></div>
-              <DoodleHeart className="w-8 h-8 left-120 opacity-80 mix-blend-screen text-amber-500 -rotate-15" color="#640505ff hidden sm:inline" />
-              <DoodleHeart className="w-8 h-8 right-120 opacity-80 mix-blend-screen text-amber-500 rotate-15" color="#640505ff hidden sm:inline" />
+              <DoodleHeart className="w-8 h-8 left-100 opacity-80 mix-blend-screen text-amber-500 -rotate-15 hidden sm:inline" color="#640505ff" />
+              <DoodleHeart className="w-8 h-8 right-100 opacity-80 mix-blend-screen text-amber-500 rotate-15 hidden sm:inline" color="#640505ff " />
               {/* Quote Text */}
               <div className="relative z-10 max-w-4xl px-6 text-center flex flex-col items-center gap-4">
 
-                <p className="font-['Caveat'] text-md sm:text-2xl text-amber-500/60 tracking-wide leading-relaxed tracking-wider">
-                  Not much time, yet enough to leave something permanent...
+                <p className="font-['Caveat'] text-2xl sm:text-3xl text-amber-500/60 tracking-wide leading-relaxed tracking-wider">
+                  Not much time, yet enough to leave something permanent... <span className='inline sm:hidden'>:)</span>
                 </p>
               </div>
             </div>

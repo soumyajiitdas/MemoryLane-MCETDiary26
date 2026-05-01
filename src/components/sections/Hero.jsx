@@ -194,7 +194,7 @@ const Hero = () => {
         </motion.div>
 
         {/* Right Column: Perfect 4-Spot Grid for Polaroids */}
-        <div className="lg:col-span-7 h-[600px] lg:h-[800px] w-full mt-12 lg:mt-0 pointer-events-auto flex items-center justify-center">
+        <div className="lg:col-span-7 h-[600px] lg:h-[800px] w-full mt-6 mb-8 sm:mb-4 lg:mt-0 pointer-events-auto flex items-center justify-center">
           {/* Using a 2x2 grid ensures they have 4 perfectly separated spots */}
           <div className="grid grid-cols-2 grid-rows-2 gap-4 w-full h-full max-w-[600px] max-h-[700px] py-10">
             {polaroids.map(p => (
