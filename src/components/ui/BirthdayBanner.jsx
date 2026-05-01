@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLocation } from 'react-router-dom';
 import { X, Gift } from 'lucide-react';
 import { peopleData } from '../../data/cast';
 import ReactConfetti from 'react-confetti';
 
 const BirthdayBanner = () => {
+  const location = useLocation();
   const [isVisible, setIsVisible] = useState(true);
   const [birthdayNames, setBirthdayNames] = useState([]);
   const [windowDimensions, setWindowDimensions] = useState({ width: 0, height: 0 });
@@ -32,6 +34,7 @@ const BirthdayBanner = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  if (location.pathname !== '/') return null;
   if (birthdayNames.length === 0) return null;
 
   const namesString = birthdayNames.length === 1 
@@ -61,25 +64,23 @@ const BirthdayBanner = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -100, opacity: 0, transition: { duration: 0.2 } }}
             transition={{ type: "spring", stiffness: 150, damping: 15 }}
-            className="relative w-full z-[100]"
+            className="fixed top-0 left-0 w-full h-20 z-[100] flex items-center bg-[url('/textures/aged-paper.png')] bg-[#FEB05D]/90 border-b-2 border-amber-900/20 overflow-hidden"
           >
-            {/* Main sticky banner */}
-            <div className="px-4 py-3 bg-[url('/textures/aged-paper.png')] bg-[#FEB05D]/90 shadow-xl border-b-2 border-amber-900/20 overflow-hidden relative">
-              <div className="max-w-7xl mx-auto flex items-center justify-between relative z-10">
-                <div className="flex items-center space-x-3 w-full justify-center">
-                  <Gift className="text-amber-800 animate-bounce" size={24} strokeWidth={2} />
-                  <p className="text-amber-950 font-['Caveat'] text-xl md:text-2xl text-center">
-                    Happy Birthday <span className="font-bold border-b-2 border-amber-800/40 pb-0.5 mx-1">{namesString}</span>! Wishing you endless success and happiness...🎂
-                  </p>
-                </div>
-                <button 
-                  onClick={() => setIsVisible(false)}
-                  className="text-amber-900/60 hover:text-amber-900 transition-colors rounded-full hover:bg-amber-900/10 p-1.5 flex-shrink-0"
-                  aria-label="Close banner"
-                >
-                  <X size={20} strokeWidth={2.5} />
-                </button>
+            {/* Main banner content */}
+            <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between relative z-10">
+              <div className="flex items-center space-x-3 w-full justify-center">
+                <Gift className="text-amber-800 animate-bounce" size={26} strokeWidth={2} />
+                <p className="text-amber-950 font-['Caveat'] text-xl md:text-3xl text-center">
+                  Happy Birthday <span className="font-bold border-b-2 border-amber-800/40 pb-0.5 mx-1">{namesString}</span>! May your journey ahead be steady, meaningful...🎂
+                </p>
               </div>
+              <button 
+                onClick={() => setIsVisible(false)}
+                className="text-amber-900/60 hover:text-amber-900 transition-colors rounded-full hover:bg-amber-900/10 p-1.5 flex-shrink-0"
+                aria-label="Close banner"
+              >
+                <X size={20} strokeWidth={2.5} />
+              </button>
             </div>
           </motion.div>
         </>

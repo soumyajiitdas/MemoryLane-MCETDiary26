@@ -54,7 +54,7 @@ const LazyImage = ({ src, alt, onClick, caption, year, album, priority = false }
 };
 
 // ─── GalleryGrid ─────────────────────────────────────────────────────────────
-const PAGE_SIZE = 9; // images per page
+const PAGE_SIZE = 12; // images per page
 
 const GalleryGrid = ({ images, onImageClick }) => {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);

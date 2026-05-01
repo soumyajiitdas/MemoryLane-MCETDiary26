@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import { Menu, Play, Pause, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePlayer } from '../../context/PlayerContext';
@@ -117,32 +117,32 @@ const NavMiniPlayer = ({ showDisc = true }) => {
             whiteSpace: 'nowrap',
           }}
         >
-      {/* Vinyl disc — desktop only */}
-      {showDisc && <MiniVinyl isPlaying={isPlaying} isResetting={isResetting} size={26} />}
+          {/* Vinyl disc — desktop only */}
+          {showDisc && <MiniVinyl isPlaying={isPlaying} isResetting={isResetting} size={26} />}
 
-      {/* Scrolling track name */}
-      <MarqueeText
-        text={currentTrack.title}
-        className="text-amber-300/80 text-xs font-['Playfair_Display'] min-w-0"
-      />
+          {/* Scrolling track name */}
+          <MarqueeText
+            text={currentTrack.title}
+            className="text-amber-300/80 text-xs font-['Playfair_Display'] min-w-0"
+          />
 
-      {/* Play / Pause */}
-      <button
-        onClick={() => playTrack(activeTrack)}
-        className="text-amber-400/80 hover:text-amber-200 transition-colors text-[10px] leading-none flex-shrink-0"
-        aria-label={isPlaying ? 'Pause' : 'Play'}
-      >
-        {isPlaying ? <Pause className='w-4 h-4' /> : <Play className='w-4 h-4' />}
-      </button>
+          {/* Play / Pause */}
+          <button
+            onClick={() => playTrack(activeTrack)}
+            className="text-amber-400/80 hover:text-amber-200 transition-colors text-[10px] leading-none flex-shrink-0"
+            aria-label={isPlaying ? 'Pause' : 'Play'}
+          >
+            {isPlaying ? <Pause className='w-4 h-4' /> : <Play className='w-4 h-4' />}
+          </button>
 
-      {/* Stop */}
-      <button
-        onClick={stop}
-        className="text-amber-600/70 hover:text-amber-400 transition-colors text-xs leading-none flex-shrink-0"
-        aria-label="Stop"
-      >
-        <X className='w-4 h-4' />
-      </button>
+          {/* Stop */}
+          <button
+            onClick={stop}
+            className="text-amber-600/70 hover:text-amber-400 transition-colors text-xs leading-none flex-shrink-0"
+            aria-label="Stop"
+          >
+            <X className='w-4 h-4' />
+          </button>
         </motion.div>
       )}
     </AnimatePresence>
@@ -176,11 +176,11 @@ const Navbar = () => {
         }`}
       style={{ borderBottom: 'none' }}
     >
-      {/* Dynamic Background (Gradient + Stardust) */}
+      {/* Dynamic Background (Gradient + Paper Grain) */}
       <div
         className="absolute inset-0 pointer-events-none z-[-2]"
         style={{
-          background: 'linear-gradient(to bottom, rgba(20, 15, 9, 0.95) 0%, rgba(17, 13, 8, 0.99) 100%)',
+          background: 'linear-gradient(to bottom, rgba(10, 10, 10, 0.95) 0%, rgba(5, 5, 5, 0.99) 100%)',
           backdropFilter: 'blur(8px)',
           WebkitBackdropFilter: 'blur(12px)'
         }}
@@ -188,23 +188,23 @@ const Navbar = () => {
         <div
           className="absolute inset-0 w-full h-full mix-blend-overlay"
           style={{
-            opacity: 0.12,
-            backgroundImage: "url('/textures/stardust.png')"
+            opacity: 0.15,
+            backgroundImage: "url('/textures/paper-grain.png')"
           }}
         />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex items-center justify-between h-16 gap-2 overflow-hidden">
+        <div className="flex items-center justify-between h-20 gap-2 overflow-hidden">
 
-          {/* Logo — shimmer on hover */}
+          {/* Logo — match hero vibe */}
           <div className="flex-shrink-0">
             <NavLink
               to="/"
-              className="group text-2xl font-serif font-bold whitespace-nowrap relative inline-block"
+              className="group flex items-baseline whitespace-nowrap relative"
             >
-
-              <span className="font-['Caveat']">MCET </span><span className='text-gradient'><span className="font-['Caveat']">Batch</span>'26</span>
+              <span className="font-serif text-white/90 text-2xl tracking-tighter drop-shadow-md mr-1.5">MCET</span>
+              <span className="font-['Caveat'] text-gradient-animate text-3xl leading-none drop-shadow-lg -rotate-2">Batch '26</span>
 
               {/* logo glow on hover */}
               <span
@@ -214,31 +214,29 @@ const Navbar = () => {
             </NavLink>
           </div>
 
-          {/* Desktop nav links — staggered entrance */}
-          <div className="hidden md:flex items-baseline font-serif space-x-1 text-sm font-medium flex-1 justify-center">
+          {/* Desktop nav links — premium tracking uppercase */}
+          <div className="hidden md:flex items-center space-x-6 flex-1 justify-center">
             {navLinks.map((link, i) => (
               <NavLink
                 key={link.name}
                 to={link.path}
                 style={{ animationDelay: `${i * 0.07}s`, animationFillMode: 'backwards' }}
                 className={({ isActive }) =>
-                  `relative px-3 py-2 rounded-md transition-all duration-200 whitespace-nowrap group ${isActive
-                    ? 'text-amber-400'
-                    : 'text-[var(--color-text-muted)] hover:text-amber-100'
+                  `relative px-1 py-2 transition-all duration-300 whitespace-nowrap group font-sans text-xs uppercase tracking-[0.2em] font-semibold ${isActive
+                    ? 'text-amber-500'
+                    : 'text-white/50 hover:text-white'
                   }`
                 }
               >
                 {({ isActive }) => (
                   <>
                     <span className="relative z-10">{link.name}</span>
-                    {/* hover bg */}
-                    <span className="absolute inset-0 rounded-md bg-amber-500/0 group-hover:bg-amber-500/8 transition-colors duration-200" />
                     {/* active amber underline indicator */}
                     {isActive && (
                       <motion.span
                         layoutId="nav-active-dot"
-                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-amber-400"
-                        style={{ boxShadow: '0 0 6px rgba(245,158,11,0.8)' }}
+                        className="absolute -bottom-1 left-0 right-0 h-[1px] bg-amber-500"
+                        style={{ boxShadow: '0 0 8px rgba(245,158,11,0.8)' }}
                         transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                       />
                     )}
@@ -289,26 +287,25 @@ const Navbar = () => {
         <div
           className="absolute inset-0 w-full h-full pointer-events-none mix-blend-overlay"
           style={{
-            opacity: 0.12,
-            backgroundImage: "url('/textures/stardust.png')"
+            opacity: 0.15,
+            backgroundImage: "url('/textures/paper-grain.png')"
           }}
         />
-        <div className="px-3 pt-2 pb-4 space-y-0.5 font-serif relative z-10">
+        <div className="px-4 pt-4 pb-6 space-y-1 relative z-10 flex flex-col items-center">
           {navLinks.map((link, i) => (
             <NavLink
               key={link.name}
               to={link.path}
               onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
-                `flex items-center gap-2 px-4 py-2.5 rounded-lg text-base font-medium transition-all duration-150 ${isActive
-                  ? 'text-amber-400 bg-amber-500/10'
-                  : 'text-[var(--color-text-muted)] hover:text-white hover:bg-white/5'
+                `flex items-center justify-center w-full px-4 py-3 rounded-md font-sans text-xs uppercase tracking-[0.25em] font-semibold transition-all duration-150 ${isActive
+                  ? 'text-amber-500 bg-white/5'
+                  : 'text-white/50 hover:text-white hover:bg-white/5'
                 }`
               }
             >
               {({ isActive }) => (
                 <>
-                  {isActive && <span className="w-1.5 h-1.5 rounded-full bg-amber-400 flex-shrink-0" style={{ boxShadow: '0 0 4px rgba(245,158,11,0.8)' }} />}
                   {link.name}
                 </>
               )}
@@ -318,10 +315,10 @@ const Navbar = () => {
       </motion.div>
 
       {/* Torn paper edge hanging downward from the navbar */}
-      <PaperTear 
-        color="rgba(17, 13, 8, 0.99)" 
-        flip={true} 
-        strokeColor="rgba(245,158,11,0.35)"
+      <PaperTear
+        color="rgba(5, 5, 5, 0.99)"
+        flip={true}
+        strokeColor="rgba(255,255,255,0.05)"
         height="12px"
         dense={!isMobile}
         className="z-[-1]"
