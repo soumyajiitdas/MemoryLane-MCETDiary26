@@ -130,7 +130,7 @@ const BatchSoundtrack = () => {
           transition={{ duration: 0.7, ease: 'easeOut' }}
           className="text-center mb-16"
         >
-          <p className="text-amber-500/60 font-['Caveat'] tracking-[0.10em] text-2xl mb-3">
+          <p className="text-amber-500/60 font-['Caveat'] text-2xl sm:text-3xl mb-3">
             If our time had a playlist, this would be it...
           </p>
         </motion.div>
@@ -285,7 +285,7 @@ const BatchSoundtrack = () => {
             {/* Track list */}
             <div
               className="py-2 px-2 overflow-y-auto"
-              style={{ maxHeight: '280px', scrollbarWidth: 'thin', scrollbarColor: 'rgba(200,140,50,0.25) transparent' }}
+              style={{ maxHeight: '240px', scrollbarWidth: 'thin', scrollbarColor: 'rgba(200,140,50,0.25) transparent' }}
             >
               {TRACKLIST.map((t, i) => (
                 <TrackRow
@@ -302,8 +302,8 @@ const BatchSoundtrack = () => {
 
             {/* Footer */}
             <div className="px-5 py-3 text-center border-t" style={{ borderColor: 'rgba(200,140,50,0.08)' }}>
-              <p className="font-['Caveat'] text-amber-500/50 text-md italic">
-                " Every song a memory, every memory a song. "
+              <p className="font-['Caveat'] tracking-wide text-amber-500/50 text-md">
+                "Every song a memory, every memory a song."
               </p>
             </div>
           </div>

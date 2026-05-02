@@ -353,7 +353,7 @@ const LetterToBatch = () => {
 
           {/* Main Letter Box */}
           <div
-            className="relative bg-[#FDFBF7] p-10 md:p-16 lg:p-20 shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-[#E5DFD3]"
+            className="relative bg-[#FDFBF7] p-10 md:p-14 lg:p-18 shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-[#E5DFD3]"
             style={{
               backgroundImage: "url('/textures/rice-paper.png')",
             }}
@@ -362,7 +362,7 @@ const LetterToBatch = () => {
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-white/70 rotate-1 z-20 border border-white/20 shadow-[0_2px_10px_rgba(0,0,0,0.05)]"></div>
 
             {/* Subtle Ruled Lines */}
-            <div className="absolute inset-0 opacity-[0.15] pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(transparent, transparent 31px, #7A8B99 31px, #7A8B99 32px)', backgroundSize: '100% 32px' }} />
+            <div className="absolute inset-0 opacity-[0.2] pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(transparent, transparent 27px, #4A90E2 27px, #4A90E2 28px)', backgroundSize: '100% 32px' }} />
 
             {/* Premium Wax Seal */}
             <motion.div
@@ -386,34 +386,42 @@ const LetterToBatch = () => {
 
             {/* Letter Content */}
             <div className="relative z-10 text-[#3A332A]" data-photo="true">
-              <h2 className="font-['Caveat'] text-4xl md:text-5xl text-[#8B2323] mb-8 font-bold transform -rotate-1">
+              <h2 className="font-['Caveat'] text-4xl md:text-5xl text-[#8B2323] mb-8 mt-2 sm:mt-0 font-bold transform -rotate-1">
                 Dearest Batch of 2026,
               </h2>
-
-              <div className="space-y-6 font-['Caveat'] text-[22px] md:text-[28px] leading-[32px] md:leading-[32px] text-gray-800/90">
-                <p>
-                  <span className="text-5xl md:text-6xl float-left mr-3 leading-[0.8] text-[#8B2323] font-serif mt-1">I</span>
-                  t feels unreal how something that began with unfamiliar faces and hesitant conversations has become a place that feels like home.
-                </p>
-
-                <div className="py-6 my-8 border-y border-[#8B2323]/20 bg-[#8B2323]/[0.02] -mx-4 px-4 md:-mx-8 md:px-8 transform -rotate-[0.5deg]">
-                  <p className="text-[#8B2323] text-center font-bold text-[26px] md:text-[32px] leading-tight">
-                    "What changes with every moment becomes truly beautiful."
+              {/* Scrollable letter body with fade hint */}
+              <div className="relative">
+                <div
+                  className="space-y-6 font-['Caveat'] text-[20px] md:text-[26px] leading-[32px] md:leading-[32px] text-gray-800/90 overflow-y-auto pr-2 styling-scrollbar"
+                  style={{ maxHeight: '500px' }}
+                >
+                  <p>
+                    <span className="text-5xl md:text-6xl float-left mr-3 leading-[0.8] text-[#8B2323] font-serif mt-1">W</span>
+                    e arrived as strangers, trading the familiar safety of school for the daunting uncertainty of these corridors. We were dreamers stepping into a world that felt entirely too big, chasing shadows of who we thought we were supposed to be. Looking back, those first steps were the loudest, echoing with the dreams of kids who had no idea how much they were about to change.
                   </p>
+
+                  <div className="py-6 my-8 border-y border-[#8B2323]/20 bg-[#8B2323]/[0.02] -mx-4 px-4 md:-mx-8 md:px-8 transform -rotate-[0.5deg]">
+                    <p className="text-[#8B2323] text-center font-bold text-[22px] md:text-[28px] leading-tight">
+                      "The beauty of a journey is found in the footprints we leave behind, not the distance we cover..."
+                    </p>
+                  </div>
+
+                  <p>
+                    If these years taught us anything, it's that time is the only currency we can't earn back. We learned that friendship isn't about being inseparable, but about being able to separate and knowing that nothing will change. Some of us will drift, and that is life’s natural rhythm; but the ink of these days is permanent.
+                  </p>
+
+                  <p>
+                    As we scatter into the unknown, carry these days not as a heavy anchor, but as a sail. No matter where life takes us or how many miles lie between us, we will always be the keepers of this shared story. Let us remain this way-kind, brave, and connected - carrying the spirit of these days into every new chapter we write. 
+                  </p>
+
+                  <p>We may leave as individuals, but we’ll always be this batch - this family. We were here, we were together, and we’ll always be 'us'... <span className='text-[#8B2323] font-bold'>:)</span> </p>
+                  
                 </div>
-
-                <p>
-                  Maybe that's what we were—ever-changing, fleeting, yet deeply unforgettable. As we prepare to step onto different paths, it's okay to acknowledge that some of us may drift. Some friendships are meant to be a beautiful chapter rather than the whole book...
-                </p>
-
-                <p>
-                  We didn’t just spend these years… we lived them. No matter where the road leads, these days will always be a part of us.
-                </p>
               </div>
 
               {/* Signature */}
-              <div className="mt-12 text-right">
-                <span className="font-['Caveat'] text-3xl md:text-4xl font-bold text-[#8B2323] inline-block transform -rotate-2">
+              <div className="mt-10 text-right">
+                <span className="font-['Caveat'] text-2xl md:text-3xl font-bold text-[#8B2323] inline-block transform -rotate-2">
                   — The Memories We Made
                 </span>
               </div>
@@ -499,7 +507,7 @@ const Prologue = () => {
               <div className="relative z-10 max-w-4xl px-6 text-center flex flex-col items-center gap-4">
 
                 <p className="font-['Caveat'] text-2xl sm:text-3xl text-amber-500/60 tracking-wide leading-relaxed tracking-wider">
-                  Not much time, yet enough to leave something permanent... <span className='inline sm:hidden'>:)</span>
+                  Not much time, yet enough to leave something permanent...
                 </p>
               </div>
             </div>

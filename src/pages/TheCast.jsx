@@ -273,7 +273,7 @@ const CastDossier = ({ person, onClose }) => {
                         <div style={{ position: 'absolute', inset: 0, opacity: 0.06, backgroundImage: 'repeating-linear-gradient(45deg,#000 0,#000 1px,transparent 0,transparent 50%)', backgroundSize: '4px 4px' }} />
                         <p style={{ fontFamily: '"Courier New",monospace', fontSize: 8, fontWeight: 700, color: 'rgba(255,230,210,0.75)', letterSpacing: '0.35em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 6, borderBottom: '1px solid rgba(255,255,255,0.15)', paddingBottom: 5 }}>A.K.A.</p>
                         <p style={{ fontFamily: 'Caveat,cursive', fontSize: isMobile ? 20 : 32, fontWeight: 700, color: '#fdf5e8', textAlign: 'center', lineHeight: 1.05, textShadow: '0 0 8px rgba(255,150,100,0.4)', margin: 0, wordBreak: 'break-word' }}>{person.nickname}</p>
-                        <p style={{ fontFamily: '"Courier New",monospace', fontSize: 7, color: 'rgba(255,220,180,0.45)', textAlign: 'center', marginTop: 6, letterSpacing: '0.2em' }}>✦ EST. MCET ✦</p>
+                        <p style={{ fontFamily: '"Courier New",monospace', fontSize: 7, color: 'rgba(255,220,180,0.45)', textAlign: 'center', marginTop: 6, letterSpacing: '0.2em' }}>✦ JNL. 2026 ✦</p>
                       </div>
                       <div style={{ position: 'absolute', top: -3, left: -3, width: 10, height: 10, border: '2px solid rgba(140,15,15,0.5)', borderRadius: '50%' }} />
                       <div style={{ position: 'absolute', top: -3, right: -3, width: 10, height: 10, border: '2px solid rgba(140,15,15,0.5)', borderRadius: '50%' }} />
