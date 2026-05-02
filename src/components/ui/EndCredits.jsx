@@ -211,9 +211,24 @@ const DoodleLayer = () => (
 );
 
 
+// ── Fisher-Yates shuffle helper ────────────────────────────────────────────────
+function shuffleArray(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 // ── Film strip ─────────────────────────────────────────────────────────────────
 const FilmStrip = ({ isPaused }) => {
-  const frames = [...galleryData, ...galleryData];
+  // Shuffle once per mount so every credits play shows a different order;
+  // duplicate for seamless infinite loop
+  const frames = React.useMemo(() => {
+    const shuffled = shuffleArray(galleryData);
+    return [...shuffled, ...shuffled];
+  }, []);
   const filmRef = useRef(null);
 
   useEffect(() => {
@@ -263,10 +278,10 @@ const FilmStrip = ({ isPaused }) => {
                 background: 'linear-gradient(to top, rgba(8, 5, 0, 0.92) 0%, transparent 100%)',
                 padding: '18px 8px 6px',
               }}>
-                <p style={{ fontFamily: MONO, fontSize: '1rem', color: 'rgba(220,160,20,0.9)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                <p style={{ fontFamily: MONO, fontSize: '0.8rem', color: 'rgba(220,160,20,0.9)', margin: 0, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
                   {photo.caption}
                 </p>
-                <p style={{ fontFamily: MONO, fontSize: '0.9rem', color: 'rgba(200,140,20,0.45)', margin: '2px 0 0', letterSpacing: '0.2em' }}>
+                <p style={{ fontFamily: MONO, fontSize: '0.7rem', color: 'rgba(200,140,20,0.45)', margin: '2px 0 0', letterSpacing: '0.2em' }}>
                   {String((i % galleryData.length) + 1).padStart(2, '0')} / {galleryData.length} ▲ {photo.year}
                 </p>
               </div>

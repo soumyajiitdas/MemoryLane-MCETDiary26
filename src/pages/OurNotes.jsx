@@ -42,12 +42,16 @@ const PremiumStickyNote = ({ post, index }) => {
           {/* Ruled Lines */}
           <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(transparent, transparent 27px, #4A90E2 27px, #4A90E2 28px)', backgroundSize: '100% 28px' }} />
 
+          {/* Red vertical margin line for classical notebook effect */}
+          <div className="absolute left-[28px] top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
+          <div className="absolute left-[26px] top-0 bottom-0 w-[1px] bg-red-800/10 pointer-events-none"></div>
+
           {/* Doodles inside note */}
           {showHeart && <DoodleHeart className="absolute top-4 left-2 w-10 h-10 opacity-40 -rotate-[15deg] mix-blend-multiply" color="#8B2323" />}
           {showCrown && <DoodleCrown className="absolute top-2 right-2 w-10 h-10 rotate-12 opacity-40 mix-blend-multiply" color="#1e3a8a" />}
 
           {/* Content */}
-          <div className={`font-['Caveat'] ${textSize} leading-[28px] text-[#2c3e50] w-full mt-2 text-center styling-scrollbar relative z-10`} style={contentStyle} data-photo="true">
+          <div className={`font-['Caveat'] ${textSize} leading-[28px] text-[#2c3e50] w-full mt-2 text-center opacity-95 styling-scrollbar relative z-10`} style={contentStyle} data-photo="true">
             "{post.content}"
           </div>
 
@@ -68,13 +72,13 @@ const PremiumStickyNote = ({ post, index }) => {
 
           {/* Footer Info */}
           <div className="mt-8 w-full flex justify-between items-end border-t border-black/5 pt-4 relative z-10">
-            <span className="font-['Caveat'] text-2xl font-bold text-[#1e3a8a]">{post.author}</span>
+            <span className="font-['Caveat'] text-2xl font-bold text-[#1e3a8a] opacity-90">{post.author}</span>
             <span className="text-[10px] text-[#8b95a5] font-sans tracking-[0.15em] uppercase font-semibold">{new Date(post.timestamp).toLocaleDateString()}</span>
           </div>
 
           {/* Vintage Round Stamp */}
           <div
-            className="absolute bottom-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/50 rounded-full flex items-center justify-center rotate-[-15deg] z-30 opacity-50 shadow-sm pointer-events-none"
+            className="absolute bottom-3 right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/50 rounded-full flex items-center justify-center rotate-[-15deg] z-30 opacity-40 shadow-sm pointer-events-none"
           >
             <div className="border-[1.5px] border-dashed border-red-800/50 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
               <span className="text-[10px] font-bold text-red-800/70 uppercase tracking-tighter block mt-0.5">

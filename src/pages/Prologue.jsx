@@ -176,6 +176,10 @@ const StickyNoteMini = ({ post, index }) => {
           <div className="push-pin -top-3" />
 
           <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(transparent, transparent 27px, #4A90E2 27px, #4A90E2 28px)', backgroundSize: '100% 28px' }} />
+          
+          {/* Red vertical margin line for classical notebook effect */}
+          <div className="absolute left-[28px] top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
+          <div className="absolute left-[26px] top-0 bottom-0 w-[1px] bg-red-800/10 pointer-events-none"></div>
 
           {/* Text — blurred by default on desktop, clear on hover */}
           <div
@@ -280,7 +284,7 @@ const InteractiveCastCard = ({ person, idx, containerRef, updateZIndex, currentZ
 
           {/* Oneliner - Filling the space */}
           <div className="flex-1 relative z-10 w-full pt-1 overflow-hidden" data-photo="true">
-            <p className="text-[#2c3e50] font-['Caveat'] text-lg md:text-xl leading-[28px] pointer-events-none text-left">
+            <p className="text-[#2c3e50] font-['Caveat'] text-lg md:text-md leading-[28px] pointer-events-none text-left">
               "{person.oneliner || 'A familiar face from those moments that still linger.'}"
             </p>
           </div>
@@ -353,16 +357,21 @@ const LetterToBatch = () => {
 
           {/* Main Letter Box */}
           <div
-            className="relative bg-[#FDFBF7] p-10 md:p-14 lg:p-18 shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-[#E5DFD3]"
+            className="relative bg-[#FDFBF7] p-10 md:p-14 shadow-[0_20px_60px_rgba(0,0,0,0.15)] border border-[#E5DFD3]"
             style={{
               backgroundImage: "url('/textures/rice-paper.png')",
             }}
           >
             {/* Elegant Tape (Optimized without blur) */}
-            <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-white/70 rotate-1 z-20 border border-white/20 shadow-[0_2px_10px_rgba(0,0,0,0.05)]"></div>
+            <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-white/60 rotate-1 z-20 border border-white/20 shadow-[0_2px_10px_rgba(0,0,0,0.05)]"></div>
+            {/* Pin */}
+            <div className="push-pin -top-3" />
 
             {/* Subtle Ruled Lines */}
             <div className="absolute inset-0 opacity-[0.2] pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(transparent, transparent 27px, #4A90E2 27px, #4A90E2 28px)', backgroundSize: '100% 32px' }} />
+            {/* Red vertical margin line for classical notebook effect */}
+            <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
+            <div className="absolute left-[34px] top-0 bottom-0 w-[1px] bg-red-800/10 pointer-events-none"></div>
 
             {/* Premium Wax Seal */}
             <motion.div
@@ -385,14 +394,14 @@ const LetterToBatch = () => {
             </motion.div>
 
             {/* Letter Content */}
-            <div className="relative z-10 text-[#3A332A]" data-photo="true">
-              <h2 className="font-['Caveat'] text-4xl md:text-5xl text-[#8B2323] mb-8 mt-2 sm:mt-0 font-bold transform -rotate-1">
+            <div className="relative z-10 text-[#3A332A] opacity-95" data-photo="true">
+              <h2 className="font-['Caveat'] text-4xl md:text-5xl text-[#8B2323] mb-11 mt-2 font-bold underline decoration-wavy decoration-[0.1rem] sm:decoration-[0.18rem] underline-offset-10 transform -rotate-1">
                 Dearest Batch of 2026,
               </h2>
-              {/* Scrollable letter body with fade hint */}
+              {/* Scrollable letter body*/}
               <div className="relative">
                 <div
-                  className="space-y-6 font-['Caveat'] text-[20px] md:text-[26px] leading-[32px] md:leading-[32px] text-gray-800/90 overflow-y-auto pr-2 styling-scrollbar"
+                  className="space-y-6 font-['Caveat'] text-[20px] md:text-[26px] leading-[30px] md:leading-[34px] text-gray-800/90 overflow-y-auto pr-2 styling-scrollbar"
                   style={{ maxHeight: '500px' }}
                 >
                   <p>
@@ -407,20 +416,20 @@ const LetterToBatch = () => {
                   </div>
 
                   <p>
-                    If these years taught us anything, it's that time is the only currency we can't earn back. We learned that friendship isn't about being inseparable, but about being able to separate and knowing that nothing will change. Some of us will drift, and that is life’s natural rhythm; but the ink of these days is permanent.
+                    If these years taught us anything, it's that time is the only currency we can't earn back. Somewhere between deadlines and detours, we learned that friendship isn’t measured by constant presence, but by quiet certainty - the kind that survives distance, silence, and change. Some of us will drift, and that is life’s natural rhythm; but the ink of these days can never be erased...
                   </p>
 
                   <p>
-                    As we scatter into the unknown, carry these days not as a heavy anchor, but as a sail. No matter where life takes us or how many miles lie between us, we will always be the keepers of this shared story. Let us remain this way-kind, brave, and connected - carrying the spirit of these days into every new chapter we write. 
+                    As we scatter into the unknown, carry these days not as a weight, but as a wind - let them move you forward. 'Cause no matter where life takes us or how many miles lie between us, we will always be the keepers of this shared story. Let us remain this way - kind, brave, and connected - carrying the spirit of these days into every new chapter we write.
                   </p>
 
-                  <p>We may leave as individuals, but we’ll always be this batch - this family. We were here, we were together, and we’ll always be 'us'... <span className='text-[#8B2323] font-bold'>:)</span> </p>
-                  
+                  <p>We may leave as individuals, but we’ll always be this batch - this family. We were here, we were together, and we’ll always be 'us'... <span className='text-[#8B2323] font-bold sm:hidden inline'>:)</span> </p>
+
                 </div>
               </div>
 
               {/* Signature */}
-              <div className="mt-10 text-right">
+              <div className="mt-6 text-right">
                 <span className="font-['Caveat'] text-2xl md:text-3xl font-bold text-[#8B2323] inline-block transform -rotate-2">
                   — The Memories We Made
                 </span>
@@ -524,7 +533,7 @@ const Prologue = () => {
         <section className="py-24 md:py-30 relative z-20">
           <div className="max-w-[1400px] mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -577,7 +586,7 @@ const Prologue = () => {
             <div className="max-w-[1400px] mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
 
               {/* Left Text */}
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -642,7 +651,7 @@ const Prologue = () => {
           <div className="max-w-[1400px] mx-auto px-4 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-24">
 
             {/* Left Text */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -712,7 +721,7 @@ const Prologue = () => {
         <section className="py-24 md:py-30 relative z-20">
           <div className="max-w-[1400px] mx-auto px-4 text-center relative">
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}

@@ -198,7 +198,7 @@ const Chapters = () => {
               <DoodleCrown className="w-20 h-20 absolute top-0 right-10 md:right-40 opacity-30 rotate-12 mix-blend-screen hidden md:block" color="#F59E0B" />
 
               <SectionHeading
-                title="The Chapters"
+                title="Chapters"
                 subtitle="The story we lived, not just remembered."
                 eyebrow="Four Year Stories"
               />

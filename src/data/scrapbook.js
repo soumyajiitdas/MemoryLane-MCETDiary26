@@ -44,5 +44,5 @@ export const galleryData = [
   { id: 41, src: "/images/scrapbook/41.jpg", caption: "East Sikkim '26. The winding roads were terrifying but totally worth it! ☃️", album: "Trips", year: "2026" },
   { id: 42, src: "/images/scrapbook/42.jpg", caption: "At 12,400 ft. - Tsongmo Lake, East Sikkim ❄️", album: "Trips", year: "2026" },
   { id: 43, src: "/images/scrapbook/43.webp", caption: "Moments from East Sikkim Trip: MG Marg, Gangtok.💸", album: "Trips", year: "2026" },
-  { id: 44, src: "/images/scrapbook/33.jpeg", caption: "Another fragment from the Darjeeling diaries...", album: "Trips", year: "2025" },
+  { id: 44, src: "/images/scrapbook/33.jpg", caption: "Another fragment from the Darjeeling diaries...", album: "Trips", year: "2025" },
 ];
