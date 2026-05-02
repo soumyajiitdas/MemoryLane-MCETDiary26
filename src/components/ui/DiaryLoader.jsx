@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const DiaryLoader = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-[60vh] gap-6">
+    <div className="flex flex-col items-center justify-center min-h-[80vh] gap-6">
       {/* Book Container */}
       <div className="relative w-24 h-16" style={{ perspective: '800px', transformStyle: 'preserve-3d' }}>
 

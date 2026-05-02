@@ -31,8 +31,6 @@ const COL = {
 
 // ── CSS injected globally ──────────────────────────────────────────────────────
 const GLOBAL_CSS = `
-  @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
-
   @keyframes credits-roll {
     from { transform: translateY(100vh); }
     to   { transform: translateY(-100%); }
@@ -471,7 +469,7 @@ const EndCredits = ({ isOpen, onClose }) => {
           wakeLockRef.current = await navigator.wakeLock.request('screen');
         }
       } catch (err) {
-        // Silently ignore failures (e.g. Low Power Mode)
+        // Silently ignore failures
       }
     };
 
@@ -511,7 +509,7 @@ const EndCredits = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen && !hasCheckedAutoPlay.current) {
       hasCheckedAutoPlay.current = true;
-      const t = setTimeout(() => { if (!isPlaying) { playTrack(0); setStartedByCredits(true); } }, 300);
+      const t = setTimeout(() => { if (!isPlaying) { playTrack(1); setStartedByCredits(true); } }, 300);  // Currently set track 1 (2nd one)
       return () => clearTimeout(t);
     }
     if (!isOpen) hasCheckedAutoPlay.current = false;
@@ -563,7 +561,7 @@ const EndCredits = ({ isOpen, onClose }) => {
         >
           <style>{GLOBAL_CSS}</style>
 
-          {/* Aged paper texture — separate layer, never flickered */}
+          {/* Aged paper texture */}
           <div style={{ position: 'absolute', inset: 0, backgroundImage: "url('/textures/aged-paper.png')", backgroundSize: '600px', opacity: 0.20, zIndex: 0, pointerEvents: 'none' }} />
 
           {/* Flicker overlay — only dims content, base stays solid */}
