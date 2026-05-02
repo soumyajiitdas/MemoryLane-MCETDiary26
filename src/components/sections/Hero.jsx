@@ -32,7 +32,7 @@ const InteractivePolaroid = ({ p, containerRef, updateZIndex }) => {
       dragElastic={0.1}
       onDragStart={() => updateZIndex(p.id)}
       initial={{ opacity: 0, scale: 0.8, rotate: p.rot - 20 }}
-      animate={{ opacity: 0.65, scale: 1, rotate: p.rot }}
+      animate={{ opacity: 0.7, scale: 1, rotate: p.rot }}
       transition={{ duration: 1, delay: p.delay, ease: 'easeOut' }}
       className="group cursor-grab active:cursor-grabbing"
       style={{

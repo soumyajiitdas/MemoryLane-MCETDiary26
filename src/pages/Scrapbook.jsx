@@ -7,7 +7,7 @@ import GalleryGrid from '../components/sections/ScrapbookGrid';
 import Lightbox from '../components/ui/Lightbox';
 import ChapterNav from '../components/ui/ChapterNav';
 import Fireflies from '../components/ui/Fireflies';
-import { DoodleSparkle, DoodleArrow, DoodleCrown } from '../components/ui/VintageDoodles';
+import { DoodleSparkle, DoodleArrow } from '../components/ui/VintageDoodles';
 import { galleryData } from '../data/scrapbook';
 
 const years = ["All", "1st Year", "2nd Year", "3rd Year", "4th Year"];
@@ -79,7 +79,7 @@ const Scrapbook = () => {
         </div>
 
         {/* Firefly Particles */}
-        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={30}/></div>
+        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={20}/></div>
 
         <div className="py-24 pb-30 relative z-20">
           <div className="max-w-[1400px] mx-auto px-4 relative z-10">
@@ -95,7 +95,7 @@ const Scrapbook = () => {
               <DoodleSparkle className="w-20 h-20 absolute top-10 right-10 md:right-40 opacity-30 mix-blend-screen hidden md:block" color="#F59E0B" />
               
               <SectionHeading
-                title="Our Scrapbook"
+                title="Scrapbook"
                 subtitle="Fragments of time we chose to keep."
                 eyebrow="Scattered Memories"
               />
