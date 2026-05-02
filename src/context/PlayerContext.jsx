@@ -4,17 +4,38 @@ import React, { createContext, useContext, useRef, useState, useEffect, useCallb
 export const TRACKLIST = [
   {
     track: '01',
-    title: "Yaariyaan",
-    feat: "Cocktail",
-    duration: "4:25 min",
-    src: '/music/Yaariyaan.mp3',
+    title: "End of Beginning",
+    feat: "DJO",
+    duration: "03:02 min",
+    src: '/music/end_of_beginning.mp3',
   },
   {
     track: '02',
-    title: "End of Beginning",
-    feat: "DJO",
-    duration: "3:00 min",
-    src: '/music/End_of_Beginning.m4a',
+    title: "Somewhere Only We Know",
+    feat: "Keane",
+    duration: "03:44 min",
+    src: '/music/somewhere_only_we_know.mp3',
+  },
+  {
+    track: '03',
+    title: "The Night We Met",
+    feat: "LH",
+    duration: "02:24 min",
+    src: '/music/the_night_we_met.mp3',
+  },
+  {
+    track: '04',
+    title: "Woh Din",
+    feat: "Arijit Singh",
+    duration: "03:50 min",
+    src: '/music/woh_din.mp3',
+  },
+  {
+    track: '05',
+    title: "Yaariyaan",
+    feat: "Blackmail",
+    duration: "04:20 min",
+    src: '/music/yaariyaan.mp3',
   },
 ];
 

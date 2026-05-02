@@ -220,7 +220,7 @@ const CastDossier = ({ person, onClose }) => {
                   <DraggableItem constraintsRef={constraintsRef} defaultLeft={pos.photo2.left} defaultTop={pos.photo2.top} initialRotate={7} delay={0.25}>
                     <div style={{ position: 'absolute', top: -8, left: '50%', transform: 'translateX(-50%) rotate(-2deg)', width: 55, height: 18, background: 'rgba(180,210,240,0.75)', backdropFilter: 'blur(2px)', zIndex: 30, clipPath: 'polygon(0 10%,3% 0%,6% 10%,9% 0%,12% 8%,15% 0%,100% 0%,100% 100%,0% 100%)' }} />
                     <div style={{ background: '#f5f0e0', padding: '8px 8px 28px', width: isMobile ? 160 : 200, boxShadow: '3px 6px 22px rgba(0,0,0,0.35)', clipPath: 'polygon(1% 0%,4% 1.5%,8% 0%,13% 1%,18% 0%,23% 1.5%,28% 0%,33% 1%,38% 0%,43% 1.5%,48% 0%,53% 1%,58% 0%,63% 1.5%,68% 0%,73% 1%,78% 0%,83% 1.5%,88% 0%,93% 1%,98% 0%,100% 0%,100% 100%,0% 100%)', filter: 'sepia(0.1)' }}>
-                      <div style={{ backgroundImage: (person.funnyPhoto?.startsWith('http') || person.funnyPhoto?.startsWith('/')) ? `url('${person.funnyPhoto}')` : person.funnyPhoto, backgroundSize: 'cover', backgroundPosition: 'center top', width: '100%', aspectRatio: '9/10', filter: 'sepia(0.1) contrast(1.04)' }} />
+                      <div style={{ backgroundImage: (person.funnyPhoto?.startsWith('http') || person.funnyPhoto?.startsWith('/')) ? `url('${person.funnyPhoto}')` : person.funnyPhoto, backgroundSize: 'cover', backgroundPosition: 'center top', width: '100%', aspectRatio: '9/10', filter: 'sepia(0.3) contrast(1.04)' }} />
                       <p style={{ fontFamily: 'Caveat,cursive', fontSize: 18, color: '#451a03', fontWeight: 700, textAlign: 'center', marginTop: 8, opacity: 0.8 }}>“Time well lived...”</p>
                     </div>
                   </DraggableItem>
@@ -273,7 +273,7 @@ const CastDossier = ({ person, onClose }) => {
                         <div style={{ position: 'absolute', inset: 0, opacity: 0.06, backgroundImage: 'repeating-linear-gradient(45deg,#000 0,#000 1px,transparent 0,transparent 50%)', backgroundSize: '4px 4px' }} />
                         <p style={{ fontFamily: '"Courier New",monospace', fontSize: 8, fontWeight: 700, color: 'rgba(255,230,210,0.75)', letterSpacing: '0.35em', textTransform: 'uppercase', textAlign: 'center', marginBottom: 6, borderBottom: '1px solid rgba(255,255,255,0.15)', paddingBottom: 5 }}>A.K.A.</p>
                         <p style={{ fontFamily: 'Caveat,cursive', fontSize: isMobile ? 20 : 32, fontWeight: 700, color: '#fdf5e8', textAlign: 'center', lineHeight: 1.05, textShadow: '0 0 8px rgba(255,150,100,0.4)', margin: 0, wordBreak: 'break-word' }}>{person.nickname}</p>
-                        <p style={{ fontFamily: '"Courier New",monospace', fontSize: 7, color: 'rgba(255,220,180,0.45)', textAlign: 'center', marginTop: 6, letterSpacing: '0.2em' }}>✦ EST. MCET ✦</p>
+                        <p style={{ fontFamily: '"Courier New",monospace', fontSize: 7, color: 'rgba(255,220,180,0.45)', textAlign: 'center', marginTop: 6, letterSpacing: '0.2em' }}>✦ JNL. 2026 ✦</p>
                       </div>
                       <div style={{ position: 'absolute', top: -3, left: -3, width: 10, height: 10, border: '2px solid rgba(140,15,15,0.5)', borderRadius: '50%' }} />
                       <div style={{ position: 'absolute', top: -3, right: -3, width: 10, height: 10, border: '2px solid rgba(140,15,15,0.5)', borderRadius: '50%' }} />
