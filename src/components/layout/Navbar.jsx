@@ -172,8 +172,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'shadow-2xl' : ''
-        }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${isScrolled ? 'shadow-2xl' : ''}`}
       style={{ borderBottom: 'none' }}
     >
       {/* Dynamic Background (Gradient + Paper Grain) */}
@@ -195,10 +194,10 @@ const Navbar = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex items-center justify-between h-20 gap-2 overflow-hidden">
+        <div className={`flex items-center justify-between gap-2 overflow-hidden transition-all duration-500 ${isScrolled ? 'h-15' : 'h-20'}`}>
 
           {/* Logo — match hero vibe */}
-          <div className="flex-shrink-0">
+          <div className={`flex-shrink-0 transition-all duration-500 ${isScrolled ? 'scale-90 origin-left' : 'scale-100'}`}>
             <NavLink
               to="/"
               className="group flex items-baseline whitespace-nowrap relative"

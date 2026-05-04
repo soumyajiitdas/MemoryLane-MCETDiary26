@@ -60,7 +60,7 @@ const DiaryLoader = () => {
       </div>
 
       <p className="font-['Caveat'] text-amber-500/80 text-2xl tracking-widest animate-pulse">
-        Opening Diary...
+        Unfolding Moments…
       </p>
       <div className="flex gap-2.5">
         <motion.div animate={{ opacity: [0.2, 1, 0.2], scale: [0.8, 1.2, 0.8] }} transition={{ duration: 1.5, repeat: Infinity, delay: 0 }} className="w-1.5 h-1.5 rounded-full bg-amber-500/60" />

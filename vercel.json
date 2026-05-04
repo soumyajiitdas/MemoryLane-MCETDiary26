@@ -1,6 +1,30 @@
 {
   "rewrites": [
     {
+      "source": "/music/:path*",
+      "destination": "/music/:path*"
+    },
+    {
+      "source": "/images/:path*",
+      "destination": "/images/:path*"
+    },
+    {
+      "source": "/textures/:path*",
+      "destination": "/textures/:path*"
+    },
+    {
+      "source": "/fonts/:path*",
+      "destination": "/fonts/:path*"
+    },
+    {
+      "source": "/favicons/:path*",
+      "destination": "/favicons/:path*"
+    },
+    {
+      "source": "/magazine/:path*",
+      "destination": "/magazine/:path*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

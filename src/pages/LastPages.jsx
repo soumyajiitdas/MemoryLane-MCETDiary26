@@ -312,13 +312,16 @@ const LastPages = () => {
              viewport={{ once: true }}
              className="pt-20 mt-12 border-t border-[#3e3222]/40 w-full max-w-3xl flex flex-col items-center text-center relative"
           >
-             <Flower2 size={32} className="text-[#b94a4a] absolute top-0 -translate-y-1/2 bg-[var(--color-midnight)] px-4 box-content" />
+             <Flower2 size={32} className="text-[#b94a4a] absolute top-0 -translate-y-1/2 px-4 box-content" />
              
-             <div className="text-[#3e3222] p-8 md:p-14 shadow-2xl relative w-full border border-[#d4c3a3]/30 rounded-2xl max-w-2xl mx-auto flex flex-col items-center mb-12">
+             <div className="text-[#3e3222] bg-glass/30 p-8 md:p-14 shadow-2xl relative w-full border border-amber-500/20 rounded-2xl max-w-2xl mx-auto flex flex-col items-center mb-12"
+                  style={{
+                    backgroundImage: "url('/textures/noise.png')",
+                   }}>
                 
                 {/* Vintage Postmark Decor */}
-                <div className="absolute top-4 right-4 w-16 h-16 border-[1.5px] border-dashed border-white/50 rounded-full pointer-events-none mix-blend-multiply opacity-60"></div>
-                <div className="absolute top-8 right-0 w-24 h-[1px] border-t border-wavy border-white/50 pointer-events-none mix-blend-multiply opacity-60"></div>
+                  <div className="absolute top-4 right-4 w-16 h-16 border-[1.5px] border-dashed border-amber-500/50 rounded-full pointer-events-none mix-blend-multiply opacity-60"></div>
+                  <div className="absolute top-8 right-0 w-24 h-[1px] border-t border-wavy border-amber-500/50 pointer-events-none mix-blend-multiply opacity-60"></div>
 
                 {/* Doodle Crown */}
                 <DoodleCrown className="w-16 h-16 absolute -top-8 -left-6 opacity-80 -rotate-12 mix-blend-screen" color="rgba(245, 158, 11, 0.8)" />

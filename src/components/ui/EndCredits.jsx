@@ -14,6 +14,7 @@ import { noSleep } from '../../utils/noSleep';
 const castNames = peopleData.map(p => p.name);
 const CREDITS_DUR = 90;
 const FILM_DUR = galleryData.length * 3;
+const FILM_DUR_H = 15; // 5 photos × 3 s — avoids exceeding mobile GPU max texture size limits
 
 // ── Palette ────────────────────────────────────────────────────────────────────
 const SERIF = "'Playfair Display', serif";
@@ -38,6 +39,10 @@ const GLOBAL_CSS = `
   @keyframes film-roll {
     from { transform: translateY(0); }
     to   { transform: translateY(-50%); }
+  }
+  @keyframes film-roll-h {
+    from { transform: translate3d(-50%, 0, 0); }
+    to   { transform: translate3d(0, 0, 0); }
   }
   @keyframes flicker {
     0%,100% { opacity: 1; }
@@ -301,6 +306,120 @@ const FilmStrip = ({ isPaused }) => {
   );
 };
 
+
+// ── Sprocket hole for horizontal strip — module-level avoids React remount churn ──
+const HHole = () => (
+  <div style={{
+    width: 16, height: 9, borderRadius: 2,
+    background: '#dcdcdc',
+    border: '1px solid #1a140f',
+    flexShrink: 0,
+  }} />
+);
+
+// ── Horizontal Film strip (mobile) ──────────────────────────────────────────────
+const FilmStripH = ({ isPaused }) => {
+  // Cap at 5 photos — prevents the total width from exceeding the 4096px GPU texture limit on mobile
+  const frames = React.useMemo(() => {
+    const subset = shuffleArray(galleryData).slice(0, 5);
+    return [...subset, ...subset];
+  }, []);
+  const filmHRef = useRef(null);
+
+  useEffect(() => {
+    if (filmHRef.current)
+      filmHRef.current.style.animationPlayState = isPaused ? 'paused' : 'running';
+  }, [isPaused]);
+
+  return (
+    <div style={{
+      width: '100%', height: '100%',
+      overflow: 'hidden', position: 'relative',
+      background: '#0f0a00',
+      contain: 'strict', // highest level of isolation
+    }}>
+      {/* Scrolling strip — single GPU composited layer */}
+      <div
+        ref={filmHRef}
+        style={{
+          display: 'flex', flexDirection: 'row',
+          height: '100%',
+          width: 'max-content',
+          animation: `film-roll-h ${FILM_DUR_H}s linear infinite`,
+          willChange: 'transform',
+          transform: 'translateZ(0)',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
+        }}
+      >
+        {frames.map((photo, i) => (
+          <div key={i} style={{
+            display: 'flex', flexDirection: 'column',
+            height: '100%', width: '80vw',
+            flexShrink: 0,
+            borderRight: '4px solid #050300',
+            background: '#0a0700',
+          }}>
+            {/* Top sprocket holes */}
+            <div style={{
+              height: 16, background: '#0e0b00', flexShrink: 0,
+              display: 'flex', alignItems: 'center', justifyContent: 'space-around',
+              padding: '0 8px', gap: 4,
+            }}>
+              {[0,1,2,3,4,5].map(j => <HHole key={j} />)}
+            </div>
+
+            {/* Photo — replaced expensive CSS filter with a hardware-friendly colored overlay */}
+            <div style={{ flex: 1, position: 'relative', overflow: 'hidden' }}>
+              <div style={{
+                width: '100%', height: '100%',
+                backgroundImage: `url('${photo.src}')`,
+                backgroundSize: 'cover', backgroundPosition: 'center 35%',
+              }} />
+              {/* Fake sepia/dim overlay - almost zero GPU cost compared to CSS filter */}
+              <div style={{
+                position: 'absolute', inset: 0,
+                background: 'rgba(60, 40, 10, 0.4)',
+                pointerEvents: 'none'
+              }} />
+              {/* Caption */}
+              <div style={{
+                position: 'absolute', bottom: 0, left: 0, right: 0,
+                background: 'linear-gradient(to top, rgba(8,5,0,0.92) 0%, transparent 100%)',
+                padding: '18px 8px 5px',
+              }}>
+                <p style={{
+                  fontFamily: MONO, fontSize: '0.55rem',
+                  color: 'rgba(220,160,20,0.9)', margin: 0,
+                  overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap',
+                }}>{photo.caption}</p>
+                <p style={{
+                  fontFamily: MONO, fontSize: '0.48rem',
+                  color: 'rgba(200,140,20,0.45)', margin: '2px 0 0', letterSpacing: '0.15em',
+                }}>{String((i % 5) + 1).padStart(2, '0')} / 5</p>
+              </div>
+            </div>
+
+            {/* Bottom sprocket holes */}
+            <div style={{
+              height: 16, background: '#0e0b00', flexShrink: 0,
+              display: 'flex', alignItems: 'center', justifyContent: 'space-around',
+              padding: '0 8px', gap: 4,
+            }}>
+              {[0,1,2,3,4,5].map(j => <HHole key={j} />)}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Left / right edge fade */}
+      <div style={{ position: 'absolute', top: 0, left: 0, bottom: 0, width: '12%', background: 'linear-gradient(to right,#060400,transparent)', zIndex: 3, pointerEvents: 'none' }} />
+      <div style={{ position: 'absolute', top: 0, right: 0, bottom: 0, width: '12%', background: 'linear-gradient(to left,#060400,transparent)', zIndex: 3, pointerEvents: 'none' }} />
+    </div>
+  );
+};
+
+
 // ── Film grain overlay (whole screen) ─────────────────────────────────────────
 const GrainOverlay = () => (
   <div aria-hidden="true" style={{
@@ -310,6 +429,7 @@ const GrainOverlay = () => (
     backgroundSize: '180px',
     opacity: 0.09,
     animation: 'grain 0.35s steps(1) infinite',
+    willChange: 'transform', // Forces own GPU layer, prevents repainting elements below
   }} />
 );
 
@@ -499,7 +619,7 @@ const EndCredits = ({ isOpen, onClose }) => {
       document.addEventListener('visibilitychange', handleVisibilityChange);
     } else {
       if (wakeLockRef.current) {
-        wakeLockRef.current.release().catch(() => {});
+        wakeLockRef.current.release().catch(() => { });
         wakeLockRef.current = null;
       }
       document.removeEventListener('visibilitychange', handleVisibilityChange);
@@ -508,7 +628,7 @@ const EndCredits = ({ isOpen, onClose }) => {
     return () => {
       noSleep.disable();
       if (wakeLockRef.current) {
-        wakeLockRef.current.release().catch(() => {});
+        wakeLockRef.current.release().catch(() => { });
         wakeLockRef.current = null;
       }
       document.removeEventListener('visibilitychange', handleVisibilityChange);
@@ -524,7 +644,7 @@ const EndCredits = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen && !hasCheckedAutoPlay.current) {
       hasCheckedAutoPlay.current = true;
-      const t = setTimeout(() => { if (!isPlaying) { playTrack(1); setStartedByCredits(true); } }, 300);  // Currently set track 1 (2nd one)
+      const t = setTimeout(() => { if (!isPlaying) { playTrack(2); setStartedByCredits(true); } }, 300);  // Currently set track 1 (2nd one)
       return () => clearTimeout(t);
     }
     if (!isOpen) hasCheckedAutoPlay.current = false;
@@ -620,16 +740,29 @@ const EndCredits = ({ isOpen, onClose }) => {
               </div>
             </div>
           ) : (
-            <div style={{ width: '100%', height: '100%', overflow: 'hidden', position: 'relative', zIndex: 1 }}>
-              {/* Doodles */}
-              <DoodleLayer />
-              <CreditsInner rollRef={rollRef} onEnd={() => setShowEndCard(true)} />
-              <AnimatePresence>{showEndCard && <EndCard onClose={onClose} />}</AnimatePresence>
+            <div style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', position: 'relative', zIndex: 1 }}>
+              {/* ── Horizontal film strip (top) ── */}
+              <div style={{ height: '36vh', flexShrink: 0, position: 'relative', zIndex: 2 }}>
+                <FilmStripH isPaused={isPaused} />
+                {/* Amber divider */}
+                <div style={{
+                  position: 'absolute', bottom: 0, left: 0, right: 0, height: 2, zIndex: 5,
+                  background: 'linear-gradient(to right, transparent, rgba(200,140,30,0.5), transparent)'
+                }} />
+              </div>
+              {/* ── Credits (bottom) ── */}
+              <div style={{ flex: 1, overflow: 'hidden', position: 'relative', zIndex: 1 }}>
+                {/* Fade out for scrolling text */}
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '8vh', zIndex: 10, pointerEvents: 'none', background: 'linear-gradient(to bottom, #060400 5%, transparent 100%)' }} />
+                <DoodleLayer />
+                <CreditsInner rollRef={rollRef} onEnd={() => setShowEndCard(true)} />
+                <AnimatePresence>{showEndCard && <EndCard onClose={onClose} />}</AnimatePresence>
+              </div>
             </div>
           )}
 
           {/* Top/bottom vignettes */}
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '12vh', zIndex: 8, pointerEvents: 'none', background: 'linear-gradient(to bottom,#060400,transparent)' }} />
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '6vh', zIndex: 8, pointerEvents: 'none', background: 'linear-gradient(to bottom,#060400,transparent)' }} />
           <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: '14vh', zIndex: 8, pointerEvents: 'none', background: 'linear-gradient(to top,#060400,transparent)' }} />
         </motion.div>
       )}

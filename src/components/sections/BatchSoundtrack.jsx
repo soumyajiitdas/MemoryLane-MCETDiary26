@@ -120,7 +120,7 @@ const BatchSoundtrack = () => {
         />
       </div>
 
-      <div className="max-w-[95%] sm:max-w-5xl mx-auto px-4 sm:px-12 py-14 sm:py-16 border bg-amber-600/10 border-amber-500/30 rounded-xl sm:rounded-2xl shadow-md">
+      <div className="max-w-[94%] sm:max-w-5xl mx-auto px-4 sm:px-12 py-14 sm:py-16 border bg-amber-600/10 border-amber-500/30 rounded-xl sm:rounded-2xl shadow-md">
 
         {/* Section Header */}
         <motion.div
@@ -131,7 +131,7 @@ const BatchSoundtrack = () => {
           className="text-center mb-16"
         >
           <p className="text-amber-500/60 font-['Caveat'] text-2xl sm:text-3xl mb-3">
-            If our time had a playlist, this would be it...
+            If our time had a <span className='text-amber-800'>Soundtrack</span> , this would be it...
           </p>
         </motion.div>
 
@@ -215,9 +215,9 @@ const BatchSoundtrack = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="absolute hidden sm:block -bottom-12 left-1/2 -translate-x-1/2 text-[10px] text-amber-500/40 tracking-widest uppercase font-sans whitespace-nowrap pointer-events-none"
+                className="absolute hidden sm:block -bottom-12 left-1/2 -translate-x-1/2 text-[12px] text-amber-500/40 font-serif tracking-wider whitespace-nowrap pointer-events-none"
               >
-                {revealed ? '↑ Click to stop' : '↑ Click the record'}
+                {revealed ? '↑ Click To Stop' : '↑ Click The Record'}
               </motion.p>
             </AnimatePresence>
           </div>
@@ -303,7 +303,7 @@ const BatchSoundtrack = () => {
             {/* Footer */}
             <div className="px-5 py-3 text-center border-t" style={{ borderColor: 'rgba(200,140,50,0.08)' }}>
               <p className="font-['Caveat'] tracking-wide text-amber-500/50 text-md">
-                "Every song a memory, every memory a song."
+                "Every song a memory, every memory a song..."
               </p>
             </div>
           </div>

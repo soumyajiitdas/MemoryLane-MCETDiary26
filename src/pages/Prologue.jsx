@@ -362,13 +362,14 @@ const LetterToBatch = () => {
               backgroundImage: "url('/textures/rice-paper.png')",
             }}
           >
-            {/* Elegant Tape (Optimized without blur) */}
+            {/* Elegant Tape */}
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-32 h-8 bg-white/60 rotate-1 z-20 border border-white/20 shadow-[0_2px_10px_rgba(0,0,0,0.05)]"></div>
             {/* Pin */}
             <div className="push-pin -top-3" />
 
             {/* Subtle Ruled Lines */}
             <div className="absolute inset-0 opacity-[0.2] pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(transparent, transparent 27px, #4A90E2 27px, #4A90E2 28px)', backgroundSize: '100% 32px' }} />
+            
             {/* Red vertical margin line for classical notebook effect */}
             <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
             <div className="absolute left-[34px] top-0 bottom-0 w-[1px] bg-red-800/10 pointer-events-none"></div>
@@ -424,7 +425,11 @@ const LetterToBatch = () => {
                   </p>
 
                   <p>We may leave as individuals, but we’ll always be this batch - this family. We were here, we were together, and we’ll always be 'us'... <span className='text-[#8B2323] font-bold sm:hidden inline'>:)</span> </p>
+                </div>
 
+                {/* Bottom fade */}
+                <div className="pointer-events-none absolute bottom-0 left-0 w-full h-8 
+                  bg-gradient-to-t from-[#342A14] via-[#342A14]/30 to-transparent opacity-10">
                 </div>
               </div>
 

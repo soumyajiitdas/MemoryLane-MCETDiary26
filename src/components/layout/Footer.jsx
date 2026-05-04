@@ -105,7 +105,7 @@ const Footer = () => {
               >
                 🧡
               </motion.span>
-              <span>by Batch 2022–'26</span>
+              <span>by MCETians 2022–’26</span>
             </p>
           </div>
         </motion.div>
@@ -121,7 +121,7 @@ const Footer = () => {
           {/* Heart doodle near the final text */}
           <DoodleHeart className="hidden sm:inline w-12 h-12 absolute -top-4 -right-10 opacity-40 rotate-12 mix-blend-screen" color="#F59E0B" />
 
-          &#127279; Batch 2022–'26 · All memories preserved forever...
+          &#127279; MCETians 2022–’26 · All memories preserved forever...
           <br />
           Murshidabad College of Engineering and Technology, W.B. – 742102
         </motion.p>
