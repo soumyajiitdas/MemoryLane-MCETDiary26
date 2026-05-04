@@ -424,7 +424,11 @@ const LetterToBatch = () => {
                   </p>
 
                   <p>We may leave as individuals, but we’ll always be this batch - this family. We were here, we were together, and we’ll always be 'us'... <span className='text-[#8B2323] font-bold sm:hidden inline'>:)</span> </p>
+                </div>
 
+                {/* Bottom fade */}
+                <div className="pointer-events-none absolute bottom-0 left-0 w-full h-8 
+                  bg-gradient-to-t from-[#342A14] via-[#342A14]/30 to-transparent opacity-10">
                 </div>
               </div>
 

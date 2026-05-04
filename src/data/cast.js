@@ -3,7 +3,7 @@ export const peopleData =
   {
     id: 1,
     name: "Soumyajit Das",
-    nickname: "Silhouette🫥",
+    nickname: "Silhouette🌘",
     roll: "10600122014",
     photo: "/images/cast/soumyajit.png",
     funnyPhoto: "/images/cast/soumyajit2.jpg",
@@ -33,7 +33,7 @@ export const peopleData =
     funnyPhoto: "/images/cast/indrajit2.jpg",
     department: "Computer Science",
     birthday: "08-19",
-    oneliner: "The gym-built energy of the group - planner of trips, bringer of vibes, and chaos wrapped in calm",
+    oneliner: "Gym-built energy with a sharp sense of style - a little crazy, always kind, and carrying a vibe that everyone connects with.",
     socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/indrajit-ghosh-a53291390/", instagram: "https://www.instagram.com/indra5000q/" }
   },
   {
@@ -56,7 +56,7 @@ export const peopleData =
     funnyPhoto: "/images/cast/raihan2.jpg",
     department: "Computer Science",
     birthday: "10-01",
-    oneliner: "A mind full of art, code, and words - leading quietly while living every bit of college life deeply.",
+    oneliner: "A blend of art, code, and thought — he led in his own way and lived the hostel life like it truly mattered.",
     socialLinks: { github: "https://github.com/raihanahamed01", linkedin: "https://www.linkedin.com/in/raihan-ahamed-910a3727a/", instagram: "https://www.instagram.com/ra1_haaann/" }
   },
   {
@@ -133,7 +133,7 @@ export const peopleData =
     photo: "/images/cast/animesh.jpg",
     department: "Computer Science",
     birthday: "05-15",
-    oneliner: "Straightforward words, sharp sarcasm - a football soul who never played offside in life.",
+    oneliner: "Straightforward words, sharp sarcasm - a football soul who plays life on his own terms.",
     socialLinks: { github: "https://github.com/ani-11-pro", linkedin: "https://www.linkedin.com/in/contact-ani/", instagram: "https://www.instagram.com/ulto_bangal_eee/" }
   },
   {

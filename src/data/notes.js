@@ -1,7 +1,7 @@
 export const memoriesData = [
     {
       id: 1,
-      author: "Soumyajit🫥",
+      author: "Soumyajit🌘",
       content: "We made it through so many random days together. Most of them didn’t even feel important back then. But now they’re the ones I keep thinking about. Feels weird that this is where it ends. Didn’t think saying goodbye would feel this heavy...Wherever life takes y'all, stay well…'I love you 3000.' 🌻",
       image: "",
       timestamp: "2026-04-01T17:26:00Z",
