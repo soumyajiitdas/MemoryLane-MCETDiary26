@@ -524,7 +524,7 @@ const EndCredits = ({ isOpen, onClose }) => {
   useEffect(() => {
     if (isOpen && !hasCheckedAutoPlay.current) {
       hasCheckedAutoPlay.current = true;
-      const t = setTimeout(() => { if (!isPlaying) { playTrack(1); setStartedByCredits(true); } }, 300);  // Currently set track 1 (2nd one)
+      const t = setTimeout(() => { if (!isPlaying) { playTrack(2); setStartedByCredits(true); } }, 300);  // Currently set track 1 (2nd one)
       return () => clearTimeout(t);
     }
     if (!isOpen) hasCheckedAutoPlay.current = false;

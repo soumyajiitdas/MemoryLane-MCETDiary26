@@ -9,7 +9,7 @@ export const peopleData =
     funnyPhoto: "/images/cast/soumyajit2.jpg",
     department: "Computer Science",
     birthday: "07-30",
-    oneliner: "Never the loudest in the room, yet impossible to ignore - some stories aren’t told, they unfold.",
+    oneliner: "Not always in the spotlight, yet never out of the story - some presences are felt long before they are understood.",
     socialLinks: { github: "https://github.com/soumyajiitdas", linkedin: "linkedin.com/in/soumyajiitdas/", instagram: "https://www.instagram.com/soumyajiit_" }
   },
   {
