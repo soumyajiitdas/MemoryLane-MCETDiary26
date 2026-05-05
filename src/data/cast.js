@@ -38,17 +38,6 @@ export const peopleData =
   },
   {
     id: 4,
-    name: "Kriti Dutta",
-    nickname: "VibeKeeper🌸",
-    roll: "10601322036",
-    photo: "/images/cast/kriti.jpg",
-    department: "Civil Engineering",
-    birthday: "01-22",
-    oneliner: "Grace in her ways, talent in her hands - the elder sister every junior quietly looked up to.",
-    socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/kriti-dutta-2922772bb/", instagram: "https://www.instagram.com/d_kritu/" }
-  },
-  {
-    id: 5,
     name: "Raihan Ahamed",
     nickname: "Hulk👽",
     roll: "10600122035",
@@ -58,9 +47,10 @@ export const peopleData =
     birthday: "10-01",
     oneliner: "A blend of art, code, and thought — he led in his own way and lived the hostel life like it truly mattered.",
     socialLinks: { github: "https://github.com/raihanahamed01", linkedin: "https://www.linkedin.com/in/raihan-ahamed-910a3727a/", instagram: "https://www.instagram.com/ra1_haaann/" }
+
   },
   {
-    id: 6,
+    id: 5,
     name: "Bapi Sarkar",
     nickname: "TheAnchor⚓",
     roll: "10600122001",
@@ -71,7 +61,7 @@ export const peopleData =
     socialLinks: { github: "https://github.com/bapisarkar22", linkedin: "https://www.linkedin.com/in/bapisarkar2005/", instagram: "https://www.instagram.com/bapisarkar1498/" }
   },
   {
-    id: 7,
+    id: 6,
     name: "Subhodeep Chakraborty",
     nickname: "Legolas🎯",
     roll: "",
@@ -82,7 +72,7 @@ export const peopleData =
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/___mr.glitch___/" }
   },
   {
-    id: 8,
+    id: 7,
     name: "Manashi Mondal",
     nickname: "MomoLover🥟",
     roll: "",
@@ -93,18 +83,19 @@ export const peopleData =
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/manashi_mondal/" }
   },
   {
-    id: 9,
-    name: "Saeed Mustafa",
-    nickname: "LensLord📸",
-    roll: "10600122017",
-    photo: "/images/cast/saeed.jpeg",
-    department: "Computer Science",
-    birthday: "03-30",
-    oneliner: "When moments needed saving, his phone was always there - the unofficial keeper of our memories.",
-    socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/saeed_mustafa0/" }
+    id: 8,
+    name: "Kriti Dutta",
+    nickname: "VibeKeeper🌸",
+    roll: "10601322036",
+    photo: "/images/cast/kriti.jpg",
+    department: "Civil Engineering",
+    birthday: "01-22",
+    oneliner: "Grace in her ways, talent in her hands - the elder sister every junior quietly looked up to.",
+    socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/kriti-dutta-2922772bb/", instagram: "https://www.instagram.com/d_kritu/" }
+
   },
   {
-    id: 10,
+    id: 9,
     name: "Rohit Paul",
     nickname: "FamilyMan😇",
     roll: "10600122011",
@@ -113,6 +104,17 @@ export const peopleData =
     birthday: "06-02",
     oneliner: "Half heart in plans, full heart in people - organized chaos with a habit of last-minute disappearances.",
     socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/rohitmaldini03/" }
+  },
+  {
+    id: 10,
+    name: "Saeed Mustafa",
+    nickname: "LensLord📸",
+    roll: "10600122017",
+    photo: "/images/cast/saeed.jpeg",
+    department: "Computer Science",
+    birthday: "03-30",
+    oneliner: "When moments needed saving, his phone was always there - the unofficial keeper of our memories.",
+    socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/saeed_mustafa0/" }
   },
   {
     id: 11,

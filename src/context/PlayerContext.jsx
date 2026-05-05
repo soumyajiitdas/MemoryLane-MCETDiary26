@@ -32,13 +32,6 @@ export const TRACKLIST = [
   },
   {
     track: '05',
-    title: "The Night We Met",
-    feat: "Lord Huron",
-    duration: "02:24",
-    src: '/music/the_night_we_met.mp3',
-  },
-  {
-    track: '06',
     title: "Yaariyaan",
     feat: "Cocktail",
     duration: "04:20",
