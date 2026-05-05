@@ -45,7 +45,7 @@ export const peopleData =
     funnyPhoto: "/images/cast/raihan2.jpg",
     department: "Computer Science",
     birthday: "10-01",
-    oneliner: "A blend of art, code, and thought — he led in his own way and lived the hostel life like it truly mattered.",
+    oneliner: "A blend of art, code, and thought - he led in his own way and lived the hostel life like it truly mattered.",
     socialLinks: { github: "https://github.com/raihanahamed01", linkedin: "https://www.linkedin.com/in/raihan-ahamed-910a3727a/", instagram: "https://www.instagram.com/ra1_haaann/" }
 
   },
@@ -76,7 +76,7 @@ export const peopleData =
     name: "Manashi Mondal",
     nickname: "MomoLover🥟",
     roll: "",
-    photo: "/images/cast/manashi.webp",
+    photo: "/images/cast/manashi.jpg",
     department: "Computer Science",
     birthday: "02-03",
     oneliner: "From momos to memories - she cooked warmth, traveled light, and filled every outing with joy.",

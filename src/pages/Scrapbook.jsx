@@ -23,10 +23,10 @@ const albumEmoji = {
 };
 
 const yearMapping = {
-  "1st Year": "2023",
-  "2nd Year": "2024",
-  "3rd Year": "2025",
-  "4th Year": "2026",
+  "1st Year": "1st",
+  "2nd Year": "2nd",
+  "3rd Year": "3rd",
+  "4th Year": "4th",
 };
 
 const Scrapbook = () => {
