@@ -153,11 +153,7 @@ const Scrapbook = () => {
                 <motion.button
                   onClick={cycleAlbum}
                   whileTap={{ scale: 0.93 }}
-                  className={`relative flex items-center gap-2 px-6 py-2 rounded-full text-xs font-sans tracking-widest uppercase font-semibold transition-all duration-300 overflow-hidden ${
-                    activeAlbum !== "All"
-                      ? 'bg-amber-500/20 border border-amber-500/50 text-amber-300'
-                      : 'bg-amber-500 text-black shadow-lg shadow-amber-500/20'
-                  }`}
+                  className="relative flex items-center gap-2 px-6 py-2 rounded-full text-xs font-sans tracking-widest uppercase font-semibold transition-all duration-300 overflow-hidden bg-amber-500 text-black shadow-lg shadow-amber-500/20"
                 >
                   <SlidersHorizontal size={16} />
 
