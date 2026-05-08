@@ -15,7 +15,8 @@ import { getTrailingEmoji } from "../utils/emojiExtract";
 import { peopleData } from '../data/cast';
 import { eventsData } from '../data/moments';
 import { memoriesData } from '../data/notes';
-import { timelineData } from '../data/chapters';
+
+import { galleryData } from '../data/scrapbook';
 
 // Premium Vintage Ticket
 const VintageStatTicket = ({ label, value, delay }) => {
@@ -165,7 +166,7 @@ const StickyNoteMini = ({ post, index }) => {
       >
         {/* Note Body */}
         <div
-          className="p-8 pb-12 flex flex-col bg-[#FDFBF7]"
+          className="p-8 pb-8 flex flex-col bg-[#FDFBF7]"
           style={{
             backgroundImage: "url('/textures/rice-paper.png')",
             clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 calc(100% - 2px))'
@@ -182,20 +183,26 @@ const StickyNoteMini = ({ post, index }) => {
           <div className="absolute left-[26px] top-0 bottom-0 w-[1px] bg-red-800/10 pointer-events-none"></div>
 
           {/* Text — blurred by default on desktop, clear on hover */}
-          <div
-            className={`font-['Caveat'] ${textSize} leading-[28px] text-[#2c3e50] w-full mt-2 styling-scrollbar relative z-10`}
-            data-photo="true"
-            style={{
-              ...contentStyle,
-              filter: getBlurFilter('1px'),
-              transition: 'filter 0.5s ease'
-            }}
-          >
-            "{post.content}"
+          <div className="relative mt-2 z-10">
+            <div
+              className={`font-['Caveat'] ${textSize} leading-[28px] text-[#2c3e50] w-full styling-scrollbar`}
+              data-photo="true"
+              style={{
+                ...contentStyle,
+                filter: getBlurFilter('1px'),
+                transition: 'filter 0.5s ease'
+              }}
+            >
+              "{post.content}"
+            </div>
+            {/* Bottom fade — only on scrollable notes (content > 330 chars) */}
+            {len > 330 && (
+              <div className="pointer-events-none absolute bottom-0 left-0 w-full h-4 bg-gradient-to-t from-[#342A14] via-[#342A14]/30 to-transparent opacity-10" />
+            )}
           </div>
 
           <div
-            className="mt-8 w-full flex justify-between items-end border-t border-black/5 pt-4 relative z-10"
+            className="mt-8 w-full flex justify-between items-end border-t border-black/5 relative z-10"
             style={{ filter: getBlurFilter('1px'), transition: 'filter 0.5s ease' }}
           >
             <span className="font-['Caveat'] text-2xl font-bold text-[#1e3a8a]">{post.author}</span>
@@ -472,10 +479,10 @@ const Prologue = () => {
   }, []);
 
   const stats = [
-    { label: 'Batchmates', value: peopleData.length },
-    { label: 'Events Logged', value: eventsData.length },
-    { label: 'Imprints Shared', value: memoriesData.length },
-    { label: 'Years Together', value: timelineData.length }
+    { label: 'Crew Count', value: peopleData.length },
+    { label: 'Events Organized', value: eventsData.length },
+    { label: 'Notes Shared', value: memoriesData.length },
+    { label: 'Frames Collected', value: galleryData.length }
   ];
 
   return (

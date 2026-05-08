@@ -5,9 +5,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 // Uses IntersectionObserver to defer loading until the image enters the viewport.
 // Shows a warm blur-shimmer skeleton while loading.
 const LazyImage = ({ src, alt, onClick, caption, year, album, priority = false }) => {
-  const imgRef   = useRef(null);
-  const [loaded,   setLoaded]   = useState(false);
-  const [inView,   setInView]   = useState(priority); // high-priority images load immediately
+  const imgRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
+  const [inView, setInView] = useState(priority); // high-priority images load immediately
 
   useEffect(() => {
     if (priority) return; // skip observer for above-the-fold images
@@ -47,7 +47,7 @@ const LazyImage = ({ src, alt, onClick, caption, year, album, priority = false }
       {/* Caption overlay — only visible on hover, never blocks load */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4 pointer-events-none">
         <h4 className="text-white font-serif text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300">{caption}</h4>
-        <p  className="text-amber-400 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">{year} Year • {album}</p>
+        <p className="text-amber-400 text-sm translate-y-4 group-hover:translate-y-0 transition-transform duration-300 delay-75">{year} Year • {album}</p>
       </div>
     </div>
   );
@@ -63,7 +63,7 @@ const GalleryGrid = ({ images, onImageClick }) => {
   useEffect(() => { setVisibleCount(PAGE_SIZE); }, [images]);
 
   const visibleImages = images.slice(0, visibleCount);
-  const hasMore       = visibleCount < images.length;
+  const hasMore = visibleCount < images.length;
 
   const loadMore = useCallback(() => {
     setVisibleCount(prev => Math.min(prev + PAGE_SIZE, images.length));

@@ -16,10 +16,10 @@ const years = ["All", "1st Year", "2nd Year", "3rd Year", "4th Year"];
 const albums = ["All", ...Array.from(new Set(galleryData.map(img => img.album))).sort()];
 
 const albumEmoji = {
-  Moments:  '📸',
-  Events:   '🎉',
+  Moments: '📸',
+  Events: '🎉',
   Hangouts: '☕',
-  Trips:    '🗺️',
+  Trips: '🗺️',
 };
 
 const yearMapping = {
@@ -32,9 +32,9 @@ const yearMapping = {
 const Scrapbook = () => {
   useEffect(() => { document.title = "MCET Diary'26 | Scrapbook - Scattered Memories"; }, []);
 
-  const [activeYear,    setActiveYear]    = useState("All");
-  const [albumIndex,    setAlbumIndex]    = useState(0);   // cycles through albums[]
-  const [sortOrder,     setSortOrder]     = useState("random");
+  const [activeYear, setActiveYear] = useState("All");
+  const [albumIndex, setAlbumIndex] = useState(0);   // cycles through albums[]
+  const [sortOrder, setSortOrder] = useState("random");
   const [lightboxIndex, setLightboxIndex] = useState(-1);
 
   const [shuffledBase] = useState(() => [...galleryData].sort(() => Math.random() - 0.5));
@@ -79,12 +79,12 @@ const Scrapbook = () => {
         </div>
 
         {/* Firefly Particles */}
-        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={20}/></div>
+        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={20} /></div>
 
         <div className="py-24 pb-30 relative z-20">
           <div className="max-w-[1400px] mx-auto px-4 relative z-10">
 
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -93,7 +93,7 @@ const Scrapbook = () => {
             >
               <DoodleArrow className="w-24 h-24 absolute -top-10 left-10 md:left-40 opacity-30 -rotate-[135deg] mix-blend-screen hidden md:block" color="#F59E0B" />
               <DoodleSparkle className="w-20 h-20 absolute top-10 right-10 md:right-40 opacity-30 mix-blend-screen hidden md:block" color="#F59E0B" />
-              
+
               <SectionHeading
                 title="Scrapbook"
                 subtitle="Fragments of time we chose to keep."
@@ -101,18 +101,18 @@ const Scrapbook = () => {
               />
             </motion.div>
 
-            <motion.p 
+            <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 1 }}
               className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-20 max-w-2xl mx-auto"
             >
-               "Photographs are tickets to moments that would otherwise be gone..."
+              "Photographs are tickets to moments that would otherwise be gone..."
             </motion.p>
 
             {/* Top bar with filters */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -126,11 +126,10 @@ const Scrapbook = () => {
                     <button
                       key={year}
                       onClick={() => setActiveYear(year)}
-                      className={`px-6 py-2 rounded-full text-xs tracking-widest font-semibold uppercase transition-all duration-300 ${
-                        activeYear === year
+                      className={`px-6 py-2 rounded-full text-xs tracking-widest font-semibold uppercase transition-all duration-300 ${activeYear === year
                           ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20'
                           : 'bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10'
-                      }`}
+                        }`}
                     >
                       {year}
                     </button>

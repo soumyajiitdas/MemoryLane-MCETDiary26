@@ -51,8 +51,14 @@ const PremiumStickyNote = ({ post, index }) => {
           {showCrown && <DoodleCrown className="absolute top-2 right-2 w-10 h-10 rotate-12 opacity-40 mix-blend-multiply" color="#1e3a8a" />}
 
           {/* Content */}
-          <div className={`font-['Caveat'] ${textSize} leading-[28px] text-[#2c3e50] w-full mt-2 text-center opacity-95 styling-scrollbar relative z-10`} style={contentStyle} data-photo="true">
-            "{post.content}"
+          <div className="relative mt-2 z-10">
+            <div className={`font-['Caveat'] ${textSize} leading-[28px] text-[#2c3e50] w-full text-center opacity-95 styling-scrollbar`} style={contentStyle} data-photo="true">
+              "{post.content}"
+            </div>
+            {/* Bottom fade — only on scrollable notes (content > 330 chars) */}
+            {len > 330 && (
+              <div className="pointer-events-none absolute bottom-0 left-0 w-full h-4 bg-gradient-to-t from-[#342A14] via-[#342A14]/30 to-transparent opacity-10" />
+            )}
           </div>
 
           {/* Image (if exists) */}
@@ -71,7 +77,7 @@ const PremiumStickyNote = ({ post, index }) => {
           )}
 
           {/* Footer Info */}
-          <div className="mt-8 w-full flex justify-between items-end border-t border-black/5 pt-4 relative z-10">
+          <div className="mt-8 w-full flex justify-between items-end border-t border-black/5 pt-2 relative z-10">
             <span className="font-['Caveat'] text-2xl font-bold text-[#1e3a8a] opacity-90">{post.author}</span>
             <span className="text-[10px] text-[#8b95a5] font-sans tracking-[0.15em] uppercase font-semibold">{new Date(post.timestamp).toLocaleDateString()}</span>
           </div>
