@@ -34,11 +34,11 @@ const EventCard = ({ event, onClick }) => {
         ></div>
 
         {/* Red vertical margin line for classical notebook effect */}
-        <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-red-800/30 pointer-events-none"></div>
-        <div className="absolute left-[34px] top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
+        <div className="absolute left-[39px] top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
+        <div className="absolute left-[37px] top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
 
-        {/* Vintage Round Stamp (e.g. for Category) */}
-        <div className="absolute -top-3 -right-3 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-90 shadow-sm pointer-events-none">
+        {/* Vintage Round Stamp */}
+        <div className="absolute top-2 right-2 w-[72px] h-[72px] border-[2.5px] border-red-800/40 rounded-full flex items-center justify-center rotate-[-15deg] z-20 mix-blend-multiply opacity-60 shadow-sm pointer-events-none">
            <div className="border-[1.5px] border-dashed border-red-800/40 rounded-full w-[60px] h-[60px] flex items-center justify-center text-center leading-none">
              <span className="text-[10px] font-bold text-red-800/60 uppercase tracking-tighter block mt-0.5">
                MCET<br/>{event.category?.substring(0, 8)}<br/>★
@@ -55,7 +55,7 @@ const EventCard = ({ event, onClick }) => {
             style={{ transform: `rotate(${photoRotate}deg)` }}
           >
             {/* Washi Tape */}
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-7 bg-amber-600/30 backdrop-blur-sm border border-amber-800/10 shadow-[1px_2px_3px_rgba(0,0,0,0.05)]"
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-16 h-7 bg-blue-600/30 backdrop-blur-sm border border-amber-800/10 shadow-[1px_2px_3px_rgba(0,0,0,0.05)]"
                  style={{ transform: "rotate(-3deg)", backgroundImage: "url('/textures/rice-paper.png')" }}></div>
             
             {/* The Image */}
@@ -63,7 +63,7 @@ const EventCard = ({ event, onClick }) => {
                <div 
                  data-photo="true"
                  className="w-full aspect-[16/9] bg-cover bg-center border border-black/10 sepia-[0.15] transition-transform duration-700 group-hover:scale-[1.05] group-hover:sepia-0"
-                 style={{ backgroundImage: (event.gallery[0]?.startsWith('http') || event.gallery[0]?.startsWith('/')) ? `url('${event.gallery[0]}')` : (event.gallery[0] || 'linear-gradient(to bottom, #d4a373, #faedcd)') }}
+                style={{ backgroundImage: (event.gallery[0]?.startsWith('http') || event.gallery[0]?.startsWith('/')) ? `url('${event.gallery[0]}')` : (event.gallery[0] || 'linear-gradient(to bottom, #f8dcc0 0%, #fffefd 50%, #d7ead7 100%)') }}
                >
                   <div className="w-full h-full bg-[#3e2723]/10 mix-blend-multiply transition-opacity duration-500 group-hover:opacity-0"></div>
                </div>
@@ -71,7 +71,7 @@ const EventCard = ({ event, onClick }) => {
             
             {/* Little caption/date under photo */}
             <p className="text-center font-['Caveat'] text-xl text-gray-700/80 absolute bottom-1 left-0 right-0 leading-none">
-              {event.date?.split(' ')[0]} 
+              {event.date} 
             </p>
           </div>
 
@@ -83,9 +83,6 @@ const EventCard = ({ event, onClick }) => {
           {/* Metadata: Date & People tagged */}
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[10px] text-[#786b5b] font-sans tracking-[0.15em] font-bold uppercase mb-2 mt-1">
               <span className="flex items-center gap-1.5 bg-[#f0eadd] px-2 py-0.5 rounded-sm"><Calendar size={11} className="text-red-800/60" /> {event.date}</span>
-              {event.taggedPeople?.length > 0 && (
-                <span className="flex items-center gap-1.5 bg-[#f0eadd] px-2 py-0.5 rounded-sm"><Users size={11} className="text-indigo-800/60" /> {event.taggedPeople.length}</span>
-              )}
           </div>
           
           {/* Description */}

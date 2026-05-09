@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useRef, useState, useEffect, useCallback } from 'react';
 
-// ── Tracklist — single source of truth ────────────────────────────────────────
+// ── Tracklist ────────────────────────────────────────
 export const TRACKLIST = [
   {
     track: '01',
@@ -29,6 +29,13 @@ export const TRACKLIST = [
     feat: "Bioscope",
     duration: "02:29",
     src: '/music/bandhu_chal.mp3',
+  },
+  {
+    track: '05',
+    title: "Night Changes",
+    feat: "One Direction",
+    duration: "03:47",
+    src: '/music/night_changes.mp3',
   },
   {
     track: '05',

@@ -257,7 +257,7 @@ const BatchSoundtrack = () => {
               </div>
               <div>
                 <p className="font-['Playfair_Display'] text-amber-200 font-semibold text-sm">The Memory Tape</p>
-                <p className="text-amber-600/50 text-xs">MCET · 2022–'26 · {TRACKLIST.length} tracks</p>
+                <p className="text-amber-600/50 text-xs">MCET 2022–'26 · {TRACKLIST.length} Tracks</p>
               </div>
             </div>
 

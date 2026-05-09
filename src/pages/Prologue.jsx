@@ -688,8 +688,8 @@ const Prologue = () => {
                 Time left until we throw our caps and say our goodbyes. Every second passing is a moment we won't get back.
               </p>
 
-              <p className="font-['Caveat'] italic text-2xl tracking-wide text-amber-500/80 max-w-xl font-light leading-relaxed">
-                "Don't cry because it's over, smile because it happened!"
+              <p className="font-['Caveat'] text-2xl tracking-wide text-amber-700/90 max-w-xl font-light leading-relaxed">
+                ~ Don't cry because it's over, smile because it happened!
               </p>
             </motion.div>
 
