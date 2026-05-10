@@ -169,7 +169,7 @@ const JourneyNode = ({ data, index }) => {
 };
 
 const Chapters = () => {
-  useEffect(() => { document.title = "MCET Diary'26 | Chapters - Four Year Stories"; }, []);
+  useEffect(() => { document.title = "MCET Diary '26 | Chapters - Four Year Stories"; }, []);
 
   return (
     <PageTransition>

@@ -38,7 +38,7 @@ export const TRACKLIST = [
     src: '/music/night_changes.mp3',
   },
   {
-    track: '05',
+    track: '06',
     title: "Yaariyaan",
     feat: "Cocktail",
     duration: "04:20",

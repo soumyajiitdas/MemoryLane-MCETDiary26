@@ -13,7 +13,7 @@ import { getTrailingEmoji } from "../utils/emojiExtract";
 
 // Data imports
 import { peopleData } from '../data/cast';
-import { eventsData } from '../data/moments';
+import { eventsData } from '../data/events';
 import { memoriesData } from '../data/notes';
 
 import { galleryData } from '../data/scrapbook';

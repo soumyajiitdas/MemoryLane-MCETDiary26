@@ -2,11 +2,11 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
-import MomentCard from '../components/sections/MomentCard';
+import EventCard from '../components/sections/EventCard';
 import ChapterNav from '../components/ui/ChapterNav';
 import Fireflies from '../components/ui/Fireflies';
 import { peopleData } from '../data/cast';
-import { eventsData } from '../data/moments';
+import { eventsData } from '../data/events';
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { DoodleCrown, DoodleSparkle, DoodleHeart } from '../components/ui/VintageDoodles';
 import { X } from 'lucide-react';
@@ -323,7 +323,7 @@ const CastDossier = ({ person, onClose }) => {
 // ── Main Page ─────────────────────────────────────────────────────────────────
 
 const TheCast = () => {
-  useEffect(() => { document.title = "MCET Diary'26 | The Cast - Faces of Us"; }, []);
+  useEffect(() => { document.title = "MCET Diary '26 | The Cast - Faces of Us"; }, []);
 
   const [view, setView] = useState('batchmates');
   const [selectedPerson, setSelectedPerson] = useState(null);
@@ -404,7 +404,7 @@ const TheCast = () => {
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
-                  <span className="relative z-10">Moments</span>
+                  <span className="relative z-10">Events</span>
                 </button>
               </div>
             </motion.div>
@@ -447,7 +447,7 @@ const TheCast = () => {
                     className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10"
                   >
                     {eventsData.map((event) => (
-                      <MomentCard key={event.id} event={event} onClick={() => { }} />
+                      <EventCard key={event.id} event={event} onClick={() => { }} />
                     ))}
                   </motion.div>
                 )}

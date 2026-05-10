@@ -30,7 +30,7 @@ const yearMapping = {
 };
 
 const Scrapbook = () => {
-  useEffect(() => { document.title = "MCET Diary'26 | Scrapbook - Scattered Memories"; }, []);
+  useEffect(() => { document.title = "MCET Diary '26 | Scrapbook - Scattered Memories"; }, []);
 
   const [activeYear, setActiveYear] = useState("All");
   const [albumIndex, setAlbumIndex] = useState(0);   // cycles through albums[]

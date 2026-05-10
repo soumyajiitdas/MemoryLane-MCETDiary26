@@ -128,7 +128,7 @@ const FlipbookPage = ({ page, index, totalPages }) => {
 };
 
 const LastPages = () => {
-  useEffect(() => { document.title = "MCET Diary'26 | Last Pages - The Final Chapter"; }, []);
+  useEffect(() => { document.title = "MCET Diary '26 | Last Pages - The Final Chapter"; }, []);
 
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState(1); // 1 for next, -1 for prev

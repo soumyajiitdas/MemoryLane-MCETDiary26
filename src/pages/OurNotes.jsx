@@ -106,7 +106,7 @@ const PremiumStickyNote = ({ post, index }) => {
 };
 
 const OurNotes = () => {
-  useEffect(() => { document.title = "MCET Diary'26 | Our Notes - Words We Left"; }, []);
+  useEffect(() => { document.title = "MCET Diary '26 | Our Notes - Words We Left"; }, []);
   const [posts, setPosts] = useState(() => [...memoriesData].sort(() => 0.5 - Math.random()));
 
   return (

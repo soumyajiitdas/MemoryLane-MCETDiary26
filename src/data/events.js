@@ -5,7 +5,7 @@ export const eventsData = [
     date: "January 2023",
     year: "1st",
     category: "Puja",
-    description: "Our first Saraswati Puja together — offerings, chalk dust, and a little prayer before the semester exams. 🌸",
+    description: "Our first Saraswati Puja together - offerings, chalk dust, and a little prayer before the semester exams. 🌸",
     gallery: ["/images/scrapbook/60.jpeg"],
     taggedPeople: ["Soumyajit", "Hulk", "Underoos", "Lebowski"]
   },
@@ -15,7 +15,7 @@ export const eventsData = [
     date: "August 2023",
     year: "2nd",
     category: "Special Day",
-    description: "In celebrating this day, we didn't just remember history — we felt it. 😇",
+    description: "In celebrating this day, we didn't just remember history - we felt it. 😇",
     gallery: [""],
     taggedPeople: ["Soumyajit", "Underoos", "Hulk", "Lebowski"]
   },
