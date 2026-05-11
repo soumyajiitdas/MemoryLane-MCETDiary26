@@ -81,5 +81,8 @@ export const galleryData = [
   { id: 73, src: "/images/scrapbook/73.jpeg", caption: "Another fragment from the early days.", album: "Moments", year: "1st" },
   { id: 74, src: "/images/scrapbook/74.jpeg", caption: "The days when we were new at the senior boys' hostel.", album: "Moments", year: "2nd" },
   { id: 75, src: "/images/scrapbook/75.jpeg", caption: "Chronicles of the senior boys' hostel.", album: "Moments", year: "2nd" },
-  { id: 76, src: "/images/scrapbook/76.jpeg", caption: "Cloudy skies and a serious game of cricket. 🏏", album: "Moments", year: "3rd" }
+  { id: 76, src: "/images/scrapbook/76.jpeg", caption: "Cloudy skies and a serious game of cricket. 🏏", album: "Moments", year: "3rd" },
+  { id: 77, src: "/images/scrapbook/77.jpg", caption: "Mayapur days, good old moments...", album: "Trips", year: "2nd" },
+  { id: 78, src: "/images/scrapbook/78.jpg", caption: "Good vibes and better company!", album: "Trips", year: "2nd" },
+  { id: 79, src: "/images/scrapbook/79.jpg", caption: "Just another random class break...", album: "Moments", year: "1st" }
 ];

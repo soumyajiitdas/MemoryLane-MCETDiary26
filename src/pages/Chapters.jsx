@@ -158,9 +158,9 @@ const JourneyNode = ({ data, index }) => {
         </motion.div>
 
         {/* Mobile-only hint */}
-        <div className="md:hidden font-['Caveat'] mt-6 text-white/40 tracking-wider text-xs flex items-center gap-4 font-semibold pointer-events-none">
+        <div className="md:hidden font-['Caveat'] mt-6 text-white/30 tracking-wider text-xs uppercase flex items-center gap-4 font-semibold pointer-events-none">
           <span className="w-8 h-px bg-white/20"></span>
-          Hold photo to read note
+          hold photo to read
           <span className="w-8 h-px bg-white/20"></span>
         </div>
       </motion.div>

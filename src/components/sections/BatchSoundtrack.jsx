@@ -43,11 +43,11 @@ const ToneArm = ({ playing }) => (
   >
     <svg viewBox="0 0 120 200" className="w-full h-full drop-shadow-lg" aria-hidden="true">
       <circle cx="100" cy="10" r="10" fill="#2a2520" stroke="#5a4f3f" strokeWidth="1.5" />
-      <circle cx="100" cy="10" r="4"  fill="#b8943f" />
+      <circle cx="100" cy="10" r="4" fill="#b8943f" />
       <line x1="100" y1="10" x2="30" y2="180" stroke="#3d3530" strokeWidth="5" strokeLinecap="round" />
       <line x1="100" y1="10" x2="30" y2="180" stroke="#5a4f3f" strokeWidth="2" strokeLinecap="round" />
       <rect x="24" y="175" width="14" height="6" rx="2" fill="#8b7355" />
-      <rect x="29" y="181" width="4"  height="8" rx="1" fill="#c8a96e" />
+      <rect x="29" y="181" width="4" height="8" rx="1" fill="#c8a96e" />
       <circle cx="31" cy="189" r="2" fill="#fcd34d" opacity="0.9" />
     </svg>
   </motion.div>
@@ -59,9 +59,8 @@ const TrackRow = ({ track, title, feat, duration, index, revealed, isActive, isP
     animate={{ opacity: 1, x: 0 }}
     transition={{ delay: index * 0.06, duration: 0.35, ease: 'easeOut' }}
     onClick={() => onPlay(index)}
-    className={`group w-full flex items-center gap-3 py-2.5 px-3 rounded-lg text-left transition-colors ${
-      isActive ? 'bg-amber-500/15' : 'hover:bg-amber-500/8'
-    }`}
+    className={`group w-full flex items-center gap-3 py-2.5 px-3 rounded-lg text-left transition-colors ${isActive ? 'bg-amber-500/15' : 'hover:bg-amber-500/8'
+      }`}
     disabled={!revealed}
   >
     <span className="w-5 shrink-0 flex items-center justify-center">
@@ -78,16 +77,15 @@ const TrackRow = ({ track, title, feat, duration, index, revealed, isActive, isP
           ))}
         </span>
       ) : isActive ? (
-        <Play className='w-5 h-5 text-amber-700'/>
+        <Play className='w-5 h-5 text-amber-700' />
       ) : (
         <span className="text-amber-600/50 font-mono text-xs">{track}</span>
       )}
     </span>
 
     <div className="flex-1 min-w-0">
-      <p className={`font-['Playfair_Display'] text-sm font-semibold truncate transition-colors ${
-        isActive ? 'text-amber-300' : 'text-amber-100 group-hover:text-amber-300'
-      }`}>
+      <p className={`font-['Playfair_Display'] text-sm font-semibold truncate transition-colors ${isActive ? 'text-amber-300' : 'text-amber-100 group-hover:text-amber-300'
+        }`}>
         {title}
       </p>
       <p className="text-amber-500/60 text-xs truncate">{feat}</p>
@@ -107,7 +105,7 @@ const BatchSoundtrack = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   // CSS animation-play-state: 'running' only when audio is truly playing AND not resetting
-  const discPlayState   = (isPlaying && !isResetting) ? 'running' : 'paused';
+  const discPlayState = (isPlaying && !isResetting) ? 'running' : 'paused';
   const headerPlayState = (isPlaying && !isResetting) ? 'running' : 'paused';
 
   return (
@@ -148,7 +146,7 @@ const BatchSoundtrack = () => {
           <div
             className="relative flex-shrink-0"
             style={{
-              width:  'clamp(190px, 55vw, 320px)',
+              width: 'clamp(190px, 55vw, 320px)',
               height: 'clamp(190px, 55vw, 320px)',
             }}
           >
