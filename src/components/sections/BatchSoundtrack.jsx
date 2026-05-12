@@ -15,24 +15,53 @@ const VinylGrooves = () => (
   </svg>
 );
 
-const VinylLabel = ({ trackTitle, playing }) => (
-  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-    <div
-      className="w-[38%] h-[38%] rounded-full flex flex-col items-center justify-center text-center shadow-inner"
-      style={{
-        background: 'radial-gradient(circle at 35% 35%, #c8934a, #7c481f)',
-        boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.6), 0 0 0 2px rgba(255,200,100,0.2)',
-      }}
-    >
-      <p className="font-['Playfair_Display'] text-amber-100 text-[0.4rem] tracking-[0.15em] uppercase mb-0.5 opacity-80 px-1">
-        {playing && trackTitle ? trackTitle : 'MCET · Batch'}
-      </p>
-      <p className="font-['Caveat'] text-amber-200 text-sm font-bold leading-none">2022–'26</p>
-      <p className="text-amber-300/70 text-[0.36rem] tracking-wider mt-0.5 uppercase">The Memory Tape</p>
-      <div className="w-2 h-2 rounded-full mt-1" style={{ background: '#0d0b09', boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.9)' }} />
+const LABEL_COLORS = [
+  { light: '#c8934a', dark: '#7c481f' }, // Amber
+  { light: '#c85a5a', dark: '#7a2f2f' }, // muted red
+  { light: '#5a86c8', dark: '#2f4f7a' }, // muted blue
+  { light: '#5fc27a', dark: '#357048' }, // muted green
+  { light: '#c8b15a', dark: '#7a682f' }, // muted yellow
+  { light: '#a05ac8', dark: '#62357a' }, // muted purple
+];
+
+const VinylLabel = ({ trackTitle, trackFeat, playing, trackIndex }) => {
+  const isDefaultState = trackIndex === null || trackIndex === undefined;
+  const colors = isDefaultState
+    ? { light: '#fdd791ff', dark: '#b18253ff', text: '#3a2a18', textMuted: '#7a5c43' }
+    : { ...LABEL_COLORS[trackIndex % LABEL_COLORS.length], text: '#ffffffff', textMuted: 'rgba(255,255,255,0.8)' };
+
+  return (
+    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+      <div
+        className="w-[38%] h-[38%] rounded-full flex flex-col items-center justify-center text-center shadow-inner transition-colors duration-700 px-3"
+        style={{
+          background: `radial-gradient(circle at 35% 35%, ${colors.light}, ${colors.dark})`,
+          boxShadow: 'inset 0 2px 8px rgba(0,0,0,0.6), 0 0 0 2px rgba(255,200,100,0.2)',
+        }}
+      >
+        <p 
+          className={`font-['Caveat'] text-[0.4rem] sm:text-[0.5rem] tracking-[0.05em] uppercase mb-0.5 w-full truncate ${isDefaultState ? 'opacity-90' : 'opacity-90 drop-shadow-sm'}`}
+          style={{ color: colors.text }}
+        >
+          {!isDefaultState && trackTitle ? trackTitle : 'MCET ★ Batch'}
+        </p>
+        <p 
+          className={`font-['Caveat'] text-sm font-bold leading-none w-full truncate ${isDefaultState ? '' : 'drop-shadow-sm'}`}
+          style={{ color: colors.text }}
+        >
+          {!isDefaultState && trackFeat ? trackFeat : "2022–'26"}
+        </p>
+        <p 
+          className={`text-[0.37rem] font-serif tracking-wide mt-0.5 uppercase w-full font-semibold truncate ${isDefaultState ? '' : 'drop-shadow-sm'}`}
+          style={{ color: colors.textMuted }}
+        >
+          The Memory Tape
+        </p>
+        <div className="w-2 h-2 rounded-full mt-1 shrink-0" style={{ background: '#0d0b09', boxShadow: 'inset 0 1px 3px rgba(0,0,0,0.9)' }} />
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 const ToneArm = ({ playing }) => (
   <motion.div
@@ -199,7 +228,7 @@ const BatchSoundtrack = () => {
               aria-label="Click to reveal the batch tracklist"
             >
               <VinylGrooves />
-              <VinylLabel trackTitle={currentTrack?.title} playing={isPlaying} />
+              <VinylLabel trackTitle={currentTrack?.title} trackFeat={currentTrack?.feat} playing={isPlaying} trackIndex={activeTrack} />
               <div
                 className="absolute inset-0 rounded-full pointer-events-none"
                 style={{ background: 'conic-gradient(from 120deg, transparent 0%, rgba(255,255,255,0.045) 15%, transparent 30%)' }}

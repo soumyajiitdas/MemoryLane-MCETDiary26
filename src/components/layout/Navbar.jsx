@@ -122,7 +122,7 @@ const NavMiniPlayer = ({ showDisc = true }) => {
 
           {/* Scrolling track name */}
           <MarqueeText
-            text={currentTrack.title}
+            text={`${currentTrack.title} - ${currentTrack.feat}`}
             className="text-amber-300/80 text-xs font-['Playfair_Display'] min-w-0"
           />
 

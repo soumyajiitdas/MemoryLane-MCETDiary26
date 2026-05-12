@@ -6,7 +6,7 @@ export const peopleData =
     nickname: "Silhouette🌘",
     roll: "10600122014",
     photo: "/images/cast/soumyajit.png",
-    funnyPhoto: "/images/cast/soumyajit2.jpg",
+    funnyPhoto: "/images/cast/soumyajit2.png",
     department: "Computer Science",
     birthday: "07-30",
     oneliner: "Not always in the spotlight, yet never out of the story - some presences are felt long before they are understood.",
