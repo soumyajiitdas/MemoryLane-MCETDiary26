@@ -51,8 +51,23 @@ const MarqueeText = ({ text, className = '' }) => {
 
 /* ── Tiny vinyl SVG (matches home page aesthetics) ──────────────────── */
 /* Pure CSS animation-play-state — no Framer Motion rotation needed     */
-const MiniVinyl = ({ isPlaying, isResetting, size = 26 }) => {
+const LABEL_COLORS = [
+  { light: '#c8934a', dark: '#7c481f' }, // Amber
+  { light: '#c85a5a', dark: '#7a2f2f' }, // muted red
+  { light: '#5a86c8', dark: '#2f4f7a' }, // muted blue
+  { light: '#5fc27a', dark: '#357048' }, // muted green
+  { light: '#c8b15a', dark: '#7a682f' }, // muted yellow
+  { light: '#a05ac8', dark: '#62357a' }, // muted purple
+];
+
+const MiniVinyl = ({ isPlaying, isResetting, activeTrack, size = 26 }) => {
   const playState = (isPlaying && !isResetting) ? 'running' : 'paused';
+  
+  const isDefaultState = activeTrack === null || activeTrack === undefined;
+  const miniDiscColors = isDefaultState
+    ? { light: '#fdf4e3', dark: '#d5bca3' }
+    : LABEL_COLORS[activeTrack % LABEL_COLORS.length];
+
   return (
     <div
       key={isResetting ? 'mini-reset' : 'mini-play'}
@@ -77,8 +92,8 @@ const MiniVinyl = ({ isPlaying, isResetting, size = 26 }) => {
             <stop offset="100%" stopColor="#100d08" />
           </radialGradient>
           <radialGradient id="mLabelGrad" cx="35%" cy="35%" r="70%">
-            <stop offset="0%" stopColor="#c8934a" />
-            <stop offset="100%" stopColor="#7c481f" />
+            <stop offset="0%" stopColor={miniDiscColors.light} />
+            <stop offset="100%" stopColor={miniDiscColors.dark} />
           </radialGradient>
         </defs>
         <circle cx="50" cy="50" r="50" fill="url(#mDiscGrad)" />
@@ -118,7 +133,7 @@ const NavMiniPlayer = ({ showDisc = true }) => {
           }}
         >
           {/* Vinyl disc — desktop only */}
-          {showDisc && <MiniVinyl isPlaying={isPlaying} isResetting={isResetting} size={26} />}
+          {showDisc && <MiniVinyl isPlaying={isPlaying} isResetting={isResetting} activeTrack={activeTrack} size={26} />}
 
           {/* Scrolling track name */}
           <MarqueeText

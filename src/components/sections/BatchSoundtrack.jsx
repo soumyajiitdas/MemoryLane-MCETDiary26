@@ -137,6 +137,11 @@ const BatchSoundtrack = () => {
   const discPlayState = (isPlaying && !isResetting) ? 'running' : 'paused';
   const headerPlayState = (isPlaying && !isResetting) ? 'running' : 'paused';
 
+  const isDefaultState = activeTrack === null || activeTrack === undefined;
+  const miniDiscColors = isDefaultState
+    ? { light: '#fdf4e3', dark: '#d5bca3' }
+    : LABEL_COLORS[activeTrack % LABEL_COLORS.length];
+
   return (
     <section className="py-0 sm:py-14 relative z-10 overflow-hidden" id="batch-soundtrack">
       {/* Ambient glow */}
@@ -280,7 +285,15 @@ const BatchSoundtrack = () => {
                   }),
                 }}
               >
-                <div className="w-2 h-2 rounded-full bg-amber-800/60" />
+                <div 
+                  className="rounded-full flex items-center justify-center opacity-20 transition-colors duration-700"
+                  style={{
+                    width: '40%', height: '40%',
+                    background: `radial-gradient(circle at 35% 35%, ${miniDiscColors.light}, ${miniDiscColors.dark})`,
+                  }}
+                >
+                  <div className="w-1 h-1 rounded-full" style={{ background: '#0d0b09' }} />
+                </div>
               </div>
               <div>
                 <p className="font-['Playfair_Display'] text-amber-200 font-semibold text-sm">The Memory Tape</p>
