@@ -50,7 +50,6 @@ const MarqueeText = ({ text, className = '' }) => {
 };
 
 /* ── Tiny vinyl SVG (matches home page aesthetics) ──────────────────── */
-/* Pure CSS animation-play-state — no Framer Motion rotation needed     */
 const LABEL_COLORS = [
   { light: '#c8934a', dark: '#7c481f' }, // Amber
   { light: '#c85a5a', dark: '#7a2f2f' }, // muted red
@@ -144,7 +143,7 @@ const NavMiniPlayer = ({ showDisc = true }) => {
           {/* Play / Pause */}
           <button
             onClick={() => playTrack(activeTrack)}
-            className="text-amber-400/80 hover:text-amber-200 transition-colors text-[10px] leading-none flex-shrink-0"
+            className="text-amber-700/70 hover:text-amber-500 transition-colors text-[10px] leading-none flex-shrink-0"
             aria-label={isPlaying ? 'Pause' : 'Play'}
           >
             {isPlaying ? <Pause className='w-4 h-4' /> : <Play className='w-4 h-4' />}
@@ -153,7 +152,7 @@ const NavMiniPlayer = ({ showDisc = true }) => {
           {/* Stop */}
           <button
             onClick={stop}
-            className="text-amber-600/70 hover:text-amber-400 transition-colors text-xs leading-none flex-shrink-0"
+            className="text-amber-700/70 hover:text-amber-500 transition-colors text-xs leading-none flex-shrink-0"
             aria-label="Stop"
           >
             <X className='w-4 h-4' />
@@ -209,7 +208,7 @@ const Navbar = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className={`flex items-center justify-between gap-2 overflow-hidden transition-all duration-500 ${isScrolled ? 'h-15' : 'h-20'}`}>
+        <div className={`flex items-center justify-between gap-2 overflow-hidden transition-all duration-500 ${isScrolled ? 'h-15' : 'h-18'}`}>
 
           {/* Logo — match hero vibe */}
           <div className={`flex-shrink-0 transition-all duration-500 ${isScrolled ? 'scale-90 origin-left' : 'scale-100'}`}>

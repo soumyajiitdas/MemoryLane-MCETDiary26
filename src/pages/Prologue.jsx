@@ -177,7 +177,7 @@ const StickyNoteMini = ({ post, index }) => {
           <div className="push-pin -top-3" />
 
           <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(transparent, transparent 27px, #4A90E2 27px, #4A90E2 28px)', backgroundSize: '100% 28px' }} />
-          
+
           {/* Red vertical margin line for classical notebook effect */}
           <div className="absolute left-[28px] top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
           <div className="absolute left-[26px] top-0 bottom-0 w-[1px] bg-red-800/10 pointer-events-none"></div>
@@ -376,7 +376,7 @@ const LetterToBatch = () => {
 
             {/* Subtle Ruled Lines */}
             <div className="absolute inset-0 opacity-[0.2] pointer-events-none" style={{ backgroundImage: 'repeating-linear-gradient(transparent, transparent 27px, #4A90E2 27px, #4A90E2 28px)', backgroundSize: '100% 32px' }} />
-            
+
             {/* Red vertical margin line for classical notebook effect */}
             <div className="absolute left-8 top-0 bottom-0 w-[1px] bg-red-800/20 pointer-events-none"></div>
             <div className="absolute left-[34px] top-0 bottom-0 w-[1px] bg-red-800/10 pointer-events-none"></div>
