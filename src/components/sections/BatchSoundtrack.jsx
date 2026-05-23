@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useAnimation, useMotionValue } from 'framer-motion';
 import { usePlayer, TRACKLIST } from '../../context/PlayerContext';
 import { Play } from 'lucide-react';
 
@@ -133,9 +133,67 @@ const BatchSoundtrack = () => {
   const { activeTrack, isPlaying, isResetting, revealed, currentTrack, playTrack, toggleVinyl } = usePlayer();
   const [isHovered, setIsHovered] = useState(false);
 
-  // CSS animation-play-state: 'running' only when audio is truly playing AND not resetting
-  const discPlayState = (isPlaying && !isResetting) ? 'running' : 'paused';
-  const headerPlayState = (isPlaying && !isResetting) ? 'running' : 'paused';
+  // ── Framer Motion Animation Controls ──
+  const discControls = useAnimation();
+  const discRotation = useMotionValue(0);
+  
+  const headerControls = useAnimation();
+  const headerRotation = useMotionValue(0);
+
+  // Main Vinyl Animation
+  React.useEffect(() => {
+    if (isPlaying && !isResetting) {
+      discControls.start({
+        rotate: [discRotation.get(), discRotation.get() + 360],
+        transition: { repeat: Infinity, duration: 2.5, ease: "linear" }
+      });
+    } else if (isResetting) {
+      let current = discRotation.get();
+      let normalized = current % 360;
+      if (normalized < 0) normalized += 360;
+      
+      discRotation.set(normalized);
+      discControls.start({
+        rotate: 0,
+        transition: { duration: 0.5, ease: "easeInOut" }
+      });
+    } else {
+      discControls.stop();
+      discRotation.stop();
+      
+      // Explicitly lock the rotation to its current angle when stopped
+      const current = discRotation.get();
+      discRotation.set(current);
+      discControls.set({ rotate: current });
+    }
+  }, [isPlaying, isResetting, discControls, discRotation]);
+
+  // Header Vinyl Animation
+  React.useEffect(() => {
+    if (isPlaying && !isResetting) {
+      headerControls.start({
+        rotate: [headerRotation.get(), headerRotation.get() + 360],
+        transition: { repeat: Infinity, duration: 3, ease: "linear" }
+      });
+    } else if (isResetting) {
+      let current = headerRotation.get();
+      let normalized = current % 360;
+      if (normalized < 0) normalized += 360;
+      
+      headerRotation.set(normalized);
+      headerControls.start({
+        rotate: 0,
+        transition: { duration: 0.5, ease: "easeInOut" }
+      });
+    } else {
+      headerControls.stop();
+      headerRotation.stop();
+      
+      const current = headerRotation.get();
+      headerRotation.set(current);
+      headerControls.set({ rotate: current });
+    }
+  }, [isPlaying, isResetting, headerControls, headerRotation]);
 
   const isDefaultState = activeTrack === null || activeTrack === undefined;
   const miniDiscColors = isDefaultState
@@ -208,11 +266,11 @@ const BatchSoundtrack = () => {
               }}
             />
 
-            {/* Vinyl disc — wind-down animation on reset, CSS spin when playing */}
-            <div
-              key={isResetting ? 'resetting' : 'playing'}
-              className={isResetting ? 'vinyl-winddown' : 'vinyl-spinning'}
+            {/* Vinyl disc — smooth rewind animation on reset, spin when playing */}
+            <motion.div
+              animate={discControls}
               style={{
+                rotate: discRotation,
                 position: 'absolute', inset: 0, zIndex: 10,
                 borderRadius: '9999px',
                 cursor: 'pointer', userSelect: 'none',
@@ -221,10 +279,6 @@ const BatchSoundtrack = () => {
                   ? '0 0 55px 10px rgba(200,140,50,0.22), 0 20px 60px rgba(0,0,0,0.7)'
                   : '0 20px 60px rgba(0,0,0,0.7)',
                 transition: 'box-shadow 0.6s ease',
-                ...(isResetting ? {} : {
-                  animationDuration: '2.5s',
-                  animationPlayState: discPlayState,
-                }),
               }}
               onClick={toggleVinyl}
               onMouseEnter={() => setIsHovered(true)}
@@ -238,7 +292,7 @@ const BatchSoundtrack = () => {
                 className="absolute inset-0 rounded-full pointer-events-none"
                 style={{ background: 'conic-gradient(from 120deg, transparent 0%, rgba(255,255,255,0.045) 15%, transparent 30%)' }}
               />
-            </div>
+            </motion.div>
 
             {/* Hint badge */}
             <AnimatePresence>
@@ -269,20 +323,16 @@ const BatchSoundtrack = () => {
           >
             {/* Header */}
             <div className="px-5 py-4 border-b flex items-center gap-3" style={{ borderColor: 'rgba(200,140,50,0.12)' }}>
-              <div
-                key={isResetting ? 'h-resetting' : 'h-playing'}
-                className={isResetting ? 'vinyl-winddown' : 'vinyl-spinning'}
+              <motion.div
+                animate={headerControls}
                 style={{
+                  rotate: headerRotation,
                   width: '1.75rem', height: '1.75rem',
                   borderRadius: '9999px',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   flexShrink: 0,
                   background: 'radial-gradient(circle, #2e2620, #100d08)',
                   border: '1px solid rgba(200,140,50,0.25)',
-                  ...(isResetting ? {} : {
-                    animationDuration: '3s',
-                    animationPlayState: headerPlayState,
-                  }),
                 }}
               >
                 <div 
@@ -294,7 +344,7 @@ const BatchSoundtrack = () => {
                 >
                   <div className="w-1 h-1 rounded-full" style={{ background: '#0d0b09' }} />
                 </div>
-              </div>
+              </motion.div>
               <div>
                 <p className="font-['Playfair_Display'] text-amber-200 font-semibold text-sm">The Memory Tape</p>
                 <p className="text-amber-600/50 text-xs">MCET 2022–'26 · {TRACKLIST.length} Tracks</p>

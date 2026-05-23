@@ -116,7 +116,7 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="relative text-center text-white/30 text-[10px] uppercase tracking-widest font-sans font-semibold leading-relaxed pt-8 mt-4 border-t border-white/5 w-full max-w-md"
+          className="relative text-center text-white/30 text-[10px] uppercase tracking-widest font-['Special_Elite'] font-medium leading-relaxed pt-8 mt-4 border-t border-white/5 w-full max-w-md"
         >
           {/* Heart doodle near the final text */}
           <DoodleHeart className="hidden sm:inline w-12 h-12 absolute -top-4 -right-10 opacity-40 rotate-12 mix-blend-screen" color="#F59E0B" />

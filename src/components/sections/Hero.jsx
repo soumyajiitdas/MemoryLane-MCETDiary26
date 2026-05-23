@@ -32,7 +32,7 @@ const InteractivePolaroid = ({ p, containerRef, updateZIndex }) => {
       dragElastic={0.1}
       onDragStart={() => updateZIndex(p.id)}
       initial={{ opacity: 0, scale: 0.8, rotate: p.rot - 20 }}
-      animate={{ opacity: 0.7, scale: 1, rotate: p.rot }}
+      animate={{ opacity: 0.8, scale: 1, rotate: p.rot }}
       transition={{ duration: 1, delay: p.delay, ease: 'easeOut' }}
       className="group cursor-grab active:cursor-grabbing"
       style={{
@@ -132,10 +132,15 @@ const Hero = () => {
 
           {/* Eyebrow */}
           <motion.div variants={itemVariants} className="flex items-center gap-4 mb-8 pointer-events-auto">
-            <div className="h-px w-12 bg-amber-500/50"></div>
-            <span className="font-sans text-xs md:text-sm tracking-[0.4em] font-bold uppercase text-amber-500/90">
-              1st Year to Farewell
-            </span>
+            {/* Press rule above eyebrow */}
+            <div className="flex-1 w-12 flex flex-col gap-[3px] opacity-80">
+              <div className="h-[2px] w-full" style={{ background: 'rgba(200,168,80,0.3)' }} />
+              <div className="h-px w-full" style={{ background: 'rgba(200,168,80,0.15)' }} />
+            </div>
+
+            <h2 className="font-['Special_Elite'] text-[0.6rem] sm:text-[0.7rem] tracking-[0.4em] sm:tracking-[0.3em] text-amber-500/70 uppercase">
+              First Year to Farewell
+            </h2>
           </motion.div>
 
           {/* Title */}
@@ -170,22 +175,22 @@ const Hero = () => {
           <motion.div variants={itemVariants} className="mt-14 flex flex-wrap items-center gap-8 md:gap-10 relative pointer-events-auto">
             <button
               onClick={() => navigate('/chapters')}
-              className="group relative flex items-center gap-4 text-white font-sans tracking-widest uppercase text-xs md:text-sm font-bold"
+              className="group relative flex items-center gap-4 text-white font-serif tracking-wider uppercase text-xs md:text-sm font-semibold"
             >
-              <div className="w-12 h-12 rounded-full border border-amber-500/30 flex items-center justify-center bg-amber-500/10 group-hover:bg-amber-500 transition-colors duration-500">
+              <div className="w-12 h-12 rounded-full border border-amber-500/30 flex items-center justify-center bg-amber-500/10 group-hover:bg-amber-600 transition-colors duration-500">
                 <span className="text-amber-500 group-hover:text-black transition-colors duration-500 text-xl group-hover:translate-x-1">→</span>
               </div>
-              <span className="relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-amber-500 after:transition-all after:duration-500 group-hover:after:w-full pb-1">
+              <span className="relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-px after:bg-amber-600 after:transition-all after:duration-500 group-hover:after:w-full pb-1">
                 Read Chapters
               </span>
             </button>
 
             <button
               onClick={() => navigate('/the-cast')}
-              className="group flex items-center gap-3 text-white/60 hover:text-white transition-colors"
+              className="group flex items-center gap-3 text-white/60 hover:text-amber-600 transition-colors"
             >
-              <span className="text-amber-500 text-xl group-hover:rotate-90 transition-transform duration-500">✦</span>
-              <span className="font-sans text-xs md:text-sm tracking-widest uppercase font-semibold">
+              <span className="text-amber-500 text-2xl group-hover:rotate-90 transition-transform duration-500">✦</span>
+              <span className="font-['Special_Elite'] text-xs md:text-sm tracking-widest uppercase">
                 Meet the Cast
               </span>
             </button>

@@ -169,7 +169,7 @@ const JourneyNode = ({ data, index }) => {
 };
 
 const Chapters = () => {
-  useEffect(() => { document.title = "MCET Diary '26 | Chapters - Four Year Stories"; }, []);
+  useEffect(() => { document.title = "MCET Diary '26 | Four Year Stories"; }, []);
 
   return (
     <PageTransition>
@@ -198,7 +198,7 @@ const Chapters = () => {
               <DoodleCrown className="w-20 h-20 absolute top-0 right-10 md:right-40 opacity-30 rotate-12 mix-blend-screen hidden md:block" color="#F59E0B" />
 
               <SectionHeading
-                title="Chapters"
+                title="The Chapters"
                 subtitle="The story we lived, not just remembered."
                 eyebrow="Four Year Stories"
               />
@@ -209,7 +209,7 @@ const Chapters = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 1 }}
-              className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 -mt-10 mb-24 max-w-2xl mx-auto"
+              className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-24 max-w-2xl mx-auto"
             >
               "Here's to the nights that turned into mornings, with the friends that turned into family..."
             </motion.p>

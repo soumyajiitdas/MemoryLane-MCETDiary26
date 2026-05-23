@@ -85,7 +85,7 @@ export const PlayerProvider = ({ children }) => {
           audio.load();
           audio.play().catch(() => {});
           setIsResetting(false);
-        }, 300); // 300ms reset window — disc returns to 0° then spins
+        }, 500); // 500ms reset window — disc returns to 0° then spins
         return next;
       });
     };
@@ -123,7 +123,7 @@ export const PlayerProvider = ({ children }) => {
         audio.currentTime = 0;
         audio.play().catch(() => {});
         setIsResetting(false);
-      }, 300);
+      }, 500);
     }
   }, [activeTrack, isPlaying]);
 

@@ -159,7 +159,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "08-30",
     oneliner: "Cricket on the field, code on the screen - a calm presence with a genuinely kind heart.",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/shirsendu-pramanik-085151248/", instagram: "#" }
   },
   {
     id: 15,
@@ -280,7 +280,7 @@ export const peopleData =
     department: "Computer Science",
     birthday: "01-04",
     oneliner: "A cybersecurity enthusiast, sharp in academics - and the kind of friend you can always count on.",
-    socialLinks: { github: "#", linkedin: "#", instagram: "#" }
+    socialLinks: { github: "#", linkedin: "https://www.linkedin.com/in/saptarshi-mandal-54aa41398/", instagram: "#" }
   },
   {
     id: 26,

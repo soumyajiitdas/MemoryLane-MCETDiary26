@@ -15,7 +15,6 @@ import { getTrailingEmoji } from "../utils/emojiExtract";
 import { peopleData } from '../data/cast';
 import { eventsData } from '../data/events';
 import { memoriesData } from '../data/notes';
-
 import { galleryData } from '../data/scrapbook';
 
 // Premium Vintage Ticket
@@ -329,8 +328,8 @@ const LetterToBatch = () => {
           </div>
 
           <div className="relative z-10">
-            <h2 className="text-sm md:text-base font-sans font-semibold tracking-[0.3em] text-amber-500 uppercase mb-6 flex items-center gap-4">
-              <span className="w-12 h-[1px] bg-amber-500/50 block"></span>
+            <h2 className="font-['Special_Elite'] text-[0.65rem] tracking-[0.35em] text-amber-500/80 uppercase mb-6 flex items-center gap-4">
+              <span className="w-12 h-[1px] bg-amber-500/40 block"></span>
               Where it Began
             </h2>
             <h3 className="text-6xl md:text-7xl lg:text-[7rem] font-['Caveat'] text-white/90 leading-[1.1] tracking-wide drop-shadow-md mb-8">
@@ -456,7 +455,7 @@ const LetterToBatch = () => {
 };
 
 const Prologue = () => {
-  useEffect(() => { document.title = "MCET Diary ’26 | From First Year to Farewell"; }, []);
+  useEffect(() => { document.title = "MCET Diary ’26 | First Year to Farewell"; }, []);
 
   const [featuredCast, setFeaturedCast] = useState([]);
   const [recentMemories, setRecentMemories] = useState([]);
@@ -557,8 +556,8 @@ const Prologue = () => {
                 Stats
               </div>
 
-              <h2 className="text-sm md:text-base font-sans font-semibold tracking-[0.3em] text-amber-500 uppercase mb-6 flex items-center gap-4">
-                <span className="w-12 h-[1px] bg-amber-500/50 block"></span>
+              <h2 className="font-['Special_Elite'] text-[0.65rem] tracking-[0.35em] text-amber-500/80 uppercase mb-6 flex items-center gap-4">
+                <span className="w-12 h-[1px] bg-amber-500/40 block"></span>
                 The Math
               </h2>
 
@@ -610,8 +609,8 @@ const Prologue = () => {
                   Cast
                 </div>
 
-                <h2 className="text-sm md:text-base font-sans font-semibold tracking-[0.3em] text-amber-500 uppercase mb-6 flex items-center gap-4">
-                  <span className="w-12 h-[1px] bg-amber-500/50 block"></span>
+                <h2 className="font-['Special_Elite'] text-[0.65rem] tracking-[0.35em] text-amber-500/80 uppercase mb-6 flex items-center gap-4">
+                  <span className="w-12 h-[1px] bg-amber-500/40 block"></span>
                   The Spotlight
                 </h2>
 
@@ -675,8 +674,8 @@ const Prologue = () => {
                 Clock
               </div>
 
-              <h2 className="text-sm md:text-base font-sans font-semibold tracking-[0.3em] text-amber-500 uppercase mb-6 flex items-center gap-4">
-                <span className="w-12 h-[1px] bg-amber-500/50 block"></span>
+              <h2 className="font-['Special_Elite'] text-[0.65rem] tracking-[0.35em] text-amber-500/80 uppercase mb-6 flex items-center gap-4">
+                <span className="w-12 h-[1px] bg-amber-500/40 block"></span>
                 Until Farewell
               </h2>
 
@@ -745,10 +744,10 @@ const Prologue = () => {
               </div>
 
               <DoodleArrow className="w-20 h-20 absolute top-0 left-0 md:left-20 opacity-40 -rotate-[120deg] mix-blend-screen hidden md:block" color="#F59E0B" />
-              <h2 className="text-sm md:text-base font-sans font-semibold tracking-[0.3em] text-amber-500 uppercase mb-6 flex items-center justify-center gap-4">
-                <span className="w-12 h-[1px] bg-amber-500/50 block"></span>
+              <h2 className="font-['Special_Elite'] text-[0.65rem] tracking-[0.35em] text-amber-500/80 uppercase mb-6 flex items-center justify-center gap-4">
+                <span className="w-12 h-[1px] bg-amber-500/40 block"></span>
                 From Our Highlights
-                <span className="w-12 h-[1px] bg-amber-500/50 block"></span>
+                <span className="w-12 h-[1px] bg-amber-500/40 block"></span>
               </h2>
               <h3 className="text-6xl md:text-7xl lg:text-[6rem] font-['Caveat'] text-white/90 leading-tight mb-6 tracking-wide drop-shadow-md">
                 Little Things We <span className="text-amber-500/90">Wrote</span>

@@ -178,7 +178,7 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Prologue', path: '/' },
     { name: 'Chapters', path: '/chapters' },
-    { name: 'The Cast', path: '/the-cast' },
+    { name: 'Cast', path: '/the-cast' },
     { name: 'Scrapbook', path: '/scrapbook' },
     { name: 'Our Notes', path: '/our-notes' },
     { name: 'Last Pages', path: '/last-pages' },
@@ -227,7 +227,7 @@ const Navbar = () => {
             </NavLink>
           </div>
 
-          {/* Desktop nav links — premium tracking uppercase */}
+          {/* Desktop nav links */}
           <div className="hidden md:flex items-center space-x-6 flex-1 justify-center">
             {navLinks.map((link, i) => (
               <NavLink
@@ -235,7 +235,7 @@ const Navbar = () => {
                 to={link.path}
                 style={{ animationDelay: `${i * 0.07}s`, animationFillMode: 'backwards' }}
                 className={({ isActive }) =>
-                  `relative px-1 py-2 transition-all duration-300 whitespace-nowrap group font-sans text-xs uppercase tracking-[0.2em] font-semibold ${isActive
+                  `relative px-1 py-2 transition-all duration-300 whitespace-nowrap group font-['Special_Elite'] text-xs uppercase tracking-[0.2em]  ${isActive
                     ? 'text-amber-500'
                     : 'text-white/50 hover:text-white'
                   }`
@@ -311,7 +311,7 @@ const Navbar = () => {
               to={link.path}
               onClick={() => setIsOpen(false)}
               className={({ isActive }) =>
-                `flex items-center justify-center w-full px-4 py-3 rounded-md font-sans text-xs uppercase tracking-[0.25em] font-semibold transition-all duration-150 ${isActive
+                `flex items-center justify-center w-full px-4 py-3 rounded-md font-['Special_Elite'] text-xs uppercase tracking-[0.3em] transition-all duration-150 ${isActive
                   ? 'text-amber-500 bg-white/5'
                   : 'text-white/50 hover:text-white hover:bg-white/5'
                 }`

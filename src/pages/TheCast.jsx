@@ -2,11 +2,9 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageTransition from '../components/layout/PageTransition';
 import SectionHeading from '../components/ui/SectionHeading';
-import EventCard from '../components/sections/EventCard';
 import ChapterNav from '../components/ui/ChapterNav';
 import Fireflies from '../components/ui/Fireflies';
 import { peopleData } from '../data/cast';
-import { eventsData } from '../data/events';
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { DoodleCrown, DoodleSparkle, DoodleHeart } from '../components/ui/VintageDoodles';
 import { X } from 'lucide-react';
@@ -288,7 +286,7 @@ const CastDossier = ({ person, onClose }) => {
                   <DraggableItem constraintsRef={constraintsRef} defaultLeft={pos.social.left} defaultTop={pos.social.top} initialRotate={4} delay={0.7}>
                     <div style={{ width: isMobile ? 165 : 185, background: '#faf4e0', padding: '14px 12px 16px', boxShadow: '3px 6px 20px rgba(0,0,0,0.3)', backgroundImage: "repeating-linear-gradient(#faf4e0 0px,#faf4e0 23px,rgba(96,152,204,0.4) 23px,rgba(96,152,204,0.4) 24px)", backgroundSize: '100% 24px', backgroundPosition: '0 8px', borderLeft: '3px solid rgba(200,70,70,0.3)', position: 'relative' }}>
                       <div style={{ position: 'absolute', top: -9, left: '50%', transform: 'translateX(-50%) rotate(2deg)', width: 50, height: 16, background: 'rgba(240,220,150,0.8)', clipPath: 'polygon(0 20%,3% 0%,6% 18%,9% 0%,12% 15%,15% 0%,100% 0%,100% 100%,0% 100%)', zIndex: 30 }} />
-                      <h3 style={{ fontFamily: 'Caveat,cursive', fontSize: 17, fontWeight: 700, color: 'rgba(80,40,10,0.8)', textAlign: 'center', marginBottom: 8, paddingBottom: 5, borderBottom: '1px solid rgba(140,90,30,0.2)', marginTop: 4 }}>Find me at ✎</h3>
+                      <h3 style={{ fontFamily: 'Caveat,cursive', fontSize: 17, fontWeight: 700, color: 'rgba(80,40,10,0.8)', textAlign: 'center', marginBottom: 8, paddingBottom: 5, borderBottom: '1px solid rgba(140,90,30,0.2)', marginTop: 4 }}>Social Links ✎</h3>
                       <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                         {Object.entries(person.socialLinks).map(([network, url]) => {
                           if (!url || url === '#') return null;
@@ -323,9 +321,8 @@ const CastDossier = ({ person, onClose }) => {
 // ── Main Page ─────────────────────────────────────────────────────────────────
 
 const TheCast = () => {
-  useEffect(() => { document.title = "MCET Diary '26 | The Cast - Faces of Us"; }, []);
+  useEffect(() => { document.title = "MCET Diary '26 | Faces of Us"; }, []);
 
-  const [view, setView] = useState('batchmates');
   const [selectedPerson, setSelectedPerson] = useState(null);
 
   return (
@@ -361,60 +358,12 @@ const TheCast = () => {
               />
             </motion.div>
 
-            {/* Toggle Tab — smooth motion indicator */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2, duration: 1 }}
-              className="flex justify-center mb-10"
-            >
-              <div
-                className="bg-white/5 backdrop-blur-md p-1 rounded-full inline-flex relative border border-white/10"
-              >
-                <button
-                  onClick={() => setView('batchmates')}
-                  className={`relative px-8 py-2.5 rounded-full text-md font-serif font-medium transition-colors z-10 ${view === 'batchmates'
-                    ? 'text-black'
-                    : 'text-white/60 hover:text-white'
-                    }`}
-                >
-                  {view === 'batchmates' && (
-                    <motion.span
-                      layoutId="tab-indicator"
-                      className="absolute inset-0 rounded-full"
-                      style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">Roll Call</span>
-                </button>
-                <button
-                  onClick={() => setView('events')}
-                  className={`relative px-8 py-2.5 rounded-full text-md font-serif font-medium transition-colors z-10 ${view === 'events'
-                    ? 'text-black'
-                    : 'text-white/60 hover:text-white'
-                    }`}
-                >
-                  {view === 'events' && (
-                    <motion.span
-                      layoutId="tab-indicator"
-                      className="absolute inset-0 rounded-full"
-                      style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
-                      transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">Events</span>
-                </button>
-              </div>
-            </motion.div>
-
             <motion.p
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 1 }}
-              className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-20 max-w-2xl mx-auto"
+              className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-26 max-w-2xl mx-auto"
             >
               "We didn't realize we were making memories, we just knew we were having fun..."
             </motion.p>
@@ -423,35 +372,19 @@ const TheCast = () => {
               {/* Radial gradient glow in background */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] max-w-4xl h-[80%] bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-amber-500/10 via-amber-500/5 to-transparent pointer-events-none"></div>
 
-              <AnimatePresence mode="wait">
-                {view === 'batchmates' ? (
-                  <motion.div
-                    key="batchmates"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-8 relative z-10"
-                  >
-                    {peopleData.map((person) => (
-                      <div key={person.id} className="px-2">
-                        <Polaroid person={person} onClick={setSelectedPerson} />
-                      </div>
-                    ))}
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="events"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -20 }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10"
-                  >
-                    {eventsData.map((event) => (
-                      <EventCard key={event.id} event={event} onClick={() => { }} />
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+                className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-8 relative z-10"
+              >
+                {peopleData.map((person) => (
+                  <div key={person.id} className="px-2">
+                    <Polaroid person={person} onClick={setSelectedPerson} />
+                  </div>
+                ))}
+              </motion.div>
             </div>
 
             <div className="flex justify-between items-center w-full mt-16 sm:mt-32 sm:border-t border-amber-900/40 pt-0 sm:pt-12 relative z-20">

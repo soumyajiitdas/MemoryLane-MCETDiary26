@@ -106,7 +106,7 @@ const PremiumStickyNote = ({ post, index }) => {
 };
 
 const OurNotes = () => {
-  useEffect(() => { document.title = "MCET Diary '26 | Our Notes - Words We Left"; }, []);
+  useEffect(() => { document.title = "MCET Diary '26 | Words We Left"; }, []);
   const [posts, setPosts] = useState(() => [...memoriesData].sort(() => 0.5 - Math.random()));
 
   return (
@@ -148,7 +148,7 @@ const OurNotes = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.3, duration: 1 }}
-              className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 -mt-10 mb-20 max-w-2xl mx-auto"
+              className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-20 max-w-2xl mx-auto"
             >
               "It’s strange how endings don’t feel like endings at first..."
             </motion.p>
