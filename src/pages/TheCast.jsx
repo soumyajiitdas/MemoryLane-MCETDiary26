@@ -7,7 +7,7 @@ import Fireflies from '../components/ui/Fireflies';
 import { peopleData } from '../data/cast';
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { DoodleCrown, DoodleSparkle, DoodleHeart } from '../components/ui/VintageDoodles';
-import { X } from 'lucide-react';
+import { X, Search, SlidersHorizontal, ArrowDownUp } from 'lucide-react';
 
 
 // random bg color of Vintage masking tape
@@ -324,6 +324,52 @@ const TheCast = () => {
   useEffect(() => { document.title = "MCET Diary '26 | Faces of Us"; }, []);
 
   const [selectedPerson, setSelectedPerson] = useState(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [departmentFilter, setDepartmentFilter] = useState("All");
+  const [sortOrder, setSortOrder] = useState("default");
+
+  const cycleDepartment = () => {
+    setDepartmentFilter(prev => {
+      if (prev === "All") return "Computer Science";
+      if (prev === "Computer Science") return "Civil Engineering";
+      return "All";
+    });
+  };
+
+  const cycleSort = () => {
+    setSortOrder(prev => {
+      if (prev === "default") return "asc";
+      if (prev === "asc") return "desc";
+      return "default";
+    });
+  };
+
+  const filteredAndSortedPeople = useMemo(() => {
+    let result = [...peopleData];
+
+    // Filter by branch
+    if (departmentFilter !== "All") {
+      result = result.filter(p => p.department === departmentFilter);
+    }
+
+    // Filter by search query (name or nickname)
+    if (searchQuery.trim() !== "") {
+      const query = searchQuery.toLowerCase();
+      result = result.filter(p => 
+        p.name.toLowerCase().includes(query) || 
+        (p.nickname && p.nickname.toLowerCase().includes(query))
+      );
+    }
+
+    // Sort
+    if (sortOrder === "asc") {
+      result.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortOrder === "desc") {
+      result.sort((a, b) => b.name.localeCompare(a.name));
+    }
+
+    return result;
+  }, [searchQuery, departmentFilter, sortOrder]);
 
   return (
     <PageTransition>
@@ -363,10 +409,73 @@ const TheCast = () => {
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 1 }}
-              className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-26 max-w-2xl mx-auto"
+              className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-16 max-w-2xl mx-auto"
             >
-              "We didn't realize we were making memories, we just knew we were having fun..."
+              <span className='text-amber-600/50 text-md sm:text-3xl'>❝</span> We didn't realize we were making memories, we just knew we were having fun... <span className='text-amber-600/50 text-md sm:text-3xl'>❞</span>
             </motion.p>
+
+            {/* Controls Bar */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, duration: 0.8 }}
+              className="flex flex-col md:flex-row gap-4 mb-16 items-center justify-between z-20 relative border-b border-white/5 pb-8"
+            >
+              <div className="relative w-full md:w-1/3">
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-amber-600/70" />
+                <input 
+                  type="text"
+                  placeholder="Search name or nickname..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full bg-white/5 border border-white/10 rounded-full py-2.5 pl-11 pr-4 text-sm text-white placeholder-white/30 focus:outline-none focus:border-amber-500/30 transition-all font-sans"
+                />
+              </div>
+
+              <div className="flex flex-wrap gap-3 md:gap-4 w-full md:w-auto justify-start md:justify-end">
+
+                {/* Sort Cycle Button */}
+                <motion.button
+                  onClick={cycleSort}
+                  whileTap={{ scale: 0.95 }}
+                  className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-serif tracking-wide font-semibold text-white/60 hover:text-amber-600 hover:bg-white/5 border border-white/10 transition-colors`}
+                >
+                  <ArrowDownUp size={15} />
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={sortOrder}
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -5 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      {sortOrder === "default" ? "Default" : sortOrder === "asc" ? "By Name ↓" : "By Name ↑"}
+                    </motion.span>
+                  </AnimatePresence>
+                </motion.button>
+                
+                {/* Branch Cycle Button */}
+                <motion.button
+                  onClick={cycleDepartment}
+                  whileTap={{ scale: 0.95 }}
+                  className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-sm font-serif tracking-wide font-semibold transition-all duration-300  bg-amber-600 text-black shadow-lg shadow-amber-500/20`}
+                >
+                  <SlidersHorizontal size={15} />
+                  <AnimatePresence mode="wait">
+                    <motion.span
+                      key={departmentFilter}
+                      initial={{ opacity: 0, y: 5 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -5 }}
+                      transition={{ duration: 0.15 }}
+                    >
+                      {departmentFilter === "All" ? "All Branches" : departmentFilter === "Computer Science" ? "Computer Science" : "Civil Engineering"}
+                    </motion.span>
+                  </AnimatePresence>
+                </motion.button>
+              </div>
+            </motion.div>
 
             <div className="relative">
               {/* Radial gradient glow in background */}
@@ -379,12 +488,41 @@ const TheCast = () => {
                 transition={{ duration: 0.8 }}
                 className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-8 relative z-10"
               >
-                {peopleData.map((person) => (
-                  <div key={person.id} className="px-2">
-                    <Polaroid person={person} onClick={setSelectedPerson} />
-                  </div>
-                ))}
+                <AnimatePresence mode="popLayout">
+                  {filteredAndSortedPeople.map((person) => (
+                    <motion.div 
+                      key={person.id} 
+                      layout
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
+                      transition={{ duration: 0.3 }}
+                      className="px-2"
+                    >
+                      <Polaroid person={person} onClick={setSelectedPerson} />
+                    </motion.div>
+                  ))}
+                </AnimatePresence>
               </motion.div>
+
+              {filteredAndSortedPeople.length === 0 && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-center py-20 text-white/40 relative z-20"
+                >
+                  <p className="text-5xl mb-4">🧑‍🎓</p>
+                  <p className="text-xl font-serif font-light">
+                    No one found matching your search...
+                  </p>
+                  <button
+                    onClick={() => { setSearchQuery(""); setDepartmentFilter("All"); setSortOrder("default"); }}
+                    className="mt-4 text-sm text-amber-500 hover:text-amber-600 transition-colors underline underline-offset-6 font-serif tracking-wider uppercase"
+                  >
+                    Clear search
+                  </button>
+                </motion.div>
+              )}
             </div>
 
             <div className="flex justify-between items-center w-full mt-16 sm:mt-32 sm:border-t border-amber-900/40 pt-0 sm:pt-12 relative z-20">

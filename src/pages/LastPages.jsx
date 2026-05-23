@@ -216,7 +216,7 @@ const LastPages = () => {
                 transition={{ delay: 0.3, duration: 1 }}
                 className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-16 max-w-2xl mx-auto"
               >
-                "For the memories we couldn't fit into the margins..."
+                <span className='text-amber-600/50 text-md sm:text-3xl'>❝</span> For the memories we couldn't fit into the margins... <span className='text-amber-600/50 text-md sm:text-3xl'>❞</span>
               </motion.p>
 
               {/* FLIPBOOK CONTAINER */}

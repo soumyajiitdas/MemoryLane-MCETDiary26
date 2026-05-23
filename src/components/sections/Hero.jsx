@@ -165,7 +165,7 @@ const Hero = () => {
             <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-amber-500/50 to-transparent"></div>
             <div className="pl-6 md:pl-8">
               <p className="text-lg md:text-2xl text-white/70 font-serif italic max-w-lg leading-relaxed">
-                "The days we'll never forget, written in the stars and etched in our hearts..."
+                <span className='text-amber-600/50 text-md sm:text-2xl'>❝</span> The days we'll never forget, written in the stars and etched in our hearts...<span className='text-amber-600/50 text-md sm:text-2xl'>❞</span>
               </p>
             </div>
             <DoodleSparkle className="w-8 h-8 absolute -top-4 -left-4 opacity-50 mix-blend-screen pointer-events-none" color="#F59E0B" />

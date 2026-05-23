@@ -158,9 +158,9 @@ const JourneyNode = ({ data, index }) => {
         </motion.div>
 
         {/* Mobile-only hint */}
-        <div className="md:hidden font-['Caveat'] mt-6 text-white/30 tracking-wider text-xs uppercase flex items-center gap-4 font-semibold pointer-events-none">
+        <div className="md:hidden font-['Special_Elite'] mt-6 text-white/30 tracking-wide text-xs  flex items-center gap-4 font-medium pointer-events-none">
           <span className="w-8 h-px bg-white/20"></span>
-          hold photo to read
+          Hold photo to read
           <span className="w-8 h-px bg-white/20"></span>
         </div>
       </motion.div>
@@ -211,7 +211,7 @@ const Chapters = () => {
               transition={{ delay: 0.3, duration: 1 }}
               className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-24 max-w-2xl mx-auto"
             >
-              "Here's to the nights that turned into mornings, with the friends that turned into family..."
+              <span className='text-amber-600/50 text-md sm:text-3xl'>❝</span> Here's to the nights that turned into mornings, with the friends that turned into family... <span className='text-amber-600/50 text-md sm:text-3xl'>❞</span>
             </motion.p>
 
             <div className="mt-12 w-full max-w-6xl mx-auto relative pt-12">

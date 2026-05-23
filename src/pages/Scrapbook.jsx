@@ -111,7 +111,7 @@ const Scrapbook = () => {
               transition={{ delay: 0.3, duration: 1 }}
               className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-16 max-w-2xl mx-auto"
             >
-              "Photographs are tickets to moments that would otherwise be gone..."
+              <span className='text-amber-600/50 text-md sm:text-3xl'>❝</span> Photographs are tickets to moments that would otherwise be gone... <span className='text-amber-600/50 text-md sm:text-3xl'>❞</span>
             </motion.p>
 
             {/* Toggle Tab */}
@@ -252,14 +252,14 @@ const Scrapbook = () => {
                       animate={{ opacity: 1 }}
                       className="text-center py-20 text-white/40"
                     >
-                      <p className="text-5xl mb-4">📭</p>
+                      <p className="text-5xl mb-4">🖼️</p>
                       <p className="text-xl font-serif font-light">
-                        No photos in <span className="text-amber-400">{activeAlbum}</span>
+                        No photos in <span className="text-amber-500">{activeAlbum}</span>
                         {activeYear !== "All" && ` for ${activeYear}`}.
                       </p>
                       <button
                         onClick={() => { setAlbumIndex(0); setActiveYear("All"); }}
-                        className="mt-6 text-sm text-amber-500 hover:text-amber-400 transition-colors underline font-sans tracking-widest uppercase"
+                        className="mt-4 text-sm text-amber-500 hover:text-amber-600 transition-colors underline underline-offset-6 font-serif tracking-wider uppercase"
                       >
                         Clear filters
                       </button>

@@ -150,7 +150,7 @@ const OurNotes = () => {
               transition={{ delay: 0.3, duration: 1 }}
               className="text-center font-serif italic font-light text-2xl md:text-3xl text-white/60 mb-20 max-w-2xl mx-auto"
             >
-              "It’s strange how endings don’t feel like endings at first..."
+              <span className='text-amber-600/50 text-md sm:text-3xl'>❝</span> It’s strange how endings don’t feel like endings at first... <span className='text-amber-600/50 text-md sm:text-3xl'>❞</span>
             </motion.p>
 
             {/* Masonry Board - Refined styling matching Prologue */}

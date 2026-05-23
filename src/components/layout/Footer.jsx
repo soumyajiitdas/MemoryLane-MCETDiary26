@@ -83,7 +83,7 @@ const Footer = () => {
           transition={{ duration: 0.7, delay: 0.2 }}
           className="font-serif italic font-light text-xl md:text-2xl text-white/40 text-center max-w-lg leading-snug mt-2"
         >
-          "A repository of memories, friendship, and unforgettable journeys."
+          <span className='text-amber-600/50 text-[18px] sm:text-md'>❝</span> A repository of memories, friendship, and unforgettable journeys. <span className='text-amber-600/50 text-[18px] sm:text-md'>❞</span>
         </motion.p>
 
         {/* Crafted with */}
@@ -105,7 +105,7 @@ const Footer = () => {
               >
                 🧡
               </motion.span>
-              <span>by MCETians 2022–’26</span>
+              <span>by</span><span className='text-amber-600/70'> MCETians 2022–’26</span>
             </p>
           </div>
         </motion.div>
@@ -116,12 +116,12 @@ const Footer = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="relative text-center text-white/30 text-[10px] uppercase tracking-widest font-['Special_Elite'] font-medium leading-relaxed pt-8 mt-4 border-t border-white/5 w-full max-w-md"
+          className="relative text-center text-amber-600/30 text-[10px] uppercase tracking-widest font-['Special_Elite'] font-medium leading-relaxed pt-8 mt-4 border-t border-white/5 w-full max-w-md"
         >
           {/* Heart doodle near the final text */}
           <DoodleHeart className="hidden sm:inline w-12 h-12 absolute -top-4 -right-10 opacity-40 rotate-12 mix-blend-screen" color="#F59E0B" />
 
-          &#127279; MCETians 2022–’26 · All memories preserved forever...
+          &#127279; MCETians 2022–’26 <span className='text-[6px] opacity-70 sm:text-[10px] sm:opacity-100'>●</span>  All memories preserved forever...
           <br />
           Murshidabad College of Engineering and Technology, W.B. – 742102
         </motion.p>
