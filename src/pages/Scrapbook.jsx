@@ -114,7 +114,7 @@ const Scrapbook = () => {
               "Photographs are tickets to moments that would otherwise be gone..."
             </motion.p>
 
-            {/* Toggle Tab — smooth motion indicator */}
+            {/* Toggle Tab */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -127,7 +127,7 @@ const Scrapbook = () => {
               >
                 <button
                   onClick={() => setView('gallery')}
-                  className={`relative px-8 py-2.5 rounded-full text-md font-serif font-medium transition-colors z-10 ${view === 'gallery'
+                  className={`relative px-8 py-2.5 rounded-full text-sm font-serif font-medium transition-colors z-10 ${view === 'gallery'
                     ? 'text-black'
                     : 'text-white/60 hover:text-white'
                     }`}
@@ -136,7 +136,7 @@ const Scrapbook = () => {
                     <motion.span
                       layoutId="scrapbook-tab-indicator"
                       className="absolute inset-0 rounded-full"
-                      style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
+                      style={{ background: 'linear-gradient(135deg, #f58414ff, #d06609ff)' }}
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -153,7 +153,7 @@ const Scrapbook = () => {
                     <motion.span
                       layoutId="scrapbook-tab-indicator"
                       className="absolute inset-0 rounded-full"
-                      style={{ background: 'linear-gradient(135deg, #f59e0b, #d97706)' }}
+                      style={{ background: 'linear-gradient(135deg, #df910bff, #d97706)' }}
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -180,13 +180,13 @@ const Scrapbook = () => {
                   >
                     {/* Left: Year filters */}
                     <div className="flex-1">
-                      <div className="flex flex-wrap gap-2 font-sans">
+                      <div className="flex flex-wrap gap-2 font-['Special_Elite']">
                         {years.map(year => (
                           <button
                             key={year}
                             onClick={() => setActiveYear(year)}
-                            className={`px-6 py-2 rounded-full text-xs tracking-widest font-semibold uppercase transition-all duration-300 ${activeYear === year
-                                ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20'
+                            className={`px-6 py-2 rounded-full text-xs tracking-widest font-medium uppercase transition-all duration-300 ${activeYear === year
+                                ? 'bg-amber-600 text-black shadow-lg shadow-amber-500/20'
                                 : 'bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10'
                               }`}
                           >
@@ -201,7 +201,7 @@ const Scrapbook = () => {
                       {/* Sort */}
                       <button
                         onClick={cycleSort}
-                        className="flex items-center gap-2 px-6 py-2 rounded-full text-xs font-sans tracking-widest uppercase font-semibold text-white/60 hover:text-white hover:bg-white/5 border border-white/10 transition-colors"
+                        className="flex items-center gap-2 px-6 py-2 rounded-full text-sm font-serif tracking-wide font-semibold text-white/60 hover:text-amber-600 hover:bg-white/5 border border-white/10 transition-colors"
                       >
                         <ArrowDownUp size={16} />
                         {sortOrder === "random" ? "Random" : sortOrder === "newest" ? "Newest" : "Oldest"}
@@ -211,7 +211,7 @@ const Scrapbook = () => {
                       <motion.button
                         onClick={cycleAlbum}
                         whileTap={{ scale: 0.93 }}
-                        className="relative flex items-center gap-2 px-6 py-2 rounded-full text-xs font-sans tracking-widest uppercase font-semibold transition-all duration-300 overflow-hidden bg-amber-500 text-black shadow-lg shadow-amber-500/20"
+                        className="relative flex items-center gap-2 px-6 py-2 rounded-full text-sm font-serif tracking-wide font-semibold transition-all duration-300 overflow-hidden bg-amber-600 text-black shadow-lg shadow-amber-500/20"
                       >
                         <SlidersHorizontal size={16} />
 
