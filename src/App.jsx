@@ -12,6 +12,7 @@ import ScrollToTop from './components/layout/ScrollToTop';
 import { PlayerProvider } from './context/PlayerContext';
 const FountainPenCursor = lazy(() => import('./components/ui/FountainPenCursor'));
 const GraduationBanner = lazy(() => import('./components/ui/GraduationBanner'));
+import BrowserNotifier from './components/ui/BrowserNotifier';
 
 // Pages — lazy loaded so each route's JS is only fetched on first navigation
 import Prologue from './pages/Prologue';
@@ -71,6 +72,9 @@ function App() {
         <Suspense fallback={null}>
           <GraduationBanner />
         </Suspense>
+
+        {/* Browser Native Notifications (no UI) */}
+        <BrowserNotifier />
 
       </Router>
     </PlayerProvider>
