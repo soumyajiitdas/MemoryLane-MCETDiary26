@@ -30,19 +30,32 @@ const BrowserNotifier = () => {
       return; 
     }
 
-    const sendNotification = () => {
+    const sendNotification = async () => {
       const title = bdayPeople.length > 1 ? "🎉 Birthdays Today!" : "🎉 Birthday Today!";
       const options = {
-        body: `Happy Birthday to ${namesString}! May your journey ahead be steady, meaningful...🎂`,
-        icon: '/images/assets/rose.png',
+        body: `Happy Birthday to ${namesString}! Wish them a great day.`,
+        icon: '/images/assets/rose.png', // Assuming this exists as a public asset
         tag: 'birthday-notification', // Prevents duplicate notifications stacking
       };
 
       try {
-        new Notification(title, options);
+        if ('serviceWorker' in navigator) {
+          const registration = await navigator.serviceWorker.register('/sw.js');
+          await navigator.serviceWorker.ready;
+          await registration.showNotification(title, options);
+        } else {
+          new Notification(title, options);
+        }
         localStorage.setItem('lastBirthdayNotificationDate', todayFullDate);
       } catch (error) {
         console.error("Error triggering notification", error);
+        // Fallback to basic notification if SW fails
+        try {
+          new Notification(title, options);
+          localStorage.setItem('lastBirthdayNotificationDate', todayFullDate);
+        } catch (e) {
+          console.error("Fallback notification also failed", e);
+        }
       }
     };
 
