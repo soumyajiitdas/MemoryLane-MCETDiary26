@@ -155,13 +155,13 @@ const Hero = () => {
             <h1 className="text-[5.5rem] sm:text-[8rem] lg:text-[9rem] font-serif text-white/95 uppercase leading-[0.85] tracking-tighter drop-shadow-lg">
               MCET
             </h1>
-            <h2 className="text-[4rem] sm:text-[6.5rem] lg:text-[7.5rem] font-['Caveat'] text-gradient-animate -mt-6 sm:-mt-10 lg:-mt-12 ml-12 sm:ml-24 lg:ml-24 leading-[0.8] drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)] whitespace-nowrap">
+            <h2 className="text-[4rem] sm:text-[6.5rem] lg:text-[7.5rem] font-['Caveat'] text-gradient-animate -mt-6 sm:-mt-10 lg:-mt-12 ml-12 sm:ml-24 lg:ml-24 leading-none pb-2 drop-shadow-[0_10px_20px_rgba(0,0,0,0.4)] whitespace-nowrap">
               Diary '26
             </h2>
           </motion.div>
 
           {/* Subtitle */}
-          <motion.div variants={itemVariants} className="mt-12 lg:mt-16 relative pointer-events-auto">
+          <motion.div variants={itemVariants} className="mt-10 lg:mt-16 relative pointer-events-auto">
             <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-amber-500/50 to-transparent"></div>
             <div className="pl-6 md:pl-8">
               <p className="text-lg md:text-2xl text-white/70 font-serif italic max-w-lg leading-relaxed">

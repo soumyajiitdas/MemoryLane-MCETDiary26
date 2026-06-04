@@ -76,13 +76,13 @@ const Scrapbook = () => {
         {/* Subtle background texture for the entire page overlaying global bg */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.1]" style={{ backgroundImage: "url('/textures/paper-grain.png')", mixBlendMode: "overlay", zIndex: 1 }}></div>
 
+        {/* Firefly Particles */}
+        <div><Fireflies count={40} /></div>
+
         {/* Subtle Background Typography */}
         <div className="absolute top-5 sm:-top-4 right-12 sm:right-146 text-[10rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
           Relics
         </div>
-
-        {/* Firefly Particles */}
-        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={20} /></div>
 
         <div className="py-24 pb-30 relative z-20">
           <div className="max-w-[1400px] mx-auto px-4 relative z-10">
@@ -136,7 +136,7 @@ const Scrapbook = () => {
                     <motion.span
                       layoutId="scrapbook-tab-indicator"
                       className="absolute inset-0 rounded-full"
-                      style={{ background: 'linear-gradient(135deg, #f58414ff, #d06609ff)' }}
+                      style={{ background: 'linear-gradient(135deg, #f58414ff, #e57411ff)' }}
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -186,7 +186,7 @@ const Scrapbook = () => {
                             key={year}
                             onClick={() => setActiveYear(year)}
                             className={`px-6 py-2 rounded-full text-xs tracking-widest font-medium uppercase transition-all duration-300 ${activeYear === year
-                                ? 'bg-amber-600 text-black shadow-lg shadow-amber-500/20'
+                                ? 'bg-amber-500 text-black shadow-lg shadow-amber-500/20'
                                 : 'bg-white/5 border border-white/10 text-white/60 hover:text-white hover:bg-white/10'
                               }`}
                           >
@@ -211,7 +211,7 @@ const Scrapbook = () => {
                       <motion.button
                         onClick={cycleAlbum}
                         whileTap={{ scale: 0.93 }}
-                        className="relative flex items-center gap-2 px-6 py-2 rounded-full text-sm font-serif tracking-wide font-semibold transition-all duration-300 overflow-hidden bg-amber-600 text-black shadow-lg shadow-amber-500/20"
+                        className="relative flex items-center gap-2 px-6 py-2 rounded-full text-sm font-serif tracking-wide font-semibold transition-all duration-300 overflow-hidden bg-amber-500 text-black shadow-lg shadow-amber-500/20"
                       >
                         <SlidersHorizontal size={16} />
 

@@ -14,15 +14,15 @@ export const peopleData =
   },
   {
     id: 2,
-    name: "Joy Bhowmik",
-    nickname: "Underoos🕷️",
-    roll: "10600122019",
-    photo: "/images/cast/joy.jpg",
-    funnyPhoto: "/images/cast/joy2.jpg",
+    name: "Raihan Ahamed",
+    nickname: "Hulk👽",
+    roll: "10600122035",
+    photo: "/images/cast/raihan.png",
+    funnyPhoto: "/images/cast/raihan2.jpg",
     department: "Computer Science",
-    birthday: "06-08",
-    oneliner: "Our forever sports kid - running on energy, smiles, and a heart that’s kind to everyone.",
-    socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/joy.bhowmik_03/" }
+    birthday: "10-01",
+    oneliner: "A blend of art, code, and thought - he led in his own way and lived the hostel life like it truly mattered.",
+    socialLinks: { github: "https://github.com/raihanahamed01", linkedin: "https://www.linkedin.com/in/raihan-ahamed-910a3727a/", instagram: "https://www.instagram.com/ra1_haaann/" }
   },
   {
     id: 3,
@@ -38,15 +38,15 @@ export const peopleData =
   },
   {
     id: 4,
-    name: "Raihan Ahamed",
-    nickname: "Hulk👽",
-    roll: "10600122035",
-    photo: "/images/cast/raihan.png",
-    funnyPhoto: "/images/cast/raihan2.jpg",
+    name: "Joy Bhowmik",
+    nickname: "Underoos🕷️",
+    roll: "10600122019",
+    photo: "/images/cast/joy.jpg",
+    funnyPhoto: "/images/cast/joy2.jpg",
     department: "Computer Science",
-    birthday: "10-01",
-    oneliner: "A blend of art, code, and thought - he led in his own way and lived the hostel life like it truly mattered.",
-    socialLinks: { github: "https://github.com/raihanahamed01", linkedin: "https://www.linkedin.com/in/raihan-ahamed-910a3727a/", instagram: "https://www.instagram.com/ra1_haaann/" }
+    birthday: "06-08",
+    oneliner: "Our forever sports kid - running on energy, smiles, and a heart that’s kind to everyone.",
+    socialLinks: { github: "#", linkedin: "#", instagram: "https://www.instagram.com/joy.bhowmik_03/" }
 
   },
   {

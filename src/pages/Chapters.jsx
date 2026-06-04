@@ -176,13 +176,14 @@ const Chapters = () => {
       <div className="relative overflow-hidden w-full min-h-screen">
         {/* Subtle background texture for the entire page overlaying global bg */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.1]" style={{ backgroundImage: "url('/textures/paper-grain.png')", mixBlendMode: "overlay", zIndex: 1 }}></div>
+
+        {/* Firefly Particles */}
+        <div><Fireflies count={40} /></div>
+
         {/* Subtle Background Typography */}
         <div className="absolute top-5 sm:-top-4 right-3 sm:right-135 text-[10rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
           Phases
         </div>
-
-        {/* Firefly Particles */}
-        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={30} /></div>
 
         <div className="py-24 pb-30 relative z-20">
           <div className="max-w-[1400px] mx-auto px-4 relative z-10">

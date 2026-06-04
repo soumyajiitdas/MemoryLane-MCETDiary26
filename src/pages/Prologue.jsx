@@ -490,10 +490,16 @@ const Prologue = () => {
         {/* Subtle background texture for the entire page overlaying global bg */}
         <div className="absolute inset-0 pointer-events-none opacity-[0.1]" style={{ backgroundImage: "url('/textures/paper-grain.png')", mixBlendMode: "overlay", zIndex: 1 }}></div>
 
+        {/* Firefly Particles */}
+        <div><Fireflies count={50} /></div>
+
         {/* Hero Section */}
         <div className="relative w-full z-20">
           <Hero />
         </div>
+
+        {/* Firefly Particles */}
+        <div><Fireflies count={50} /></div>
 
         {/* Full-Width Dark Vintage Quote Divider */}
         <div className="w-full relative z-20 flex justify-center opacity-100">
@@ -533,9 +539,6 @@ const Prologue = () => {
             </div>
           </motion.div>
         </div>
-
-        {/* Firefly Particles */}
-        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={35} /></div>
 
         {/* Intro Letter */}
         <LetterToBatch />
