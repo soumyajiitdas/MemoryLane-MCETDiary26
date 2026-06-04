@@ -77,7 +77,7 @@ const Scrapbook = () => {
         <div className="absolute inset-0 pointer-events-none opacity-[0.1]" style={{ backgroundImage: "url('/textures/paper-grain.png')", mixBlendMode: "overlay", zIndex: 1 }}></div>
 
         {/* Firefly Particles */}
-        <div><Fireflies count={40} /></div>
+        <div><Fireflies count={30} /></div>
 
         {/* Subtle Background Typography */}
         <div className="absolute top-5 sm:-top-4 right-12 sm:right-146 text-[10rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
@@ -136,7 +136,7 @@ const Scrapbook = () => {
                     <motion.span
                       layoutId="scrapbook-tab-indicator"
                       className="absolute inset-0 rounded-full"
-                      style={{ background: 'linear-gradient(135deg, #f58414ff, #e57411ff)' }}
+                      style={{ background: 'linear-gradient(135deg, #df910bff, #d97706)' }}
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}

@@ -182,7 +182,7 @@ const LastPages = () => {
           <div className="absolute inset-0 pointer-events-none opacity-[0.1]" style={{ backgroundImage: "url('/textures/paper-grain.png')", mixBlendMode: "overlay", zIndex: 1 }}></div>
 
           {/* Firefly Particles */}
-        <div><Fireflies count={40} /></div>
+        <div><Fireflies count={20} /></div>
 
           {/* Subtle Background Typography */}
           <div className="absolute top-5 sm:-top-4 -right-2 sm:right-125 text-[10rem] md:text-[14rem] font-serif text-white/5 leading-none select-none pointer-events-none tracking-tighter">
