@@ -86,4 +86,6 @@ export const galleryData = [
   { id: 78, src: "/images/scrapbook/78.jpg", caption: "Good vibes and better company!", album: "Trips", year: "2nd" },
   { id: 79, src: "/images/scrapbook/79.jpg", caption: "Just another random class break...", album: "Moments", year: "1st" },
   { id: 80, src: "/images/scrapbook/80.jpeg", caption: "A fragment from those first-year days.", album: "Moments", year: "1st" },
+  { id: 81, src: "/images/scrapbook/81.jpg", caption: "No more internals. Just memories taking attendance now...", album: "Moments", year: "4th" },
+  { id: 82, src: "/images/scrapbook/82.jpg", caption: "Some memories begin with 'Let's go' and nothing more.", album: "Moments", year: "1st" },
 ];

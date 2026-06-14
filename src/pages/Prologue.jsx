@@ -491,7 +491,7 @@ const Prologue = () => {
         <div className="absolute inset-0 pointer-events-none opacity-[0.1]" style={{ backgroundImage: "url('/textures/paper-grain.png')", mixBlendMode: "overlay", zIndex: 1 }}></div>
 
         {/* Firefly Particles */}
-        <div><Fireflies count={40} /></div>
+        <div className="absolute inset-0 pointer-events-none"><Fireflies count={40} /></div>
 
         {/* Hero Section */}
         <div className="relative w-full z-20">

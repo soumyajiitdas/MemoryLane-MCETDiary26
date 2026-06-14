@@ -47,7 +47,7 @@ const Footer = () => {
 
       {/* Main content */}
       <div className="max-w-7xl mx-auto px-4 pt-16 pb-8 flex flex-col items-center relative z-10 gap-6">
-        <Fireflies count={7}/>
+        <div className="absolute inset-0 pointer-events-none z-10"><Fireflies count={8} /></div>
 
         {/* Decorative diamond divider */}
         <motion.div
