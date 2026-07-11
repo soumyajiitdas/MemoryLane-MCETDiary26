@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 // ── Graduation moment ─────────────────────────────────────────────────────────
-// End-of-day on graduation day so the countdown completes at midnight.
-const GRADUATION = new Date('2026-07-17T23:59:59');
+// 5 PM on graduation day so the countdown completes then.
+const GRADUATION = new Date('2026-07-20T17:00:00');
 
 // Start of graduation day (for "is today the day?" check)
-const GRAD_DAY_START = new Date('2026-07-17T00:00:00');
-const GRAD_DAY_END = new Date('2026-07-17T23:59:59');
+const GRAD_DAY_START = new Date('2026-07-20T00:00:00');
+const GRAD_DAY_END = new Date('2026-07-20T23:59:59');
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 const pad = (n) => (n < 10 ? `0${n}` : String(n));
@@ -23,8 +23,8 @@ const msToHMS = (ms) => {
 
 const getMode = () => {
   const now = Date.now();
-  if (now >= GRAD_DAY_START.getTime() && now <= GRAD_DAY_END.getTime()) return 'celebrate';
-  if (now < GRAD_DAY_START.getTime()) return 'countdown';
+  if (now < GRADUATION.getTime()) return 'countdown';
+  if (now >= GRADUATION.getTime() && now <= GRAD_DAY_END.getTime()) return 'celebrate';
   return 'countup';
 };
 

@@ -47,7 +47,7 @@ A bespoke interactive element that replaces the standard mouse cursor.
 Automated banners that transform the site's atmosphere for special batch milestones.
 - **Birthday Mode:** Identifies batchmates' birthdays and triggers a full-screen confetti burst with personalized greetings.
 - **Graduation Countdown:** A state-of-the-art glassmorphic countdown ticker leading to the graduation ceremony.
-- **Milestone Mode:** A specialized banner for Graduation Day (July 17, 2026) with exclusive celebratory visuals.
+- **Milestone Mode:** A specialized banner for Graduation Day (July 20, 2026) with exclusive celebratory visuals.
 
 ### 📖 Flipping Chapter Cards
 The **Chapters** page houses the batch's timeline, now enhanced with deep interactivity.

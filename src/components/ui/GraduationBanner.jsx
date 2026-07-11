@@ -8,7 +8,7 @@ const COLORS = [
   '#f97316', '#ffffff',
 ];
 
-const GRAD_DATE_STR = '2026-07-17'; // ← Graduation date (YYYY-MM-DD)
+const GRAD_DATE_STR = '2026-07-20'; // ← Graduation date (YYYY-MM-DD)
 
 // ─────────────────────────────────────────────────────────────────────────────
 // DEV TESTING: Set this to `true` to always show the banner during development.
@@ -16,15 +16,16 @@ const GRAD_DATE_STR = '2026-07-17'; // ← Graduation date (YYYY-MM-DD)
 // ─────────────────────────────────────────────────────────────────────────────
 const DEV_FORCE_SHOW = false;
 
-/** True only if today's local date is graduation day */
 const isGraduationDay = () => {
   const today = new Date();
   const [y, m, d] = GRAD_DATE_STR.split('-').map(Number);
-  return (
+  const isDateMatch = 
     today.getFullYear() === y &&
     today.getMonth() + 1 === m &&
-    today.getDate() === d
-  );
+    today.getDate() === d;
+    
+  // Only show the banner from 5 PM (17:00) to 11:59 PM on that day
+  return isDateMatch && today.getHours() >= 17;
 };
 
 /** localStorage key scoped to graduation date so it auto-resets any other day */

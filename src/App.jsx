@@ -68,7 +68,7 @@ function App() {
           <FountainPenCursor />
         </Suspense>
 
-        {/* Graduation Day Banner — shows only on 17 July 2026, z-10000+ */}
+        {/* Graduation Day Banner — shows only on 20 July 2026, z-10000+ */}
         <Suspense fallback={null}>
           <GraduationBanner />
         </Suspense>
